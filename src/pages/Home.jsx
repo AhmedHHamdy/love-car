@@ -6,7 +6,6 @@ import timerIcon from "../assets/gis_timer.png"
 import whatsappIcon from "../assets/ic_baseline-whatsapp.png"
 import youtubeIcon from "../assets/mdi_youtube.png"
 import instagramIcon from "../assets/insta.png"
-import logoIcon from "../assets/logo.png"
 import { TfiReload } from "react-icons/tfi";
 import { GiAutoRepair } from "react-icons/gi";
 import { TbLicense } from "react-icons/tb";
@@ -123,46 +122,7 @@ export default function Home() {
       </section>
 
 
-      <section className="py-14 w-10/12 mx-auto flex justify-between items-start">
-        <section className="flex flex-col justify-center items-start gap-4">
-          <img src={logoIcon} alt="logo-icon" />
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmo</p>
-          <small>© 2023 All Rights Reserved</small>
-        </section>
 
-        <section className="flex justify-between items-start w-7/12">
-          <div className="flex flex-col justify-center items-start gap-4">
-            <h4 className="text-primary text-xl font-semibold">Services</h4>
-            <ul>
-              <li><a className="hover:border-b-2" href="">Periodic Maintenance</a></li>
-              <li><a className="hover:border-b-2" href="">Modification</a></li>
-            </ul>
-          </div>
-
-          <div className="flex flex-col justify-center items-start gap-4">
-            <h4 className="text-primary text-xl font-semibold">About Us</h4>
-            <ul>
-              <li><a className="hover:border-b-2" href="">About</a></li>
-              <li><a className="hover:border-b-2" href="">Staff</a></li>
-            </ul>
-          </div>
-
-          <div className="flex flex-col justify-center items-start gap-4">
-            <h4 className="text-primary text-xl font-semibold">Shop</h4>
-            <ul>
-              <li><a className="hover:border-b-2" href="">Spare Parts Shop</a></li>
-            </ul>
-          </div>
-
-          <div className="flex flex-col justify-center items-start gap-4">
-            <h4 className="text-primary text-xl font-semibold">Contact Us</h4>
-            <ul>
-              <li><a className="hover:border-b-2" href="">Location</a></li>
-            </ul>
-          </div>
-
-        </section>
-      </section>
     </>
   )
 }

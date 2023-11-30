@@ -1,7 +1,11 @@
-import { Outlet } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 import Logo from "../assets/logo.png"
+import { useAuth } from "../context/AuthProvider"
+import { CgProfile } from "react-icons/cg";
 
 export default function Header() {
+  const { token } = useAuth()
+
   return(
     <>
       <div className="navbar bg-base-100 w-10/12 mx-auto px-0 py-4">
@@ -28,7 +32,7 @@ export default function Header() {
         </div>
         <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal px-1 text-accent text-sm">
-            <li><a>Home</a></li>
+            <li><Link to="/">Home</Link></li>
             <li>
               <details>
                 <summary>Services</summary>
@@ -41,13 +45,60 @@ export default function Header() {
             <li><a>Shop</a></li>
             <li><a>About Us</a></li>
             <li><a>Contact Us</a></li>
+            {token && <li><Link to="dashboard">Dashboard</Link></li>}
           </ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn bg-primary text-xl rounded-full px-14 text-accent leading-none">Login</a>
-        </div>
+       {!token && <div className="navbar-end">
+          <Link to="/login" className="btn bg-primary text-xl rounded-full px-14 text-accent leading-none">Login</Link>
+        </div>}
+
+        {token && <div className="navbar-end">
+          <Link to="/profile" className="btn bg-secondary text-4xl text-primary rounded-full px-2 flex items-center justify-center leading-none"><CgProfile /></Link>
+        </div>}
       </div>
+
       <Outlet />
+
+      <section className="py-14 w-10/12 mx-auto flex justify-between items-start">
+        <section className="flex flex-col justify-center items-start gap-4">
+          <img src={Logo} alt="logo-icon" />
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmo</p>
+          <small>© 2023 All Rights Reserved</small>
+        </section>
+
+        <section className="flex justify-between items-start w-7/12">
+          <div className="flex flex-col justify-center items-start gap-4">
+            <h4 className="text-primary text-xl font-semibold">Services</h4>
+            <ul>
+              <li><a className="hover:border-b-2" href="">Periodic Maintenance</a></li>
+              <li><a className="hover:border-b-2" href="">Modification</a></li>
+            </ul>
+          </div>
+
+          <div className="flex flex-col justify-center items-start gap-4">
+            <h4 className="text-primary text-xl font-semibold">About Us</h4>
+            <ul>
+              <li><a className="hover:border-b-2" href="">About</a></li>
+              <li><a className="hover:border-b-2" href="">Staff</a></li>
+            </ul>
+          </div>
+
+          <div className="flex flex-col justify-center items-start gap-4">
+            <h4 className="text-primary text-xl font-semibold">Shop</h4>
+            <ul>
+              <li><a className="hover:border-b-2" href="">Spare Parts Shop</a></li>
+            </ul>
+          </div>
+
+          <div className="flex flex-col justify-center items-start gap-4">
+            <h4 className="text-primary text-xl font-semibold">Contact Us</h4>
+            <ul>
+              <li><a className="hover:border-b-2" href="">Location</a></li>
+            </ul>
+          </div>
+
+        </section>
+      </section>
     </>
   )
 }
