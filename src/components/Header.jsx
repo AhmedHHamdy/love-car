@@ -1,10 +1,19 @@
-import { Link, Outlet } from "react-router-dom"
+import { Link, Outlet, useNavigate } from "react-router-dom"
 import Logo from "../assets/logo.png"
 import { useAuth } from "../context/AuthProvider"
 import { CgProfile } from "react-icons/cg";
+import Cookies from "js-cookie";
 
 export default function Header() {
-  const { token } = useAuth()
+  const { token, setToken } = useAuth()
+
+  const navigate = useNavigate()
+
+  function handleLogout() {
+    Cookies.remove("token")
+    setToken()
+    navigate("/", { replace: true })
+  }
 
   return(
     <>
@@ -52,9 +61,20 @@ export default function Header() {
           <Link to="/login" className="btn bg-primary text-xl rounded-full px-14 text-accent leading-none">Login</Link>
         </div>}
 
-        {token && <div className="navbar-end">
+        {/* {token && <div className="navbar-end">
           <Link to="/profile" className="btn bg-secondary text-4xl text-primary rounded-full px-2 flex items-center justify-center leading-none"><CgProfile /></Link>
-        </div>}
+        </div>} */}
+
+        {token && 
+          <section className="navbar-end">
+            <div className="dropdown dropdown-bottom dropdown-end">
+              <div tabIndex={0} role="button" className="tn bg-secondary text-4xl text-primary rounded-full w-12 h-12 flex items-center justify-center leading-none"><CgProfile /></div>
+              <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 mt-2 shadow bg-primary rounded-box w-28">
+                <li><Link className="text-xl hover:bg-base-100" to="/profile">Profile</Link></li>
+                <li><button className="text-xl hover:bg-base-100" onClick={handleLogout}>Logout</button></li>
+              </ul>
+            </div>
+          </section>}
       </div>
 
       <Outlet />
