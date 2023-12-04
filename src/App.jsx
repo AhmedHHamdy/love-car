@@ -8,6 +8,7 @@ import Signup from "./pages/account/Signup"
 import AuthRequired from "./components/AuthRequired"
 import Dashboard from "./pages/Dashboard"
 import Profile from "./pages/account/Profile"
+import ResetPassword from "./pages/account/ResetPassword"
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/resetpassword" element={<ResetPassword />} />
 
 
           <Route element={<AuthRequired />}>
