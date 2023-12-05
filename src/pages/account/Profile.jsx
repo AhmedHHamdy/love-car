@@ -5,8 +5,6 @@ import { AiFillCloseCircle } from "react-icons/ai"
 import { useAuth } from "../../context/AuthProvider";
 
 export default function Profile() {
-  const [passwordFormOpen, setPasswordFormOpen] = useState(false)
-
 
   const { token } = useAuth()
 
@@ -16,46 +14,30 @@ export default function Profile() {
   const [loadingStatus, setLoadingStatus] = useState(true)
   const [error, setError] = useState(null)
 
-  const openPasswordForm = () => {
-    setPasswordFormOpen(true)
-  }
-
-  const closePasswordForm = () => {
-    setPasswordFormOpen(false)
-  }
-
-  // useEffect(() => {
-  //   axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/profile`, {
-  //           headers: {
-  //             Authorization: `Bearer ${token}`
-  //           },
-  //         })
-  //         .then(res => {
-  //           setLoadingStatus(false)
-  //           setFormData(res.data.data)
-  //         })
-  //         .catch(err => {
-  //           setLoadingStatus(false)
-  //           console.log(err); // Log any errors that occur
-  //           setError(err.message)
-  //         })
-  // }, [])
-
-  // const [formData, setFormData] = useState({
-  //   first_name: '',
-  //   last_name: '',
-  //   email: '',
-  //   phone: '',
-  //   image: null
-  // })
-
-
   const [formData, setFormData] = useState({
-    first_name: '',
-    last_name: '',
+    id: '',
+    name: '',
     email: '',
     phone: '',
+    image: null
   })
+
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/users/show`, {
+            headers: {
+              Authorization: `Bearer ${token}`
+            },
+          })
+          .then(res => {
+            setLoadingStatus(false)
+            setFormData(res.data.data.user)
+          })
+          .catch(err => {
+            setLoadingStatus(false)
+            console.log(err); // Log any errors that occur
+            setError(err.message)
+          })
+  }, [])
 
   console.log(formData)
 
@@ -121,107 +103,114 @@ export default function Profile() {
     }))
   }
 
-  // // function handleSubmit(event) {
-  //   event.preventDefault();
+  function handleSubmit(event) {
+    event.preventDefault();
 
-  //   let inputNames = ["first_name", "last_name", "email", "phone"]
-  //   const formDataa = new FormData(); // Create a new FormData object
+    let inputNames = ["name", "email", "phone"]
+    const EditProfileForm = new FormData(); // Create a new FormData object
   
-  //   // Append the fields from pileFormData
-  //   for (const key of inputNames) {
-  //     formDataa.append(key, formData[key]);
-  //   }
+    // Append the fields from pileFormData
+    for (const key of inputNames) {
+      EditProfileForm.append(key, formData[key]);
+    }
   
-  //   // Append the file data
-  //   // formDataa.append("image", formData.image);
-
-  //   console.log(formDataa)
-
-  //   axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/profile`, formDataa, {
-  //       headers: {
-  //         "Content-Type": "multipart/form-data"
-  //       }
-  //     })
-  //     .then(res => {
-  //       console.log(res);
-  //       toast.success('Saved')
-  //     })
-  //     .catch(err => {
-  //       console.error(err);
-  //       toast.error(err.message)
-  //       // console.error(err.response.data.message);
-  //       // setErrMsg(err.response.data.message)
-  //     });
-  // }
+    // Append the file data
+    EditProfileForm.append("image", formData.image);
 
 
-  // if (loadingStatus) {
-  //   return (
-  //     <Box sx={{ display: 'flex', justifyContent:"center", gridColumn: "8", alignSelf: "center", marginTop: "3rem" }}>
-  //       <CircularProgress color="success"  />
-  //     </Box>
-  //   )
-  // }
+    axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/users/update`, EditProfileForm, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then(res => {
+        console.log(res);
+        window.location.reload()
+      })
+      .catch(err => {
+        console.log(err);
+        setError(err.response.data.message)
+      });
+  }
 
-  // if (error) {
-  //   return (
-  //     <h1 style={{gridColumn: "2/-1", textAlign: "center" }}>{error} <br/> Please Refresh</h1>
-  //   )
-  // }
+
+  if (loadingStatus) {
+    return (
+      <div className="flex justify-center items-center w-screen h-screen bg-secondary">
+        <span className="loading loading-ring loading-lg bg-primary"></span>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center w-screen h-screen bg-secondary">
+        <h1 className="bg-red-900 text-accent text-center uppercase rounded-lg p-4 text-lg">{error} <br/> Please refresh</h1>
+      </div>
+    )
+  }
 
 
   return (
-      <section className="profile-container">
+      <section className="bg-secondary flex flex-col justify-center items-center h-screen">
+        {/* {error &&   
+        <div className="flex justify-center items-center bg-secondary">
+          <h1 className="bg-red-900 text-accent text-center uppercase rounded-lg p-4 text-lg">{error} <br/> Please refresh</h1>
+        </div>} */}
 
-        <div className="profile-header">
+        <div className="text-2xl my-6">
           <h1>Edit Profile</h1>
         </div>
         
-        <form  className="profile-form">
-
-          <img src={formData.image} alt="" />
+        <form className="flex flex-col justify-center items-center gap-2" onSubmit={handleSubmit}>
+          <div className="avatar">
+            <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <img src={formData.image || "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"} alt="UserImage" />
+            </div>
+          </div>
  
-          <label htmlFor="first_name">First Name</label>
-          <input type="text" name="first_name" id="firstName" onChange={handleChange} value={formData.first_name} />
+          <div className="w-full">
+            <label className="label-text text-base" htmlFor="name">Name</label>
+            <input className="input input-bordered w-full" type="text" name="name" id="name" onChange={handleChange} value={formData.name} />
+          </div>
 
-          <label htmlFor="last_name">Last Name</label>
-          <input type="text" name="last_name" id="lastName" onChange={handleChange} value={formData.last_name} />
+          <div className="w-full">
+            <label className="label-text text-base inline-block mb-2" htmlFor="email">Email</label>
+            <input className="input input-bordered w-full" type="email" name="email" id="email" onChange={handleChange} value={formData.email} />
+          </div>
 
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="email" onChange={handleChange} value={formData.email} />
+          <div className="w-full">
+            <label className="label-text text-base inline-block mb-2" htmlFor="phone">Phone</label>
+            <input className="input input-bordered w-full" type="text" name="phone" id="phone" onChange={handleChange} value={formData.phone} />
+          </div>
 
-          <label htmlFor="phone">Phone</label>
-          <input type="text" name="phone" id="phone" onChange={handleChange} value={formData.phone} />
+          <div className="w-full">
+            <label className="label-text text-base inline-block mb-2" htmlFor="image">Image</label>
+            <input className="file-input file-input-bordered file-input-primary w-full " type="file" name="image" id="image" onChange={handleFileChange}  />
+          </div>
 
-          {/* <label htmlFor="image">Image</label>
-          <input type="file" name="image" id="image" onChange={handleFileChange}  /> */}
-
-          <button>Save Profile</button>
+          <button className="btn btn-primary text-accent text-base mt-4 w-full">Save Profile</button>
         </form>
 
-        <button className="change-password" onClick={openPasswordForm}>Change Password</button>
+        <button className="btn btn-base-100 text-accent text-base mt-4 w-neutral hover:bg-primary" onClick={()=>document.getElementById('my_modal_5').showModal()}>Change Password</button>
         
-        // {passwordFormOpen && 
-        <div className="model-overlay-password-form">
-          <div className="model-password-form password-form">
-            <div className="password-form-header">
-              <h1>Change Password</h1>
-              <button type="button" onClick={closePasswordForm}><AiFillCloseCircle /></button>
+        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+            <div className="modal-box">
+              <h3 className="font-bold text-2xl mb-2">Change Password</h3>
+                <form onSubmit={handlePasswordFormSubmit} className="flex flex-col gap-2" method="dialog">
+                  <label className="label-text text-base inline-block mb-0" htmlFor="old_password">Old Password</label>
+                  <input className="input input-bordered w-full" type="password" name="old_password" id="old_password" onChange={handleChangePassword} required value={formPassword.old_password} />
+
+                  <label className="label-text text-base inline-block mb-0" htmlFor="password">Password</label>
+                  <input className="input input-bordered w-full" type="password" name="password" id="password" onChange={handleChangePassword} required value={formPassword.password} />
+
+                  <label className="label-text text-base inline-block mb-0" htmlFor="password_confirmation">Confirm Password</label>
+                  <input className="input input-bordered w-full" type="password" name="password_confirmation" id="password_confirmation" required onChange={handleChangePassword} value={formPassword.password_confirmation} />
+                  <button className="btn btn-primary text-accent font-base mt-2">Save</button>
+                  <button className="btn btn-secondary" type="button" onClick={() => document.getElementById('my_modal_5').close()}>Close</button>
+                </form>
             </div>
-
-            <form onSubmit={handlePasswordFormSubmit}>
-              <label htmlFor="old_password">Old Password</label>
-              <input type="password" name="old_password" id="old_password" onChange={handleChangePassword} required value={formPassword.old_password} />
-
-              <label htmlFor="password">Password</label>
-              <input type="password" name="password" id="password" onChange={handleChangePassword} required value={formPassword.password} />
-
-              <label htmlFor="password_confirmation">Confirm Password</label>
-              <input type="password" name="password_confirmation" id="password_confirmation" required onChange={handleChangePassword} value={formPassword.password_confirmation} />
-              <button>Save</button>
-            </form>
-          </div>
-        </div>}
+        </dialog>
       </section>
   )
 }
