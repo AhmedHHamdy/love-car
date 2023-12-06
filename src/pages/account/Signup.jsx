@@ -101,7 +101,7 @@ export default function Signup() {
 
 
     return (
-      <section className="bg-secondary md:pt-0 min-[320px]:pt-28 sm:pt-20 lg:pt-0">
+      <section className="bg-secondary md:pt-0 min-[320px]:pt-0 sm:pt-20 lg:pt-0">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <div className="w-full bg-base-100 border-base-100 rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">
             <div className="p-6 space-y-2 md:space-y-6 sm:p-8">

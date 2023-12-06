@@ -13,6 +13,7 @@ export default function Profile() {
 
   const [loadingStatus, setLoadingStatus] = useState(true)
   const [error, setError] = useState(null)
+  const [errorPasswordForm, setErrorPasswordForm] = useState(null)
 
   const [formData, setFormData] = useState({
     id: '',
@@ -39,13 +40,15 @@ export default function Profile() {
           })
   }, [])
 
-  console.log(formData)
+  // console.log(formData)
 
   const [formPassword, setFormPassword] = useState({
     old_password: '',
     password: '',
-    password_confirmation: ''
+    confirm_Password: ''
   })
+
+  console.log(formPassword)
 
   function handleChangePassword(even){
     const {name, value} = event.target
@@ -59,29 +62,37 @@ export default function Profile() {
     if (name === "password") {
       const isPasswordValid = PWD_REGEX.test(value);
       setValidPassword(isPasswordValid);
+      console.log(validPassword)
     }
   }
 
   function handlePasswordFormSubmit(event) {
     event.preventDefault()
-    if (formPassword.password == formPassword.password_confirmation && validPassword) {
-      axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/profile/update-password`, formPassword)
+    if (formPassword.password == formPassword.confirm_Password && validPassword) {
+      axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/users/changePassword`, formPassword)
           .then(res => {
             console.log(res)
             setFormPassword({
               old_password: '',
               password: '',
-              password_confirmation: ''
+              confirm_Password: ''
             })
-            closePasswordForm()
-            toast.success("Password Changed")
+            console.log("Password Changed")
+            document.getElementById('my_modal_5').close()
           })
           .catch(err => {
             console.log(err)
-            toast.error(err.message)
+            if (err.response.data.message == "كلمة المرور القديمة غير صحيحة") {
+              setErrorPasswordForm("The old password is incorrect.")
+              setTimeout(() => setErrorPasswordForm(null), 4000); // Clear the error message after 3000 milliseconds (3 seconds)
+            } else {
+              setErrorPasswordForm(err.response.data.message)
+              setTimeout(() => setErrorPasswordForm(null), 4000); // Clear the error message after 3000 milliseconds (3 seconds)
+            }
           })
     } else {
-      toast.error("Please make sure your passwords match, and it follows the password change requirements (Password: 8-24 chars, at least 1 lowercase, 1 uppercase, 1 digit.)")
+      setErrorPasswordForm("Please make sure your passwords match, and it follows the password change requirements (Password: 8-24 chars, at least 1 lowercase, 1 uppercase, 1 digit.)")
+      setTimeout(() => setErrorPasswordForm(null), 5000); // Clear the error message after 3000 milliseconds (3 seconds)
     }
   }
 
@@ -142,21 +153,21 @@ export default function Profile() {
     )
   }
 
-  if (error) {
-    return (
-      <div className="flex justify-center items-center w-screen h-screen bg-secondary">
-        <h1 className="bg-red-900 text-accent text-center uppercase rounded-lg p-4 text-lg">{error} <br/> Please refresh</h1>
-      </div>
-    )
-  }
+  // if (error) {
+  //   return (
+  //     <div className="flex justify-center items-center w-screen h-screen bg-secondary">
+  //       <h1 className="bg-red-900 text-accent text-center uppercase rounded-lg p-4 text-lg">{error} <br/> Please refresh</h1>
+  //     </div>
+  //   )
+  // }
 
 
   return (
       <section className="bg-secondary flex flex-col justify-center items-center h-screen">
-        {/* {error &&   
+        {error &&   
         <div className="flex justify-center items-center bg-secondary">
-          <h1 className="bg-red-900 text-accent text-center uppercase rounded-lg p-4 text-lg">{error} <br/> Please refresh</h1>
-        </div>} */}
+          <h1 className="bg-red-900 text-accent text-center capitalize rounded-lg p-4 text-lg">{error}</h1>
+        </div>}
 
         <div className="text-2xl my-6">
           <h1>Edit Profile</h1>
@@ -197,18 +208,19 @@ export default function Profile() {
         <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
             <div className="modal-box">
               <h3 className="font-bold text-2xl mb-2">Change Password</h3>
-                <form onSubmit={handlePasswordFormSubmit} className="flex flex-col gap-2" method="dialog">
-                  <label className="label-text text-base inline-block mb-0" htmlFor="old_password">Old Password</label>
-                  <input className="input input-bordered w-full" type="password" name="old_password" id="old_password" onChange={handleChangePassword} required value={formPassword.old_password} />
+              {errorPasswordForm && <h1 className="bg-red-900 text-accent text-center capitalize rounded-lg p-4 my-1 text-lg">{errorPasswordForm}</h1>}
+              <form onSubmit={handlePasswordFormSubmit} className="flex flex-col gap-2" method="dialog">
+                <label className="label-text text-base inline-block mb-0" htmlFor="old_password">Old Password</label>
+                <input className="input input-bordered w-full" type="password" name="old_password" id="old_password" onChange={handleChangePassword} required value={formPassword.old_password} />
 
-                  <label className="label-text text-base inline-block mb-0" htmlFor="password">Password</label>
-                  <input className="input input-bordered w-full" type="password" name="password" id="password" onChange={handleChangePassword} required value={formPassword.password} />
+                <label className="label-text text-base inline-block mb-0" htmlFor="password">Password</label>
+                <input className="input input-bordered w-full" type="password" name="password" id="password" onChange={handleChangePassword} required value={formPassword.password} />
 
-                  <label className="label-text text-base inline-block mb-0" htmlFor="password_confirmation">Confirm Password</label>
-                  <input className="input input-bordered w-full" type="password" name="password_confirmation" id="password_confirmation" required onChange={handleChangePassword} value={formPassword.password_confirmation} />
-                  <button className="btn btn-primary text-accent font-base mt-2">Save</button>
-                  <button className="btn btn-secondary" type="button" onClick={() => document.getElementById('my_modal_5').close()}>Close</button>
-                </form>
+                <label className="label-text text-base inline-block mb-0" htmlFor="confirm_Password">Confirm Password</label>
+                <input className="input input-bordered w-full" type="password" name="confirm_Password" id="confirm_Password" required onChange={handleChangePassword} value={formPassword.confirm_Password} />
+                <button className="btn btn-primary text-accent font-base mt-2">Save</button>
+                <button className="btn btn-secondary" type="button" onClick={() => document.getElementById('my_modal_5').close()}>Close</button>
+              </form>
             </div>
         </dialog>
       </section>
