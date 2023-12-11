@@ -6,8 +6,12 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      "sans" : ["Poppins", "Cairo"],
+    }
   },
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  plugins: [require("@tailwindcss/typography"), require("daisyui"), require('tailwindcss-rtl'),],
+  
   daisyui: {
     themes: [
       {

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import Logo from "../assets/logo.png"
 
 export default function Footer() {
@@ -47,27 +48,24 @@ export default function Footer() {
         <section className="footer p-10 bg-base-100 text-base-content">
             <aside>
                 <img className="max-w-full" src={Logo} alt="logo-icon" />
-                <p>LoveCar Industries Ltd.<br/>Providing reliable repairs since 1992</p>
+                <p>Providing reliable automotive repairs since 2003.</p>
             </aside> 
             <nav>
                 <header className="footer-title">Services</header> 
-                <a className="link link-hover">Branding</a>
-                <a className="link link-hover">Design</a>
-                <a className="link link-hover">Marketing</a>
-                <a className="link link-hover">Advertisement</a>
+                <Link to="/routine-maintenance" className="link link-hover">Routine Maintenance</Link>
+                <Link to="/renewal" className="link link-hover">Renewal</Link>
+                <Link to="/licensing" className="link link-hover">Service License</Link>
             </nav> 
             <nav>
                 <header className="footer-title">Company</header> 
-                <a className="link link-hover">About us</a>
-                <a className="link link-hover">Contact</a>
-                <a className="link link-hover">Jobs</a>
-                <a className="link link-hover">Press kit</a>
+                <a href="https://mr-decals.com/" className="link link-hover">Shop</a>
+                <Link to="/about-us" className="link link-hover">About us</Link>
+                <Link to="/contact-us" className="link link-hover">Contact Us</Link>
             </nav> 
             <nav>
                 <header className="footer-title">Legal</header> 
-                <a className="link link-hover">Terms of use</a>
-                <a className="link link-hover">Privacy policy</a>
-                <a className="link link-hover">Cookie policy</a>
+                <Link className="link link-hover">Terms of use</Link>
+                <Link className="link link-hover">Privacy policy</Link>
             </nav>
         </section>
     </footer>
