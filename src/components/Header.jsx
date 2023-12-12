@@ -39,10 +39,10 @@ export default function Header() {
               <li className="hover:bg-primary rounded-lg"><Link to="/">{t("Home")}</Link></li>
               <li className="">
                 <Link>Services</Link>
-                <ul className="p-2 rounded-lg">
-                  <li className="hover:bg-primary rounded-lg"><Link to="/routine-maintenance">Routine Maintenance</Link></li>
-                  <li className="hover:bg-primary rounded-lg"><Link to="/renewal">Renewal</Link></li>
-                  <li className="hover:bg-primary rounded-lg"><Link to="/licensing">Service License</Link></li>
+                <ul className="p-2 rounded-lg z-30">
+                  <li className="hover:bg-primary rounded-lg"><Link to="/services">Routine Maintenance</Link></li>
+                  <li className="hover:bg-primary rounded-lg"><Link to="/services">Renewal</Link></li>
+                  <li className="hover:bg-primary rounded-lg"><Link to="/services">Service License</Link></li>
                 </ul>
               </li>
               <li className="hover:bg-primary rounded-lg"><a href="https://mr-decals.com/">Shop</a></li>
@@ -58,10 +58,10 @@ export default function Header() {
             <li>
               <details>
                 <summary>Services</summary>
-                <ul className="p-2 bg-primary w-52">
-                  <li className="hover:bg-secondary rounded-xl"><Link to="/routine-maintenance">Routine Maintenance</Link></li>
-                  <li className="hover:bg-secondary rounded-xl"><Link to="/renewal">Renewal</Link></li>
-                  <li className="hover:bg-secondary rounded-xl"><Link to="/licensing">Service License</Link></li>
+                <ul className="p-2 bg-primary w-52 z-30">
+                  <li className="hover:bg-secondary rounded-xl"><Link to="/services">Routine Maintenance</Link></li>
+                  <li className="hover:bg-secondary rounded-xl"><Link to="/services">Renewal</Link></li>
+                  <li className="hover:bg-secondary rounded-xl"><Link to="/services">Service License</Link></li>
                 </ul>
               </details>
             </li>

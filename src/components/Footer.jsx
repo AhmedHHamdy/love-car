@@ -52,9 +52,9 @@ export default function Footer() {
             </aside> 
             <nav>
                 <header className="footer-title">Services</header> 
-                <Link to="/routine-maintenance" className="link link-hover">Routine Maintenance</Link>
-                <Link to="/renewal" className="link link-hover">Renewal</Link>
-                <Link to="/licensing" className="link link-hover">Service License</Link>
+                <Link to="/services" className="link link-hover">Routine Maintenance</Link>
+                <Link to="/services" className="link link-hover">Renewal</Link>
+                <Link to="/services" className="link link-hover">Service License</Link>
             </nav> 
             <nav>
                 <header className="footer-title">Company</header> 

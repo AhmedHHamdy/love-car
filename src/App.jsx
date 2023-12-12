@@ -9,9 +9,7 @@ import AuthRequired from "./components/AuthRequired"
 import Dashboard from "./pages/Dashboard"
 import Profile from "./pages/account/Profile"
 import ResetPassword from "./pages/account/ResetPassword"
-import Maintenance from "./pages/orders/Maintenance"
-import Renewal from "./pages/orders/Renewal"
-import ServiceLicense from "./pages/orders/ServiceLicense"
+import Services from "./pages/orders/Services"
 
 function App() {
 
@@ -30,9 +28,7 @@ function App() {
           <Route element={<AuthRequired />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="routine-maintenance" element={<Maintenance />} />
-            <Route path="renewal" element={<Renewal />} />
-            <Route path="licensing" element={<ServiceLicense />} />
+            <Route path="services" element={<Services />} />
           </Route>
         </Route>
 

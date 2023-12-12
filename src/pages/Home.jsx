@@ -60,13 +60,13 @@ export default function Home() {
             <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col text-center w-full h-full">
               <h3 className="text-2xl flex flex-col justify-between items-center gap-4">Routine Maintenance <GiAutoRepair className="text-primary text-4xl" /></h3>
               <p className="text-neutral my-4 text-base">Routine vehicle maintenance can help diagnose issues early and prevent costly repairs later.</p>
-              <Link className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/routine-maintenance">Booking</Link>
+              <Link className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/services">Booking</Link>
             </div>
 
             <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col text-center w-full h-full">
               <h3 className="text-2xl flex flex-col justify-between items-center gap-4">Renewal <TfiReload className="text-primary text-4xl" /></h3>
               <p className="text-neutral my-4 text-base">From brakes to batteries, our parts replacement service ensures your vehicle is equipped with high-quality components.</p>
-              <Link className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/renewal">Booking</Link>
+              <Link className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/services">Booking</Link>
             </div>
           </div>
 
@@ -75,7 +75,7 @@ export default function Home() {
             <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col text-center w-full h-full">
               <h3 className="text-2xl flex flex-col justify-between items-center gap-4">Service License <TbLicense className="text-primary text-4xl" /></h3>
               <p className="text-neutral my-4 text-base">LoveCar is your trusted partner in simplifying and streamlining the licensing process for your vehicle. We understand that navigating the intricacies of licensing can be a time-consuming and complex task, and that's why we're here to make it easy, efficient, and enjoyable.</p>
-              <Link className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/licensing">Booking</Link>
+              <Link className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/services">Booking</Link>
             </div>
           </div>
         </section>
