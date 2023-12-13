@@ -1,8 +1,11 @@
 import { useState } from "react";
 import MultiSelectDropdown from "../../components/MultiSelectDropdown";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 export default function Maintenance() {
+    const location = useLocation()
+
   const [formData, setFormData] = useState({
     type: "",
     model: "",
@@ -18,6 +21,7 @@ export default function Maintenance() {
     city: "",
     region: "",
   });
+
 
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState(null)

@@ -4,7 +4,7 @@ export default function AboutUs() {
   return(
     <section className="bg-secondary">
       <div className="hero min-h-[20rem]" style={{backgroundImage: 'url(https://mylovecar.zauzat.org/uploads/banners/1701181510yvjlsKtmwXtlHjX0cmYxuCpImlXaXIdqn3oyej1dPbo1Q.jpg)'}}>
-        <div className="hero-overlay bg-opacity-40"></div>
+        <div className="hero-overlay bg-secondary bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
             <h1 className="mb-5 text-5xl font-bold text-primary">About Love Car</h1>
@@ -17,7 +17,7 @@ export default function AboutUs() {
           <img src="https://mylovecar1886.com/wp-content/uploads/2020/09/carparts-home-pic1.png" className="max-w-xs sm:max-w-xl rounded-lg" />
           <div className="flex flex-col justify-space-between items-start h-[29rem]">
             <span className="text-sm bg-primary p-3 rounded-full rounded-tl-none text-accent">We are pleased to collaborate with you</span>
-            <p className="py-6 text-5xl text-accent">Our team is Saudi, specializing in the field of automobiles with expertise spanning over 20 years.</p>
+            <p className="py-6 text-5xl font-semibold text-accent">Our team is Saudi, specializing in the field of automobiles with expertise spanning over 20 years.</p>
             <ul className="h-full">
               <li className="flex justify-start items-center gap-4 text-accent text-base mt-4"><IoCarSport className="text-primary" /> We specialize in auto body repair and painting</li>
               <li className="flex justify-start items-center gap-4 text-accent text-base mt-4"><IoCarSport className="text-primary" /> We specialize in Automotive mechanics</li>

@@ -9,12 +9,13 @@ import instagramIcon from "../assets/insta.png"
 import { TfiReload } from "react-icons/tfi";
 import { GiAutoRepair } from "react-icons/gi";
 import { TbLicense } from "react-icons/tb";
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { IoLogoWhatsapp, IoLogoInstagram, IoLogoYoutube } from "react-icons/io5";
 import { FaInstagram, FaSnapchat, FaWhatsapp, FaYoutube } from "react-icons/fa";
 
 export default function Home() {
 
+  const location = useLocation()
   const backgroundImageUrl = '../../public/carBackground.jpg';
 
   return(
@@ -29,8 +30,8 @@ export default function Home() {
         </section>
       </section>
 
-      <section className="flex justify-between w-11/12 ml-auto mt-10 pb-14">
-        <section className="flex flex-col justify-around gap-8 mr-4">
+      <section className="flex justify-between w-11/12 ms-auto mt-10 pb-14">
+        <section className="flex flex-col justify-around gap-8 ms-4">
           <div>
             <span className="text-primary text-5xl font-medium">20+</span>
             <h4 className="text-neutral mt-2">Years of Experience</h4>
@@ -60,13 +61,13 @@ export default function Home() {
             <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col text-center w-full h-full">
               <h3 className="text-2xl flex flex-col justify-between items-center gap-4">Routine Maintenance <GiAutoRepair className="text-primary text-4xl" /></h3>
               <p className="text-neutral my-4 text-base">Routine vehicle maintenance can help diagnose issues early and prevent costly repairs later.</p>
-              <Link className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/services">Booking</Link>
+              <Link state={{type: "maintenance"}} className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/services">Booking</Link>
             </div>
 
             <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col text-center w-full h-full">
               <h3 className="text-2xl flex flex-col justify-between items-center gap-4">Renewal <TfiReload className="text-primary text-4xl" /></h3>
               <p className="text-neutral my-4 text-base">From brakes to batteries, our parts replacement service ensures your vehicle is equipped with high-quality components.</p>
-              <Link className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/services">Booking</Link>
+              <Link state={{type: "renewal"}} className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/services">Booking</Link>
             </div>
           </div>
 
@@ -75,7 +76,7 @@ export default function Home() {
             <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col text-center w-full h-full">
               <h3 className="text-2xl flex flex-col justify-between items-center gap-4">Service License <TbLicense className="text-primary text-4xl" /></h3>
               <p className="text-neutral my-4 text-base">LoveCar is your trusted partner in simplifying and streamlining the licensing process for your vehicle. We understand that navigating the intricacies of licensing can be a time-consuming and complex task, and that's why we're here to make it easy, efficient, and enjoyable.</p>
-              <Link className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/services">Booking</Link>
+              <Link state={{type: "license"}} className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/services">Booking</Link>
             </div>
           </div>
         </section>

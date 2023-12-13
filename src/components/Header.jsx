@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 import LanguageSelector from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
+import LogoMobile from "../assets/lovecartransBack.png"
 
 export default function Header() {
   const { token, setToken } = useAuth()
@@ -40,9 +41,9 @@ export default function Header() {
               <li className="">
                 <Link>Services</Link>
                 <ul className="p-2 rounded-lg z-30">
-                  <li className="hover:bg-primary rounded-lg"><Link to="/services">Routine Maintenance</Link></li>
-                  <li className="hover:bg-primary rounded-lg"><Link to="/services">Renewal</Link></li>
-                  <li className="hover:bg-primary rounded-lg"><Link to="/services">Service License</Link></li>
+                  <li className="hover:bg-primary rounded-lg"><Link state={{type: "maintenance"}} to="/services">Maintenance</Link></li>
+                  <li className="hover:bg-primary rounded-lg"><Link state={{type: "renewal"}} to="/services">Renewal</Link></li>
+                  <li className="hover:bg-primary rounded-lg"><Link state={{type: "license"}} to="/services">Service License</Link></li>
                 </ul>
               </li>
               <li className="hover:bg-primary rounded-lg"><a href="https://mr-decals.com/">Shop</a></li>
@@ -50,7 +51,8 @@ export default function Header() {
               <li className="hover:bg-primary rounded-lg"><Link to="/contact-us">Contact Us</Link></li>
             </ul>
           </div>
-          <Link className="text-xl" to="/"><img className="max-w-full" src={Logo} alt="logo" /></Link>
+          <Link className="text-xl hidden sm:inline" to="/"><img className="max-w-full" src={Logo} alt="logo" /></Link>
+          <Link className="text-xl sm:hidden" to="/"><img className="max-w-[6rem]" src={LogoMobile} alt="logo" /></Link>
         </div>
         <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal px-1 text-accent text-sm">
@@ -59,9 +61,9 @@ export default function Header() {
               <details>
                 <summary>Services</summary>
                 <ul className="p-2 bg-primary w-52 z-30">
-                  <li className="hover:bg-secondary rounded-xl"><Link to="/services">Routine Maintenance</Link></li>
-                  <li className="hover:bg-secondary rounded-xl"><Link to="/services">Renewal</Link></li>
-                  <li className="hover:bg-secondary rounded-xl"><Link to="/services">Service License</Link></li>
+                  <li className="hover:bg-secondary rounded-xl"><Link state={{type: "maintenance"}} to="/services">Maintenance</Link></li>
+                  <li className="hover:bg-secondary rounded-xl"><Link state={{type: "renewal"}} to="/services">Renewal</Link></li>
+                  <li className="hover:bg-secondary rounded-xl"><Link state={{type: "license"}} to="/services">Service License</Link></li>
                 </ul>
               </details>
             </li>
@@ -69,7 +71,7 @@ export default function Header() {
             <li><Link to="/about-us">About Us</Link></li>
             <li><Link to="/contact-us">Contact Us</Link></li>
             {token && <li><Link to="dashboard">Dashboard</Link></li>}
-            <li><LanguageSelector /></li>
+            <li className="ms-4"><LanguageSelector /></li>
           </ul>
         </div>
        {!token && <div className="navbar-end">
