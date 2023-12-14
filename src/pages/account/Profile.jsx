@@ -3,6 +3,7 @@ import axios from "axios"
 import { Link } from "react-router-dom"
 import { AiFillCloseCircle } from "react-icons/ai"
 import { useAuth } from "../../context/AuthProvider";
+import { useTranslation } from "react-i18next";
 
 export default function Profile() {
 
@@ -14,6 +15,8 @@ export default function Profile() {
   const [loadingStatus, setLoadingStatus] = useState(true)
   const [error, setError] = useState(null)
   const [errorPasswordForm, setErrorPasswordForm] = useState(null)
+
+  const { t } = useTranslation()
 
   const [formData, setFormData] = useState({
     id: '',
@@ -83,7 +86,7 @@ export default function Profile() {
           .catch(err => {
             console.log(err)
             if (err.response.data.message == "كلمة المرور القديمة غير صحيحة") {
-              setErrorPasswordForm("The old password is incorrect.")
+              setErrorPasswordForm(t("The old password is incorrect."))
               setTimeout(() => setErrorPasswordForm(null), 4000); // Clear the error message after 3000 milliseconds (3 seconds)
             } else {
               setErrorPasswordForm(err.response.data.message)
@@ -91,7 +94,7 @@ export default function Profile() {
             }
           })
     } else {
-      setErrorPasswordForm("Please make sure your passwords match, and it follows the password change requirements (Password: 8-24 chars, at least 1 lowercase, 1 uppercase, 1 digit.)")
+      setErrorPasswordForm(t("Please make sure your passwords match, and it follows the password change requirements (Password: 8-24 chars, at least 1 lowercase, 1 uppercase, 1 digit.)"))
       setTimeout(() => setErrorPasswordForm(null), 5000); // Clear the error message after 3000 milliseconds (3 seconds)
     }
   }
@@ -170,7 +173,7 @@ export default function Profile() {
         </div>}
 
         <div className="text-2xl my-6">
-          <h1>Edit Profile</h1>
+          <h1>{t("Edit Profile")}</h1>
         </div>
         
         <form className="flex flex-col justify-center items-center gap-2" onSubmit={handleSubmit}>
@@ -181,45 +184,45 @@ export default function Profile() {
           </div>
  
           <div className="w-full">
-            <label className="label-text text-base" htmlFor="name">Name</label>
+            <label className="label-text text-base" htmlFor="name">{t("Name")}</label>
             <input className="input input-bordered w-full" type="text" name="name" id="name" onChange={handleChange} value={formData.name} />
           </div>
 
           <div className="w-full">
-            <label className="label-text text-base inline-block mb-2" htmlFor="email">Email</label>
+            <label className="label-text text-base inline-block mb-2" htmlFor="email">{t("Email")}</label>
             <input className="input input-bordered w-full" type="email" name="email" id="email" onChange={handleChange} value={formData.email} />
           </div>
 
           <div className="w-full">
-            <label className="label-text text-base inline-block mb-2" htmlFor="phone">Phone</label>
+            <label className="label-text text-base inline-block mb-2" htmlFor="phone">{t("Phone")}</label>
             <input className="input input-bordered w-full" type="text" name="phone" id="phone" onChange={handleChange} value={formData.phone} />
           </div>
 
           <div className="w-full">
-            <label className="label-text text-base inline-block mb-2" htmlFor="image">Image</label>
+            <label className="label-text text-base inline-block mb-2" htmlFor="image">{t("Image")}</label>
             <input className="file-input file-input-bordered file-input-primary w-full " type="file" name="image" id="image" onChange={handleFileChange}  />
           </div>
 
-          <button className="btn btn-primary text-accent text-base mt-4 w-full">Save Profile</button>
+          <button className="btn btn-primary text-accent text-base mt-4 w-full">{t("Save Profile")}</button>
         </form>
 
-        <button className="btn btn-base-100 text-accent text-base mt-4 w-neutral hover:bg-primary" onClick={()=>document.getElementById('my_modal_5').showModal()}>Change Password</button>
+        <button className="btn btn-base-100 text-accent text-base mt-4 w-neutral hover:bg-primary" onClick={()=>document.getElementById('my_modal_5').showModal()}>{t("Change Password")}</button>
         
         <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
             <div className="modal-box">
-              <h3 className="font-bold text-2xl mb-2">Change Password</h3>
+              <h3 className="font-bold text-2xl mb-2">{t("Change Password")}</h3>
               {errorPasswordForm && <h1 className="bg-red-900 text-accent text-center capitalize rounded-lg p-4 my-1 text-lg">{errorPasswordForm}</h1>}
               <form onSubmit={handlePasswordFormSubmit} className="flex flex-col gap-2" method="dialog">
-                <label className="label-text text-base inline-block mb-0" htmlFor="old_password">Old Password</label>
+                <label className="label-text text-base inline-block mb-0" htmlFor="old_password">{t("Old Password")}</label>
                 <input className="input input-bordered w-full" type="password" name="old_password" id="old_password" onChange={handleChangePassword} required value={formPassword.old_password} />
 
-                <label className="label-text text-base inline-block mb-0" htmlFor="password">Password</label>
+                <label className="label-text text-base inline-block mb-0" htmlFor="password">{t("Password")}</label>
                 <input className="input input-bordered w-full" type="password" name="password" id="password" onChange={handleChangePassword} required value={formPassword.password} />
 
-                <label className="label-text text-base inline-block mb-0" htmlFor="confirm_Password">Confirm Password</label>
+                <label className="label-text text-base inline-block mb-0" htmlFor="confirm_Password">{t("Confirm Password")}</label>
                 <input className="input input-bordered w-full" type="password" name="confirm_Password" id="confirm_Password" required onChange={handleChangePassword} value={formPassword.confirm_Password} />
-                <button className="btn btn-primary text-accent font-base mt-2">Save</button>
-                <button className="btn btn-secondary" type="button" onClick={() => document.getElementById('my_modal_5').close()}>Close</button>
+                <button className="btn btn-primary text-white font-base mt-2">{t("Save")}</button>
+                <button className="btn btn-secondary" type="button" onClick={() => document.getElementById('my_modal_5').close()}>{t("Close")}</button>
               </form>
             </div>
         </dialog>

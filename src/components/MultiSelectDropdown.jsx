@@ -1,8 +1,19 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function MultiSelectDropdown({optionsData, formFieldName, onChange, formName}) {
+export default function MultiSelectDropdown({optionsData, formFieldName, onChange, formName, requestMadeStatus}) {
     const [selectedOptions, setSelectedOptions] = useState([]);
+    console.log(selectedOptions, formFieldName)
+
+    // const handleSelectedOptionsAfterRequest = () => {
+    //     if (requestMadeStatus) {
+    //         setSelectedOptions([])
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     handleSelectedOptionsAfterRequest()
+    // }, [requestMadeStatus])
 
     const handleChange = (e) => {
         const isChecked = e.target.checked
@@ -28,7 +39,7 @@ export default function MultiSelectDropdown({optionsData, formFieldName, onChang
             <li key={option.id} className="">
                 <label className="flex whitespace-nowrap cursor-pointer px-2 py-1 transition-colors hover:bg-primary [&:has(input:checked)]:bg-primary">
                     <input type="checkbox" name={formFieldName.toLowerCase().split('').filter(e => e !== ' ').join('')} value={option.id} onChange={handleChange} className="cursor-pointer checkbox checkbox-secondary border-neutral" />
-                    <span className="ml-3 text-sm">{option.name}</span>
+                    <span className="ms-3 text-sm">{option.name}</span>
                 </label>
             </li>
         )
@@ -38,7 +49,7 @@ export default function MultiSelectDropdown({optionsData, formFieldName, onChang
       <label className="relative">
         <input type="checkbox" className="hidden peer" />
   
-        <div className="cursor-pointer border p-2 border-neutral-600 bg-base-100 rounded-[0.4rem] after:content-['▼'] after:text-xs after:ml-1 after:inline-flex after:items-center peer-checked:after:-rotate-180 after:transition-transform">
+        <div className="cursor-pointer border p-2 border-neutral-600 bg-base-100 rounded-[0.4rem] after:content-['▼'] after:text-xs after:ms-1 after:inline-flex after:items-center peer-checked:after:-rotate-180 after:transition-transform">
           {formFieldName}
         </div>
   

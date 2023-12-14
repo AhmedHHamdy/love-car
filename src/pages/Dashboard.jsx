@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthProvider";
+import { useTranslation } from "react-i18next";
 
 export default function Dashboard() {
   const [ordersData, setOrdersData] = useState([])
@@ -9,7 +10,10 @@ export default function Dashboard() {
   const [loadingStatus, setLoadingStatus] = useState(true)
   const [error, setError] = useState(null)
 
+  const { t } = useTranslation()
+
   const { token } = useAuth()
+
 
   const openModel = (order) => {
     setSelectedOrder(order)
@@ -63,19 +67,20 @@ export default function Dashboard() {
 
   return (
     <section className="bg-secondary py-4">
+      <h1 className="text-center font-bold text-2xl text-primary border-b-2 border-gray-900 py-4 pt-2">Dashboard</h1>
       <div className="overflow-x-auto overflow-y-hidden w-10/12 xl:overflow-hidden mx-auto">
         <table className="table">
           {/* head */}
           <thead>
             <tr className="uppercase">
-              <th>ID</th>
-              <th>type</th>
-              <th>Order Date</th>
-              <th>implementation Date</th>
-              <th>model</th>
-              <th>year</th>
-              <th>status</th>
-              <th>Details</th>
+              <th>{t("ID")}</th>
+              <th>{t("type")}</th>
+              <th>{t("Order Date")}</th>
+              <th>{t("implementation Date")}</th>
+              <th>{t("model")}</th>
+              <th>{t("year")}</th>
+              <th>{t("status")}</th>
+              <th>{t("Details")}</th>
             </tr>
           </thead>
           <tbody>
@@ -122,59 +127,59 @@ export default function Dashboard() {
           {selectedOrder && (<div className="modal-box sm:grid sm:grid-cols-2 flex flex-col gap-4">
             {/* <h2 className="font-bold text-lg my-0">ID: #{selectedOrder.id}</h2> */}
             <div className="col-start-1">
-              <h3 className="font-bold text-lg my-1">Service:</h3>
+              <h3 className="font-bold text-lg my-1">{t("Service")} :</h3>
               <input type="text" readOnly  value={selectedOrder.typeText} className="input input-bordered w-full max-w-xs sm:max-w-none" />
             </div>
 
             <div>
-              <h3 className="font-bold text-lg my-1">Order Date:</h3>
+              <h3 className="font-bold text-lg my-1">{t("Order Date")} :</h3>
               <input type="text" readOnly  value={selectedOrder.orderDate} className="input input-bordered w-full max-w-xs sm:max-w-none" />
             </div>
 
             <div>
-              <h3 className="font-bold text-lg my-1">Implementation Date:</h3>
+              <h3 className="font-bold text-lg my-1">{t("Implementation Date")} :</h3>
               <input type="text" readOnly  value={selectedOrder.implementation_date} className="input input-bordered w-full max-w-xs sm:max-w-none" />
             </div>
 
             <div>
-              <h3 className="font-bold text-lg my-1">Model:</h3>
+              <h3 className="font-bold text-lg my-1">{t("Model")} :</h3>
               <input type="text" readOnly  value={selectedOrder.model} className="input input-bordered w-full max-w-xs sm:max-w-none" />
             </div>
 
             <div>
-              <h3 className="font-bold text-lg my-1">Year:</h3>
+              <h3 className="font-bold text-lg my-1">{t("Year")} :</h3>
               <input type="text" readOnly  value={selectedOrder.year} className="input input-bordered w-full max-w-xs sm:max-w-none" />
             </div>
 
             <div>
-              <h3 className="font-bold text-lg my-1">Status:</h3>
+              <h3 className="font-bold text-lg my-1">{t("Status")} :</h3>
               <input type="text" readOnly  value={selectedOrder.status} className="input input-bordered w-full max-w-xs sm:max-w-none" />
             </div>
 
             <div className="col-start-1 col-end-3">
-              <h3 className="font-bold text-lg my-1">Description:</h3>
+              <h3 className="font-bold text-lg my-1">{t("Description")} :</h3>
               <textarea readOnly value={selectedOrder.description} className="textarea textarea-bordered w-full max-w-xs sm:max-w-none" />
             </div>
 
             <div className="col-span-2">
-              <h3 className="font-bold text-lg my-1">Notes:</h3>
+              <h3 className="font-bold text-lg my-1">{t("Notes")} :</h3>
               <textarea readOnly value={selectedOrder.notes} className="textarea textarea-bordered w-full max-w-xs sm:max-w-none" />
             </div>
 
             {selectedOrder.type === "License" && 
             ( <>
                 <div>
-                  <h3 className="font-bold text-lg my-1">City:</h3>
+                  <h3 className="font-bold text-lg my-1">{t("City")} :</h3>
                   <input type="text" readOnly  value={selectedOrder.items.city} className="input input-bordered w-full max-w-xs sm:max-w-none" />
                 </div>
 
                 <div>
-                  <h3 className="font-bold text-lg my-1">License Date:</h3>
+                  <h3 className="font-bold text-lg my-1">{t("License Date")} :</h3>
                   <input type="text" readOnly  value={selectedOrder.items.license_date} className="input input-bordered w-full max-w-xs sm:max-w-none" />
                 </div>
 
                 <div>
-                  <h3 className="font-bold text-lg my-1">Region:</h3>
+                  <h3 className="font-bold text-lg my-1">{t("Region")} :</h3>
                   <input type="text" readOnly  value={selectedOrder.items.region} className="input input-bordered w-full max-w-xs sm:max-w-none" />
                 </div>
               </>
@@ -182,8 +187,8 @@ export default function Dashboard() {
 
             {selectedOrder.type === "Maintenance" && 
             (<>
-              <div className="col-span-2">
-                <h3 className="font-bold text-lg my-1">Consumer Parts:</h3>
+              {selectedOrder.items.consumerParts.length > 0 && <div className="col-span-2">
+                <h3 className="font-bold text-lg my-1">{t("Consumer Parts")} :</h3>
                 <ul className="menu bg-base-200 w-full rounded-xl p-4">
                   {selectedOrder.items.consumerParts.map((item, i) => {
                     console.log(item)
@@ -192,10 +197,10 @@ export default function Dashboard() {
                     )
                   })}
                 </ul>
-              </div>
+              </div>}
 
-              <div>
-                <h3 className="font-bold text-lg my-1">Brakes:</h3>
+              {selectedOrder.items.brakes.length > 0 && <div>
+                <h3 className="font-bold text-lg my-1">{t("Brakes")} :</h3>
                 <ul className="menu bg-base-200 w-56 rounded-xl p-4">
                   {selectedOrder.items.brakes.map((item, i) => {
                     console.log(item)
@@ -204,10 +209,10 @@ export default function Dashboard() {
                     )
                   })}
                 </ul>
-              </div>
+              </div>}
 
-              <div>
-                <h3 className="font-bold text-lg my-1">Oils:</h3>
+              {selectedOrder.items.oils.length > 0  && <div>
+                <h3 className="font-bold text-lg my-1">{t("Oils")} :</h3>
                 <ul className="menu bg-base-200 w-56 rounded-xl p-4">
                   {selectedOrder.items.oils.map((item, i) => {
                     console.log(item)
@@ -216,10 +221,10 @@ export default function Dashboard() {
                     )
                   })}
                 </ul>
-              </div>
+              </div>}
 
-              <div>
-                <h3 className="font-bold text-lg my-1">Frames:</h3>
+              {selectedOrder.items.frames.length > 0  && <div>
+                <h3 className="font-bold text-lg my-1">{t("Frames")} :</h3>
                 <ul className="menu bg-base-200 w-56 rounded-xl p-4">
                   {selectedOrder.items.frames.map((item, i) => {
                     console.log(item)
@@ -228,10 +233,10 @@ export default function Dashboard() {
                     )
                   })}
                 </ul>
-              </div>
+              </div>}
 
-              <div>
-                <h3 className="font-bold text-lg my-1">Repair Types:</h3>
+              {selectedOrder.items.repairTypes.length > 0 && <div>
+                <h3 className="font-bold text-lg my-1">{t("Repair Types")} :</h3>
                 <ul className="menu bg-base-200 w-56 rounded-xl p-4">
                   {selectedOrder.items.repairTypes.map((item, i) => {
                     console.log(item)
@@ -240,7 +245,7 @@ export default function Dashboard() {
                     )
                   })}
                 </ul>
-              </div>
+              </div>}
             </>
             )}
 
@@ -248,7 +253,7 @@ export default function Dashboard() {
 
           </div>)}
           <form method="dialog" className="modal-backdrop">
-            <button className="" onClick={() => closeModel()}>close</button>
+            <button className="" onClick={() => closeModel()}>{t("close")}</button>
           </form>
         </dialog>
       </div>

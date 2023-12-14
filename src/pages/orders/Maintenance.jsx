@@ -1,139 +1,60 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MultiSelectDropdown from "../../components/MultiSelectDropdown";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { useAuth } from "../../context/AuthProvider";
 
 export default function Maintenance() {
-    const location = useLocation()
+  const location = useLocation()
 
   const [formData, setFormData] = useState({
-    type: "",
+    type: "maintenance",
     model: "",
     year: "",
     description: "",
-    notes: "",
     oils: [],
     frames: [],
     brakes: [],
     consumerParts: [],
     repairTypes: [],
-    license_date: "",
-    city: "",
-    region: "",
   });
+
+  const { token } = useAuth()
+
+  const [loadingStatus, setLoadingStatus] = useState(true)
+  const [loadingError, setLoadingError] = useState(null)
+
+  const [maintenanceOptionsData, setMaintenanceOptionsData] = useState(null)
+
+  const [requestMadeStatus, setRequestMadeStatus] = useState(false)
 
 
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState(null)
 
+  const { t } = useTranslation()
+
   console.log(formData)
+  console.log(maintenanceOptionsData)
 
-  const oilsOptionsData = [
-    {
-      id: 1,
-      name: "زيت المحرك",
-    },
-    {
-      id: 2,
-      name: "زيت القير",
-    },
-    {
-      id: 3,
-      name: "زيت الديفرنس",
-    },
-    {
-      id: 4,
-      name: "زيت المكابح",
-    },
-    {
-      id: 5,
-      name: "زيت علبة الديركسيون",
-    },
-    {
-      id: 6,
-      name: "ماء اللديتر",
-    },
-    {
-      id: 7,
-      name: "ماء المساحات 1",
-    },
-    {
-      id: 9,
-      name: "زيت 5",
-    },
-  ];
-
-  const framesOptionsData = [
-    {
-      id: 1,
-      name: "تغيير الإطار",
-    },
-    {
-      id: 2,
-      name: "فحص هواء الإطارات S",
-    },
-    {
-      id: 3,
-      name: "توازن الإطار (ترصيص)",
-    },
-    {
-      id: 4,
-      name: "تغيير أماكن الإطار ان لزم (كروس X)",
-    },
-  ];
-
-  const consumerPartsOptionsData = [
-    {
-      id: 1,
-      name: "شمعة الاشتعال (تغيير البواجي - أسلاك البواجي - الكويل )",
-    },
-    {
-      id: 2,
-      name: "البخاخات أو الكبليتر (تنظيف - إصلاح)",
-    },
-    {
-      id: 3,
-      name: "فحص كمبيوتر (شامل) A",
-    },
-  ];
-
-  const brakesOptionsData = [
-    {
-      id: 1,
-      name: "تغيير المكابح الأمامية",
-    },
-    {
-      id: 2,
-      name: "تغيير الهوبات",
-    },
-    {
-      id: 3,
-      name: "خراطة الهوبات",
-    },
-    {
-      id: 4,
-      name: "ميزان الديركسيون 4",
-    },
-    {
-      id: 5,
-      name: "مكافح4",
-    },
-  ];
-
-  const repairTypesOptionsData = [
-    {
-      id: 1,
-      name: "ميكانيكي",
-    },
-    {
-      id: 2,
-      name: "كهربائي",
-    },
-    {
-      id: 4,
-      name: "اصلاح روتينى",
-    },
-  ];
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/carOrders`, {
+            headers: {
+              Authorization: `Bearer ${token}`
+            },
+          })
+          .then(res => {
+            setLoadingStatus(false)
+            console.log(res)
+            setMaintenanceOptionsData(res.data.data)
+          })
+          .catch(err => {
+            setLoadingStatus(false)
+            console.log(err); // Log any errors that occur
+            setLoadingError(err.message)
+          })
+  }, [])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -161,26 +82,13 @@ export default function Maintenance() {
         }
       }
 
-    } else if (formData.type === "renewal") {
-      let arr = ["type", "model", "year", "description", "notes"]
-      formServicesData = new FormData()
-
-      for (const key of arr) {
-        formServicesData.append(key, formData[key])
-      }
-
-    } else if (formData.type === "license") {
-      let arr = ["type", "model", "year", "description", "license_date", "city", "region"]
-      formServicesData = new FormData()
-
-      for (const key of arr) {
-        formServicesData.append(key, formData[key])
-      }
-    }
+    } 
 
     for (const pair of formServicesData.entries()) {
       console.log(`${pair[0]}, ${pair[1]}`);
     }
+
+    setRequestMadeStatus(false)
 
     try {
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/carOrders`, formServicesData)
@@ -188,23 +96,20 @@ export default function Maintenance() {
       console.log(response)
       console.log(data)
       setSuccess(true)
+      // setRequestMadeStatus(true)
       setTimeout(() => {
         setSuccess(false)
       }, 4000)
       setFormData({
-        type: "",
+        type: "maintenance",
         model: "",
         year: "",
         description: "",
-        notes: "",
         oils: [],
         frames: [],
         brakes: [],
         consumerParts: [],
         repairTypes: [],
-        license_date: "",
-        city: "",
-        region: "",
       })
     } catch (err) {
       console.log(err)
@@ -213,32 +118,46 @@ export default function Maintenance() {
         setError(null)
       }, 4000)
       setFormData({
-        type: "",
+        type: "maintenance",
         model: "",
         year: "",
         description: "",
-        notes: "",
         oils: [],
         frames: [],
         brakes: [],
         consumerParts: [],
         repairTypes: [],
-        license_date: "",
-        city: "",
-        region: "",
       })
     }
     
   }
 
+  if (loadingStatus) {
+    return (
+      <div className="flex justify-center items-center w-screen h-screen bg-secondary">
+        <span className="loading loading-ring loading-lg bg-primary"></span>
+      </div>
+    )
+  }
+
+  
+  if (loadingError) {
+    return (
+      <div className="flex justify-center items-center w-screen h-screen bg-secondary">
+        <h1 className="bg-red-900 text-accent text-center uppercase rounded-lg p-4 text-lg">{loadingError} <br/> Please refresh</h1>
+      </div>
+    )
+  }
+
+
   return (
     <section className="bg-secondary p-10">
       <section className="w-9/12 mx-auto flex flex-col justify-center items-center">
-        <h1 className="text-center text-3xl">Services</h1>
+        <h1 className="text-center text-3xl">{t("Maintenance")}</h1>
 
         {success && <div role="alert" className="alert alert-success w-full max-w-xs my-4">
           <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          <span className="text-accent">Your Request have been sent!</span>
+          <span className="text-accent">{t("Your Request have been sent!")}</span>
         </div>}
 
         { error && <div role="alert" className="alert alert-error w-full max-w-xs my-4">
@@ -247,7 +166,7 @@ export default function Maintenance() {
         </div>}
 
         <form className="flex flex-col w-full md:justify-center md:items-center" onSubmit={handleSubmit}>
-          <label className="form-control w-full max-w-xs">
+          {/* <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-base">Service Type</span>
             </div>
@@ -260,14 +179,12 @@ export default function Maintenance() {
             >
               <option disabled value="">Type</option>
               <option value="maintenance">maintenance</option>
-              <option value="renewal">renewal</option>
-              <option value="license">license</option>
             </select>
-          </label>
+          </label> */}
 
           <label className="form-control w-full max-w-xs">
             <div className="label">
-              <span className="label-text text-base">Model</span>
+              <span className="label-text text-base">{t("Model")}</span>
             </div>
             <input
               type="text"
@@ -282,7 +199,7 @@ export default function Maintenance() {
 
           <label className="form-control w-full max-w-xs">
             <div className="label">
-              <span className="label-text text-base">Year</span>
+              <span className="label-text text-base">{t("Year")}</span>
             </div>
             <input
               type="text"
@@ -295,30 +212,16 @@ export default function Maintenance() {
             />
           </label>
 
-          {formData.type === "renewal" && <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text text-base">Notes</span>
-            </div>
-            <textarea
-              name="notes"
-              value={formData.notes}
-              onChange={handleInputChange}
-              required
-              placeholder="Notes"
-              className="textarea textarea-bordered h-24"
-            />
-          </label>}
-
           <label className="form-control w-full max-w-xs mb-1">
             <div className="label">
-              <span className="label-text text-base">Description</span>
+              <span className="label-text text-base">{t("Description")}</span>
             </div>
             <textarea
               name="description"
               value={formData.description}
               onChange={handleInputChange}
               required
-              placeholder="Description..."
+              placeholder="Description"
               className="textarea textarea-bordered h-24"
             />
           </label>
@@ -328,7 +231,7 @@ export default function Maintenance() {
               <MultiSelectDropdown
                 formFieldName="Oils"
                 formName="oils"
-                optionsData={oilsOptionsData}
+                optionsData={maintenanceOptionsData.oils}
                 onChange={handleMultiSelectChange}
               />
             </label>}
@@ -337,7 +240,7 @@ export default function Maintenance() {
               <MultiSelectDropdown
                 formFieldName="Frames"
                 formName="frames"
-                optionsData={framesOptionsData}
+                optionsData={maintenanceOptionsData.frames}
                 onChange={handleMultiSelectChange}
               />
             </label>}
@@ -346,7 +249,7 @@ export default function Maintenance() {
               <MultiSelectDropdown
                 formFieldName="Consumer Parts"
                 formName="consumerParts"
-                optionsData={consumerPartsOptionsData}
+                optionsData={maintenanceOptionsData.consumerParts}
                 onChange={handleMultiSelectChange}
               />
             </label>}
@@ -355,7 +258,7 @@ export default function Maintenance() {
               <MultiSelectDropdown
                 formFieldName="Brakes"
                 formName="brakes"
-                optionsData={brakesOptionsData}
+                optionsData={maintenanceOptionsData.brakes}
                 onChange={handleMultiSelectChange}
               />
             </label>}
@@ -364,59 +267,14 @@ export default function Maintenance() {
               <MultiSelectDropdown
                 formFieldName="Repair Types"
                 formName="repairTypes"
-                optionsData={repairTypesOptionsData}
+                optionsData={maintenanceOptionsData.repairTypes}
                 onChange={handleMultiSelectChange}
               />
             </label>}
 
           </section>}
 
-          {formData.type === "license" && <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text text-base">License Date</span>
-            </div>
-            <input
-              name="license_date"
-              value={formData.license_date}
-              onChange={handleInputChange}
-              required
-              type="date"
-              placeholder="1/12/2023"
-              className="input input-bordered w-full max-w-xs"
-            />
-          </label>}
-
-          {formData.type === "license" && <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text text-base">City</span>
-            </div>
-            <input
-              name="city"
-              value={formData.city}
-              onChange={handleInputChange}
-              required
-              type="text"
-              placeholder="Saudi Arabia"
-              className="input input-bordered w-full max-w-xs"
-            />
-          </label>}
-
-          {formData.type === "license" && <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text text-base">Region</span>
-            </div>
-            <input
-              name="region"
-              value={formData.region}
-              onChange={handleInputChange}
-              required
-              type="text"
-              placeholder="Riyadh"
-              className="input input-bordered w-full max-w-xs"
-            />
-          </label>}
-
-          <button className="btn btn-primary text-accent mt-4 w-full max-w-xs">Send</button>
+          <button className="btn btn-primary text-accent mt-4 w-full max-w-xs">{t("Send")}</button>
         </form>
       </section>
     </section>

@@ -2,6 +2,7 @@ import { Link, useNavigate, Navigate } from "react-router-dom"
 import { useEffect, useRef, useState } from "react"
 import axios from "axios"
 import { useAuth } from "../../context/AuthProvider"
+import { useTranslation } from "react-i18next"
 
 export default function Signup() {
     const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/
@@ -9,6 +10,8 @@ export default function Signup() {
     const { token } = useAuth()
 
     const [errMsg, setErrMsg] = useState('')
+
+    const { t } = useTranslation()
 
     const [formData, setFormData] = useState({
         name: '',
@@ -50,7 +53,7 @@ export default function Signup() {
         try {
     
           if (!validPassword) {
-            setErrMsg('Password must contain at least one lowercase letter, one uppercase letter, one digit, and be between 8 and 24 characters in length.')
+            setErrMsg(t('Password must contain at least one lowercase letter, one uppercase letter, one digit, and be between 8 and 24 characters in length.'))
             return
           }
     
@@ -82,15 +85,15 @@ export default function Signup() {
             console.log(Object.keys(err)[0])
             if (Object.keys(err)[0] == "email") {
               console.log("yay")
-              setErrMsg("The Email you entered is already in use.")
+              setErrMsg(t("The Email you entered is already in use."))
               setTimeout(() => setErrMsg(''), 3000); // Clear the error message after 3000 milliseconds (3 seconds)
               break
             } else if (Object.keys(err)[0] == "phone") {
-              setErrMsg("The Phone number you entered is already in use.")
+              setErrMsg(t("The Phone number you entered is already in use."))
               setTimeout(() => setErrMsg(''), 3000); // Clear the error message after 3000 milliseconds (3 seconds)
               break
             } else if (Object.keys(err)[0] == "password") {
-              setErrMsg("The Password must be 8 characters or more.")
+              setErrMsg(t("The Password must be 8 characters or more."))
               setTimeout(() => setErrMsg(''), 3000); // Clear the error message after 3000 milliseconds (3 seconds)
               break
             }
@@ -106,15 +109,15 @@ export default function Signup() {
           <div className="w-full bg-base-100 border-base-100 rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">
             <div className="p-6 space-y-2 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-accent md:text-2xl">
-                Sign up
+              {t("Sign up")}
               </h1>
               <p className="self-center text-base font-light text-accent">
-                  Have an account yet?{" "}
+                {t("Have an account yet?")}{" "}
                   <Link
                     to="/login"
                     className="font-medium text-primary hover:underline"
                   >
-                    Login
+                    {t("Login")}
                   </Link>
               </p>
               {errMsg && <p className="text-accent p-3 rounded-lg bg-red-900"  aria-live="assertive">
@@ -126,7 +129,7 @@ export default function Signup() {
                   htmlFor="name"
                   className="text-sm font-medium text-accent"
                 >
-                  Name
+                  {t("Name")}
                 </label>
                 <input
                   type="text"
@@ -143,7 +146,7 @@ export default function Signup() {
                   htmlFor="email"
                   className="text-sm font-medium text-accent"
                 >
-                  Email
+                  {t("Email")}
                 </label>
                 <input
                   type="email"
@@ -160,7 +163,7 @@ export default function Signup() {
                   htmlFor="phone"
                   className="text-sm font-medium text-accent"
                 >
-                  Phone
+                  {t("Phone")}
                 </label>
                 <input
                   type="text"
@@ -177,7 +180,7 @@ export default function Signup() {
                   htmlFor="password"
                   className="text-sm font-medium text-accent"
                 >
-                  Password
+                  {t("Password")}
                 </label>
                 <input
                   type="password"
@@ -191,7 +194,7 @@ export default function Signup() {
                 />
     
                 <button style={{ marginTop: "1.5rem" }} className="w-full mt-10!important text-white bg-primary focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                  Create an account
+                  {t("Create an account")}
                 </button>
     
   

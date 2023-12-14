@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 
 export default function ResetPassword() {
@@ -19,6 +20,8 @@ export default function ResetPassword() {
   const [errMsg, setErrMsg] = useState('')
 
   const navigate = useNavigate()
+
+  const { t } = useTranslation()
 
   console.log(resetPasswordForm)
 
@@ -115,43 +118,43 @@ export default function ResetPassword() {
     <section className="bg-secondary flex justify-center items-center h-screen">
       {resetCodeFormContainer &&
         <section className="bg-base-100 flex flex-col justify-center items-start pt-4 pb-6 px-10 w-50 rounded-md">
-          <h1 className="text-2xl my-2">Reset Your Password</h1>
+          <h1 className="text-2xl my-2">{t("Reset Your Password")}</h1>
           <form className="flex flex-col justify-center items-start gap-2 mt-3" onSubmit={handleSubmit}>
-            <label className="label-text text-xl" htmlFor="phone">Phone</label>
+            <label className="label-text text-xl" htmlFor="phone">{t("Phone")}</label>
             <input className="input input-bordered w-full max-w-xs" type="text" name="phone" id="phone" placeholder="01555 555 555" required value={phoneForm.phone} onChange={(event) => setPhoneForm({...phoneForm, phone: event.target.value})}/>
-            <button className="btn btn-primary text-accent mt-2 w-full">Continue</button>
+            <button className="btn btn-primary text-accent mt-2 w-full">{t("Continue")}</button>
           </form>
         </section> 
       }
 
       {resetPasswordFormContainer && 
         <section className="bg-base-100 flex flex-col justify-center items-start pt-4 pb-6 px-10 w-50 rounded-md">
-          <h1 className="text-2xl my-2">Enter Code</h1>
+          <h1 className="text-2xl my-2">{t("Enter Code")}</h1>
           <form className="flex flex-col justify-center items-start gap-2 mt-3" onSubmit={handleResetCodeSubmit}>
-            <label htmlFor="phone">Phone</label>
+            <label htmlFor="phone">{t("Phone")}</label>
             <input className="input input-bordered w-full max-w-xs" type="text" name="phone" id="phone" placeholder="015 555 555 55" required value={resetCodeForm.phone} onChange={(event) => setResetCodeForm({...resetCodeForm, phone: event.target.value})}/>
 
-            <label htmlFor="otp">Code</label>
+            <label htmlFor="otp">{t("Code")}</label>
             <input className="input input-bordered w-full max-w-xs" type="text" name="otp" id="otp" placeholder="####" required value={resetCodeForm.otp} onChange={(event) => setResetCodeForm({...resetCodeForm, otp: event.target.value})} />
-            <button className="btn btn-primary text-accent mt-2 w-full">Continue</button>
+            <button className="btn btn-primary text-accent mt-2 w-full">{t("Continue")}</button>
           </form>
         </section>
       }
 
       {enterResetCodeFormContainer && 
         <section className="bg-base-100 flex flex-col justify-center items-start pt-4 pb-6 px-10 w-50 rounded-md">
-          <h1 className="text-2xl my-2">Reset Your Password</h1>
+          <h1 className="text-2xl my-2">{t("Reset Your Password")}</h1>
           {errMsg && 
             <p className={`text-accent p-3 rounded-lg ${errMsg == "Password Changed" ? "bg-green-900" : "bg-red-900"}`} aria-live="assertive">
                 {errMsg}
             </p>}
           <form className="flex flex-col justify-center items-start gap-2 mt-3" onSubmit={handleResetPasswordSubmit}>
-            <label htmlFor="password">New Password</label>
+            <label htmlFor="password">{t("New Password")}</label>
             <input className="input input-bordered w-full max-w-xs" type="password" name="password" id="password" placeholder="Enter new password" value={resetPasswordForm.password} onChange={handlePasswordChange} required />
 
-            <label htmlFor="password_confirmation">Password Confirmation</label>
+            <label htmlFor="password_confirmation">{t("Password Confirmation")}</label>
             <input className="input input-bordered w-full max-w-xs" type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm new password" value={resetPasswordForm.password_confirmation} onChange={handlePasswordChange} required />
-            <button className="btn btn-primary text-accent mt-2 w-full">Save</button>
+            <button className="btn btn-primary text-accent mt-2 w-full">{t("Save")}</button>
           </form>
         </section>
       }

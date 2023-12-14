@@ -2,6 +2,7 @@ import { Link, useNavigate, Navigate } from "react-router-dom"
 import { useState } from "react"
 import { useAuth } from "../../context/AuthProvider"
 import axios from "axios"
+import { useTranslation } from "react-i18next"
 
 export default function Login() {
     const [formData, setFormData] = useState({
@@ -15,6 +16,8 @@ export default function Login() {
     const { setToken, token } = useAuth()
 
     const [errMsg, setErrMsg] = useState('')
+
+    const { t } = useTranslation()
 
     if (token) {
         console.log(token)
@@ -48,11 +51,11 @@ export default function Login() {
   
       } catch (err) {
           if (err.response.data.message == "البريد الإلكتروني أو كلمة المرور غير صحيحة") {
-            setErrMsg("The email or password is incorrect.")
+            setErrMsg(t("The email or password is incorrect."))
             setTimeout(() => setErrMsg(''), 3000); // Clear the error message after 3000 milliseconds (3 seconds)
           } else if (err.response.data.message == "validation errors") {
             console.log(err.response.data.errors)
-            let error = err.response.data.errors[0]?.email ? "No account found." : "The password must be 8 characters or more."
+            let error = err.response.data.errors[0]?.email ? t("No account found.") : t("The password must be 8 characters or more.")
             setErrMsg(error)
             setTimeout(() => setErrMsg(''), 3000); // Clear the error message after 3000 milliseconds (3 seconds)
           } 
@@ -69,12 +72,12 @@ export default function Login() {
         <div className="w-full bg-base-100 border-base-100 rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-accent md:text-2xl">
-              Sign in to your account
+              {t("Sign in to your account")}
             </h1>
               <p className="text-base font-light m-0 text-accent">
-                Don’t have an account yet?{' '}
+                {t("Don&#39;t have an account yet?")}{' '}
                 <Link to="/signup" className="font-medium text-primary hover:underline">
-                  Sign up
+                  {t("Sign up")}
                 </Link>
               </p>
             {errMsg && <p className="text-accent p-3 rounded-lg bg-red-900" aria-live="assertive">
@@ -83,7 +86,7 @@ export default function Login() {
             <form className="space-y-4 md:space-y-6 " onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="email" className="block mb-2 text-sm font-medium text-accent">
-                  Email
+                  {t("Email")}
                 </label>
                 <input
                   type="email"
@@ -99,7 +102,7 @@ export default function Login() {
 
               <div>
                 <label htmlFor="password" className="block mb-2 text-sm font-medium text-accent">
-                  Password
+                  {t("Password")}
                 </label>
                 <input
                   type="password"
@@ -114,10 +117,10 @@ export default function Login() {
               </div>
 
               <button className="w-full text-white bg-primary focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                Sign in
+                {t("Sign in")}
               </button>
               <p className="text-base font-normal text-accent underline">
-                <Link to="/resetpassword">Forgot your password?</Link>
+                <Link to="/resetpassword">{t("Forgot your password?")}</Link>
               </p>
             </form>
           </div>
