@@ -1,19 +1,19 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function MultiSelectDropdown({optionsData, formFieldName, onChange, formName}) {
+export default function MultiSelectDropdown({optionsData, formFieldName, onChange, formName, requestMadeStatus}) {
     const [selectedOptions, setSelectedOptions] = useState([]);
     console.log(selectedOptions, formFieldName)
 
-    // const handleSelectedOptionsAfterRequest = () => {
-    //     if (requestMadeStatus) {
-    //         setSelectedOptions([])
-    //     }
-    // }
+    const handleSelectedOptionsAfterRequest = () => {
+        if (requestMadeStatus) {
+            setSelectedOptions([])
+        }
+    }
 
-    // useEffect(() => {
-    //     handleSelectedOptionsAfterRequest()
-    // }, [requestMadeStatus])
+    useEffect(() => {
+        handleSelectedOptionsAfterRequest()
+    }, [requestMadeStatus])
 
     const handleChange = (e) => {
         const isChecked = e.target.checked
@@ -38,7 +38,7 @@ export default function MultiSelectDropdown({optionsData, formFieldName, onChang
         return (
             <li key={option.id} className="">
                 <label className="flex whitespace-nowrap cursor-pointer px-2 py-1 transition-colors hover:bg-primary [&:has(input:checked)]:bg-primary">
-                    <input type="checkbox" name={formFieldName.toLowerCase().split('').filter(e => e !== ' ').join('')} value={option.id} onChange={handleChange} className="cursor-pointer checkbox checkbox-secondary border-neutral" />
+                    <input type="checkbox" checked={+option.id === +selectedOptions[selectedOptions.indexOf(option.id.toString())]} name={formFieldName.toLowerCase().split('').filter(e => e !== ' ').join('')} value={option.id} onChange={handleChange} className="cursor-pointer checkbox checkbox-secondary border-neutral" />
                     <span className="ms-3 text-sm">{option.name}</span>
                 </label>
             </li>

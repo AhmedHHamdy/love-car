@@ -96,7 +96,7 @@ export default function Maintenance() {
       console.log(response)
       console.log(data)
       setSuccess(true)
-      // setRequestMadeStatus(true)
+      setRequestMadeStatus(true)
       setTimeout(() => {
         setSuccess(false)
       }, 4000)
@@ -233,6 +233,7 @@ export default function Maintenance() {
                 formName="oils"
                 optionsData={maintenanceOptionsData.oils}
                 onChange={handleMultiSelectChange}
+                requestMadeStatus={requestMadeStatus}
               />
             </label>}
 
@@ -242,6 +243,7 @@ export default function Maintenance() {
                 formName="frames"
                 optionsData={maintenanceOptionsData.frames}
                 onChange={handleMultiSelectChange}
+                requestMadeStatus={requestMadeStatus}
               />
             </label>}
 
@@ -251,6 +253,7 @@ export default function Maintenance() {
                 formName="consumerParts"
                 optionsData={maintenanceOptionsData.consumerParts}
                 onChange={handleMultiSelectChange}
+                requestMadeStatus={requestMadeStatus}
               />
             </label>}
 
@@ -260,6 +263,7 @@ export default function Maintenance() {
                 formName="brakes"
                 optionsData={maintenanceOptionsData.brakes}
                 onChange={handleMultiSelectChange}
+                requestMadeStatus={requestMadeStatus}
               />
             </label>}
 
@@ -269,6 +273,7 @@ export default function Maintenance() {
                 formName="repairTypes"
                 optionsData={maintenanceOptionsData.repairTypes}
                 onChange={handleMultiSelectChange}
+                requestMadeStatus={requestMadeStatus}
               />
             </label>}
 
