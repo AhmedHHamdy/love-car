@@ -58,7 +58,7 @@ export default function Header() {
         <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal px-1 text-accent text-sm">
             <li className="text-base"><Link to="/">{t("Home")}</Link></li>
-            <li className="text-base">
+            {/* <li className="text-base">
               <details>
                 <summary>{t("Services")}</summary>
                 <ul className="p-2 bg-primary w-52 z-30">
@@ -67,6 +67,15 @@ export default function Header() {
                   <li className="hover:bg-secondary rounded-xl"><Link state={{type: "license"}} to="/license">{t("License")}</Link></li>
                 </ul>
               </details>
+            </li> */}
+
+            <li className="text-base dropdown">
+              <div tabIndex={0} role="button" className="">{t("Services")}</div>
+              <ul tabIndex={0} className="dropdown-content z-30 menu p-2 shadow bg-primary rounded-box w-52">
+                <li className="hover:bg-secondary rounded-xl"><Link state={{type: "maintenance"}} to="/maintenance">{t("Maintenance")}</Link></li>
+                <li className="hover:bg-secondary rounded-xl"><Link state={{type: "renewal"}} to="/renewal">{t("Renewal")}</Link></li>
+                <li className="hover:bg-secondary rounded-xl"><Link state={{type: "license"}} to="/license">{t("License")}</Link></li>
+              </ul>
             </li>
             <li className="text-base"><a href="https://mr-decals.com/" target="_blank">{t("Shop")}</a></li>
             <li className="text-base"><Link to="/about-us">{t("About Us")}</Link></li>

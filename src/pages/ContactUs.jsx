@@ -17,11 +17,64 @@ export default function ContactUs() {
   const [loadingStatus, setLoadingStatus] = useState(true)
   const [error, setError] = useState(null)
 
+  const [messageSuccess, setMessageSuccess] = useState(false)
+  const [messageError, setMessageError] = useState(null)
+
   const { t } = useTranslation()
 
 
   const [formData, setFormData] = useState(null)
   console.log(formData)
+
+  const [messageFormData, setMessageFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: ""
+  })
+
+  function handleMessageFormChange(e) {
+    const { name, value } = e.target
+    setMessageFormData(prevFormData => {
+      return {
+        ...prevFormData, [name]: value
+      }
+    })
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/sendMessage`, messageFormData)
+        .then(res => {
+        console.log(res)
+        
+        setMessageSuccess(true)
+        setTimeout(() => {
+          setMessageSuccess(false)
+        }, 3000)
+
+        setMessageFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: ""
+        })
+        })
+        .catch(err => {
+        console.log(err)
+        setMessageError(err.message)
+        setTimeout(() => {
+          setMessageError(null)
+        }, 3000)
+
+        setMessageFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: ""
+        })
+        })
+  }
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/staticPages`, {
@@ -52,7 +105,7 @@ export default function ContactUs() {
   if (error) {
     return (
       <section className="bg-secondary">
-        <div className="hero min-h-[20rem]" style={{backgroundImage: 'url(https://mylovecar.zauzat.org/uploads/banners/170118139710J1SSzorykPoljJnn3pJAJdXTgD5yutRaVw8dwbvHxsR.jpg)'}}>
+        <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("../src/assets/bg-1.jpg")'}}>
           <div className="hero-overlay bg-secondary bg-opacity-60"></div>
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
@@ -68,8 +121,8 @@ export default function ContactUs() {
               <p className="py-6 text-5xl font-semibold text-accent">{t("Do you have any inquiries?")}</p>
               <span className="text-primary text-xl flex justify-center items-center gap-4"><FaMapLocationDot /> {t("Address")}</span>
               <h3 className="text-xl mt-2 border-b-[0.02rem] border-gray-700  w-full md:w-full pb-6">
-                المملكة العربية السعودية <br />
-                المنطقة الشرقية، القطيف/سيهات
+              {t("المملكة العربية السعودية")}<br />
+              {t("المنطقة الشرقية، القطيف/سيهات")}
               </h3>
 
               <span className="text-base md:text-xl flex justify-center mt-2 items-center pt-6 gap-4"><FaBuilding className="text-primary" /> {t("Building Number")} : 4955</span>
@@ -97,8 +150,8 @@ export default function ContactUs() {
 
 
   return(
-    <section className="bg-secondary">
-      <div className="hero min-h-[20rem]" style={{backgroundImage: 'url(https://mylovecar.zauzat.org/uploads/banners/170118139710J1SSzorykPoljJnn3pJAJdXTgD5yutRaVw8dwbvHxsR.jpg)'}}>
+    <section className="bg-secondary flex flex-col">
+      <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("../src/assets/bg-1.jpg")'}}>
         <div className="hero-overlay bg-secondary bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
@@ -107,8 +160,8 @@ export default function ContactUs() {
         </div>
       </div>
 
-      <div className="hero bg-secondary mt-8 h-screen">
-        <div className="hero-content flex-col md:flex-col xl:flex-row h-screen pb-10 md:0 gap-8">
+      <div className="hero bg-secondary mt-8 ">
+        <div className="hero-content flex-col md:flex-col xl:flex-row  pb-10 md:0 gap-8">
           <div className="flex flex-col justify-space-between items-start">
 
             <p className="py-6 text-5xl font-semibold text-accent">{t("Do you have any inquiries?")}</p>
@@ -135,8 +188,39 @@ export default function ContactUs() {
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7141.809346494834!2d50.031933!3d26.491014000000003!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49ffa222916bcd%3A0x56403e4e620a0d93!2z2YXZg9iq2Kgg2YXYp9mH2LEg2KfZhNmF2LTYp9mF2Lkg2YTZhNiu2K_Zhdin2Kog2KfZhNiq2KzYp9ix2YrYqSAo2YXYp9mFKQ!5e0!3m2!1sen!2seg!4v1702471520369!5m2!1sen!2seg">
             </iframe>
           </div>
+
         </div>
       </div>
+
+      <form onSubmit={handleSubmit}  className="flex flex-col gap-2 w-9/12 md:px-10 mx-auto self-start my-10" >
+        <h1 className="text-xl text-primary mb-4 font-semibold">{t("Send your inquiry")}</h1>
+        {messageSuccess && <div role="alert" className="alert alert-success w-full max-w-full my-4">
+          <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span className="text-accent">{t("Your Message have been sent!")}</span>
+        </div>}
+
+        {messageError && <p className="text-accent p-3 rounded-lg bg-red-900" aria-live="assertive">
+          {messageError}
+        </p>}
+        <label className="label-text text-base inline-block mb-0" htmlFor="name">{t("Name")}</label>
+        <input className="input input-bordered w-full" type="name" name="name" id="name" onChange={handleMessageFormChange} required value={messageFormData.name} />
+
+        <label className="label-text text-base inline-block mb-0" htmlFor="phone">{t("Phone")}</label>
+        <input className="input input-bordered w-full" type="tel" name="phone" id="phone" onChange={handleMessageFormChange} required value={messageFormData.phone} />
+
+        <label className="label-text text-base inline-block mb-0" htmlFor="email">{t("Email")}</label>
+        <input className="input input-bordered w-full" type="email" name="email" id="email" required onChange={handleMessageFormChange} value={messageFormData.email} />
+
+        <label className="form-control">
+          <div className="label">
+            <span className="label-text">{t("Inquiry")}</span>
+          </div>
+          <textarea className="textarea textarea-bordered h-24" name="message" required value={messageFormData.message} onChange={handleMessageFormChange} placeholder="Message"></textarea>
+        </label>
+
+        <button className="btn btn-primary text-white font-base mt-2">{t("Send")}</button>
+      </form>
+
     </section>
   )
 }

@@ -7,7 +7,7 @@ export default function AboutUs() {
 
   return(
     <section className="bg-secondary">
-      <div className="hero min-h-[20rem]" style={{backgroundImage: 'url(https://mylovecar.zauzat.org/uploads/banners/1701181510yvjlsKtmwXtlHjX0cmYxuCpImlXaXIdqn3oyej1dPbo1Q.jpg)'}}>
+      <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("../src/assets/bg-2.jpg")'}}>
         <div className="hero-overlay bg-secondary bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">

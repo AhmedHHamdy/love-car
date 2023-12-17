@@ -14,6 +14,8 @@ export default function Dashboard() {
 
   const { token } = useAuth()
 
+  console.log(selectedOrder)
+
 
   const openModel = (order) => {
     setSelectedOrder(order)
@@ -81,6 +83,7 @@ export default function Dashboard() {
               <th>{t("year")}</th>
               <th>{t("status")}</th>
               <th>{t("Details")}</th>
+              <th>{t("Reason for rejection")}</th>
             </tr>
           </thead>
           <tbody>
@@ -99,7 +102,7 @@ export default function Dashboard() {
                 <td>
                   {order.type}
                   <br />
-                  <span className="badge badge-ghost badge-sm text-sm hidden xl:inline-flex p-4 bg-primary">
+                  <span className="badge badge-ghost badge-sm text-sm hidden text-accent cursor-pointer xl:inline-flex p-4 bg-primary">
                     {order.typeText}
                   </span>
                 </td>
@@ -112,11 +115,13 @@ export default function Dashboard() {
                 
                 <td>{order.year}</td>
                 
-                <td>{order.status}</td>
+                <td> <span className={order.status == "تم قبول الطلب" ? "bg-green-800 text-accent rounded-full p-3 cursor-pointer" : order.status == "قيد الانتظار" ? "bg-base-100 text-accent rounded-full p-3 cursor-pointer" :  "bg-red-800 text-accent rounded-full p-3 cursor-pointer"}>{order.status}</span></td>
            
                 <td>
                   <button className="btn btn-ghost btn-xs bg-primary" onClick={()=> openModel(order)}>details</button>
                 </td>
+
+                <td>{order.cancelledReason}</td>
               </tr>
               )
             })}
@@ -193,7 +198,7 @@ export default function Dashboard() {
                   {selectedOrder.items.consumerParts.map((item, i) => {
                     console.log(item)
                     return (
-                      <li key={item.id}>{item.id} - {item.name}</li>
+                      <li key={i}>{i+1} - {item}</li>
                     )
                   })}
                 </ul>
@@ -205,7 +210,7 @@ export default function Dashboard() {
                   {selectedOrder.items.brakes.map((item, i) => {
                     console.log(item)
                     return (
-                      <li key={item.id}>{item.id} - {item.name}</li>
+                      <li key={i}>{i+1} - {item}</li>
                     )
                   })}
                 </ul>
@@ -217,7 +222,7 @@ export default function Dashboard() {
                   {selectedOrder.items.oils.map((item, i) => {
                     console.log(item)
                     return (
-                      <li key={item.id}>{item.id} - {item.name}</li>
+                      <li key={i}>{i+1} - {item}</li>
                     )
                   })}
                 </ul>
@@ -229,7 +234,7 @@ export default function Dashboard() {
                   {selectedOrder.items.frames.map((item, i) => {
                     console.log(item)
                     return (
-                      <li key={item.id}>{item.id} - {item.name}</li>
+                      <li key={i}>{i+1} - {item}</li>
                     )
                   })}
                 </ul>
@@ -241,7 +246,7 @@ export default function Dashboard() {
                   {selectedOrder.items.repairTypes.map((item, i) => {
                     console.log(item)
                     return (
-                      <li key={item.id}>{item.id} - {item.name}</li>
+                      <li key={i}>{i+1} - {item}</li>
                     )
                   })}
                 </ul>

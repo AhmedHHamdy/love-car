@@ -83,6 +83,11 @@
   "Building Number": "Building Number",
   "Postal Code": "Postal Code",
   "Additional Number": "Additional Number",
+  "Kingdom of Saudi Arabia": "Kingdom of Saudi Arabia",
+  "Eastern Province, Qatif/Saihat": "Eastern Province, Qatif/Saihat",
+  "Send your inquiry": "Send your inquiry",
+  "Inquiry": "Inquiry",
+  "Your Message have been sent!": "Your Message have been sent!",
 
   
   "Reset Your Password": "Reset Your Password",
@@ -111,6 +116,7 @@
   "year": "year",
   "status": "status",
   "Details": "Details",
+  "Reason for rejection": "Reason for rejection",
 
   "Service": "Service",
   "Implementation Date": "Implementation Date",

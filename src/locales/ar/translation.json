@@ -83,6 +83,11 @@
   "Building Number": "رقم المبنى",
   "Postal Code": "الرمز البريدي",
   "Additional Number": "رقم إضافي",
+  "Kingdom of Saudi Arabia": "المملكة العربية السعودية",
+  "Eastern Province, Qatif/Saihat": "المنطقة الشرقية، القطيف/سيهات",
+  "Send your inquiry": "أرسل استفسارك",
+  "Inquiry": "استفسارك",
+  "Your Message have been sent!": "تم إرسال رسالتك بنجاح!",
 
   
   "Reset Your Password": "إعادة تعيين كلمة المرور",
@@ -111,6 +116,7 @@
   "year": "السنة",
   "status": "الحالة",
   "Details": "التفاصيل",
+  "Reason for rejection": "سبب الرفض",
 
   "Service": "الخدمة",
   "Implementation Date": "تاريخ التنفيذ",

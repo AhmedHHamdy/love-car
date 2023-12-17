@@ -13,17 +13,37 @@ import { Link, useLocation } from "react-router-dom"
 import { IoLogoWhatsapp, IoLogoInstagram, IoLogoYoutube } from "react-icons/io5";
 import { FaInstagram, FaSnapchat, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { useTranslation } from "react-i18next"
+import AnimatedNumbers from "react-animated-numbers"
+import { useState } from "react"
+
 
 export default function Home() {
 
   const location = useLocation()
   const backgroundImageUrl = '../../public/carBackground.jpg';
   
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+
+  const [numExperience, setNumExperience] = useState(22)
+  const [numClients, setNumClients] = useState(1672)
+  const [numParts, setNumParts] = useState(3864)
+
+
+  let reversedNumExperience = parseInt(numExperience.toString().split("").reverse().join(""), 10);
+  let reversedNumClients = parseInt(numClients.toString().split("").reverse().join(""), 10);
+  let reversedNumParts = parseInt(numParts.toString().split("").reverse().join(""), 10);
+
+
+  
+  if (i18n.language == "en") {
+    reversedNumExperience = 22;
+    reversedNumClients = 1672
+    reversedNumParts = 3864
+  }
 
   return(
     <>
-      <section className="w-10/12 mx-auto mt-10">
+      <section className="w-10/12 mx-auto mt-10 h">
         <section className="flex md:flex-col lg:flex-row lg:items-center md:justify-between md:items-start md:gap-6">
           <h1 className="md:text-[2.4rem] text-5xl lg:text-[3.3rem] capitalize leading-normal text-accent font-semibold">{t("Our Experienced Mechanic Engineers Ready to Help You")}</h1>
           <div className="sm:flex sm:flex-col w-8/12 sm:justify-center sm:items-start sm:gap-4 hidden">
@@ -36,17 +56,51 @@ export default function Home() {
       <section className="flex justify-between w-11/12 ms-auto mt-10 pb-14">
         <section className="flex flex-col justify-around gap-8 ms-4">
           <div>
-            <span className="text-primary text-5xl font-medium">20+</span>
+            {/* <span className="text-primary text-5xl font-medium">20+</span> */}
+            <span className="text-primary text-5xl flex font-medium">
+              <AnimatedNumbers
+                  locale={"en-US"}
+                  className="text-primary"
+                  transitions={(index) => ({
+                    type: "spring",
+                    duration: index + 0.8,
+                  })}
+                  animateToNumber={reversedNumExperience}
+                />
+              +</span>
             <h4 className="text-neutral mt-2">{t("Years of Experience")}</h4>
           </div>
 
           <div>
-            <span className="text-primary text-5xl font-medium">1672+</span>
+            {/* <span className="text-primary text-5xl font-medium">1672+</span> */}
+            <span className="text-primary text-5xl flex font-medium">
+              <AnimatedNumbers
+                  includeComma	
+                  locale={"en-US"}
+                  className="text-primary"
+                  transitions={(index) => ({
+                    type: "spring",
+                    duration: index + 0.5,
+                  })}
+                  animateToNumber={reversedNumClients}
+                />
+              +</span>
             <h4 className="text-neutral mt-2">{t("Total Clients")}</h4>
           </div>
 
           <div>
-            <span className="text-primary text-5xl font-medium">3864+</span>
+            <span className="text-primary text-5xl flex font-medium">
+              <AnimatedNumbers
+              includeComma	
+                locale={"en-US"}
+                className="text-primary"
+                transitions={(index) => ({
+                  type: "spring",
+                  duration: index + 0.5,
+                })}
+                animateToNumber={reversedNumParts}
+              />
+            +</span>
             <h4 className="text-neutral mt-2">{t("Spare Parts Sold")}</h4>
           </div>
         </section>
