@@ -75,7 +75,7 @@ export default function Home() {
             {/* <span className="text-primary text-5xl font-medium">1672+</span> */}
             <span className="text-primary text-5xl flex font-medium">
               <AnimatedNumbers
-                  includeComma	
+                  
                   locale={"en-US"}
                   className="text-primary"
                   transitions={(index) => ({
@@ -91,7 +91,7 @@ export default function Home() {
           <div>
             <span className="text-primary text-5xl flex font-medium">
               <AnimatedNumbers
-              includeComma	
+              	
                 locale={"en-US"}
                 className="text-primary"
                 transitions={(index) => ({
