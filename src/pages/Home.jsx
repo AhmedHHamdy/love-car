@@ -19,7 +19,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios"
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
+AOS.init();
 
 export default function Home() {
 
@@ -238,7 +241,7 @@ export default function Home() {
  
   return(
     <>
-      <section className="w-10/12 mx-auto mt-10 h">
+      <section className="w-10/12 mx-auto mt-10 h" data-aos="fade-up">
         <section className="flex md:flex-col lg:flex-row lg:items-center md:justify-between md:items-start md:gap-6">
           <h1 className="md:text-[2.4rem] text-5xl lg:text-[3.3rem] capitalize leading-normal text-accent font-semibold">{t("Our Experienced Mechanic Engineers Ready to Help You")}</h1>
           <div className="sm:flex sm:flex-col w-8/12 sm:justify-center sm:items-start sm:gap-4 hidden">
@@ -327,7 +330,7 @@ export default function Home() {
       </section>
 
 
-      <section className="bg-secondary pb-40">
+      <section className="bg-secondary pb-40" data-aos="fade-down">
         <section className="w-8/12 mx-auto pt-40">
           <h2 className="text-center mb-10 text-5xl text-accent font-semibold">{t("Services We Provide For You")}</h2>
           <p className="text-center mb-10 text-xl capitalize">{t("We Offer A Comprehensive Range Of Mobile Mechanic Services To Keep Your Vehicle In Top Condition.")}</p>
@@ -358,7 +361,7 @@ export default function Home() {
       </section>
 
 
-      <section className="py-10">
+      <section className="py-10" data-aos="fade-left">
         <section className="w-10/12 mx-auto py-10">
           <h2 className="text-center mb-16 text-5xl text-accent font-semibold">{t("How It Works")}</h2>
 
@@ -387,7 +390,7 @@ export default function Home() {
       </section>
 
 
-      <section className="bg-secondary pb-40">
+      <section className="bg-secondary pb-40" data-aos="fade-down">
         <section className="w-7/12 mx-auto pt-40 flex flex-col justify-center items-center">
           <h2 className="bg-primary text-accent p-6 rounded-full rounded-tr-none mb-10">{t("Are you looking after the car you love? Contact us now.")}</h2>
           <div className="flex justify-center items-center gap-4">
