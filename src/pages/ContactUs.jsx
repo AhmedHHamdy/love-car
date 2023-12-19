@@ -161,8 +161,8 @@ export default function ContactUs() {
       </div>
 
       <div className="hero bg-secondary mt-8 ">
-        <div className="hero-content flex-col md:flex-col xl:flex-row  pb-10 md:0 gap-8">
-          <div className="flex flex-col justify-space-between items-start">
+        <div className="hero-content flex-col md:flex-col xl:flex-row  pb-10 md:0 gap-8 flex-wrap">
+          <div className="flex flex-col justify-space-between items-start md:self-start">
 
             <p className="py-6 text-5xl font-semibold text-accent">{t("Do you have any inquiries?")}</p>
             <span className="text-primary text-xl flex justify-center items-center gap-4"><FaMapLocationDot /> {t("Address")}</span>
@@ -189,37 +189,39 @@ export default function ContactUs() {
             </iframe>
           </div>
 
+          <form onSubmit={handleSubmit}  className="flex flex-col gap-2 w-full xl:px-10 mx-auto self-start my-10" >
+            <h1 className="text-xl text-primary mb-4 font-semibold">{t("Send your inquiry")}</h1>
+            {messageSuccess && <div role="alert" className="alert alert-success w-full max-w-full my-4">
+              <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span className="text-accent">{t("Your Message have been sent!")}</span>
+            </div>}
+
+            {messageError && <p className="text-accent p-3 rounded-lg bg-red-900" aria-live="assertive">
+              {messageError}
+            </p>}
+            <label className="label-text text-base inline-block mb-0" htmlFor="name">{t("Name")}</label>
+            <input className="input input-bordered w-full" type="name" name="name" id="name" onChange={handleMessageFormChange} required value={messageFormData.name} />
+
+            <label className="label-text text-base inline-block mb-0" htmlFor="phone">{t("Phone")}</label>
+            <input className="input input-bordered w-full" type="tel" name="phone" id="phone" onChange={handleMessageFormChange} required value={messageFormData.phone} />
+
+            <label className="label-text text-base inline-block mb-0" htmlFor="email">{t("Email")}</label>
+            <input className="input input-bordered w-full" type="email" name="email" id="email" required onChange={handleMessageFormChange} value={messageFormData.email} />
+
+            <label className="form-control">
+              <div className="label">
+                <span className="label-text">{t("Inquiry")}</span>
+              </div>
+              <textarea className="textarea textarea-bordered h-24" name="message" required value={messageFormData.message} onChange={handleMessageFormChange} placeholder="Message"></textarea>
+            </label>
+
+            <button className="btn btn-primary text-white font-base mt-2">{t("Send")}</button>
+          </form>
+
         </div>
       </div>
 
-      <form onSubmit={handleSubmit}  className="flex flex-col gap-2 w-9/12 md:px-10 mx-auto self-start my-10" >
-        <h1 className="text-xl text-primary mb-4 font-semibold">{t("Send your inquiry")}</h1>
-        {messageSuccess && <div role="alert" className="alert alert-success w-full max-w-full my-4">
-          <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          <span className="text-accent">{t("Your Message have been sent!")}</span>
-        </div>}
 
-        {messageError && <p className="text-accent p-3 rounded-lg bg-red-900" aria-live="assertive">
-          {messageError}
-        </p>}
-        <label className="label-text text-base inline-block mb-0" htmlFor="name">{t("Name")}</label>
-        <input className="input input-bordered w-full" type="name" name="name" id="name" onChange={handleMessageFormChange} required value={messageFormData.name} />
-
-        <label className="label-text text-base inline-block mb-0" htmlFor="phone">{t("Phone")}</label>
-        <input className="input input-bordered w-full" type="tel" name="phone" id="phone" onChange={handleMessageFormChange} required value={messageFormData.phone} />
-
-        <label className="label-text text-base inline-block mb-0" htmlFor="email">{t("Email")}</label>
-        <input className="input input-bordered w-full" type="email" name="email" id="email" required onChange={handleMessageFormChange} value={messageFormData.email} />
-
-        <label className="form-control">
-          <div className="label">
-            <span className="label-text">{t("Inquiry")}</span>
-          </div>
-          <textarea className="textarea textarea-bordered h-24" name="message" required value={messageFormData.message} onChange={handleMessageFormChange} placeholder="Message"></textarea>
-        </label>
-
-        <button className="btn btn-primary text-white font-base mt-2">{t("Send")}</button>
-      </form>
 
     </section>
   )

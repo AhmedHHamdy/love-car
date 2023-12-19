@@ -82,8 +82,9 @@ export default function Dashboard() {
               <th>{t("model")}</th>
               <th>{t("year")}</th>
               <th>{t("status")}</th>
+              {/* <th>{t("Reason for rejection")}</th> */}
               <th>{t("Details")}</th>
-              <th>{t("Reason for rejection")}</th>
+ 
             </tr>
           </thead>
           <tbody>
@@ -115,13 +116,15 @@ export default function Dashboard() {
                 
                 <td>{order.year}</td>
                 
-                <td> <span className={order.status == "تم قبول الطلب" ? "bg-green-800 text-accent rounded-full p-3 cursor-pointer" : order.status == "قيد الانتظار" ? "bg-base-100 text-accent rounded-full p-3 cursor-pointer" :  "bg-red-800 text-accent rounded-full p-3 cursor-pointer"}>{order.status}</span></td>
+                <td> <span className={order.status == "تم قبول الطلب" ? "bg-green-800 text-accent rounded-full p-3 cursor-pointer block w-28 text-center" : order.status == "قيد الانتظار" ? "bg-base-100 text-accent rounded-full p-3 cursor-pointer block w-28 text-center" :  "bg-red-800 text-accent rounded-full p-3 cursor-pointer block w-28 text-center"}>{order.status}</span></td>
+
+                {/* <td>{order.cancelledReason}</td> */}
            
                 <td>
                   <button className="btn btn-ghost btn-xs bg-primary" onClick={()=> openModel(order)}>details</button>
                 </td>
 
-                <td>{order.cancelledReason}</td>
+                
               </tr>
               )
             })}
@@ -170,6 +173,11 @@ export default function Dashboard() {
               <h3 className="font-bold text-lg my-1">{t("Notes")} :</h3>
               <textarea readOnly value={selectedOrder.notes} className="textarea textarea-bordered w-full max-w-xs sm:max-w-none" />
             </div>
+
+            {selectedOrder.cancelledReason !== "" && <div className="col-span-2">
+              <h3 className="font-bold text-lg my-1">{t("Reason for rejection")} :</h3>
+              <textarea readOnly value={selectedOrder.cancelledReason} className="textarea textarea-bordered w-full max-w-xs sm:max-w-none" />
+            </div>}
 
             {selectedOrder.type === "License" && 
             ( <>
