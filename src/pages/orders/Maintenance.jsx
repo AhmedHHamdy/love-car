@@ -4,9 +4,14 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../context/AuthProvider";
+import Select from "react-dropdown-select";
 
 export default function Maintenance() {
   const location = useLocation()
+
+  const [selectedOptions, setSelectedOptions] = useState([]);
+
+  console.log(selectedOptions)
 
   const [formData, setFormData] = useState({
     type: "maintenance",
@@ -19,6 +24,11 @@ export default function Maintenance() {
     consumerParts: [],
     repairTypes: [],
   });
+
+  const handleOilsChange = (values) => {
+    setSelectedOptions(values)
+    setFormData({...formData, oils: values.map((option) => option.id)})
+  }
 
   const { token } = useAuth()
 
@@ -111,6 +121,7 @@ export default function Maintenance() {
         consumerParts: [],
         repairTypes: [],
       })
+      setSelectedOptions([])
     } catch (err) {
       console.log(err)
       setError(err.message)
@@ -149,6 +160,14 @@ export default function Maintenance() {
     )
   }
 
+  const itemRenderer = ({ item, itemIndex, props, state, methods }) => (
+    <div className="bg-base-100" key={item[props.valueField]} onClick={() => methods.addItem(item)}>
+      <div className="flex items-center bg-secondary p-2 rounded-xl" style={{ margin: "10px" }}>
+        <input type="checkbox" className="cursor-pointer checkbox checkbox-primary border-neutral" checked={methods.isSelected(item)} />
+        &nbsp;&nbsp;&nbsp;{item[props.labelField]}
+      </div>
+    </div>
+  );
 
   return (
     <section className="bg-secondary p-10">
@@ -225,8 +244,16 @@ export default function Maintenance() {
               className="textarea textarea-bordered h-24"
             />
           </label>
+
+          <label className="form-control w-full max-w-xs"> 
+            <div className="label">
+              <span className="label-text text-base">{t("Oils")}</span>
+            </div>
+            <Select values={selectedOptions} itemRenderer={itemRenderer} dropdownGap={6} direction="rtl" className="bg-base-100 border border-gray-600 form-control w-20 max-w-xs md:self-center" style={{borderColor: "gray", width: "20rem", background: "#1E1E1E", color: "#fff", borderRadius: "0.4rem"}} placeholder="Oils"  searchable={false} color="#E45A00" options={maintenanceOptionsData.oils} required multi labelField="name" valueField="id" name="oils" onChange={handleOilsChange} />
+          </label>
+
           
-          {formData.type === "maintenance" && <section className="flex flex-col gap-4 my-3 md:w-full md:self-center">
+          {/* {formData.type === "maintenance" && <section className="flex flex-col gap-4 my-3 md:w-full md:self-center">
             {formData.type === "maintenance" && <label className="form-control w-full max-w-xs md:self-center">
               <MultiSelectDropdown
                 formFieldName="Oils"
@@ -277,7 +304,7 @@ export default function Maintenance() {
               />
             </label>}
 
-          </section>}
+          </section>} */}
 
           <button className="btn btn-primary text-accent mt-4 w-full max-w-xs">{t("Send")}</button>
         </form>
