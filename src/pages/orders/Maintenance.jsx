@@ -9,9 +9,14 @@ import Select from "react-dropdown-select";
 export default function Maintenance() {
   const location = useLocation()
 
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOilOptions, setSelectedOilOptions] = useState([]);
+  const [selectedFrameOptions, setSelectedFrameOptions] = useState([]);
+  const [selectedConsumerPartOptions, setSelectedConsumerPartOptions] = useState([]);
+  const [selectedBrakeOptions, setSelectedBrakesOptions] = useState([]);
+  const [selectedRepairTypeOptions, setSelectedRepairTypeOptions] = useState([]);
 
-  console.log(selectedOptions)
+
+  console.log(selectedOilOptions, selectedFrameOptions, selectedConsumerPartOptions, selectedBrakeOptions, selectedRepairTypeOptions)
 
   const [formData, setFormData] = useState({
     type: "maintenance",
@@ -26,8 +31,28 @@ export default function Maintenance() {
   });
 
   const handleOilsChange = (values) => {
-    setSelectedOptions(values)
+    setSelectedOilOptions(values)
     setFormData({...formData, oils: values.map((option) => option.id)})
+  }
+
+  const handleFramesChange = (values) => {
+    setSelectedFrameOptions(values)
+    setFormData({...formData, frames: values.map((option) => option.id)})
+  }
+
+  const handleConsumerPartsChange = (values) => {
+    setSelectedConsumerPartOptions(values)
+    setFormData({...formData, consumerParts: values.map((option) => option.id)})
+  }
+
+  const handleBrakesChange = (values) => {
+    setSelectedBrakesOptions(values)
+    setFormData({...formData, brakes: values.map((option) => option.id)})
+  }
+
+  const handleRepairTypesChange = (values) => {
+    setSelectedRepairTypeOptions(values)
+    setFormData({...formData, repairTypes: values.map((option) => option.id)})
   }
 
   const { token } = useAuth()
@@ -121,7 +146,11 @@ export default function Maintenance() {
         consumerParts: [],
         repairTypes: [],
       })
-      setSelectedOptions([])
+      setSelectedOilOptions([])
+      setSelectedFrameOptions([])
+      setSelectedConsumerPartOptions([])
+      setSelectedBrakesOptions([])
+      setSelectedRepairTypeOptions([])
     } catch (err) {
       console.log(err)
       setError(err.message)
@@ -249,7 +278,35 @@ export default function Maintenance() {
             <div className="label">
               <span className="label-text text-base">{t("Oils")}</span>
             </div>
-            <Select values={selectedOptions} itemRenderer={itemRenderer} dropdownGap={6} direction="rtl" className="bg-base-100 border border-gray-600 form-control w-20 max-w-xs md:self-center" style={{borderColor: "gray", width: "20rem", background: "#1E1E1E", color: "#fff", borderRadius: "0.4rem"}} placeholder="Oils"  searchable={false} color="#E45A00" options={maintenanceOptionsData.oils} required multi labelField="name" valueField="id" name="oils" onChange={handleOilsChange} />
+            <Select values={selectedOilOptions} defaultValue={selectedOilOptions} itemRenderer={itemRenderer} dropdownGap={6} direction="rtl" className="bg-base-100 border border-gray-600 form-control w-20 max-w-xs md:self-center" style={{borderColor: "gray", width: "20rem", background: "#1E1E1E", color: "#fff", borderRadius: "0.4rem"}} placeholder="Oils"  searchable={false} color="#E45A00" options={maintenanceOptionsData.oils} required multi labelField="name" valueField="id" name="oils" onChange={handleOilsChange} />
+          </label>
+
+          <label className="form-control w-full max-w-xs"> 
+            <div className="label">
+              <span className="label-text text-base">{t("Frames")}</span>
+            </div>
+            <Select values={selectedFrameOptions} defaultValue={selectedFrameOptions} itemRenderer={itemRenderer} dropdownGap={6} direction="rtl" className="bg-base-100 border border-gray-600 form-control w-20 max-w-xs md:self-center" style={{borderColor: "gray", width: "20rem", background: "#1E1E1E", color: "#fff", borderRadius: "0.4rem"}} placeholder="Frames"  searchable={false} color="#E45A00" options={maintenanceOptionsData.frames} required multi labelField="name" valueField="id" name="frames" onChange={handleFramesChange} />
+          </label>
+
+          <label className="form-control w-full max-w-xs"> 
+            <div className="label">
+              <span className="label-text text-base">{t("Consumer Parts")}</span>
+            </div>
+            <Select values={selectedConsumerPartOptions} defaultValue={selectedConsumerPartOptions} itemRenderer={itemRenderer} dropdownGap={6} direction="rtl" className="bg-base-100 border border-gray-600 form-control w-20 max-w-xs md:self-center" style={{borderColor: "gray", width: "20rem", background: "#1E1E1E", color: "#fff", borderRadius: "0.4rem"}} placeholder="Consumer Parts"  searchable={false} color="#E45A00" options={maintenanceOptionsData.consumerParts} required multi labelField="name" valueField="id" name="consumerParts" onChange={handleConsumerPartsChange} />
+          </label>
+
+          <label className="form-control w-full max-w-xs"> 
+            <div className="label">
+              <span className="label-text text-base">{t("Brakes")}</span>
+            </div>
+            <Select values={selectedBrakeOptions} defaultValue={selectedBrakeOptions} itemRenderer={itemRenderer} dropdownGap={6} direction="rtl" className="bg-base-100 border border-gray-600 form-control w-20 max-w-xs md:self-center" style={{borderColor: "gray", width: "20rem", background: "#1E1E1E", color: "#fff", borderRadius: "0.4rem"}} placeholder="Brakes"  searchable={false} color="#E45A00" options={maintenanceOptionsData.brakes} required multi labelField="name" valueField="id" name="brakes" onChange={handleBrakesChange} />
+          </label>
+
+          <label className="form-control w-full max-w-xs"> 
+            <div className="label">
+              <span className="label-text text-base">{t("Repair Types")}</span>
+            </div>
+            <Select values={selectedRepairTypeOptions} defaultValue={selectedRepairTypeOptions} itemRenderer={itemRenderer} dropdownGap={6} direction="rtl" className="bg-base-100 border border-gray-600 form-control w-20 max-w-xs md:self-center" style={{borderColor: "gray", width: "20rem", background: "#1E1E1E", color: "#fff", borderRadius: "0.4rem"}} placeholder="Repair Types"  searchable={false} color="#E45A00" options={maintenanceOptionsData.repairTypes} required multi labelField="name" valueField="id" name="repairTypes" onChange={handleRepairTypesChange} />
           </label>
 
           
