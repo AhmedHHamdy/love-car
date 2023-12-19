@@ -61,7 +61,7 @@ export default function MultiSelectDropdown({optionsData, formFieldName, onChang
     const options = optionsData.map((option, i) => {
         return (
             <li key={option.id} className="">
-                <label className="flex whitespace-nowrap cursor-pointer px-2 py-1 transition-colors hover:bg-primary [&:has(input:checked)]:bg-primary">
+                <label className="flex whitespace-nowrap cursor-pointer px-2 py-1 transition-colors hover:bg-primary [&:has(input:checked)]:bg-primary" onClick={(e) => e.stopPropagation()}>
                     <input type="checkbox" checked={+option.id === +selectedOptions[selectedOptions.indexOf(option.id.toString())]} name={formFieldName.toLowerCase().split('').filter(e => e !== ' ').join('')} value={option.id} onChange={handleChange} className="cursor-pointer checkbox checkbox-secondary border-neutral" />
                     <span className="ms-3 text-sm" onClick={(e) => e.stopPropagation()}>{option.name}</span>
                 </label>
