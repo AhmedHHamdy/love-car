@@ -151,7 +151,7 @@ export default function ContactUs() {
 
   return(
     <section className="bg-secondary flex flex-col">
-      <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("../src/assets/bg-1.jpg")'}}>
+      <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("/bg-1.jpg")'}}>
         <div className="hero-overlay bg-secondary bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
