@@ -5,8 +5,11 @@ import { CgProfile } from "react-icons/cg";
 import Cookies from "js-cookie";
 import LanguageSelector from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import LogoMobile from "../assets/lovecartransBack.png"
+import axios from "axios";
+import Car from "../assets/mingcute_car-3-fill.png"
+import Dropdown from "./DropdownMenu";
 
 export default function Header() {
   const { token, setToken } = useAuth()
@@ -14,6 +17,19 @@ export default function Header() {
   const navigate = useNavigate()
 
   const { i18n, t } = useTranslation()
+
+  const [loadingStatus, setLoadingStatus] = useState(false)
+  const [error, setError] = useState(null)
+
+  const [formData, setFormData] = useState({
+    id: '',
+    name: '',
+    email: '',
+    phone: '',
+    image: null
+  })
+
+  console.log(formData)
 
   useEffect(() => {
     document.documentElement.dir = i18n.dir()
@@ -26,6 +42,53 @@ export default function Header() {
     Cookies.remove("token")
     setToken()
     navigate("/", { replace: true })
+  }
+
+  
+  useEffect(() => {
+    if (token) {
+      setLoadingStatus(true)
+      axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/users/show`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+      })
+      .then(res => {
+        setFormData(res.data.data.user)
+        setLoadingStatus(false)
+      })
+      .catch(err => {
+        setLoadingStatus(false)
+        console.log(err); // Log any errors that occur
+        setError(err.message)
+      })
+    } else {
+      setLoadingStatus(false)
+    }
+   
+  }, [token])
+
+  const handleClick = () => {
+    const elem = document.activeElement;
+    if (elem) {
+      elem?.blur();
+    }
+  };
+
+  // if (loadingStatus) {
+  //   return (
+  //     <div className="flex justify-center items-center w-screen h-screen bg-secondary">
+  //       <span className="loading loading-ring loading-lg bg-primary"></span>
+  //     </div>
+  //   )
+  // }
+
+  if (error) {
+  return (
+      <div className="flex justify-center items-center w-screen h-screen bg-secondary">
+        <h1 className="bg-red-900 text-accent text-center uppercase rounded-lg p-4 text-lg">{error} <br/> Please refresh</h1>
+      </div>
+    )
   }
 
   return(
@@ -72,11 +135,12 @@ export default function Header() {
             <li className="text-base dropdown">
               <div tabIndex={0} role="button" className="">{t("Services")}</div>
               <ul tabIndex={0} className="dropdown-content z-30 menu p-2 shadow bg-primary rounded-box w-52">
-                <li className="hover:bg-secondary rounded-xl"><Link state={{type: "maintenance"}} to="/maintenance">{t("Maintenance")}</Link></li>
-                <li className="hover:bg-secondary rounded-xl"><Link state={{type: "renewal"}} to="/renewal">{t("Renewal")}</Link></li>
-                <li className="hover:bg-secondary rounded-xl"><Link state={{type: "license"}} to="/license">{t("License")}</Link></li>
+                <li className="hover:bg-secondary rounded-xl"><Link onClick={ () => handleClick() } state={{type: "maintenance"}} to="/maintenance">{t("Maintenance")}</Link></li>
+                <li className="hover:bg-secondary rounded-xl"><Link onClick={ () => handleClick() } state={{type: "renewal"}} to="/renewal">{t("Renewal")}</Link></li>
+                <li className="hover:bg-secondary rounded-xl"><Link onClick={ () => handleClick() } state={{type: "license"}} to="/license">{t("License")}</Link></li>
               </ul>
             </li>
+            {/* <li className="text-base"><Dropdown /></li> */}
             <li className="text-base"><a href="https://mr-decals.com/" target="_blank">{t("Shop")}</a></li>
             <li className="text-base"><Link to="/about-us">{t("About Us")}</Link></li>
             <li className="text-base"><Link to="/contact-us">{t("Contact Us")}</Link></li>
@@ -94,8 +158,8 @@ export default function Header() {
 
         {token && 
           <section className="navbar-end">
-            <div className="dropdown dropdown-bottom dropdown-end">
-              <div tabIndex={0} role="button" className="tn bg-secondary text-4xl text-primary rounded-full w-12 h-12 flex items-center justify-center leading-none"><CgProfile /></div>
+            <div className="dropdown dropdown-bottom dropdown-end avatar">
+              <div tabIndex={0} role="button" className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"><img className="" src={formData.image || Car} alt="" /></div>
               <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 mt-2 shadow bg-primary rounded-box w-22 sm:w-48">
                 <li><Link className="text-base sm:text-xl hover:bg-base-100 text-accent" to="/profile">{t("Profile")}</Link></li>
                 <li><button className="text-base sm:text-xl hover:bg-base-100 text-accent" onClick={handleLogout}>{t("Logout")}</button></li>

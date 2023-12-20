@@ -168,6 +168,11 @@ export default function Maintenance() {
         consumerParts: [],
         repairTypes: [],
       })
+      setSelectedOilOptions([])
+      setSelectedFrameOptions([])
+      setSelectedConsumerPartOptions([])
+      setSelectedBrakesOptions([])
+      setSelectedRepairTypeOptions([])
     }
     
   }

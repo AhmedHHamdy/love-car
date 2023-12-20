@@ -4,7 +4,7 @@
   "Shop": "المتجر",
   "About Us": "نبذه عنا",
   "Contact Us": "الاتصال بنا",
-  "Dashboard": "لوحة التحكم",
+  "Dashboard": "طلباتي",
 
   "Maintenance": "طلب صيانه سياره",
   "Renewal": "طلب تجديد سياره",
@@ -124,7 +124,7 @@
   "Consumer Parts": "قطع الاستهلاك",
   "Brakes": "الفرامل",
   "Oils": "الزيوت",
-  "Frames": "الأطار",
+  "Frames": "الأطارات",
   "Repair Types": "أنواع الإصلاح",
   "close": "إغلاق",
 

@@ -15,6 +15,7 @@ export default function Profile() {
   const [loadingStatus, setLoadingStatus] = useState(true)
   const [error, setError] = useState(null)
   const [errorPasswordForm, setErrorPasswordForm] = useState(null)
+  const [loadingButtonStatus, setLoadingButtonStatus] = useState(false)
 
   const { t } = useTranslation()
 
@@ -25,6 +26,8 @@ export default function Profile() {
     phone: '',
     image: null
   })
+
+  console.log(formData)
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/users/show`, {
@@ -131,6 +134,7 @@ export default function Profile() {
     // Append the file data
     EditProfileForm.append("image", formData.image);
 
+    setLoadingButtonStatus(true)
 
     axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/users/update`, EditProfileForm, {
         headers: {
@@ -138,6 +142,7 @@ export default function Profile() {
         }
       })
       .then(res => {
+        setLoadingButtonStatus(false)
         console.log(res);
         window.location.reload()
       })
@@ -179,7 +184,7 @@ export default function Profile() {
         <form className="flex flex-col justify-center items-center gap-2" onSubmit={handleSubmit}>
           <div className="avatar">
             <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src={formData.image || "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"} alt="UserImage" />
+              <img src={typeof formData.image == "string" ? formData.image : typeof formData.image !== "string" ? URL.createObjectURL(formData.image) : 'https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg'} alt="UserImage" />
             </div>
           </div>
  
@@ -203,7 +208,7 @@ export default function Profile() {
             <input className="file-input file-input-bordered file-input-primary w-full " type="file" name="image" id="image" onChange={handleFileChange}  />
           </div>
 
-          <button className="btn btn-primary text-accent text-base mt-4 w-full">{t("Save Profile")}</button>
+          <button className="btn btn-primary text-accent text-base mt-4 w-full" disabled={loadingButtonStatus}>{t("Save Profile")}</button>
         </form>
 
         <button className="btn btn-base-100 text-accent text-base mt-4 w-neutral hover:bg-primary" onClick={()=>document.getElementById('my_modal_5').showModal()}>{t("Change Password")}</button>

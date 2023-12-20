@@ -66,7 +66,7 @@ export default function Home() {
           .then(res => {
             setLoadingStatus(false)
             console.log(res)
-            setFormData(res.data.data.map(e => e.image))
+            setFormData(res.data.data.map(e => e.image).reverse())
           })
           .catch(err => {
             setLoadingStatus(false)
@@ -246,7 +246,7 @@ export default function Home() {
           <h1 className="md:text-[2.4rem] text-5xl lg:text-[3.3rem] capitalize leading-normal text-accent font-semibold">{t("Our Experienced Mechanic Engineers Ready to Help You")}</h1>
           <div className="sm:flex sm:flex-col w-8/12 sm:justify-center sm:items-start sm:gap-4 hidden">
             <p className="text-lg leading-normal text-neutral">{t("Welcome to our premier car maintenance service! At the heart of our commitment to exceptional automotive care lies a dedicated team of skilled professionals ready to ensure your vehicle's peak performance.")}</p>
-            <button className="btn bg-primary text-xl rounded-full px-10 text-accent leading-none">{t("Contact Us")}</button>
+            <Link to="/contact-us" className="btn bg-primary text-xl rounded-full px-10 text-accent leading-none">{t("Contact Us")}</Link>
           </div>
         </section>
       </section>
@@ -255,7 +255,7 @@ export default function Home() {
         <section className="flex flex-col justify-around gap-8 ms-4">
           <div>
             {/* <span className="text-primary text-5xl font-medium">20+</span> */}
-            <span className="text-primary text-5xl flex font-medium">
+            <span className="text-primary text-5xl flex font-medium">+
               <AnimatedNumbers
                   locale={"en-US"}
                   className="text-primary"
@@ -265,13 +265,13 @@ export default function Home() {
                   })}
                   animateToNumber={reversedNumExperience}
                 />
-              +</span>
+              </span>
             <h4 className="text-neutral mt-2">{t("Years of Experience")}</h4>
           </div>
 
           <div>
             {/* <span className="text-primary text-5xl font-medium">1672+</span> */}
-            <span className="text-primary text-5xl flex font-medium">
+            <span className="text-primary text-5xl flex font-medium">+
               <AnimatedNumbers
                   
                   locale={"en-US"}
@@ -282,12 +282,12 @@ export default function Home() {
                   })}
                   animateToNumber={reversedNumClients}
                 />
-              +</span>
+              </span>
             <h4 className="text-neutral mt-2">{t("Total Clients")}</h4>
           </div>
 
           <div>
-            <span className="text-primary text-5xl flex font-medium">
+            <span className="text-primary text-5xl flex font-medium">+
               <AnimatedNumbers
               	
                 locale={"en-US"}
@@ -298,7 +298,7 @@ export default function Home() {
                 })}
                 animateToNumber={reversedNumParts}
               />
-            +</span>
+            </span>
             <h4 className="text-neutral mt-2">{t("Spare Parts Sold")}</h4>
           </div>
 

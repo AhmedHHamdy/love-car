@@ -21,7 +21,7 @@ export default function Login() {
 
     if (token) {
         console.log(token)
-        return <Navigate to="/dashboard" />
+        return <Navigate to="/" />
     }
 
     const navigate = useNavigate()
@@ -46,7 +46,7 @@ export default function Login() {
         setToken(data.token)
     
         if (data.token) {
-          navigate('/dashboard')
+          navigate('/')
         }
   
       } catch (err) {
