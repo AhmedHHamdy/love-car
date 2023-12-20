@@ -155,7 +155,7 @@ export default function ContactUs() {
         <div className="hero-overlay bg-secondary bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold text-primary">Contact Us</h1>
+            <h1 className="mb-5 text-5xl font-bold text-primary">{t("Contact Us")}</h1>
           </div>
         </div>
       </div>

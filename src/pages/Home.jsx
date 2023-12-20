@@ -308,7 +308,7 @@ export default function Home() {
         <div className="bg-[url('../src/assets/bg-1.jpg')] bg-center w-10/12 h-[26rem] bg-cover"></div>
         <div className="bg-[url('../src/assets/bg-2.jpg')] bg-center w-10/12 h-[26rem] bg-cover"></div> */}
 
-        <Slider className="w-10/12" {...settings}>
+        <Slider className="sm:w-8/12 w-5/12 md:10/12" {...settings}>
           {/* <div className="w-full h-96 bg-cover bg-center bg-[url('../src/assets/carBackground.jpg')]"></div>
           <div className="w-full h-96 bg-cover bg-center bg-[url('../src/assets/bg-1.jpg')]"></div>
           <div className="w-full h-96 bg-cover bg-center bg-[url('../src/assets/bg-2.jpg')]"></div> */}

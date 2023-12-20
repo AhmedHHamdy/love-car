@@ -7,11 +7,11 @@ export default function AboutUs() {
 
   return(
     <section className="bg-secondary">
-      <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("../src/assets/bg-2.jpg")'}}>
+      <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("../../public/bg-2.png")'}}>
         <div className="hero-overlay bg-secondary bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold text-primary">About Love Car</h1>
+            <h1 className="mb-5 text-5xl font-bold text-primary">{t("About Love Car")}</h1>
           </div>
         </div>
       </div>

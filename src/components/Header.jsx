@@ -104,15 +104,15 @@ export default function Header() {
               <li className="">
                 <Link>{t("Services")}</Link>
                 <ul className="p-2 rounded-lg z-30">
-                  <li className="hover:bg-primary rounded-lg"><Link state={{type: "maintenance"}} to="/maintenance">{t("Maintenance")}</Link></li>
-                  <li className="hover:bg-primary rounded-lg"><Link state={{type: "renewal"}} to="/renewal">{t("Renewal")}</Link></li>
-                  <li className="hover:bg-primary rounded-lg"><Link state={{type: "license"}} to="/license">{t("License")}</Link></li>
+                  <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} state={{type: "maintenance"}} to="/maintenance">{t("Maintenance")}</Link></li>
+                  <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} state={{type: "renewal"}} to="/renewal">{t("Renewal")}</Link></li>
+                  <li className="hover:bg-primary rounded-lg"><Link  onClick={() => handleClick()}state={{type: "license"}} to="/license">{t("License")}</Link></li>
                 </ul>
               </li>
               <li className="hover:bg-primary rounded-lg"><a href="https://mr-decals.com/" target="_blank">{t("Shop")}</a></li>
-              <li className="hover:bg-primary rounded-lg"><Link to="/about-us">{t("About Us")}</Link></li>
-              <li className="hover:bg-primary rounded-lg"><Link to="/contact-us">{t("Contact Us")}</Link></li>
-              {token && <li className="hover:bg-primary rounded-lg"><Link to="/dashboard">{t("Dashboard")}</Link></li>}
+              <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} to="/about-us">{t("About Us")}</Link></li>
+              <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} to="/contact-us">{t("Contact Us")}</Link></li>
+              {token && <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} to="/dashboard">{t("Dashboard")}</Link></li>}
             </ul>
           </div>
           <Link className="text-xl hidden sm:inline" to="/"><img className="max-w-full" src={Logo} alt="logo" /></Link>
@@ -160,7 +160,7 @@ export default function Header() {
           <section className="navbar-end">
             <div className="dropdown dropdown-bottom dropdown-end avatar">
               <div tabIndex={0} role="button" className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"><img className="" src={formData.image || Car} alt="" /></div>
-              <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 mt-2 shadow bg-primary rounded-box w-22 sm:w-48">
+              <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 mt-2 shadow bg-primary rounded-box w-40 sm:w-48">
                 <li><Link className="text-base sm:text-xl hover:bg-base-100 text-accent" to="/profile">{t("Profile")}</Link></li>
                 <li><button className="text-base sm:text-xl hover:bg-base-100 text-accent" onClick={handleLogout}>{t("Logout")}</button></li>
               </ul>
