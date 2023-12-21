@@ -25,7 +25,7 @@ export default function Messages() {
     }
   })
   
-  const [loadingStatus, setLoadingStatus] = useState(false)
+  const [loadingStatus, setLoadingStatus] = useState(true)
   const [error, setError] = useState(null)
 
   const { t } = useTranslation()
