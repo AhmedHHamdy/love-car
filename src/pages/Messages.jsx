@@ -48,7 +48,7 @@ export default function Messages() {
   useEffect(() => {
     async function loadData() {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/myCarOrders`, {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/users/notification`, {
           headers: {
             Authorization: `Bearer ${token}`
           },
@@ -57,7 +57,7 @@ export default function Messages() {
         setLoadingStatus(false)
         console.log(response)
         console.log(data)
-        setOrdersData(data.carOrders)
+        setOrdersData(data.notifications)
       } catch (err) {
         setLoadingStatus(false)
         console.log(err)
@@ -94,23 +94,23 @@ export default function Messages() {
       {ordersData.map((order, item) => {
         return (
           <div className="flex justify-center" >
-            {selectedOrder && (<div className="modal-box flex-col  sm:max-w-full flex sm:grid sm:grid-cols-12 xl:flex md:flex-row gap-4">
+            {selectedOrder && (<div className="modal-box flex-col  sm:max-w-full flex sm:grid sm:grid-cols-12  gap-4">
             {/* <h2 className="font-bold text-lg my-0">ID: #{selectedOrder.id}</h2> */}
 
             <div className="sm:col-start-1 sm:col-span-6">
               <h3 className="font-bold text-lg my-1">{t("Request ID")} :</h3>
-              <input type="text" readOnly value={`# ${order.id}`} className="input input-bordered w-full sm:max-w-none" />
+              <input type="text" readOnly value={`# ${order.order_number}`} className="input input-bordered w-full sm:max-w-none" />
             </div>
 
 
             <div className="col-start-1 sm:col-span-6">
               <h3 className="font-bold text-lg my-1">{t("Service")} :</h3>
-              <input type="text" readOnly value={order.typeText} className="input input-bordered w-full sm:max-w-none" />
+              <input type="text" readOnly value={order.title} className="input input-bordered w-full sm:max-w-none" />
             </div>
 
             <div className="sm:col-span-6">
               <h3 className="font-bold text-lg my-1">{t("Order Date")} :</h3>
-              <input type="text" readOnly value={order.orderDate} className="input input-bordered w-full sm:max-w-none" />
+              <input type="text" readOnly value={order.created_at} className="input input-bordered w-full sm:max-w-none" />
             </div>
 
             <div className="sm:col-span-6">
@@ -119,15 +119,25 @@ export default function Messages() {
             </div>
 
 
-            <div className="sm:col-span-12">
+            <div className="sm:col-span-6">
               <h3 className="font-bold text-lg my-1">{t("Status")} :</h3>
-              <input type="text" readOnly value={order.status} className="input input-bordered w-full sm:max-w-none" />
+              <input type="text" readOnly value={order.status} className="input input-bordered w-full sm:max-w-none capitalize" />
             </div>
 
-            {/* {order.cancelledReason !== "" && <div className="col-span-2">
+            <div className="sm:col-span-6">
+              <h3 className="font-bold text-lg my-1">{t("Cost")} :</h3>
+              <input type="text" readOnly value={order.cost} className="input input-bordered w-full sm:max-w-none capitalize" />
+            </div>
+
+            <div className="sm:col-span-12">
+              <h3 className="font-bold text-lg my-1">{t("Message")} :</h3>
+              <input type="text" readOnly value={order.body} className="input input-bordered w-full sm:max-w-none capitalize" />
+            </div>
+
+            {order.cancelledReason !== "" && <div className="col-span-12">
               <h3 className="font-bold text-lg my-1">{t("Reason for rejection")} :</h3>
-              <textarea readOnly value={order.cancelledReason} className="textarea textarea-bordered w-full  sm:max-w-none" />
-            </div>} */}
+              <textarea readOnly value={order.cancelledReason} className="textarea textarea-bordered w-full sm:max-w-none" />
+            </div>}
 
           </div>)}
         </div>

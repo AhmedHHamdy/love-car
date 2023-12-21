@@ -144,6 +144,8 @@
   "Messages": "Messages",
   "Execution Date": "Execution Date",
   "Car License Request": "Car License Request",
-  "Request ID": "Request ID"
+  "Request ID": "Request ID",
+  "Message": "Message",
+  "Cost": "Cost"
   
 }
