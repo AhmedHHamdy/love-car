@@ -359,6 +359,7 @@ export default function Maintenance() {
                 getOptionLabel={(option) => option.name}
                 getOptionValue={(option) => option.id}
                 placeholder="Oils"
+                isSearchable={false}
               />
           </label>
 
@@ -383,6 +384,7 @@ export default function Maintenance() {
                 getOptionLabel={(option) => option.name}
                 getOptionValue={(option) => option.id}
                 placeholder="Frames"
+                isSearchable={false}
               />
           </label>
 
@@ -407,6 +409,7 @@ export default function Maintenance() {
                 getOptionLabel={(option) => option.name}
                 getOptionValue={(option) => option.id}
                 placeholder="Consumer Parts"
+                isSearchable={false}
               />
           </label>
 
@@ -431,6 +434,7 @@ export default function Maintenance() {
                 getOptionLabel={(option) => option.name}
                 getOptionValue={(option) => option.id}
                 placeholder="Brakes"
+                isSearchable={false}
               />
           </label>
 
@@ -455,6 +459,7 @@ export default function Maintenance() {
                 getOptionLabel={(option) => option.name}
                 getOptionValue={(option) => option.id}
                 placeholder="Repair Types"
+                isSearchable={false}
               />
           </label>
 
