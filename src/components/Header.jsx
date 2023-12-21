@@ -125,9 +125,9 @@ export default function Header() {
               <details>
                 <summary>{t("Services")}</summary>
                 <ul className="p-2 bg-primary w-52 z-30">
-                  <li className="hover:bg-secondary rounded-xl"><Link state={{type: "maintenance"}} to="/maintenance">{t("Maintenance")}</Link></li>
-                  <li className="hover:bg-secondary rounded-xl"><Link state={{type: "renewal"}} to="/renewal">{t("Renewal")}</Link></li>
-                  <li className="hover:bg-secondary rounded-xl"><Link state={{type: "license"}} to="/license">{t("License")}</Link></li>
+                  <li className="hover:bg-secondary rounded-xl"><Link onClick={ () => document.querySelector("#menu").click() } state={{type: "maintenance"}} to="/maintenance">{t("Maintenance")}</Link></li>
+                  <li className="hover:bg-secondary rounded-xl"><Link onClick={ () => document.querySelector("#menu").click() } state={{type: "renewal"}} to="/renewal">{t("Renewal")}</Link></li>
+                  <li className="hover:bg-secondary rounded-xl"><Link onClick={ () => document.querySelector("#menu").click() }state={{type: "license"}} to="/license">{t("License")}</Link></li>
                 </ul>
               </details>
             </li> */}

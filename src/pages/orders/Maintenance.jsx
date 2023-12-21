@@ -25,6 +25,7 @@ export default function Maintenance() {
     model: "",
     year: "",
     description: "",
+    notes: "",
     oils: [],
     frames: [],
     brakes: [],
@@ -106,7 +107,7 @@ export default function Maintenance() {
     e.preventDefault();
     let formServicesData = {}
     if (formData.type === "maintenance") {
-      let arr = ["type", "model", "year", "description", "oils", "frames", "brakes", "consumerParts", "repairTypes"]
+      let arr = ["type", "model", "year", "description", "notes", "oils", "frames", "brakes", "consumerParts", "repairTypes"]
       formServicesData = new FormData()
 
       for (const key of arr) {
@@ -142,6 +143,7 @@ export default function Maintenance() {
         model: "",
         year: "",
         description: "",
+        notes: "",
         oils: [],
         frames: [],
         brakes: [],
@@ -164,6 +166,7 @@ export default function Maintenance() {
         model: "",
         year: "",
         description: "",
+        notes: "",
         oils: [],
         frames: [],
         brakes: [],
@@ -335,6 +338,20 @@ export default function Maintenance() {
               required
               placeholder="Description"
               className="textarea textarea-bordered h-24"
+            />
+          </label>
+
+          <label className="form-control w-full max-w-xs">
+            <div className="label">
+              <span className="label-text text-base">{t("Notes")}</span>
+            </div>
+            <textarea
+              name="notes"
+              value={formData.notes}
+              onChange={handleInputChange}
+              placeholder="Notes"
+              className="textarea textarea-bordered h-24"
+              required
             />
           </label>
 
