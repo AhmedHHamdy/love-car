@@ -139,6 +139,11 @@
   "City": "City",
   "Region": "Region",
 
-  "About Love Car": "About Love Car"
+  "About Love Car": "About Love Car",
+
+  "Messages": "Messages",
+  "Execution Date": "Execution Date",
+  "Car License Request": "Car License Request",
+  "Request ID": "Request ID"
   
 }

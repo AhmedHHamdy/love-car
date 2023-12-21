@@ -113,6 +113,7 @@ export default function Header() {
               <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} to="/about-us">{t("About Us")}</Link></li>
               <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} to="/contact-us">{t("Contact Us")}</Link></li>
               {token && <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} to="/dashboard">{t("Dashboard")}</Link></li>}
+              {token && <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} to="/messages">{t("Messages")}</Link></li>}
             </ul>
           </div>
           <Link className="text-xl hidden sm:inline" to="/"><img className="max-w-full" src={Logo} alt="logo" /></Link>
@@ -145,6 +146,7 @@ export default function Header() {
             <li className="text-base"><Link to="/about-us">{t("About Us")}</Link></li>
             <li className="text-base"><Link to="/contact-us">{t("Contact Us")}</Link></li>
             {token && <li className="text-base"><Link to="/dashboard">{t("Dashboard")}</Link></li>}
+            {token && <li className="text-base"><Link to="/messages">{t("Messages")}</Link></li>}
             {/* <li className="ms-4"><LanguageSelector /></li> */}
           </ul>
         </div>
@@ -161,7 +163,7 @@ export default function Header() {
             <div className="dropdown dropdown-bottom dropdown-end avatar">
               <div tabIndex={0} role="button" className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"><img className="" src={formData.image || Car} alt="" /></div>
               <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 mt-2 shadow bg-primary rounded-box w-40 sm:w-48">
-                <li><Link className="text-base sm:text-xl hover:bg-base-100 text-accent" to="/profile">{t("Profile")}</Link></li>
+                <li><Link onClick={ () => handleClick() } className="text-base sm:text-xl hover:bg-base-100 text-accent" to="/profile">{t("Profile")}</Link></li>
                 <li><button className="text-base sm:text-xl hover:bg-base-100 text-accent" onClick={handleLogout}>{t("Logout")}</button></li>
               </ul>
             </div>

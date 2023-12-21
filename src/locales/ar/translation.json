@@ -139,5 +139,11 @@
   "City": "المدينة",
   "Region": "المنطقة",
 
-  "About Love Car": "عن سياره حبي"
+  "About Love Car": "عن سياره حبي",
+
+  "Messages": "الرسائل",
+  "Execution Date": "تاريخ التنفيذ",
+  "Car License Request": "طلب ترخيص السيارة",
+  "Request ID": "رقم الطلب"
+
 }
