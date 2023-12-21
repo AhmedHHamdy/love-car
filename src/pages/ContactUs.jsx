@@ -131,9 +131,9 @@ export default function ContactUs() {
 
               <span className="text-base md:text-xl flex justify-start mt-2 items-center pb-6 border-b-[0.02rem] border-gray-700 w-full sm:w-full gap-4"><MdOutlineNumbers className="text-primary" /> {t("Additional Number")} : 8688</span>
 
-              <h3 className="text-base md:text-xl flex justify-center mt-2 items-center gap-4 pt-6"><IoPhonePortrait className="text-primary" /> 0500947921</h3>
+              <h3 className="text-base md:text-xl flex justify-center mt-2 items-center gap-4 pt-6"><IoPhonePortrait className="text-primary" /> <a href={`tel:0500947921`}>0500947921</a></h3>
 
-              <h3 className="text-base md:text-xl flex justify-center mt-2 items-center gap-4"><MdAttachEmail className="text-primary" /> mylovecar1886@gmail.com</h3>
+              <h3 className="text-base md:text-xl flex justify-center mt-2 items-center gap-4"><MdAttachEmail className="text-primary" /> <a href={`mailto:mylovecar1886@gmail.com`}>mylovecar1886@gmail.com</a></h3>
               
             </div>
             
@@ -177,9 +177,9 @@ export default function ContactUs() {
 
             <span className="text-base md:text-xl flex justify-start mt-2 items-center pb-6 border-b-[0.02rem] border-gray-700 w-full sm:w-full gap-4"><MdOutlineNumbers className="text-primary" /> {t("Additional Number")} : {formData.additionalNumber}</span>
 
-            <h3 className="text-base md:text-xl flex justify-center mt-2 items-center gap-4 pt-6"><IoPhonePortrait className="text-primary" /> {formData.phone}</h3>
+            <h3 className="text-base md:text-xl flex justify-center mt-2 items-center gap-4 pt-6"><IoPhonePortrait className="text-primary" /> <a href={`tel:${formData.phone}`}>{formData.phone}</a></h3>
 
-            <h3 className="text-base md:text-xl flex justify-center mt-2 items-center gap-4"><MdAttachEmail className="text-primary" /> {formData.email}</h3>
+            <h3 className="text-base md:text-xl flex justify-center mt-2 items-center gap-4"><MdAttachEmail className="text-primary" /> <a href={`mailto:${formData.email}`}>{formData.email}</a></h3>
             
           </div>
           
