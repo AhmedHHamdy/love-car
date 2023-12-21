@@ -5,6 +5,8 @@ import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../context/AuthProvider";
 import Select from "react-dropdown-select";
+import { components } from "react-select";
+import { default as ReactSelect } from "react-select";
 
 export default function Maintenance() {
   const location = useLocation()
@@ -203,6 +205,63 @@ export default function Maintenance() {
     </div>
   );
 
+  const Option = (props) => {
+    return (
+      <div>
+        <components.Option {...props}>
+          <input
+            type="checkbox"
+            checked={props.isSelected}
+            onChange={() => null}
+            className="cursor-pointer checkbox checkbox-secondary border-neutral"
+          />{" "}
+          <label className="cursor-pointer">{props.label}</label>
+        </components.Option>
+      </div>
+    );
+  };
+
+  const customStyles = {
+    // You can style different components of ReactSelect using the following keys:
+    control: (provided, state) => ({
+      // Styles for the outer container
+      ...provided,
+      // borderColor: state.isFocused ? '#5a5a5a' : '#ccc',
+      // borderColor: state.isHovered ? 'red' : 'red',
+      boxShadow: state.isFocused ? '0 0 0 1px #5a5a5a' : 'none',
+      background: "#1E1E1E",
+      padding: "0",
+      '&:hover': {
+        borderColor: '#E45A00',
+      }
+    }),
+    option: (provided, state) => ({
+      // Styles for each option
+      ...provided,
+      backgroundColor: state.isSelected ? '#E45A00' : '#1E1E1E',
+      color: state.isSelected ? 'white' : 'white',
+      display: "flex",
+      
+      gap: "0.5rem"
+    }),
+    multiValue: (provided) => ({
+      // Styles for the selected value(s)
+      ...provided,
+      backgroundColor: '#E45A00',
+      color: "white"
+    }),
+    multiValueLabel: (styles, { data }) => ({
+      ...styles,
+      color: "white",
+    }),
+    menuList: (provided) => ({
+      ...provided,
+      paddingTop: 0,
+      paddingBottom: 0,
+    }),
+  };
+
+
   return (
     <section className="bg-secondary p-10">
       <section className="w-9/12 mx-auto flex flex-col justify-center items-center">
@@ -283,35 +342,120 @@ export default function Maintenance() {
             <div className="label">
               <span className="label-text text-base">{t("Oils")}</span>
             </div>
-            <Select  values={selectedOilOptions} defaultValue={selectedOilOptions} itemRenderer={itemRenderer} dropdownGap={6} direction="rtl" className="bg-base-100 border border-gray-600 form-control w-20 max-w-xs md:self-center" style={{borderColor: "gray", maxWidth: "20rem", background: "#1E1E1E", color: "#fff", borderRadius: "0.4rem"}} placeholder="Oils"  searchable={false} color="#E45A00" options={maintenanceOptionsData.oils} multi labelField="name" valueField="id" name="oils" onChange={handleOilsChange} />
+            {/* <Select  values={selectedOilOptions} defaultValue={selectedOilOptions} itemRenderer={itemRenderer} dropdownGap={6} direction="rtl" className="bg-base-100 border border-gray-600 form-control w-20 max-w-xs md:self-center" style={{borderColor: "gray", maxWidth: "20rem", background: "#1E1E1E", color: "#fff", borderRadius: "0.4rem"}} placeholder="Oils"  searchable={false} color="#E45A00" options={maintenanceOptionsData.oils} multi labelField="name" valueField="id" name="oils" onChange={handleOilsChange} /> */}
+
+            <ReactSelect
+                options={maintenanceOptionsData.oils}
+                isMulti
+                closeMenuOnSelect={false}
+                hideSelectedOptions={false}
+                components={{
+                  Option
+                }}
+                styles={customStyles}
+                onChange={handleOilsChange}
+                allowSelectAll={true}
+                value={selectedOilOptions}
+                getOptionLabel={(option) => option.name}
+                getOptionValue={(option) => option.id}
+                placeholder="Oils"
+              />
           </label>
 
           <label className="form-control w-full max-w-xs"> 
             <div className="label">
               <span className="label-text text-base">{t("Frames")}</span>
             </div>
-            <Select  values={selectedFrameOptions} defaultValue={selectedFrameOptions} itemRenderer={itemRenderer} dropdownGap={6} direction="rtl" className="bg-base-100 border border-gray-600 form-control w-20 max-w-xs md:self-center" style={{borderColor: "gray", maxWidth: "20rem", background: "#1E1E1E", color: "#fff", borderRadius: "0.4rem"}} placeholder="Frames"  searchable={false} color="#E45A00" options={maintenanceOptionsData.frames} multi labelField="name" valueField="id" name="frames" onChange={handleFramesChange} />
+            {/* <Select  values={selectedFrameOptions} defaultValue={selectedFrameOptions} itemRenderer={itemRenderer} dropdownGap={6} direction="rtl" className="bg-base-100 border border-gray-600 form-control w-20 max-w-xs md:self-center" style={{borderColor: "gray", maxWidth: "20rem", background: "#1E1E1E", color: "#fff", borderRadius: "0.4rem"}} placeholder="Frames"  searchable={false} color="#E45A00" options={maintenanceOptionsData.frames} multi labelField="name" valueField="id" name="frames" onChange={handleFramesChange} /> */}
+
+            <ReactSelect
+                options={maintenanceOptionsData.frames}
+                isMulti
+                closeMenuOnSelect={false}
+                hideSelectedOptions={false}
+                components={{
+                  Option
+                }}
+                styles={customStyles}
+                onChange={handleFramesChange}
+                allowSelectAll={true}
+                value={selectedFrameOptions}
+                getOptionLabel={(option) => option.name}
+                getOptionValue={(option) => option.id}
+                placeholder="Frames"
+              />
           </label>
 
           <label className="form-control w-full max-w-xs"> 
             <div className="label">
               <span className="label-text text-base">{t("Consumer Parts")}</span>
             </div>
-            <Select  values={selectedConsumerPartOptions} defaultValue={selectedConsumerPartOptions} itemRenderer={itemRenderer} dropdownGap={6} direction="rtl" className="bg-base-100 border border-gray-600 form-control w-20 max-w-xs md:self-center" style={{borderColor: "gray", maxWidth: "20rem", background: "#1E1E1E", color: "#fff", borderRadius: "0.4rem"}} placeholder="Consumer Parts"  searchable={false} color="#E45A00" options={maintenanceOptionsData.consumerParts} multi labelField="name" valueField="id" name="consumerParts" onChange={handleConsumerPartsChange} />
+            {/* <Select  values={selectedConsumerPartOptions} defaultValue={selectedConsumerPartOptions} itemRenderer={itemRenderer} dropdownGap={6} direction="rtl" className="bg-base-100 border border-gray-600 form-control w-20 max-w-xs md:self-center" style={{borderColor: "gray", maxWidth: "20rem", background: "#1E1E1E", color: "#fff", borderRadius: "0.4rem"}} placeholder="Consumer Parts"  searchable={false} color="#E45A00" options={maintenanceOptionsData.consumerParts} multi labelField="name" valueField="id" name="consumerParts" onChange={handleConsumerPartsChange} /> */}
+
+            <ReactSelect
+                options={maintenanceOptionsData.consumerParts}
+                isMulti
+                closeMenuOnSelect={false}
+                hideSelectedOptions={false}
+                components={{
+                  Option
+                }}
+                styles={customStyles}
+                onChange={handleConsumerPartsChange}
+                allowSelectAll={true}
+                value={selectedConsumerPartOptions}
+                getOptionLabel={(option) => option.name}
+                getOptionValue={(option) => option.id}
+                placeholder="Consumer Parts"
+              />
           </label>
 
           <label className="form-control w-full max-w-xs"> 
             <div className="label">
               <span className="label-text text-base">{t("Brakes")}</span>
             </div>
-            <Select  values={selectedBrakeOptions} defaultValue={selectedBrakeOptions} itemRenderer={itemRenderer} dropdownGap={6} direction="rtl" className="bg-base-100 border border-gray-600 form-control w-20 max-w-xs md:self-center" style={{borderColor: "gray", maxWidth: "20rem", background: "#1E1E1E", color: "#fff", borderRadius: "0.4rem"}} placeholder="Brakes"  searchable={false} color="#E45A00" options={maintenanceOptionsData.brakes} multi labelField="name" valueField="id" name="brakes" onChange={handleBrakesChange} />
+            {/* <Select  values={selectedBrakeOptions} defaultValue={selectedBrakeOptions} itemRenderer={itemRenderer} dropdownGap={6} direction="rtl" className="bg-base-100 border border-gray-600 form-control w-20 max-w-xs md:self-center" style={{borderColor: "gray", maxWidth: "20rem", background: "#1E1E1E", color: "#fff", borderRadius: "0.4rem"}} placeholder="Brakes"  searchable={false} color="#E45A00" options={maintenanceOptionsData.brakes} multi labelField="name" valueField="id" name="brakes" onChange={handleBrakesChange} /> */}
+
+            <ReactSelect
+                options={maintenanceOptionsData.brakes}
+                isMulti
+                closeMenuOnSelect={false}
+                hideSelectedOptions={false}
+                components={{
+                  Option
+                }}
+                styles={customStyles}
+                onChange={handleBrakesChange}
+                allowSelectAll={true}
+                value={selectedBrakeOptions}
+                getOptionLabel={(option) => option.name}
+                getOptionValue={(option) => option.id}
+                placeholder="Brakes"
+              />
           </label>
 
           <label className="form-control w-full max-w-xs"> 
             <div className="label">
               <span className="label-text text-base">{t("Repair Types")}</span>
             </div>
-            <Select  values={selectedRepairTypeOptions} defaultValue={selectedRepairTypeOptions} itemRenderer={itemRenderer} dropdownGap={6} direction="rtl" className="bg-base-100 border border-gray-600 form-control w-20 max-w-xs md:self-center" style={{borderColor: "gray", maxWidth: "20rem", background: "#1E1E1E", color: "#fff", borderRadius: "0.4rem"}} placeholder="Repair Types"  searchable={false} color="#E45A00" options={maintenanceOptionsData.repairTypes} multi labelField="name" valueField="id" name="repairTypes" onChange={handleRepairTypesChange} />
+            {/* <Select  values={selectedRepairTypeOptions} defaultValue={selectedRepairTypeOptions} itemRenderer={itemRenderer} dropdownGap={6} direction="rtl" className="bg-base-100 border border-gray-600 form-control w-20 max-w-xs md:self-center" style={{borderColor: "gray", maxWidth: "20rem", background: "#1E1E1E", color: "#fff", borderRadius: "0.4rem"}} placeholder="Repair Types"  searchable={false} color="#E45A00" options={maintenanceOptionsData.repairTypes} multi labelField="name" valueField="id" name="repairTypes" onChange={handleRepairTypesChange} /> */}
+
+            <ReactSelect
+                options={maintenanceOptionsData.repairTypes}
+                isMulti
+                closeMenuOnSelect={false}
+                hideSelectedOptions={false}
+                components={{
+                  Option
+                }}
+                styles={customStyles}
+                onChange={handleRepairTypesChange}
+                allowSelectAll={true}
+                value={selectedRepairTypeOptions}
+                getOptionLabel={(option) => option.name}
+                getOptionValue={(option) => option.id}
+                placeholder="Repair Types"
+              />
           </label>
 
           
