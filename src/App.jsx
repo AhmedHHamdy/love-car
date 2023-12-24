@@ -12,6 +12,7 @@ import ResetPassword from "./pages/account/ResetPassword"
 import Maintenance from "./pages/orders/Maintenance"
 import Renewal from "./pages/orders/Renewal"
 import License from "./pages/orders/License"
+import Messages from "./pages/Messages"
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="maintenance" element={<Maintenance />} />
             <Route path="renewal" element={<Renewal />} />
             <Route path="license" element={<License />} />
+            <Route path="messages" element={<Messages />} />
           </Route>
         </Route>
 
