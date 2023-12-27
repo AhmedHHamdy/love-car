@@ -242,18 +242,18 @@ export default function Home() {
   return(
     <>
       <section className="w-10/12 mx-auto mt-10 h" data-aos="fade-up">
-        <section className="flex md:flex-col lg:flex-row lg:items-center md:justify-between md:items-start md:gap-6">
+        <section className="flex sm:flex-col lg:flex-row lg:items-center sm:items-center md:justify-between md:items-start md:gap-6">
           <h1 className="md:text-[2.4rem] text-center text-5xl lg:text-[3.3rem] capitalize leading-normal text-accent font-semibold">{t("Our Experienced Mechanic Engineers Ready to Help You")}</h1>
-          <div className="sm:flex sm:flex-col w-8/12 md:w-full xl:w-8/12 sm:justify-center sm:items-start sm:gap-4 hidden">
-            <p className="text-lg leading-normal text-neutral">{t("Welcome to our premier car maintenance service! At the heart of our commitment to exceptional automotive care lies a dedicated team of skilled professionals ready to ensure your vehicle's peak performance.")}</p>
+          <div className="sm:flex sm:flex-col w-8/12 sm:w-full sm:mt-4 md:mt-0 md:w-full xl:w-8/12 sm:justify-center sm:items-center xl:items-start sm:gap-4 hidden">
+            <p className="text-lg leading-normal text-neutral sm:text-center md:text-right">{t("Welcome to our premier car maintenance service! At the heart of our commitment to exceptional automotive care lies a dedicated team of skilled professionals ready to ensure your vehicle's peak performance.")}</p>
             <Link to="/contact-us" className="btn bg-primary text-xl rounded-full px-10 text-accent leading-none">{t("Contact Us")}</Link>
           </div>
         </section>
       </section>
 
-      <section className="flex flex-col sm:flex-row justify-between w-11/12 ms-auto mt-10 pb-14">
+      <section className="flex flex-col sm:flex-row justify-between items-center sm:items-stretch w-11/12 mx-auto sm:mx-0 sm:ms-auto mt-10 pb-14">
         <section className="flex flex-col justify-around items-center sm:items-start gap-8 sm:ms-4">
-          <div>
+          <div className="text-center sm:text-start">
             {/* <span className="text-primary text-5xl font-medium">20+</span> */}
             <span className="text-primary text-5xl flex font-medium">+
               <AnimatedNumbers
@@ -269,7 +269,7 @@ export default function Home() {
             <h4 className="text-neutral mt-2">{t("Years of Experience")}</h4>
           </div>
 
-          <div>
+          <div className="text-center sm:text-start">
             {/* <span className="text-primary text-5xl font-medium">1672+</span> */}
             <span className="text-primary text-5xl flex font-medium">+
               <AnimatedNumbers
@@ -286,7 +286,7 @@ export default function Home() {
             <h4 className="text-neutral mt-2">{t("Total Clients")}</h4>
           </div>
 
-          <div>
+          <div className="text-center sm:text-start"> 
             <span className="text-primary text-5xl flex font-medium">+
               <AnimatedNumbers
               	
@@ -308,7 +308,7 @@ export default function Home() {
         <div className="bg-[url('../src/assets/bg-1.jpg')] bg-center w-10/12 h-[26rem] bg-cover"></div>
         <div className="bg-[url('../src/assets/bg-2.jpg')] bg-center w-10/12 h-[26rem] bg-cover"></div> */}
 
-        <Slider className="sm:w-8/12 w-11/12 md:w-10/12 mt-6" {...settings}>
+        <Slider className="sm:w-8/12 w-11/12 md:w-10/12 mt-6 md:mr-4 lg:mr-4 xl:mr-0" {...settings}>
           {/* <div className="w-full h-96 bg-cover bg-center bg-[url('../src/assets/carBackground.jpg')]"></div>
           <div className="w-full h-96 bg-cover bg-center bg-[url('../src/assets/bg-1.jpg')]"></div>
           <div className="w-full h-96 bg-cover bg-center bg-[url('../src/assets/bg-2.jpg')]"></div> */}

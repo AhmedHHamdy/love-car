@@ -151,7 +151,7 @@ export default function Header() {
           </ul>
         </div>
        {!token && <div className="navbar-end">
-          <Link to="/login" className="btn h-2 min-h-[2rem] md:btn md:rounded-full md:bg-primary md:text-accent bg-primary text-base px-6 md:text-xl rounded-full md:px-14 text-accent leading-none">{t("Login")}</Link>
+          <Link to="/login" className="btn h-2 min-h-[2rem] md:btn md:rounded-full md:bg-primary md:text-accent bg-primary text-base px-6 md:text-xl rounded-full md:px-10 text-accent leading-none">{t("Login")}</Link>
         </div>}
 
         {/* {token && <div className="navbar-end">
