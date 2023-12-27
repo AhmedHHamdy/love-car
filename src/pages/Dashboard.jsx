@@ -121,7 +121,7 @@ export default function Dashboard() {
                 {/* <td>{order.cancelledReason}</td> */}
            
                 <td>
-                  <button className="btn btn-ghost btn-xs bg-primary" onClick={()=> openModel(order)}>details</button>
+                  <button className="btn btn-ghost btn-xs bg-primary text-accent" onClick={()=> openModel(order)}>{t("details")}</button>
                 </td>
 
                 
@@ -262,7 +262,7 @@ export default function Dashboard() {
             </>
             )}
 
-            <button className={`btn bg-primary text-accent w-full mt-2 ${selectedOrder.type === "License" ? "self-end" : "col-span-2"}`} onClick={() => closeModel()}>close</button>
+            <button className={`btn bg-primary text-accent w-full mt-2 ${selectedOrder.type === "License" ? "self-end" : "col-span-2"}`} onClick={() => closeModel()}>{t("close")}</button>
 
           </div>)}
           <form method="dialog" className="modal-backdrop">

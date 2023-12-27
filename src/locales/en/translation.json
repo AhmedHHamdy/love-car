@@ -106,6 +106,7 @@
   "Old Password": "Old Password",
   "Confirm Password": "Confirm Password",
   "Close": "Close",
+  "close": "close",
 
 
   "ID": "ID",
@@ -148,6 +149,6 @@
   "Message": "Message",
   "Cost": "Cost",
 
-  "Download": "Download"
-  
+  "Download": "Download",
+  "details": "details"
 }
