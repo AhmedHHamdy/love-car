@@ -13,7 +13,7 @@ export default function AuthProvider({ children }) {
     if (newToken === undefined) {
       return;
     }
-    Cookies.set("token", newToken, { expires: 7 }); // Expires in 7 days
+    Cookies.set("token", newToken, { expires: 30 }); // Expires in 7 days
   }
 
   useEffect(() => {
