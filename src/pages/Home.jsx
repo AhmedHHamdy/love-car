@@ -240,7 +240,7 @@ export default function Home() {
 
  
   return(
-    <>
+    <main className="overflow-x-hidden">
       <section className="w-10/12 mx-auto mt-10 h" data-aos="fade-up">
         <section className="flex sm:flex-col lg:flex-row lg:items-center sm:items-center md:justify-between md:items-start md:gap-6">
           <h1 className="md:text-[2.4rem] text-center text-5xl lg:text-[3.3rem] capitalize leading-normal text-accent font-semibold">{t("Our Experienced Mechanic Engineers Ready to Help You")}</h1>
@@ -403,6 +403,6 @@ export default function Home() {
           <span className="text-center text-primary text-2xl md:text-3xl">8:00 AM - 9:00 PM</span>
         </section>
       </section>
-    </>
+    </main>
   )
 }
