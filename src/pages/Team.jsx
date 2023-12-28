@@ -67,7 +67,7 @@ export default function Team() {
                 return ( 
                     <div className="">
                         <div key={teamMember.id} className="flex flex-col md:flex-row gap-8 mb-4">
-                            <img src={teamMember.image} className="max-w-xs sm:max-w-sm sm:max-h-fit rounded-lg" />
+                            <img src={teamMember.image} className="max-w-xs sm:max-w-sm h-50 w-40 rounded-lg" />
                             <div className="flex flex-col justify-center items-start">
                                 <h1 className="py-6 text-4xl font-semibold text-accent leading-normal">{teamMember.name}</h1>
                                 <p className=" text-2xl font-semibold text-accent leading-normal flex justify-start items-center gap-4"><IoCarSport className="text-primary"/> {teamMember.specialization}</p>
