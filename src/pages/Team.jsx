@@ -62,15 +62,15 @@ export default function Team() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center w-10/12 mx-auto py-10 justify-center gap-20 bg-secondary mt-8">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(25rem,1fr))] items-center w-10/12 mx-auto py-10 justify-center gap-20 bg-secondary mt-8">
             {formData.map((teamMember => {
                 return ( 
                     <div className="">
                         <div key={teamMember.id} className="flex flex-col md:flex-row justify-between gap-10 w-50 mb-4">
-                            <img src={teamMember.image} className="max-w-xs sm:max-w-sm rounded-lg" />
+                            <img src={teamMember.image} className="max-w-xs sm:max-w-sm h-80 rounded-lg" />
                             <div className="flex flex-col justify-center items-start">
-                                <h1 className="py-6 text-5xl font-semibold text-accent leading-normal">{teamMember.name}</h1>
-                                <p className=" text-3xl font-semibold text-accent leading-normal flex justify-start items-center gap-4"><IoCarSport className="text-primary"/> {teamMember.specialization}</p>
+                                <h1 className="py-6 text-4xl font-semibold text-accent leading-normal">{teamMember.name}</h1>
+                                <p className=" text-2xl font-semibold text-accent leading-normal flex justify-start items-center gap-4"><IoCarSport className="text-primary"/> {teamMember.specialization}</p>
                             </div>
                         </div>
                     </div>
