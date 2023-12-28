@@ -5,25 +5,8 @@ import { useTranslation } from "react-i18next";
 
 export default function Messages() {
   const [ordersData, setOrdersData] = useState([])
-  // const [selectedOrder, setSelectedOrder] = useState({
-  //   "id": 135,
-  //   "type": "License",
-  //   "typeText": "طلب ترخيص سيارة",
-  //   "orderDate": "2023-12-21",
-  //   "implementation_date": "لم يتم تحديد موعد",
-  //   "model": "BMW M6",
-  //   "year": "2024",
-  //   "status": "قيد الانتظار",
-  //   "cancelledReason": "",
-  //   "date": "2023-12-21",
-  //   "description": "test",
-  //   "notes": "testtestestset",
-  //   "items": {
-  //       "city": "Riyadh",
-  //       "region": "Riyadh",
-  //       "license_date": "2023-12-08"
-  //   }
-  // })
+  const [selectedOrder, setSelectedOrder] = useState(null)
+
   
   const [loadingStatus, setLoadingStatus] = useState(true)
   const [error, setError] = useState(null)
@@ -32,18 +15,18 @@ export default function Messages() {
 
   const { token } = useAuth()
 
-  // console.log(selectedOrder)
+  console.log(selectedOrder)
 
 
-  // const openModel = (order) => {
-  //   setSelectedOrder(order)
-  //   document.getElementById("my_modal_2").showModal()
-  // }
+  const openModel = (order) => {
+    setSelectedOrder(order)
+    document.getElementById("my_modal_2").showModal()
+  }
 
-  // const closeModel = () => {
-  //   setSelectedOrder(null)
-  //   document.getElementById("my_modal_2").close()
-  // }
+  const closeModel = () => {
+    setSelectedOrder(null)
+    document.getElementById("my_modal_2").close()
+  }
 
   useEffect(() => {
     async function loadData() {
@@ -97,23 +80,31 @@ export default function Messages() {
             {order && (<div className="modal-box flex-col  sm:max-w-full flex sm:grid sm:grid-cols-12  gap-4">
             {/* <h2 className="font-bold text-lg my-0">ID: #{selectedOrder.id}</h2> */}
 
-            <div className="sm:col-start-1 sm:col-span-6">
+            <div className="sm:col-start-1 sm:col-span-4">
               <h3 className="font-bold text-lg my-1">{t("Request ID")} :</h3>
               <input type="text" readOnly value={`# ${order.order_number}`} className="input input-bordered w-full sm:max-w-none" />
             </div>
 
-
-            <div className="col-start-1 sm:col-span-6">
-              <h3 className="font-bold text-lg my-1">{t("Service")} :</h3>
-              <input type="text" readOnly value={order.title} className="input input-bordered w-full sm:max-w-none" />
-            </div>
-
-            <div className="sm:col-span-6">
+            <div className="sm:col-span-4">
               <h3 className="font-bold text-lg my-1">{t("Order Date")} :</h3>
               <input type="text" readOnly value={order.created_at} className="input input-bordered w-full sm:max-w-none" />
             </div>
 
-            <div className="sm:col-span-6">
+            <div className="col-start-1 sm:col-span-4">
+              <h3 className="font-bold text-lg my-1">{t("Service")} :</h3>
+              <input type="text" readOnly value={order.title} className="input input-bordered w-full sm:max-w-none" />
+            </div>
+
+
+            <div className="sm:col-span-12">
+              <h3 className="font-bold text-lg my-1">{t("Message")} :</h3>
+              <input type="text" readOnly value={order.body} className="input input-bordered w-full sm:max-w-none capitalize" />
+            </div>
+
+            <button className={`btn bg-primary text-accent w-full mt-2 col-span-12`} onClick={()=> openModel(order)}>{t("details")}</button>
+ 
+
+            {/* <div className="sm:col-span-6">
               <h3 className="font-bold text-lg my-1">{t("Implementation Date")} :</h3>
               <input type="text" readOnly value={order.implementation_date} className="input input-bordered w-full sm:max-w-none" />
             </div>
@@ -129,17 +120,70 @@ export default function Messages() {
               <input type="text" readOnly value={order.cost} className="input input-bordered w-full sm:max-w-none capitalize" />
             </div>
 
-            <div className="sm:col-span-12">
-              <h3 className="font-bold text-lg my-1">{t("Message")} :</h3>
-              <input type="text" readOnly value={order.body} className="input input-bordered w-full sm:max-w-none capitalize" />
-            </div>
 
             {order.cancelledReason !== "" && <div className="col-span-12">
               <h3 className="font-bold text-lg my-1">{t("Reason for rejection")} :</h3>
               <textarea readOnly value={order.cancelledReason} className="textarea textarea-bordered w-full sm:max-w-none" />
-            </div>}
+            </div>} */}
 
           </div>)}
+
+
+            <dialog id="my_modal_2" className="modal">
+              {selectedOrder && (<div className="modal-box sm:grid sm:grid-cols-2 flex flex-col gap-4">
+                {/* <h2 className="font-bold text-lg my-0">ID: #{selectedOrder.id}</h2> */}
+                <div className="sm:col-start-1 sm:col-span-6">
+                <h3 className="font-bold text-lg my-1">{t("Request ID")} :</h3>
+                <input type="text" readOnly value={`# ${selectedOrder.order_number}`} className="input input-bordered w-full sm:max-w-none" />
+              </div>
+
+              <div className="sm:col-span-6">
+                <h3 className="font-bold text-lg my-1">{t("Order Date")} :</h3>
+                <input type="text" readOnly value={selectedOrder.created_at} className="input input-bordered w-full sm:max-w-none" />
+              </div>
+
+              <div className="col-start-1 sm:col-span-6">
+                <h3 className="font-bold text-lg my-1">{t("Service")} :</h3>
+                <input type="text" readOnly value={selectedOrder.title} className="input input-bordered w-full sm:max-w-none" />
+              </div>
+
+
+              <div className="sm:col-span-6">
+                <h3 className="font-bold text-lg my-1">{t("Implementation Date")} :</h3>
+                <input type="text" readOnly value={selectedOrder.implementation_date} className="input input-bordered w-full sm:max-w-none" />
+              </div>
+
+
+              <div className="sm:col-span-6">
+                <h3 className="font-bold text-lg my-1">{t("Status")} :</h3>
+                <input type="text" readOnly value={selectedOrder.status} className="input input-bordered w-full sm:max-w-none capitalize" />
+              </div>
+
+              <div className="sm:col-span-6">
+                <h3 className="font-bold text-lg my-1">{t("Cost")} :</h3>
+                <input type="text" readOnly value={selectedOrder.cost} className="input input-bordered w-full sm:max-w-none capitalize" />
+              </div>
+
+              <div className="sm:col-span-12">
+                <h3 className="font-bold text-lg my-1">{t("Message")} :</h3>
+                <input type="text" readOnly value={selectedOrder.body} className="input input-bordered w-full sm:max-w-none capitalize" />
+              </div>
+
+
+
+              {selectedOrder.cancelledReason !== "" && <div className="col-span-12">
+                <h3 className="font-bold text-lg my-1">{t("Reason for rejection")} :</h3>
+                <textarea readOnly value={selectedOrder.cancelledReason} className="textarea textarea-bordered w-full sm:max-w-none" />
+              </div>}
+              
+
+              <button className={`btn bg-primary text-accent w-full mt-2 col-span-12`} onClick={() => closeModel()}>{t("close")}</button>
+
+            </div>)}
+            <form method="dialog" className="modal-backdrop">
+              <button className="" onClick={() => closeModel()}>{t("close")}</button>
+            </form>
+          </dialog>
         </div>
         )
       })}

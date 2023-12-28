@@ -362,7 +362,7 @@ export default function Home() {
 
 
       <section className="py-10" data-aos="fade-left">
-        <section className="w-10/12 mx-auto py-10">
+        <section className="w-9/12 mx-auto py-10">
           <h2 className="text-center mb-16 text-5xl text-accent font-semibold">{t("How It Works")}</h2>
 
           <div className="flex flex-col xl:flex-row justify-between items-center gap-10">
