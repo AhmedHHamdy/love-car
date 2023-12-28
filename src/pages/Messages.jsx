@@ -96,12 +96,12 @@ export default function Messages() {
             </div>
 
 
-            <div className="sm:col-span-12">
+            <div className="sm:col-span-6">
               <h3 className="font-bold text-lg my-1">{t("Message")} :</h3>
               <input type="text" readOnly value={order.body} className="input input-bordered w-full sm:max-w-none capitalize" />
             </div>
 
-            <button className={`btn bg-primary text-accent w-full mt-2 col-span-12`} onClick={()=> openModel(order)}>{t("details")}</button>
+            <button className={`btn bg-primary text-accent w-full mt-2 col-span-6 self-end`} onClick={()=> openModel(order)}>{t("details")}</button>
  
 
             {/* <div className="sm:col-span-6">
@@ -129,7 +129,7 @@ export default function Messages() {
           </div>)}
 
 
-            <dialog id="my_modal_2" className="modal">
+            <dialog id="my_modal_2" className="modal bg-secondary-100">
               {selectedOrder && (<div className="modal-box sm:grid sm:grid-cols-2 flex flex-col gap-4">
                 {/* <h2 className="font-bold text-lg my-0">ID: #{selectedOrder.id}</h2> */}
                 <div className="sm:col-start-1 sm:col-span-6">
