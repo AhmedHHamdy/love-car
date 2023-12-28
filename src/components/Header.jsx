@@ -114,6 +114,8 @@ export default function Header() {
               <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} to="/contact-us">{t("Contact Us")}</Link></li>
               {token && <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} to="/dashboard">{t("Dashboard")}</Link></li>}
               {token && <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} to="/messages">{t("Messages")}</Link></li>}
+              <li className="hover:bg-primary rounded-lg"><Link to="/team">{t("Team")}</Link></li>
+
             </ul>
           </div>
           <Link className="text-xl hidden sm:inline" to="/"><img className="max-w-full" src={Logo} alt="logo" /></Link>
@@ -147,6 +149,7 @@ export default function Header() {
             <li className="text-base"><Link to="/contact-us">{t("Contact Us")}</Link></li>
             {token && <li className="text-base"><Link to="/dashboard">{t("Dashboard")}</Link></li>}
             {token && <li className="text-base"><Link to="/messages">{t("Messages")}</Link></li>}
+            <li className="text-base"><Link to="/team">{t("Team")}</Link></li>
             {/* <li className="ms-4"><LanguageSelector /></li> */}
           </ul>
         </div>
