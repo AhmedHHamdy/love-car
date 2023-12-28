@@ -400,7 +400,7 @@ export default function Home() {
             <a href="https://wa.me/966500947921"><FaWhatsapp className="text-primary text-7xl" /></a>
           </div>
           <h2 className="text-center my-10 text-3xl md:text-5xl text-accent font-semibold">{t("We are pleased to be in touch with you at any time.")}</h2>
-          <span className="text-center text-primary text-2xl md:text-3xl">8:00 AM - 9:00 PM</span>
+          <span className="text-center text-primary text-2xl md:text-3xl">{t("8:00 AM - 9:00 PM")}</span>
         </section>
       </section>
     </main>
