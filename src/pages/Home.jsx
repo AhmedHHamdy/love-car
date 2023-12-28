@@ -11,7 +11,7 @@ import { GiAutoRepair } from "react-icons/gi";
 import { TbLicense } from "react-icons/tb";
 import { Link, useLocation } from "react-router-dom"
 import { IoLogoWhatsapp, IoLogoInstagram, IoLogoYoutube } from "react-icons/io5";
-import { FaInstagram, FaSnapchat, FaWhatsapp, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaSnapchat, FaTiktok, FaTwitter, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { useTranslation } from "react-i18next"
 import AnimatedNumbers from "react-animated-numbers"
 import { useEffect, useState } from "react"
@@ -31,6 +31,12 @@ export default function Home() {
 
   const [formData, setFormData] = useState([])
   console.log(formData)
+  
+  const [loadingLinksStatus, setLoadingLinksStatus] = useState(true)
+  const [errorLinks, setErrorLinks] = useState(null)
+
+  const [formLinksData, setFormLinksData] = useState([])
+  console.log(formLinksData)
   
   const { t, i18n } = useTranslation()
 
@@ -74,6 +80,21 @@ export default function Home() {
             setError(err.message)
           })
   }, [])
+
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/staticPages`)
+          .then(res => {
+            setLoadingLinksStatus(false)
+            console.log(res)
+            setFormLinksData(res.data.data.socialMedia)
+          })
+          .catch(err => {
+            setLoadingLinksStatus(false)
+            console.log(err); // Log any errors that occur
+            setErrorLinks(err.message)
+          })
+  }, [])
+
 
   if (loadingStatus) {
     return (
@@ -238,6 +259,22 @@ export default function Home() {
     )
   }
 
+  if (loadingLinksStatus) {
+    return (
+      <div className="flex justify-center items-center w-screen h-screen bg-secondary">
+        <span className="loading loading-ring loading-lg bg-primary"></span>
+      </div>
+    )
+  }
+
+  if (errorLinks) {
+    return (
+      <div className="flex justify-center items-center w-screen h-screen bg-secondary">
+        <h1 className="bg-red-900 text-accent text-center uppercase rounded-lg p-4 text-lg">{errorLinks} <br/> Please refresh</h1>
+      </div>
+    )
+  }
+
  
   return(
     <main className="overflow-x-hidden">
@@ -394,10 +431,14 @@ export default function Home() {
         <section className="w-7/12 mx-auto pt-40 flex flex-col justify-center items-center">
           <h2 className="bg-primary text-accent p-6 rounded-full rounded-tr-none mb-10">{t("Are you looking after the car you love? Contact us now.")}</h2>
           <div className="flex justify-center items-center gap-4">
-            <a href="https://www.snapchat.com/add/mylovecar1886"><FaSnapchat className="text-primary text-7xl" /></a>
-            <a href="https://www.instagram.com/mylovecar1886/"><FaInstagram className="text-primary text-7xl" /></a>
-            <a href="https://youtube.com/@mylovecar_1886"><IoLogoYoutube className="text-primary text-7xl" /></a>
-            <a href="https://wa.me/966500947921"><FaWhatsapp className="text-primary text-7xl" /></a>
+            <a href={formLinksData.snapchat}><FaSnapchat className="text-primary text-7xl" /></a>
+            <a href={formLinksData.instagram}><FaInstagram className="text-primary text-7xl" /></a>
+            <a href={formLinksData.youtube}><IoLogoYoutube className="text-primary text-7xl" /></a>
+            <a href={formLinksData.whatsapp}><FaWhatsapp className="text-primary text-7xl" /></a>
+            {formLinksData.linkedin && <a href={formLinksData.linkedin}><FaLinkedin className="text-primary text-7xl" /></a>}
+            {formLinksData.tiktok && <a href={formLinksData.tiktok}><FaTiktok className="text-primary text-7xl" /></a>}
+            {formLinksData.twitter && <a href={formLinksData.twitter}><FaTwitter className="text-primary text-7xl" /></a>}
+            {formLinksData.facebook && <a href={formLinksData.facebook}><FaFacebook className="text-primary text-7xl" /></a>}
           </div>
           <h2 className="text-center my-10 text-3xl md:text-5xl text-accent font-semibold">{t("We are pleased to be in touch with you at any time.")}</h2>
           <span className="text-center text-primary text-2xl md:text-3xl">{t("8:00 AM - 9:00 PM")}</span>
