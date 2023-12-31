@@ -62,7 +62,7 @@ export default function Team() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col xl:grid xl:grid-cols-[repeat(2,minmax(25rem,1fr))] items-center w-10/12 mx-auto py-10 justify-center gap-y-10 bg-secondary mt-8">
+      <div className="flex flex-col xl:grid xl:grid-cols-[repeat(2,minmax(25rem,1fr))] items-center w-10/12 mx-auto py-10 justify-items-center gap-y-10 bg-secondary mt-8">
             {formData.map((teamMember => {
                 return ( 
                     <div className="">
