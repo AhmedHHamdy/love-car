@@ -54,7 +54,7 @@ export default function Team() {
 
   return(
     <section className="bg-secondary">
-      <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("/carBackground.jpg")', backgroundPositionY: "-18rem" , backgroundRepeat: "no-repeat"}}>
+      <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("/carBackground.jpg")', backgroundRepeat: "no-repeat"}}>
         <div className="hero-overlay bg-secondary bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
@@ -66,11 +66,11 @@ export default function Team() {
             {formData.map((teamMember => {
                 return ( 
                     <div className="">
-                        <div key={teamMember.id} className="flex flex-col md:flex-row gap-8 mb-4">
+                        <div key={teamMember.id} className="flex flex-col items-center md:flex-row gap-8 mb-4">
                             <img src={teamMember.image} className="max-w-xs sm:max-w-sm h-50 w-40 rounded-lg" />
-                            <div className="flex flex-col justify-center items-start">
-                                <h1 className="py-6 text-4xl font-semibold text-accent leading-normal">{teamMember.name}</h1>
-                                <p className=" text-2xl font-semibold text-accent leading-normal flex justify-start items-center gap-4"><IoCarSport className="text-primary"/> {teamMember.specialization}</p>
+                            <div className="flex flex-col justify-center items-center sm:items-start">
+                                <h1 className="py-6 text-4xl  font-semibold text-accent leading-normal">{teamMember.name}</h1>
+                                <p className=" text-base sm:text-2xl font-semibold text-accent leading-normal flex justify-start items-center gap-4"><IoCarSport className="text-primary"/> {teamMember.specialization}</p>
                             </div>
                         </div>
                     </div>
