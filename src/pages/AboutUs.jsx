@@ -61,13 +61,13 @@ export default function AboutUs() {
         </div>
       </div>
 
-      <div className="hero bg-secondary mt-8 h-[60rem] sm:h-full md:h-[52rem] xl:h-full">
+      <div className="hero bg-secondary my-8 h-[60rem] sm:h-full md:h-[52rem] xl:h-full">
         <div className="hero-content gap-20 flex-col lg:flex-row ">
           <img src={formData.image1} className="max-w-xs sm:max-w-xl rounded-lg" />
           <div className="flex flex-col justify-space-between items-start h-[29rem]">
             <span className="text-sm bg-primary p-3 rounded-full rounded-tl-none text-accent">{t("We are pleased to collaborate with you")}</span>
             <p className="py-6 text-5xl font-semibold text-accent leading-normal">{formData.description_ar}</p>
-            <ul className="h-full flex flex-wrap content-start gap-x-10">
+            <ul className="h-full flex flex-wrap content-start gap-x-10 overflow-auto">
               {formData.data.map(d => {
                 return (
                   <li key={d.id} className="flex justify-start items-center gap-4 text-accent text-base mt-4"><IoCarSport className="text-primary" /> {d.text_ar}</li>
