@@ -67,7 +67,7 @@ export default function AboutUs() {
           <div className="flex flex-col justify-space-between items-start h-[29rem]">
             <span className="text-sm bg-primary p-3 rounded-full rounded-tl-none text-accent">{t("We are pleased to collaborate with you")}</span>
             <p className="py-6 text-5xl font-semibold text-accent leading-normal">{formData.description}</p>
-            <ul className="h-full">
+            <ul className="h-full flex flex-wrap content-start gap-x-10">
               {formData.data.map(d => {
                 return (
                   <li key={d} className="flex justify-start items-center gap-4 text-accent text-base mt-4"><IoCarSport className="text-primary" /> {d}</li>
