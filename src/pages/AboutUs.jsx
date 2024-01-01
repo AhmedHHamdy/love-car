@@ -17,7 +17,7 @@ export default function AboutUs() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/staticPages`, {
+    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/aboutUs`, {
             headers: {
               Authorization: `Bearer ${token}`
             },
@@ -25,13 +25,7 @@ export default function AboutUs() {
           .then(res => {
             setLoadingStatus(false)
             console.log(res)
-
-            const descriptionArray = res.data.data.aboutus.description
-                    .replace(/<p>/g, '')  // Remove <p> tags
-                    .replace(/<\/p>/g, '') // Remove </p> tags
-                    .split('\r\n')   
-
-            setFormData({...res.data.data.aboutus, description: descriptionArray})
+            setFormData({...res.data.data})
           })
           .catch(err => {
             setLoadingStatus(false)
@@ -72,11 +66,16 @@ export default function AboutUs() {
           <img src="https://mylovecar1886.com/wp-content/uploads/2020/09/carparts-home-pic1.png" className="max-w-xs sm:max-w-xl rounded-lg" />
           <div className="flex flex-col justify-space-between items-start h-[29rem]">
             <span className="text-sm bg-primary p-3 rounded-full rounded-tl-none text-accent">{t("We are pleased to collaborate with you")}</span>
-            <p className="py-6 text-5xl font-semibold text-accent leading-normal">{formData.description[0]}</p>
+            <p className="py-6 text-5xl font-semibold text-accent leading-normal">{formData.description}</p>
             <ul className="h-full">
-              <li className="flex justify-start items-center gap-4 text-accent text-base mt-4"><IoCarSport className="text-primary" /> {formData.description[1]}</li>
+              {formData.data.map(d => {
+                return (
+                  <li key={d} className="flex justify-start items-center gap-4 text-accent text-base mt-4"><IoCarSport className="text-primary" /> {d}</li>
+                )
+              })}
+              {/* <li className="flex justify-start items-center gap-4 text-accent text-base mt-4"><IoCarSport className="text-primary" /> {formData.description[1]}</li>
               <li className="flex justify-start items-center gap-4 text-accent text-base mt-4"><IoCarSport className="text-primary" /> {formData.description[2]}</li>
-              <li className="flex justify-start items-center gap-4 text-accent text-base mt-4"><IoCarSport className="text-primary" /> {formData.description[3]}</li>
+              <li className="flex justify-start items-center gap-4 text-accent text-base mt-4"><IoCarSport className="text-primary" /> {formData.description[3]}</li> */}
             </ul>    
           </div>
         </div>
