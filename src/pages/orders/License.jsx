@@ -119,7 +119,7 @@ export default function License() {
           <span className="text-accent">{error}</span>
         </div>}
 
-        <form className="flex flex-col w-full md:justify-center md:items-center" onSubmit={handleSubmit}>
+        <form className="flex flex-col w-full md:justify-center md:items-center md:grid md:grid-cols-12 md:gap-x-10 mt-4" onSubmit={handleSubmit}>
           {/* <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-base">Service Type</span>
@@ -137,7 +137,7 @@ export default function License() {
             </select>
           </label> */}
 
-          <label className="form-control w-full max-w-xs">
+          <label className="form-control w-full max-w-full col-span-6">
             <div className="label">
               <span className="label-text text-base">{t("Model")}</span>
             </div>
@@ -148,26 +148,26 @@ export default function License() {
               onChange={handleInputChange}
               required
               placeholder="BMW 2023"
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-full"
             />
           </label>
 
-          <label className="form-control w-full max-w-xs">
+          <label className="form-control w-full max-w-full col-span-6">
             <div className="label">
               <span className="label-text text-base">{t("Year")}</span>
             </div>
             <input
-              type="text"
+              type="number"
               name="year"
               value={formData.year}
               onChange={handleInputChange}
               required
               placeholder="2023"
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-full"
             />
           </label>
 
-          <label className="form-control w-full max-w-xs mb-1">
+          <label className="form-control w-full max-w-full col-span-12 mb-1">
             <div className="label">
               <span className="label-text text-base">{t("Description")}</span>
             </div>
@@ -182,7 +182,7 @@ export default function License() {
           </label>
 
 
-           <label className="form-control w-full max-w-xs">
+           <label className="form-control w-full max-w-full col-span-12">
             <div className="label">
               <span className="label-text text-base">{t("Notes")}</span>
             </div>
@@ -196,7 +196,7 @@ export default function License() {
             />
           </label>
           
-          {formData.type === "license" && <label className="form-control w-full max-w-xs">
+          {formData.type === "license" && <label className="form-control w-full max-w-full col-span-6">
             <div className="label">
               <span className="label-text text-base">{t("License Date")}</span>
             </div>
@@ -207,11 +207,11 @@ export default function License() {
               required
               type="date"
               placeholder="1/12/2023"
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-full"
             />
           </label>}
 
-          {formData.type === "license" && <label className="form-control w-full max-w-xs">
+          {formData.type === "license" && <label className="form-control w-full max-w-full col-span-6">
             <div className="label">
               <span className="label-text text-base">{t("City")}</span>
             </div>
@@ -222,11 +222,11 @@ export default function License() {
               required
               type="text"
               placeholder="Saudi Arabia"
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-full"
             />
           </label>}
 
-          {formData.type === "license" && <label className="form-control w-full max-w-xs">
+          {formData.type === "license" && <label className="form-control w-full max-w-full col-span-12">
             <div className="label">
               <span className="label-text text-base">{t("Region")}</span>
             </div>
@@ -237,11 +237,11 @@ export default function License() {
               required
               type="text"
               placeholder="Riyadh"
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-full"
             />
           </label>}
 
-          <button className="btn btn-primary text-accent mt-4 w-full max-w-xs">{t("Send")}</button>
+          <button className="btn btn-primary text-accent w-full max-w-full col-span-12 mt-6">{t("Send")}</button>
         </form>
       </section>
     </section>

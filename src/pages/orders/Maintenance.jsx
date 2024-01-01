@@ -236,7 +236,8 @@ export default function Maintenance() {
       padding: "0",
       '&:hover': {
         borderColor: '#E45A00',
-      }
+      },
+      borderColor: '#555555',
     }),
     option: (provided, state) => ({
       // Styles for each option
@@ -280,7 +281,7 @@ export default function Maintenance() {
           <span className="text-accent">{error}</span>
         </div>}
 
-        <form className="flex flex-col w-full md:justify-center md:items-center" onSubmit={handleSubmit}>
+        <form className="flex flex-col w-full md:justify-center md:items-center md:grid md:grid-cols-12 md:gap-x-10 mt-4" onSubmit={handleSubmit}>
           {/* <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-base">Service Type</span>
@@ -297,7 +298,7 @@ export default function Maintenance() {
             </select>
           </label> */}
 
-          <label className="form-control w-full max-w-xs">
+          <label className="form-control col-span-6">
             <div className="label">
               <span className="label-text text-base">{t("Model")}</span>
             </div>
@@ -308,26 +309,26 @@ export default function Maintenance() {
               onChange={handleInputChange}
               required
               placeholder="BMW 2023"
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-full"
             />
           </label>
 
-          <label className="form-control w-full max-w-xs">
+          <label className="form-control w-full max-w-full col-span-6">
             <div className="label">
               <span className="label-text text-base">{t("Year")}</span>
             </div>
             <input
-              type="text"
+              type="number"
               name="year"
               value={formData.year}
               onChange={handleInputChange}
               required
               placeholder="2023"
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-full"
             />
           </label>
 
-          <label className="form-control w-full max-w-xs mb-1">
+          <label className="form-control w-full max-w-full mb-1 col-span-12">
             <div className="label">
               <span className="label-text text-base">{t("Description")}</span>
             </div>
@@ -341,7 +342,7 @@ export default function Maintenance() {
             />
           </label>
 
-          <label className="form-control w-full max-w-xs">
+          <label className="form-control w-full max-w-full col-span-12">
             <div className="label">
               <span className="label-text text-base">{t("Notes")}</span>
             </div>
@@ -355,7 +356,7 @@ export default function Maintenance() {
             />
           </label>
 
-          <label className="form-control w-full max-w-xs"> 
+          <label className="form-control w-full max-w-full col-span-6"> 
             <div className="label">
               <span className="label-text text-base">{t("Oils")}</span>
             </div>
@@ -380,7 +381,7 @@ export default function Maintenance() {
               />
           </label>
 
-          <label className="form-control w-full max-w-xs"> 
+          <label className="form-control w-full max-w-full col-span-6"> 
             <div className="label">
               <span className="label-text text-base">{t("Frames")}</span>
             </div>
@@ -405,7 +406,7 @@ export default function Maintenance() {
               />
           </label>
 
-          <label className="form-control w-full max-w-xs"> 
+          <label className="form-control w-full max-w-full col-span-6"> 
             <div className="label">
               <span className="label-text text-base">{t("Consumer Parts")}</span>
             </div>
@@ -430,7 +431,7 @@ export default function Maintenance() {
               />
           </label>
 
-          <label className="form-control w-full max-w-xs"> 
+          <label className="form-control w-full max-w-full col-span-6"> 
             <div className="label">
               <span className="label-text text-base">{t("Brakes")}</span>
             </div>
@@ -455,7 +456,7 @@ export default function Maintenance() {
               />
           </label>
 
-          <label className="form-control w-full max-w-xs"> 
+          <label className="form-control w-full max-w-full col-span-12"> 
             <div className="label">
               <span className="label-text text-base">{t("Repair Types")}</span>
             </div>
@@ -534,7 +535,7 @@ export default function Maintenance() {
 
           </section>} */}
 
-          <button className="btn btn-primary text-accent mt-4 w-full max-w-xs">{t("Send")}</button>
+          <button className="btn btn-primary text-accent mt-4 w-full max-w-full col-span-12">{t("Send")}</button>
         </form>
       </section>
     </section>
