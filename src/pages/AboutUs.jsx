@@ -61,16 +61,17 @@ export default function AboutUs() {
         </div>
       </div>
 
-      <div className="hero bg-secondary my-8 h-[60rem] sm:h-full md:h-[52rem] xl:h-full">
-        <div className="hero-content gap-20 flex-col lg:flex-row ">
-          <img src={formData.image1} className="max-w-xs sm:max-w-xl rounded-lg" />
-          <div className="flex flex-col justify-space-between items-start h-[29rem]">
+      <div className="hero bg-secondary my-8  ">
+        <div className="hero-content gap-10 xl:gap-20 flex-col xl:flex-row md:items-center xl:items-start">
+          <img src={formData.image1} className="max-w-full sm:max-w-xl rounded-lg" />
+
+          <div className="flex flex-col justify-space-between items-center sm:items-center md:items-center xl:items-start">
             <span className="text-sm bg-primary p-3 rounded-full rounded-tl-none text-accent">{t("We are pleased to collaborate with you")}</span>
-            <p className="py-6 text-5xl font-semibold text-accent leading-normal">{formData.description_ar}</p>
-            <ul className="h-full flex flex-wrap content-start gap-x-10 overflow-auto">
+            <p className="py-6 text-5xl font-semibold text-accent leading-normal text-center xl:text-right">{formData.description_ar}</p>
+            <ul className="h-full flex flex-col items-center md:grid md:grid-cols-12 md:justify-center md:items-center md:auto-rows-min  gap-x-10 overflow-y-auto">
               {formData.data.map(d => {
                 return (
-                  <li key={d.id} className="flex justify-start items-center gap-4 text-accent text-base mt-4"><IoCarSport className="text-primary" /> {d.text_ar}</li>
+                  <li key={d.id} className="flex sm:mx-auto w-60 xl:w-[17rem] text-sm md:col-span-6 justify-start items-center gap-4 text-accent sm:text-base mt-4"><IoCarSport className="text-primary" style={{ width: '24px', height: '24px', flex: 'none' }}/> {d.text_ar}</li>
                 )
               })}
               {/* <li className="flex justify-start items-center gap-4 text-accent text-base mt-4"><IoCarSport className="text-primary" /> {formData.description[1]}</li>
@@ -81,12 +82,12 @@ export default function AboutUs() {
         </div>
       </div>
 
-      <div className="hero bg-secondary h-[60rem] sm:h-full md:h-[52rem] xl:h-full">
-        <div className="hero-content gap-20 flex-col lg:flex-row-reverse">
-          <img src={formData.image2} className="max-w-xs sm:max-w-xl rounded-lg mb-8" />
+      <div className="hero bg-secondary ">
+        <div className="hero-content gap-10 xl:gap-40 flex-col xl:flex-row-reverse">
+          <img src={formData.image2} className="max-w-full sm:max-w-xl rounded-lg mb-0" />
           <div>
             <h1 className="text-3xl text-accent">{t("We are delighted to fulfill your requests.")}</h1>
-            <p className="py-6 text-accent">{t("We welcome orders for purchasing, renewing, and maintaining all types of vehicles. We are happy to serve you.")}</p>
+            <p className="py-6 text-accent text-sm sm:text-base w-60 sm:w-full">{t("We welcome orders for purchasing, renewing, and maintaining all types of vehicles. We are happy to serve you.")}</p>
           </div>
         </div>
       </div>
