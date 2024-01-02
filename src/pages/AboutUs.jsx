@@ -71,7 +71,7 @@ export default function AboutUs() {
             <ul className="h-full flex flex-col items-center md:grid md:grid-cols-12 md:justify-center md:items-center md:auto-rows-min  gap-x-10 overflow-y-auto">
               {formData.data.map(d => {
                 return (
-                  <li key={d.id} className="flex sm:mx-auto w-60 xl:w-[17rem] text-sm md:col-span-6 justify-start items-center gap-4 text-accent sm:text-base mt-4"><IoCarSport className="text-primary" style={{ width: '24px', height: '24px', flex: 'none' }}/> {d.text_ar}</li>
+                  <li key={d.id} className="flex sm:mx-auto w-60 md:w-[17rem] text-sm md:col-span-6 justify-start items-center gap-4 text-accent sm:text-base mt-4"><IoCarSport className="text-primary" style={{ width: '24px', height: '24px', flex: 'none' }}/> {d.text_ar}</li>
                 )
               })}
               {/* <li className="flex justify-start items-center gap-4 text-accent text-base mt-4"><IoCarSport className="text-primary" /> {formData.description[1]}</li>
