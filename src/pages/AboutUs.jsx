@@ -70,7 +70,7 @@ export default function AboutUs() {
             {i18n.language == "ar" && <p className="py-6 text-5xl font-semibold text-accent leading-normal text-center xl:text-start">{formData.description_ar}</p>}
             {i18n.language == "en" && <p className="py-6 text-5xl font-semibold text-accent leading-normal text-center xl:text-start">{formData.description_en}</p>}
 
-            <ul className="h-full flex flex-col items-center md:grid md:grid-cols-12 md:justify-center md:items-center md:auto-rows-min gap-x-10 overflow-y-auto">
+            <ul className="h-full flex flex-col items-center md:grid md:grid-cols-12 md:justify-center md:items-center md:auto-rows-min gap-x-10">
               {formData.data.map(d => {
                 return (
                   <li key={d.id} className="flex sm:mx-auto items-start w-60 sm:w-[17rem] text-sm md:col-span-6 justify-start  gap-4 text-accent sm:text-base mt-4"><IoCarSport className="text-primary align-top" style={{ width: '24px', height: '24px', flex: 'none' }}/> {i18n.language == "ar" ? d.text_ar : d.text_en}</li>
