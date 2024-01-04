@@ -86,7 +86,8 @@ export default function Home() {
           .then(res => {
             setLoadingLinksStatus(false)
             console.log(res)
-            setFormLinksData(res.data.data.socialMedia)
+            setFormLinksData(res.data.data)
+            localStorage.setItem("storeLink", res.data.data.storeLink)
           })
           .catch(err => {
             setLoadingLinksStatus(false)
@@ -431,14 +432,14 @@ export default function Home() {
         <section className="w-7/12 mx-auto pt-40 flex flex-col justify-center items-center">
           <h2 className="bg-primary text-accent p-6 rounded-full rounded-tr-none mb-10">{t("Are you looking after the car you love? Contact us now.")}</h2>
           <div className="flex justify-center items-center gap-4">
-            <a href={formLinksData.snapchat}><FaSnapchat className="text-primary text-7xl" /></a>
-            <a href={formLinksData.instagram}><FaInstagram className="text-primary text-7xl" /></a>
-            <a href={formLinksData.youtube}><IoLogoYoutube className="text-primary text-7xl" /></a>
-            <a href={formLinksData.whatsapp}><FaWhatsapp className="text-primary text-7xl" /></a>
-            {formLinksData.linkedin && <a href={formLinksData.linkedin}><FaLinkedin className="text-primary text-7xl" /></a>}
-            {formLinksData.tiktok && <a href={formLinksData.tiktok}><FaTiktok className="text-primary text-7xl" /></a>}
-            {formLinksData.twitter && <a href={formLinksData.twitter}><FaTwitter className="text-primary text-7xl" /></a>}
-            {formLinksData.facebook && <a href={formLinksData.facebook}><FaFacebook className="text-primary text-7xl" /></a>}
+            <a href={formLinksData.socialMedia.snapchat}><FaSnapchat className="text-primary text-7xl" /></a>
+            <a href={formLinksData.socialMedia.instagram}><FaInstagram className="text-primary text-7xl" /></a>
+            <a href={formLinksData.socialMedia.youtube}><IoLogoYoutube className="text-primary text-7xl" /></a>
+            <a href={formLinksData.socialMedia.whatsapp}><FaWhatsapp className="text-primary text-7xl" /></a>
+            {formLinksData.socialMedia.linkedin && <a href={formLinksData.socialMedia.linkedin}><FaLinkedin className="text-primary text-7xl" /></a>}
+            {formLinksData.socialMedia.tiktok && <a href={formLinksData.socialMedia.tiktok}><FaTiktok className="text-primary text-7xl" /></a>}
+            {formLinksData.socialMedia.twitter && <a href={formLinksData.socialMedia.twitter}><FaTwitter className="text-primary text-7xl" /></a>}
+            {formLinksData.socialMedia.facebook && <a href={formLinksData.socialMedia.facebook}><FaFacebook className="text-primary text-7xl" /></a>}
           </div>
           <h2 className="text-center my-10 text-3xl md:text-5xl text-accent font-semibold">{t("We are pleased to be in touch with you at any time.")}</h2>
           <span className="text-center text-primary text-2xl md:text-3xl">{t("8:00 AM - 9:00 PM")}</span>

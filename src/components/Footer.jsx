@@ -21,7 +21,7 @@ export default function Footer() {
             </nav> 
             <nav>
                 <header className="footer-title">{t("Company")}</header> 
-                <a href="https://mr-decals.com/" target="_blank" className="link link-hover">{t("Shop")}</a>
+                <a href={localStorage.getItem("storeLink") || "https://mr-decals.com/"} target="_blank" className="link link-hover">{t("Shop")}</a>
                 <Link to="/about-us" className="link link-hover text-base">{t("About Us")}</Link>
                 <Link to="/contact-us" className="link link-hover text-base">{t("Contact Us")}</Link>
             </nav> 

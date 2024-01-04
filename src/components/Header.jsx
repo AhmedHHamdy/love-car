@@ -109,7 +109,7 @@ export default function Header() {
                   <li className="hover:bg-primary rounded-lg"><Link  onClick={() => handleClick()}state={{type: "license"}} to="/license">{t("License")}</Link></li>
                 </ul>
               </li>
-              <li className="hover:bg-primary rounded-lg"><a href="https://mr-decals.com/" target="_blank">{t("Shop")}</a></li>
+              <li className="hover:bg-primary rounded-lg"><a href={localStorage.getItem("storeLink") || "https://mr-decals.com/"} target="_blank">{t("Shop")}</a></li>
               <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} to="/about-us">{t("About Us")}</Link></li>
               <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} to="/contact-us">{t("Contact Us")}</Link></li>
               {token && <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} to="/dashboard">{t("Dashboard")}</Link></li>}
@@ -144,7 +144,7 @@ export default function Header() {
               </ul>
             </li>
             {/* <li className="text-base"><Dropdown /></li> */}
-            <li className="text-base"><a href="https://mr-decals.com/" target="_blank">{t("Shop")}</a></li>
+            <li className="text-base"><a href={localStorage.getItem("storeLink") || "https://mr-decals.com/"} target="_blank">{t("Shop")}</a></li>
             <li className="text-base"><Link to="/about-us">{t("About Us")}</Link></li>
             <li className="text-base"><Link to="/contact-us">{t("Contact Us")}</Link></li>
             {token && <li className="text-base"><Link to="/dashboard">{t("Dashboard")}</Link></li>}
