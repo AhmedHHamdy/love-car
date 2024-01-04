@@ -86,7 +86,7 @@ export default function AboutUs() {
 
       <div className="hero bg-secondary ">
         <div className="hero-content gap-10 xl:gap-40 flex-col xl:flex-row-reverse">
-          <img src={formData.image2} className="max-w-full sm:max-w-xl rounded-lg mb-0" />
+          <img src={formData.image2} className="max-w-full sm:max-w-xl rounded-lg xl:mb-6" />
           <div>
             <h1 className="text-3xl text-accent">{t("We are delighted to fulfill your requests.")}</h1>
             <p className="py-6 text-accent text-sm sm:text-base w-60 sm:w-full">{t("We welcome orders for purchasing, renewing, and maintaining all types of vehicles. We are happy to serve you.")}</p>
