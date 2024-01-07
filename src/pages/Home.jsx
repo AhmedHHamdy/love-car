@@ -281,7 +281,7 @@ export default function Home() {
     <main className="overflow-x-hidden">
       <section className="w-10/12 mx-auto mt-10 h" data-aos="fade-up">
         <section className="flex sm:flex-col lg:flex-row lg:items-center sm:items-center md:justify-between md:items-start md:gap-6">
-          <h1 className="md:text-[2.4rem] text-center text-5xl lg:text-[3.3rem] capitalize leading-normal text-accent font-semibold">{t("Our Experienced Mechanic Engineers Ready to Help You")}</h1>
+          <h1 className="md:text-[2.4rem] text-center text-4xl sm:text-5xl lg:text-[3.3rem] capitalize leading-normal text-accent font-semibold">{t("Our Experienced Mechanic Engineers Ready to Help You")}</h1>
           <div className="sm:flex sm:flex-col w-8/12 sm:w-full sm:mt-4 md:mt-0 md:w-full xl:w-8/12 sm:justify-center sm:items-center lg:items-start sm:gap-4 hidden">
             <p className="text-lg leading-normal text-neutral sm:text-center md:text-right">{t("Welcome to our premier car maintenance service! At the heart of our commitment to exceptional automotive care lies a dedicated team of skilled professionals ready to ensure your vehicle's peak performance.")}</p>
             <Link to="/contact-us" className="btn bg-primary text-xl rounded-full px-10 text-accent leading-none">{t("Contact Us")}</Link>
@@ -370,19 +370,19 @@ export default function Home() {
 
       <section className="bg-secondary pb-40" data-aos="fade-down">
         <section className="w-8/12 mx-auto pt-40">
-          <h2 className="text-center mb-10 text-5xl text-accent font-semibold">{t("Services We Provide For You")}</h2>
+          <h2 className="text-center mb-10 text-4xl sm:text-5xl text-accent font-semibold">{t("Services We Provide For You")}</h2>
           <p className="text-center mb-10 text-xl capitalize">{t("We Offer A Comprehensive Range Of Mobile Mechanic Services To Keep Your Vehicle In Top Condition.")}</p>
 
           <div className="flex flex-col xl:flex-row justify-between items-center gap-10">
             <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col text-center w-full h-full">
               <h3 className="text-2xl flex flex-col justify-between items-center gap-4">{t("Maintenance")} <GiAutoRepair className="text-primary text-4xl" /></h3>
-              <p className="text-neutral my-4 text-base">{t("Routine vehicle maintenance can help diagnose issues early and prevent costly repairs later.")}</p>
+              <p className="text-neutral-300 my-4 text-base">{t("Routine vehicle maintenance can help diagnose issues early and prevent costly repairs later.")}</p>
               <Link state={{type: "maintenance"}} className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/maintenance">{t("Booking")}</Link>
             </div>
 
             <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col text-center w-full h-full">
               <h3 className="text-2xl flex flex-col justify-between items-center gap-4">{t("Renewal")} <TfiReload className="text-primary text-4xl" /></h3>
-              <p className="text-neutral my-4 text-base">{t("From brakes to batteries, our parts replacement service ensures your vehicle is equipped with high-quality components.")}</p>
+              <p className="text-neutral-300 my-4 text-base">{t("From brakes to batteries, our parts replacement service ensures your vehicle is equipped with high-quality components.")}</p>
               <Link state={{type: "renewal"}} className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/renewal">{t("Booking")}</Link>
             </div>
           </div>
@@ -391,7 +391,7 @@ export default function Home() {
           <div className="flex justify-center items-center mt-10">
             <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col text-center w-full h-full">
               <h3 className="text-2xl flex flex-col justify-between items-center gap-4">{t("License")} <TbLicense className="text-primary text-4xl" /></h3>
-              <p className="text-neutral my-4 text-base">{t("LoveCar is your trusted partner in simplifying and streamlining the licensing process for your vehicle. We understand that navigating the intricacies of licensing can be a time-consuming and complex task, and that's why we're here to make it easy, efficient, and enjoyable.")}</p>
+              <p className="text-neutral-300 my-4 text-base">{t("LoveCar is your trusted partner in simplifying and streamlining the licensing process for your vehicle. We understand that navigating the intricacies of licensing can be a time-consuming and complex task, and that's why we're here to make it easy, efficient, and enjoyable.")}</p>
               <Link state={{type: "license"}} className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/license">{t("Booking")}</Link>
             </div>
           </div>
@@ -401,27 +401,27 @@ export default function Home() {
 
       <section className="py-10" data-aos="fade-left">
         <section className="w-9/12 mx-auto py-10">
-          <h2 className="text-center mb-16 text-5xl text-accent font-semibold">{t("How It Works")}</h2>
+          <h2 className="text-center mb-16 text-4xl sm:text-5xl text-accent font-semibold">{t("How It Works")}</h2>
 
           <div className="flex flex-col xl:flex-row justify-between items-center gap-10">
             <div className="bg-secondary px-10 py-10 h-full md:h-[35rem] lg:h-[30rem] w-full rounded-xl flex flex-col justify-center items-center gap-8">
               <img className="w-50 mb-4" src={dataBaseIcon} alt="How it works icon" />
-              <p className="text-2xl text-center xl:text-[1.1rem] xl:h-[20rem]">{t("Provide us with your essential details by filling out the required fields. Include your name, mobile number, and email for seamless communication.")}</p>
+              <p className="text-xl text-center xl:text-[1.1rem] xl:h-[20rem]">{t("Provide us with your essential details by filling out the required fields. Include your name, mobile number, and email for seamless communication.")}</p>
             </div>
 
             <div className="bg-secondary px-10 py-10 h-full md:h-[35rem] lg:h-[30rem] w-full rounded-xl flex flex-col justify-center items-center gap-8">
               <img className="w-50 mb-4" src={carIcon} alt="How it works icon" />
-              <p className="text-2xl text-center xl:text-[1.1rem] xl:h-[20rem]">{t("Share your car's brand, manufacturing year, specifications, and attach photos using our user-friendly interface.")}</p>
+              <p className="text-xl text-center xl:text-[1.1rem] xl:h-[20rem]">{t("Share your car's brand, manufacturing year, specifications, and attach photos using our user-friendly interface.")}</p>
             </div>
 
             <div className="bg-secondary px-10 py-10 h-full md:h-[35rem] lg:h-[30rem] w-full rounded-xl flex flex-col justify-center items-center gap-8">
               <img className="w-50 mb-4" src={laptopIcon} alt="How it works icon" />
-              <p className="text-2xl text-center xl:text-[1.1rem] xl:h-[20rem]">{t("Rest assured that we eagerly receive and address your requests and inquiries at any time. Your satisfaction is our priority.")}</p>
+              <p className="text-xl text-center xl:text-[1.1rem] xl:h-[20rem]">{t("Rest assured that we eagerly receive and address your requests and inquiries at any time. Your satisfaction is our priority.")}</p>
             </div>
 
             <div className="bg-secondary px-10 py-10 h-full md:h-[35rem] lg:h-[30rem] w-full rounded-xl flex flex-col justify-center items-center gap-8">
               <img className="w-50 mb-4" src={timerIcon} alt="How it works icon" />
-              <p className="text-2xl text-center xl:text-[1.1rem] xl:h-[20rem]">{t("Anticipate a timely response within 3 days, ensuring that your queries and concerns are addressed promptly and efficiently.")}</p>
+              <p className="text-xl text-center xl:text-[1.1rem] xl:h-[20rem]">{t("Anticipate a timely response within 3 days, ensuring that your queries and concerns are addressed promptly and efficiently.")}</p>
             </div>
           </div>
         </section>

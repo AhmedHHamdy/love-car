@@ -14,6 +14,7 @@ import Renewal from "./pages/orders/Renewal"
 import License from "./pages/orders/License"
 import Messages from "./pages/Messages"
 import Team from "./pages/Team"
+import NotFound from "./pages/NotFound"
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
-
+          <Route path="*" element={<NotFound />} />
 
           <Route element={<AuthRequired />}>
             <Route path="dashboard" element={<Dashboard />} />
@@ -41,6 +42,7 @@ function App() {
           </Route>
         </Route>
 
+        
 
       </Routes>
     </BrowserRouter>
