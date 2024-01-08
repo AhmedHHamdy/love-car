@@ -188,27 +188,27 @@ export default function Profile() {
             </div>
           </div>
  
-          <div className="w-full">
+          <div className="w-[90%]">
             <label className="label-text text-base" htmlFor="name">{t("Name")}</label>
             <input className="input input-bordered w-full" type="text" name="name" id="name" onChange={handleChange} value={formData.name} />
           </div>
 
-          <div className="w-full">
+          <div className="w-[90%]">
             <label className="label-text text-base inline-block mb-2" htmlFor="email">{t("Email")}</label>
             <input className="input input-bordered w-full" type="email" name="email" id="email" onChange={handleChange} value={formData.email} />
           </div>
 
-          <div className="w-full">
+          <div className="w-[90%]">
             <label className="label-text text-base inline-block mb-2" htmlFor="phone">{t("Phone")}</label>
             <input className="input input-bordered w-full" type="text" name="phone" id="phone" onChange={handleChange} value={formData.phone} />
           </div>
 
-          <div className="w-full">
+          <div className="w-[90%]">
             <label className="label-text text-base inline-block mb-2" htmlFor="image">{t("Image")}</label>
             <input className="file-input file-input-bordered file-input-primary w-full " type="file" name="image" id="image" onChange={handleFileChange}  />
           </div>
 
-          <button className="btn btn-primary text-accent text-base mt-4 w-full" disabled={loadingButtonStatus}>{t("Save Profile")}</button>
+          <button className="btn btn-primary text-accent text-base mt-4 w-[90%]" disabled={loadingButtonStatus}>{t("Save Profile")}</button>
         </form>
 
         <button className="btn btn-base-100 text-accent text-base mt-4 w-neutral hover:bg-primary" onClick={()=>document.getElementById('my_modal_5').showModal()}>{t("Change Password")}</button>

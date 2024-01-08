@@ -164,7 +164,7 @@ export default function ContactUs() {
         <div className="hero-content flex-col md:flex-col xl:flex-row  pb-10 md:0 gap-8 flex-wrap">
           <div className="flex flex-col justify-space-between items-start md:self-start">
 
-            <p className="py-6 text-5xl font-semibold text-accent">{t("Do you have any inquiries?")}</p>
+            <p className="py-6 text-4xl sm:text-5xl font-semibold text-accent">{t("Do you have any inquiries?")}</p>
             <span className="text-primary text-xl flex justify-center items-center gap-4"><FaMapLocationDot /> {t("Address")}</span>
             <h3 className="text-xl mt-2 border-b-[0.02rem] border-gray-700  w-full md:w-full pb-6">
               {formData.address} <br />
