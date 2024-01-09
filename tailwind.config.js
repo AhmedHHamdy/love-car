@@ -17,11 +17,11 @@ module.exports = {
       {
         light: {
           ...require("daisyui/src/theming/themes")["halloween"],
-          "primary": "#E45A00",
-          "secondary": "#111111",
+          "primary": "#D91C0B",
+          "secondary": "#1D1C1C",
           "accent": "#ffffff",
           "neutral": "#8A8585",
-          "base-100": "#1E1E1E",
+          "base-100": "#0D0D0D",
         },
       },
     ],

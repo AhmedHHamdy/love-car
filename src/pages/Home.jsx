@@ -279,38 +279,55 @@ export default function Home() {
  
   return(
     <main className="overflow-x-hidden">
-      <section className="w-10/12 mx-auto mt-6 sm:mt-10 h" data-aos="fade-up">
-        <section className="flex sm:flex-col lg:flex-row lg:items-center sm:items-center md:justify-between md:items-start md:gap-6">
-          <h1 className="md:text-[2.4rem] text-center text-2xl sm:text-5xl lg:text-[3.3rem] capitalize leading-normal text-accent font-semibold">{t("Our Experienced Mechanic Engineers Ready to Help You")}</h1>
-          <div className="sm:flex sm:flex-col w-8/12 sm:w-full sm:mt-4 md:mt-0 md:w-full xl:w-8/12 sm:justify-center sm:items-center lg:items-start sm:gap-4 hidden">
-            <p className="text-lg leading-normal text-neutral sm:text-center md:text-right">{t("Welcome to our premier car maintenance service! At the heart of our commitment to exceptional automotive care lies a dedicated team of skilled professionals ready to ensure your vehicle's peak performance.")}</p>
-            <Link to="/contact-us" className="btn bg-primary text-xl rounded-full px-10 text-accent leading-none">{t("Contact Us")}</Link>
-          </div>
+      <div className="pb-14">
+        <section className="w-10/12 mx-auto mt-6 sm:mt-10 h" data-aos="fade-up">
+          <section className="flex sm:flex-col lg:flex-row lg:items-center sm:items-center md:justify-between md:items-start md:gap-6">
+            <h1 className="md:text-[2.4rem] text-center text-2xl sm:text-5xl lg:text-[3.3rem] capitalize leading-normal text-accent font-semibold">{t("Our Experienced Mechanic Engineers Ready to Help You")}</h1>
+            <div className="sm:flex sm:flex-col w-8/12 sm:w-full sm:mt-4 md:mt-0 md:w-full xl:w-8/12 sm:justify-center sm:items-center lg:items-start sm:gap-4 hidden">
+              <p className="text-lg leading-normal text-neutral sm:text-center md:text-right">{t("Welcome to our premier car maintenance service! At the heart of our commitment to exceptional automotive care lies a dedicated team of skilled professionals ready to ensure your vehicle's peak performance.")}</p>
+              <Link to="/contact-us" className="btn bg-primary text-xl rounded-full px-10 text-accent leading-none">{t("Contact Us")}</Link>
+            </div>
+          </section>
         </section>
-      </section>
 
-      <section className="flex flex-col sm:flex-row justify-between items-center sm:items-stretch w-11/12 mx-auto sm:mx-0 sm:ms-auto mt-6 sm:mt-10 pb-14">
-        <section className="flex flex-col justify-around items-center sm:items-start gap-8 sm:ms-4">
-          <div className="text-center sm:text-start w-40 flex flex-col items-center sm:items-start">
-            {/* <span className="text-primary text-5xl font-medium">20+</span> */}
-            <span className="text-primary text-2xl sm:text-5xl flex font-medium">+
-              <AnimatedNumbers
-                  locale={"en-US"}
-                  className="text-primary"
-                  transitions={(index) => ({
-                    type: "spring",
-                    duration: index + 0.8,
-                  })}
-                  animateToNumber={reversedNumExperience}
-                />
-              </span>
-            <h4 className="text-neutral mt-2">{t("Years of Experience")}</h4>
-          </div>
+        <section className="flex flex-col sm:flex-row justify-between items-center sm:items-stretch w-11/12 mx-auto sm:mx-0 sm:ms-auto mt-6 sm:mt-20 pb-14">
+          <section className="flex flex-col justify-around items-center sm:items-start gap-8 sm:ms-4">
+            <div className="text-center sm:text-start w-40 flex flex-col items-center sm:items-start">
+              {/* <span className="text-primary text-5xl font-medium">20+</span> */}
+              <span className="text-primary text-2xl sm:text-5xl flex font-medium">+
+                <AnimatedNumbers
+                    locale={"en-US"}
+                    className="text-primary"
+                    transitions={(index) => ({
+                      type: "spring",
+                      duration: index + 0.8,
+                    })}
+                    animateToNumber={reversedNumExperience}
+                  />
+                </span>
+              <h4 className="text-neutral mt-2">{t("Years of Experience")}</h4>
+            </div>
 
-          <div className="text-center sm:text-start w-40 flex flex-col items-center sm:items-start sm:block">
-            {/* <span className="text-primary text-5xl font-medium">1672+</span> */}
-            <span className="text-primary text-2xl sm:text-5xl flex font-medium">+
-              <AnimatedNumbers
+            <div className="text-center sm:text-start w-40 flex flex-col items-center sm:items-start sm:block">
+              {/* <span className="text-primary text-5xl font-medium">1672+</span> */}
+              <span className="text-primary text-2xl sm:text-5xl flex font-medium">+
+                <AnimatedNumbers
+                    
+                    locale={"en-US"}
+                    className="text-primary"
+                    transitions={(index) => ({
+                      type: "spring",
+                      duration: index + 0.5,
+                    })}
+                    animateToNumber={reversedNumClients}
+                  />
+                </span>
+              <h4 className="text-neutral mt-2">{t("Total Clients")}</h4>
+            </div>
+
+            <div className="text-center sm:text-start w-40 flex flex-col items-center sm:items-start"> 
+              <span className="text-primary text-2xl sm:text-5xl flex font-medium">+
+                <AnimatedNumbers
                   
                   locale={"en-US"}
                   className="text-primary"
@@ -318,54 +335,39 @@ export default function Home() {
                     type: "spring",
                     duration: index + 0.5,
                   })}
-                  animateToNumber={reversedNumClients}
+                  animateToNumber={reversedNumParts}
                 />
               </span>
-            <h4 className="text-neutral mt-2">{t("Total Clients")}</h4>
-          </div>
+              <h4 className="text-neutral mt-2">{t("Spare Parts Sold")}</h4>
+            </div>
 
-          <div className="text-center sm:text-start w-40 flex flex-col items-center sm:items-start"> 
-            <span className="text-primary text-2xl sm:text-5xl flex font-medium">+
-              <AnimatedNumbers
-              	
-                locale={"en-US"}
-                className="text-primary"
-                transitions={(index) => ({
-                  type: "spring",
-                  duration: index + 0.5,
-                })}
-                animateToNumber={reversedNumParts}
-              />
-            </span>
-            <h4 className="text-neutral mt-2">{t("Spare Parts Sold")}</h4>
-          </div>
+          </section>
 
+          {/* <div className="bg-[url('../src/assets/carBackground.jpg')] bg-center w-10/12 h-[26rem] bg-cover"></div>
+          <div className="bg-[url('../src/assets/bg-1.jpg')] bg-center w-10/12 h-[26rem] bg-cover"></div>
+          <div className="bg-[url('../src/assets/bg-2.jpg')] bg-center w-10/12 h-[26rem] bg-cover"></div> */}
+
+          <Slider className="sm:w-8/12 w-11/12 md:w-10/12 mt-6 md:mr-4 lg:mr-4 xl:mr-0" {...settings}>
+            {/* <div className="w-full h-96 bg-cover bg-center bg-[url('../src/assets/carBackground.jpg')]"></div>
+            <div className="w-full h-96 bg-cover bg-center bg-[url('../src/assets/bg-1.jpg')]"></div>
+            <div className="w-full h-96 bg-cover bg-center bg-[url('../src/assets/bg-2.jpg')]"></div> */}
+            {/* {slides} */}
+
+            {formData.map((image, index) => (
+                <div key={index} style={{width: '100%', height: '400px'}}>
+                  <div
+                    style={{
+                      backgroundImage: `url(${image})`,
+                      width: '100%',
+                      height: '500px',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center'
+                    }} />
+                </div>
+              ))}
+          </Slider>
         </section>
-
-        {/* <div className="bg-[url('../src/assets/carBackground.jpg')] bg-center w-10/12 h-[26rem] bg-cover"></div>
-        <div className="bg-[url('../src/assets/bg-1.jpg')] bg-center w-10/12 h-[26rem] bg-cover"></div>
-        <div className="bg-[url('../src/assets/bg-2.jpg')] bg-center w-10/12 h-[26rem] bg-cover"></div> */}
-
-        <Slider className="sm:w-8/12 w-11/12 md:w-10/12 mt-6 md:mr-4 lg:mr-4 xl:mr-0" {...settings}>
-          {/* <div className="w-full h-96 bg-cover bg-center bg-[url('../src/assets/carBackground.jpg')]"></div>
-          <div className="w-full h-96 bg-cover bg-center bg-[url('../src/assets/bg-1.jpg')]"></div>
-          <div className="w-full h-96 bg-cover bg-center bg-[url('../src/assets/bg-2.jpg')]"></div> */}
-          {/* {slides} */}
-
-          {formData.map((image, index) => (
-              <div key={index} style={{width: '100%', height: '400px'}}>
-                <div
-                  style={{
-                    backgroundImage: `url(${image})`,
-                    width: '100%',
-                    height: '400px',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                  }} />
-              </div>
-            ))}
-        </Slider>
-      </section>
+      </div>
 
 
       <section className="bg-secondary pb-40" data-aos="fade-down">
@@ -400,7 +402,7 @@ export default function Home() {
 
 
       <section className="py-10" data-aos="fade-left">
-        <section className="w-9/12 mx-auto py-10">
+        <section className="w-9/12 mx-auto py-24">
           <h2 className="text-center mb-16 text-4xl sm:text-5xl text-accent font-semibold">{t("How It Works")}</h2>
 
           <div className="flex flex-col xl:flex-row justify-between items-center gap-10">

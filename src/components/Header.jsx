@@ -6,7 +6,6 @@ import Cookies from "js-cookie";
 import LanguageSelector from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
-import LogoMobile from "../assets/lovecartransBack.png"
 import axios from "axios";
 import Car from "../assets/mingcute_car-3-fill.png"
 import Dropdown from "./DropdownMenu";
@@ -118,8 +117,8 @@ export default function Header() {
 
             </ul>
           </div>
-          <Link className="text-xl hidden sm:inline" to="/"><img className="max-w-full" src={Logo} alt="logo" /></Link>
-          <Link className="text-xl sm:hidden" to="/"><img className="max-w-[6rem]" src={LogoMobile} alt="logo" /></Link>
+          <Link className="text-xl hidden sm:inline" to="/"><img className="max-w-full w-[6rem]" src={Logo} alt="logo" /></Link>
+          <Link className="text-xl sm:hidden" to="/"><img className="max-w-[6rem]" src={Logo} alt="logo" /></Link>
         </div>
         <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal px-1 text-accent text-sm">
