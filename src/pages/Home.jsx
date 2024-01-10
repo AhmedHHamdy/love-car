@@ -282,7 +282,7 @@ export default function Home() {
       <div className="pb-14">
         <section className="w-10/12 mx-auto mt-6 sm:mt-10 h" data-aos="fade-up">
           <section className="flex sm:flex-col lg:flex-row lg:items-center sm:items-center md:justify-between md:items-start md:gap-6">
-            <h1 className="md:text-[2.4rem] text-center text-2xl sm:text-5xl lg:text-[3.3rem] capitalize leading-normal text-accent font-semibold">{t("Our Experienced Mechanic Engineers Ready to Help You")}</h1>
+            <h1 className="md:text-[2.4rem] text-center text-2xl sm:text-5xl lg:text-[3.3rem] capitalize leading-normal text-accent font-semibold sm:self-start">{t("Our Experienced Mechanic Engineers Ready to Help You")}</h1>
             <div className="sm:flex sm:flex-col w-8/12 sm:w-full sm:mt-4 md:mt-0 md:w-full xl:w-8/12 sm:justify-center sm:items-center lg:items-start sm:gap-4 hidden">
               <p className="text-lg leading-normal text-neutral sm:text-center md:text-right">{t("Welcome to our premier car maintenance service! At the heart of our commitment to exceptional automotive care lies a dedicated team of skilled professionals ready to ensure your vehicle's peak performance.")}</p>
               <Link to="/contact-us" className="btn bg-primary text-xl rounded-full px-10 text-accent leading-none">{t("Contact Us")}</Link>
@@ -290,7 +290,7 @@ export default function Home() {
           </section>
         </section>
 
-        <section className="flex flex-col sm:flex-row justify-between items-center sm:items-stretch w-11/12 mx-auto sm:mx-0 sm:ms-auto mt-6 sm:mt-20 pb-14">
+        <section className="flex flex-col sm:flex-row justify-between items-center sm:items-stretch w-11/12 mx-auto sm:mx-0 sm:ms-auto mt-6 sm:mt-10 pb-14">
           <section className="flex flex-col justify-around items-center sm:items-start gap-8 sm:ms-4">
             <div className="text-center sm:text-start w-40 flex flex-col items-center sm:items-start">
               {/* <span className="text-primary text-5xl font-medium">20+</span> */}
@@ -406,24 +406,24 @@ export default function Home() {
           <h2 className="text-center mb-16 text-4xl sm:text-5xl text-accent font-semibold">{t("How It Works")}</h2>
 
           <div className="flex flex-col xl:flex-row justify-between items-center gap-10">
-            <div className="bg-secondary px-10 py-10 h-full md:h-[35rem] lg:h-[30rem] w-full rounded-xl flex flex-col justify-center items-center gap-8">
-              <img className="w-50 mb-4" src={dataBaseIcon} alt="How it works icon" />
-              <p className="text-xl text-center xl:text-[1.1rem] xl:h-[20rem]">{t("Provide us with your essential details by filling out the required fields. Include your name, mobile number, and email for seamless communication.")}</p>
+            <div className="bg-secondary px-10 py-20 h-full w-full rounded-xl flex flex-col justify-center items-center gap-8">
+              <img className="w-20 sm:w-50 mb-4" src={dataBaseIcon} alt="How it works icon" />
+              <p className="text-base text-center md:text-xl xl:h-[20rem]">{t("Provide us with your essential details by filling out the required fields. Include your name, mobile number, and email for seamless communication.")}</p>
             </div>
 
-            <div className="bg-secondary px-10 py-10 h-full md:h-[35rem] lg:h-[30rem] w-full rounded-xl flex flex-col justify-center items-center gap-8">
-              <img className="w-50 mb-4" src={carIcon} alt="How it works icon" />
-              <p className="text-xl text-center xl:text-[1.1rem] xl:h-[20rem]">{t("Share your car's brand, manufacturing year, specifications, and attach photos using our user-friendly interface.")}</p>
+            <div className="bg-secondary px-10 py-20 h-full w-full rounded-xl flex flex-col justify-center items-center gap-8">
+              <img className="w-20 sm:w-50 mb-4" src={carIcon} alt="How it works icon" />
+              <p className="text-base text-center md:text-xl xl:h-[20rem]">{t("Share your car's brand, manufacturing year, specifications, and attach photos using our user-friendly interface.")}</p>
             </div>
 
-            <div className="bg-secondary px-10 py-10 h-full md:h-[35rem] lg:h-[30rem] w-full rounded-xl flex flex-col justify-center items-center gap-8">
-              <img className="w-50 mb-4" src={laptopIcon} alt="How it works icon" />
-              <p className="text-xl text-center xl:text-[1.1rem] xl:h-[20rem]">{t("Rest assured that we eagerly receive and address your requests and inquiries at any time. Your satisfaction is our priority.")}</p>
+            <div className="bg-secondary px-10 py-20 h-full w-full rounded-xl flex flex-col justify-center items-center gap-8">
+              <img className="w-20 sm:w-50 mb-4" src={laptopIcon} alt="How it works icon" />
+              <p className="text-base text-center md:text-xl xl:h-[20rem]">{t("Rest assured that we eagerly receive and address your requests and inquiries at any time. Your satisfaction is our priority.")}</p>
             </div>
 
-            <div className="bg-secondary px-10 py-10 h-full md:h-[35rem] lg:h-[30rem] w-full rounded-xl flex flex-col justify-center items-center gap-8">
-              <img className="w-50 mb-4" src={timerIcon} alt="How it works icon" />
-              <p className="text-xl text-center xl:text-[1.1rem] xl:h-[20rem]">{t("Anticipate a timely response within 3 days, ensuring that your queries and concerns are addressed promptly and efficiently.")}</p>
+            <div className="bg-secondary px-10 py-20 h-full w-full rounded-xl flex flex-col justify-center items-center gap-8">
+              <img className="w-20 sm:w-50 mb-4" src={timerIcon} alt="How it works icon" />
+              <p className="text-base text-center md:text-xl xl:h-[20rem]">{t("Anticipate a timely response within 3 days, ensuring that your queries and concerns are addressed promptly and efficiently.")}</p>
             </div>
           </div>
         </section>
@@ -431,20 +431,20 @@ export default function Home() {
 
 
       <section className="bg-secondary pb-40" data-aos="fade-down">
-        <section className="w-7/12 mx-auto pt-40 flex flex-col justify-center items-center">
-          <h2 className="bg-primary text-accent p-6 rounded-full rounded-tr-none mb-10">{t("Are you looking after the car you love? Contact us now.")}</h2>
+        <section className="w-10/12 mx-auto pt-40 flex flex-col justify-center items-center">
+          <h2 className="bg-primary text-accent p-6 rounded-full rounded-tr-none mb-10 text-sm sm:text-base">{t("Are you looking after the car you love? Contact us now.")}</h2>
           <div className="flex justify-center items-center gap-4">
-            <a href={formLinksData.socialMedia.snapchat}><FaSnapchat className="text-primary text-7xl" /></a>
-            <a href={formLinksData.socialMedia.instagram}><FaInstagram className="text-primary text-7xl" /></a>
-            <a href={formLinksData.socialMedia.youtube}><IoLogoYoutube className="text-primary text-7xl" /></a>
-            <a href={formLinksData.socialMedia.whatsapp}><FaWhatsapp className="text-primary text-7xl" /></a>
-            {formLinksData.socialMedia.linkedin && <a href={formLinksData.socialMedia.linkedin}><FaLinkedin className="text-primary text-7xl" /></a>}
-            {formLinksData.socialMedia.tiktok && <a href={formLinksData.socialMedia.tiktok}><FaTiktok className="text-primary text-7xl" /></a>}
-            {formLinksData.socialMedia.twitter && <a href={formLinksData.socialMedia.twitter}><FaTwitter className="text-primary text-7xl" /></a>}
-            {formLinksData.socialMedia.facebook && <a href={formLinksData.socialMedia.facebook}><FaFacebook className="text-primary text-7xl" /></a>}
+            <a href={formLinksData.socialMedia.snapchat}><FaSnapchat className="text-primary text-4xl sm:text-7xl" /></a>
+            <a href={formLinksData.socialMedia.instagram}><FaInstagram className="text-primary text-4xl sm:text-7xl" /></a>
+            <a href={formLinksData.socialMedia.youtube}><IoLogoYoutube className="text-primary text-4xl sm:text-7xl" /></a>
+            <a href={formLinksData.socialMedia.whatsapp}><FaWhatsapp className="text-primary text-4xl sm:text-7xl" /></a>
+            {formLinksData.socialMedia.linkedin && <a href={formLinksData.socialMedia.linkedin}><FaLinkedin className="text-primary text-4xl sm:text-7xl" /></a>}
+            {formLinksData.socialMedia.tiktok && <a href={formLinksData.socialMedia.tiktok}><FaTiktok className="text-primary text-4xl sm:text-7xl" /></a>}
+            {formLinksData.socialMedia.twitter && <a href={formLinksData.socialMedia.twitter}><FaTwitter className="text-primary text-4xl sm:text-7xl" /></a>}
+            {formLinksData.socialMedia.facebook && <a href={formLinksData.socialMedia.facebook}><FaFacebook className="text-primary text-4xl sm:text-7xl" /></a>}
           </div>
-          <h2 className="text-center my-10 text-3xl md:text-5xl text-accent font-semibold">{t("We are pleased to be in touch with you at any time.")}</h2>
-          <span className="text-center text-primary text-2xl md:text-3xl">{t("8:00 AM - 9:00 PM")}</span>
+          <h2 className="text-center my-10 text-base sm:text-3xltext-accent font-semibold">{t("We are pleased to be in touch with you at any time.")}</h2>
+          <span className="text-center text-primary text-base sm:text-2xl md:text-3xl">{t("8:00 AM - 9:00 PM")}</span>
         </section>
       </section>
     </main>

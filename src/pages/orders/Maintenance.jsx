@@ -235,14 +235,14 @@ export default function Maintenance() {
       background: "#1E1E1E",
       padding: "0",
       '&:hover': {
-        borderColor: '#E45A00',
+        borderColor: '#D91C0B',
       },
       borderColor: '#555555',
     }),
     option: (provided, state) => ({
       // Styles for each option
       ...provided,
-      backgroundColor: state.isSelected ? '#E45A00' : '#1E1E1E',
+      backgroundColor: state.isSelected ? '#D91C0B' : '#1E1E1E',
       color: state.isSelected ? 'white' : 'white',
       display: "flex",
       
@@ -251,7 +251,7 @@ export default function Maintenance() {
     multiValue: (provided) => ({
       // Styles for the selected value(s)
       ...provided,
-      backgroundColor: '#E45A00',
+      backgroundColor: '#D91C0B',
       color: "white"
     }),
     multiValueLabel: (styles, { data }) => ({

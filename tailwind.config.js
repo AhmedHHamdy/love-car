@@ -18,10 +18,10 @@ module.exports = {
         light: {
           ...require("daisyui/src/theming/themes")["halloween"],
           "primary": "#D91C0B",
-          "secondary": "#1D1C1C",
+          "secondary": "#0D0D0D",
           "accent": "#ffffff",
           "neutral": "#8A8585",
-          "base-100": "#0D0D0D",
+          "base-100": "#1D1C1C",
         },
       },
     ],
