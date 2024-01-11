@@ -429,7 +429,7 @@ export default function Home() {
                 <Link state={{type: "maintenance"}} className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/maintenance">{t("Booking")}</Link>
               </div>
 
-              <div className="bg-base-100 px-10 py-28 rounded-xl w-full h-full" style={{background: `url(${Pic1}) no-repeat center center/cover`, backgroundSize: "cover"}}></div>
+              <div className="bg-base-100 px-10 py-28 rounded-xl w-full sm:h-full h-96" style={{background: `url(${Pic1}) no-repeat center center/cover`, backgroundSize: "cover"}}></div>
             </div>  
             
             <div className="flex flex-col sm:flex-row justify-center items-center gap-10 sm:gap-24 w-full">
@@ -439,7 +439,7 @@ export default function Home() {
                 <Link state={{type: "renewal"}} className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/renewal">{t("Booking")}</Link>
               </div>
 
-              <div className="bg-base-100 px-10 py-28 rounded-xl w-full h-full" style={{background: `url(${Pic2}) no-repeat center center/cover`, backgroundSize: "cover"}}></div>
+              <div className="bg-base-100 px-10 py-28 rounded-xl w-full sm:h-full h-96" style={{background: `url(${Pic2}) no-repeat center center/cover`, backgroundSize: "cover"}}></div>
             </div>
 
             <div className="flex flex-col sm:flex-row justify-center items-center gap-10 sm:gap-24 w-full">
@@ -449,7 +449,7 @@ export default function Home() {
                 <Link state={{type: "license"}} className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/license">{t("Booking")}</Link>
               </div>
 
-              <div className="bg-base-100 px-10 py-28 rounded-xl w-full h-full" style={{background: `url(${Pic3}) no-repeat center center/cover`, backgroundSize: "cover"}}></div>
+              <div className="bg-base-100 px-10 py-28 rounded-xl w-full sm:h-full h-96" style={{background: `url(${Pic3}) no-repeat center center/cover`, backgroundSize: "cover"}}></div>
             </div>
           </div>
         </section>
