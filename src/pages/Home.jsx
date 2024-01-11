@@ -21,6 +21,9 @@ import "slick-carousel/slick/slick-theme.css";
 import axios from "axios"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Pic1 from "../assets/pic-1.jpg"
+import Pic2 from "../assets/pic-2.jpg"
+import Pic3 from "../assets/pic-3.jpg"
 
 AOS.init();
 
@@ -183,33 +186,46 @@ export default function Home() {
       </section>
 
 
-      <section className="bg-secondary pb-40">
-        <section className="w-8/12 mx-auto pt-40">
-          <h2 className="text-center mb-10 text-5xl text-accent font-semibold">{t("Services We Provide For You")}</h2>
-          <p className="text-center mb-10 text-xl capitalize">{t("We Offer A Comprehensive Range Of Mobile Mechanic Services To Keep Your Vehicle In Top Condition.")}</p>
+      <section className="bg-secondary py-40" data-aos="fade-down">
+        <h2 className="text-center mb-10 text-4xl sm:text-5xl text-accent font-semibold">{t("Services We Provide For You")}</h2>
+        <p className="text-center mb-10 text-xl capitalize">{t("We Offer A Comprehensive Range Of Mobile Mechanic Services To Keep Your Vehicle In Top Condition.")}</p>
+        <section className="w-8/12 mx-auto pt-10 flex flex-col sm:grid sm:grid-cols-2 sm:gap-10">
+         
 
-          <div className="flex flex-col xl:flex-row justify-between items-center gap-10">
-            <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col text-center w-full h-full">
+          <div className="flex flex-col justify-between items-center gap-10 col-span-2 xl:col-span-1">
+            <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col items-center justify-center gap-7 text-center w-full h-full">
               <h3 className="text-2xl flex flex-col justify-between items-center gap-4">{t("Maintenance")} <GiAutoRepair className="text-primary text-4xl" /></h3>
-              <p className="text-neutral my-4 text-base">{t("Routine vehicle maintenance can help diagnose issues early and prevent costly repairs later.")}</p>
+              <p className="text-neutral-300 my-4 text-base">{t("Routine vehicle maintenance can help diagnose issues early and prevent costly repairs later.")}</p>
               <Link state={{type: "maintenance"}} className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/maintenance">{t("Booking")}</Link>
             </div>
 
-            <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col text-center w-full h-full">
+            <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col items-center justify-center gap-7 text-center w-full h-full">
               <h3 className="text-2xl flex flex-col justify-between items-center gap-4">{t("Renewal")} <TfiReload className="text-primary text-4xl" /></h3>
-              <p className="text-neutral my-4 text-base">{t("From brakes to batteries, our parts replacement service ensures your vehicle is equipped with high-quality components.")}</p>
+              <p className="text-neutral-300 my-4 text-base">{t("From brakes to batteries, our parts replacement service ensures your vehicle is equipped with high-quality components.")}</p>
               <Link state={{type: "renewal"}} className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/renewal">{t("Booking")}</Link>
             </div>
-          </div>
 
-        
-          <div className="flex justify-center items-center mt-10">
-            <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col text-center w-full h-full">
+            <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col items-center justify-center gap-7 text-center w-full h-full">
               <h3 className="text-2xl flex flex-col justify-between items-center gap-4">{t("License")} <TbLicense className="text-primary text-4xl" /></h3>
-              <p className="text-neutral my-4 text-base">{t("LoveCar is your trusted partner in simplifying and streamlining the licensing process for your vehicle. We understand that navigating the intricacies of licensing can be a time-consuming and complex task, and that's why we're here to make it easy, efficient, and enjoyable.")}</p>
+              <p className="text-neutral-300 my-4 text-base">{t("LoveCar is your trusted partner in simplifying and streamlining the licensing process for your vehicle. We understand that navigating the intricacies of licensing can be a time-consuming and complex task, and that's why we're here to make it easy, efficient, and enjoyable.")}</p>
               <Link state={{type: "license"}} className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/license">{t("Booking")}</Link>
             </div>
           </div>
+
+          <div className="flex flex-col justify-between items-center gap-10 col-span-2 xl:col-span-1 mt-10 sm:mt-0">
+            <div className="bg-base-100 px-10 py-60 rounded-xl w-full h-full" style={{background: `url(${Pic1}) no-repeat center center/cover`, backgroundSize: "cover"}}>
+              
+            </div>
+
+            <div className="bg-base-100 px-10 py-60 rounded-xl w-full h-full" style={{background: `url(${Pic2}) no-repeat center center/cover`, backgroundSize: "cover"}}>
+              
+            </div>
+
+            <div className="bg-base-100 px-10 py-60 rounded-xl w-full h-full" style={{background: `url(${Pic3}) no-repeat center center/cover`, backgroundSize: "cover"}}>
+              
+            </div>
+          </div>
+
         </section>
       </section>
 
@@ -370,7 +386,7 @@ export default function Home() {
       </div>
 
 
-      <section className="bg-secondary pb-40" data-aos="fade-down">
+      {/* <section className="bg-secondary pb-40" data-aos="fade-down">
         <section className="w-8/12 mx-auto pt-40">
           <h2 className="text-center mb-10 text-4xl sm:text-5xl text-accent font-semibold">{t("Services We Provide For You")}</h2>
           <p className="text-center mb-10 text-xl capitalize">{t("We Offer A Comprehensive Range Of Mobile Mechanic Services To Keep Your Vehicle In Top Condition.")}</p>
@@ -397,6 +413,49 @@ export default function Home() {
               <Link state={{type: "license"}} className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/license">{t("Booking")}</Link>
             </div>
           </div>
+        </section>
+      </section> */}
+
+      <section className="bg-secondary py-40" data-aos="fade-down">
+        <h2 className="text-center mb-10 text-4xl sm:text-5xl text-accent font-semibold">{t("Services We Provide For You")}</h2>
+        <p className="text-center mb-10 text-xl capitalize">{t("We Offer A Comprehensive Range Of Mobile Mechanic Services To Keep Your Vehicle In Top Condition.")}</p>
+        <section className="w-8/12 mx-auto pt-10 flex flex-col sm:grid sm:grid-cols-2 sm:gap-10">
+         
+
+          <div className="flex flex-col justify-between items-center gap-10 col-span-2 xl:col-span-1">
+            <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col items-center justify-center gap-7 text-center w-full h-full">
+              <h3 className="text-2xl flex flex-col justify-between items-center gap-4">{t("Maintenance")} <GiAutoRepair className="text-primary text-4xl" /></h3>
+              <p className="text-neutral-300 my-4 text-base">{t("Routine vehicle maintenance can help diagnose issues early and prevent costly repairs later.")}</p>
+              <Link state={{type: "maintenance"}} className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/maintenance">{t("Booking")}</Link>
+            </div>
+
+            <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col items-center justify-center gap-7 text-center w-full h-full">
+              <h3 className="text-2xl flex flex-col justify-between items-center gap-4">{t("Renewal")} <TfiReload className="text-primary text-4xl" /></h3>
+              <p className="text-neutral-300 my-4 text-base">{t("From brakes to batteries, our parts replacement service ensures your vehicle is equipped with high-quality components.")}</p>
+              <Link state={{type: "renewal"}} className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/renewal">{t("Booking")}</Link>
+            </div>
+
+            <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col items-center justify-center gap-7 text-center w-full h-full">
+              <h3 className="text-2xl flex flex-col justify-between items-center gap-4">{t("License")} <TbLicense className="text-primary text-4xl" /></h3>
+              <p className="text-neutral-300 my-4 text-base">{t("LoveCar is your trusted partner in simplifying and streamlining the licensing process for your vehicle. We understand that navigating the intricacies of licensing can be a time-consuming and complex task, and that's why we're here to make it easy, efficient, and enjoyable.")}</p>
+              <Link state={{type: "license"}} className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/license">{t("Booking")}</Link>
+            </div>
+          </div>
+
+          <div className="flex flex-col justify-between items-center gap-10 col-span-2 xl:col-span-1 mt-10 sm:mt-0">
+            <div className="bg-base-100 px-10 py-60 rounded-xl w-full h-full" style={{background: `url(${Pic1}) no-repeat center center/cover`, backgroundSize: "cover"}}>
+              
+            </div>
+
+            <div className="bg-base-100 px-10 py-60 rounded-xl w-full h-full" style={{background: `url(${Pic2}) no-repeat center center/cover`, backgroundSize: "cover"}}>
+              
+            </div>
+
+            <div className="bg-base-100 px-10 py-60 rounded-xl w-full h-full" style={{background: `url(${Pic3}) no-repeat center center/cover`, backgroundSize: "cover"}}>
+              
+            </div>
+          </div>
+
         </section>
       </section>
 
