@@ -187,8 +187,8 @@ export default function Home() {
 
 
       <section className="bg-secondary py-40" data-aos="fade-down">
-        <h2 className="text-center mb-10 text-4xl sm:text-5xl text-accent font-semibold">{t("Services We Provide For You")}</h2>
-        <p className="text-center mb-10 text-xl capitalize">{t("We Offer A Comprehensive Range Of Mobile Mechanic Services To Keep Your Vehicle In Top Condition.")}</p>
+        <h2 className="text-center mb-10 text-3xl sm:text-5xl text-accent font-semibold">{t("Services We Provide For You")}</h2>
+        <p className="text-center mb-10 text-base px-10 sm:px-0 sm:text-xl capitalize">{t("We Offer A Comprehensive Range Of Mobile Mechanic Services To Keep Your Vehicle In Top Condition.")}</p>
         
         <section className="w-9/12 md:w-10/12 xl:w-9/12 mx-auto pt-10 flex flex-col sm:grid sm:grid-cols-2">
 
@@ -434,8 +434,8 @@ export default function Home() {
       </section> */}
 
       <section className="bg-secondary py-40" data-aos="fade-down">
-        <h2 className="text-center mb-10 text-4xl sm:text-5xl text-accent font-semibold">{t("Services We Provide For You")}</h2>
-        <p className="text-center mb-10 text-xl capitalize">{t("We Offer A Comprehensive Range Of Mobile Mechanic Services To Keep Your Vehicle In Top Condition.")}</p>
+        <h2 className="text-center mb-10 text-3xl sm:text-5xl text-accent font-semibold">{t("Services We Provide For You")}</h2>
+        <p className="text-center mb-10 text-base px-10 sm:px-0 sm:text-xl capitalize">{t("We Offer A Comprehensive Range Of Mobile Mechanic Services To Keep Your Vehicle In Top Condition.")}</p>
         
         <section className="w-9/12 md:w-10/12 xl:w-9/12 mx-auto pt-10 flex flex-col sm:grid sm:grid-cols-2">
 
