@@ -101,7 +101,7 @@ export default function Header() {
                 <ul className="p-2 rounded-lg z-30">
                   <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} state={{type: "maintenance"}} to="/maintenance">{t("Maintenance")}</Link></li>
                   <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} state={{type: "renewal"}} to="/renewal">{t("Renewal")}</Link></li>
-                  <li className="hover:bg-primary rounded-lg"><Link  onClick={() => handleClick()}state={{type: "license"}} to="/license">{t("License")}</Link></li>
+                  <li className="hover:bg-primary rounded-lg"><Link  onClick={() => handleClick()}state={{type: "license"}} to="/license">{t("Comprehensive Car Inspection")}</Link></li>
                 </ul>
               </li>
               <li className="hover:bg-primary rounded-lg"><a href={localStorage.getItem("storeLink") || "https://mr-decals.com/"} target="_blank">{t("Shop")}</a></li>
@@ -135,7 +135,7 @@ export default function Header() {
               <ul tabIndex={0} className="dropdown-content z-30 menu p-2 shadow bg-primary rounded-box w-52">
                 <li className="hover:bg-secondary rounded-xl"><Link onClick={ () => handleClick() } state={{type: "maintenance"}} to="/maintenance">{t("Maintenance")}</Link></li>
                 <li className="hover:bg-secondary rounded-xl"><Link onClick={ () => handleClick() } state={{type: "renewal"}} to="/renewal">{t("Renewal")}</Link></li>
-                <li className="hover:bg-secondary rounded-xl"><Link onClick={ () => handleClick() } state={{type: "license"}} to="/license">{t("License")}</Link></li>
+                <li className="hover:bg-secondary rounded-xl"><Link onClick={ () => handleClick() } state={{type: "license"}} to="/license">{t("Comprehensive Car Inspection")}</Link></li>
               </ul>
             </li>
             {/* <li className="text-base"><Dropdown /></li> */}
@@ -186,7 +186,7 @@ export default function Header() {
                 <ul className="p-2 rounded-lg z-30">
                   <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} state={{type: "maintenance"}} to="/maintenance">{t("Maintenance")}</Link></li>
                   <li className="hover:bg-primary rounded-lg"><Link onClick={() => handleClick()} state={{type: "renewal"}} to="/renewal">{t("Renewal")}</Link></li>
-                  <li className="hover:bg-primary rounded-lg"><Link  onClick={() => handleClick()}state={{type: "license"}} to="/license">{t("License")}</Link></li>
+                  <li className="hover:bg-primary rounded-lg"><Link  onClick={() => handleClick()}state={{type: "license"}} to="/license">{t("Comprehensive Car Inspection")}</Link></li>
                 </ul>
               </li>
               <li className="hover:bg-primary rounded-lg"><a href={localStorage.getItem("storeLink") || "https://mr-decals.com/"} target="_blank">{t("Shop")}</a></li>
@@ -220,7 +220,7 @@ export default function Header() {
               <ul tabIndex={0} className="dropdown-content z-30 menu p-2 shadow bg-primary rounded-box w-52">
                 <li className="hover:bg-secondary rounded-xl"><Link onClick={ () => handleClick() } state={{type: "maintenance"}} to="/maintenance">{t("Maintenance")}</Link></li>
                 <li className="hover:bg-secondary rounded-xl"><Link onClick={ () => handleClick() } state={{type: "renewal"}} to="/renewal">{t("Renewal")}</Link></li>
-                <li className="hover:bg-secondary rounded-xl"><Link onClick={ () => handleClick() } state={{type: "license"}} to="/license">{t("License")}</Link></li>
+                <li className="hover:bg-secondary rounded-xl"><Link onClick={ () => handleClick() } state={{type: "license"}} to="/license">{t("Comprehensive Car Inspection")}</Link></li>
               </ul>
             </li>
             {/* <li className="text-base"><Dropdown /></li> */}

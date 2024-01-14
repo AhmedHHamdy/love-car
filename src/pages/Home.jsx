@@ -228,7 +228,7 @@ export default function Home() {
 
             <div className="flex flex-col md:flex-row justify-center items-center gap-10 sm:gap-10 w-full sm:w-[25rem] md:w-full  max-w-[60rem]">
               <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col items-center justify-center gap-7 text-center w-full h-full">
-                <h3 className="text-2xl flex flex-col justify-between items-center gap-4">{t("License")} <TbLicense className="text-primary text-4xl" /></h3>
+                <h3 className="text-2xl flex flex-col justify-between items-center gap-4">{t("Comprehensive Car Inspection")} <TbLicense className="text-primary text-4xl" /></h3>
                 <p className="text-neutral-300 my-4 text-base">{t("LoveCar is your trusted partner in simplifying and streamlining the licensing process for your vehicle. We understand that navigating the intricacies of licensing can be a time-consuming and complex task, and that's why we're here to make it easy, efficient, and enjoyable.")}</p>
                 <Link state={{type: "license"}} className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/license">{t("Booking")}</Link>
               </div>
@@ -475,7 +475,7 @@ export default function Home() {
 
             <div className="flex flex-col md:flex-row justify-center items-center gap-10 sm:gap-10 w-full sm:w-[25rem] md:w-full  max-w-[60rem]">
               <div className="bg-base-100 px-10 py-10 rounded-xl flex flex-col items-center justify-center gap-7 text-center w-full h-full">
-                <h3 className="text-2xl flex flex-col justify-between items-center gap-4">{t("License")} <TbLicense className="text-primary text-4xl" /></h3>
+                <h3 className="text-2xl flex flex-col justify-between items-center gap-4">{t("Comprehensive Car Inspection")} <TbLicense className="text-primary text-4xl" /></h3>
                 <p className="text-neutral-300 my-4 text-base">{t("LoveCar is your trusted partner in simplifying and streamlining the licensing process for your vehicle. We understand that navigating the intricacies of licensing can be a time-consuming and complex task, and that's why we're here to make it easy, efficient, and enjoyable.")}</p>
                 <Link state={{type: "license"}} className="self-center bg-primary py-3 px-6 rounded-full text-accent leading-none btn" to="/license">{t("Booking")}</Link>
               </div>
