@@ -148,6 +148,7 @@ export default function Profile() {
       })
       .catch(err => {
         console.log(err);
+        setLoadingButtonStatus(false)
         setError(err.response.data.message)
       });
   }
