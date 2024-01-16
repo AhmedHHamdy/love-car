@@ -67,8 +67,8 @@ export default function AboutUs() {
 
           <div className="flex flex-col justify-space-between items-center sm:items-center md:items-center xl:items-start">
             <span className="text-sm bg-primary p-3 rounded-full rounded-tl-none text-accent">{t("We are pleased to collaborate with you")}</span>
-            {i18n.language == "ar" && <p className="py-6 text-3xl sm:text-5xl font-semibold text-accent leading-normal text-center xl:text-start">{formData.description_ar}</p>}
-            {i18n.language == "en" && <p className="py-6 text-3xl sm:text-5xl font-semibold text-accent leading-normal text-center xl:text-start">{formData.description_en}</p>}
+            {i18n.language == "ar" && <p className="py-6 text-3xl sm:text-5xl font-semibold text-accent leading-loose sm:leading-relaxed text-center xl:text-start">{formData.description_ar}</p>}
+            {i18n.language == "en" && <p className="py-6 text-3xl sm:text-5xl font-semibold text-accent leading-loose sm:leading-relaxed text-center xl:text-start">{formData.description_en}</p>}
 
             <ul className="h-full flex flex-col items-center md:grid md:grid-cols-12 md:justify-center md:items-center md:auto-rows-min gap-x-10">
               {formData.data.map(d => {
@@ -89,7 +89,7 @@ export default function AboutUs() {
           <img src={formData.image2} className="max-w-full sm:max-w-xl rounded-lg xl:mb-6" />
           <div>
             <h1 className="text-3xl text-accent">{t("We are delighted to fulfill your requests.")}</h1>
-            <p className="py-6 text-accent text-sm sm:text-base w-60 sm:w-full">{t("We welcome orders for purchasing, renewing, and maintaining all types of vehicles. We are happy to serve you.")}</p>
+            <p className="py-6 text-accent text-sm sm:text-base w-60 sm:w-full">{t("We welcome orders for renewing, maintaining, and inspecting all types of vehicles. We are happy to serve you.")}</p>
           </div>
         </div>
       </div>

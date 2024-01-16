@@ -166,7 +166,7 @@ export default function ContactUs() {
 
             <p className="py-6 text-4xl sm:text-5xl font-semibold text-accent">{t("Do you have any inquiries?")}</p>
             <span className="text-primary text-xl flex justify-center items-center gap-4"><FaMapLocationDot /> {t("Address")}</span>
-            <h3 className="text-xl mt-2 border-b-[0.02rem] border-gray-700  w-full md:w-full pb-6">
+            <h3 className="text-xl mt-2 border-b-[0.02rem] border-gray-700  w-full md:w-full pb-6 leading-loose">
               {formData.address} <br />
               {formData.region}
             </h3>
