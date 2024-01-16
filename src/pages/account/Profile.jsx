@@ -132,7 +132,13 @@ export default function Profile() {
     }
   
     // Append the file data
-    EditProfileForm.append("image", formData.image);
+    // EditProfileForm.append("image", formData.image);
+    
+    // Check if formData.image is a file (not a string)
+    if (formData.image instanceof File) {
+      // Append the file data
+      EditProfileForm.append("image", formData.image);
+  }
 
     setLoadingButtonStatus(true)
 
