@@ -1,11 +1,11 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link, json, useNavigate } from "react-router-dom"
 import Logo from "../assets/logo.png"
 import { useAuth } from "../context/AuthProvider"
 import { CgProfile } from "react-icons/cg";
 import Cookies from "js-cookie";
 import LanguageSelector from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Car from "../assets/mingcute_car-3-fill.png"
 import Dropdown from "./DropdownMenu";
@@ -19,6 +19,11 @@ export default function Header() {
 
   const [loadingStatus, setLoadingStatus] = useState(false)
   const [error, setError] = useState(null)
+
+  const [notificationsData, setNotificationsData] = useState(null)
+  const [previousNotificationsData, setPreviousNotificationsData] = useState(null)
+  const [showNotification, setShowNotification] = useState(false)
+  const isFirstRun = useRef(true)
 
   const [formData, setFormData] = useState({
     id: '',
@@ -42,6 +47,58 @@ export default function Header() {
     setToken()
     navigate("/", { replace: true })
   }
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/users/notification`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+        })
+
+        const data = await response.data.data
+        console.log(response)
+        console.log(data)
+
+        if (!isFirstRun.current) {
+          if (previousNotificationsData == null) {
+            setPreviousNotificationsData(data.notifications)
+          } else if (JSON.stringify(data.notifications) !== JSON.stringify(previousNotificationsData)) {
+            console.log('Data has changed!');
+            
+            setPreviousNotificationsData(data.notifications)
+
+            setShowNotification(true)
+
+            setTimeout(() => {
+              setShowNotification(false)
+            }, 3000)
+          }
+        }
+
+        setNotificationsData(data.notifications)
+      } catch (err) {
+
+        console.log(err)
+      
+      }
+    }
+
+    if (isFirstRun.current) {
+      isFirstRun.current = false
+      return
+    }
+
+    loadData()
+
+    const pollingInterval = setInterval(() => {
+      loadData()
+    }, 5000)
+
+    return () => clearInterval(pollingInterval)
+
+  }, [token, previousNotificationsData])
 
   
   useEffect(() => {
@@ -173,6 +230,11 @@ export default function Header() {
 
   return(
     <>
+       {showNotification && <Link to="/messages"><div class="toast toast-bottom toast-start z-40">
+        <div class="alert alert-success text-accent">
+          <span>{t("New Message Arrived")}</span>
+        </div>
+      </div></Link>}
       <div className="navbar bg-base-100 w-10/12 mx-auto px-0 py-4">
         <div className="navbar-start">
           <div className="dropdown">
