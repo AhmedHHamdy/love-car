@@ -233,7 +233,7 @@ export default function Header() {
        {!showNotification && <Link to="/messages"><div class="toast toast-bottom toast-start z-40">
        <div className="chat chat-start">
           <div className="chat-image avatar border-2 rounded-full border-primary">
-            <div className="w-10 rounded-full">
+            <div className="w-10 rounded-full bg-secondary">
               <img alt="New Message bubble chat alert" src={Logo} />
             </div>
           </div>
