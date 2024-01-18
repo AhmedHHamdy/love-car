@@ -230,9 +230,15 @@ export default function Header() {
 
   return(
     <>
-       {showNotification && <Link to="/messages"><div class="toast toast-bottom toast-start z-40">
-        <div class="alert alert-success text-accent">
-          <span>{t("New Message Arrived")}</span>
+       {!showNotification && <Link to="/messages"><div class="toast toast-bottom toast-start z-40">
+       <div className="chat chat-start">
+          <div className="chat-image avatar border-2 rounded-full border-primary">
+            <div className="w-10 rounded-full">
+              <img alt="New Message bubble chat alert" src={Logo} />
+            </div>
+          </div>
+          
+          <div className="chat-bubble bg-success max-w-full text-accent">{t("New Message Arrived")}</div>
         </div>
       </div></Link>}
       <div className="navbar bg-base-100 w-10/12 mx-auto px-0 py-4">
