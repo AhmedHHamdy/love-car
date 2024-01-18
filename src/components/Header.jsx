@@ -47,6 +47,26 @@ export default function Header() {
     setToken()
     navigate("/", { replace: true })
   }
+  
+
+    // Function to show browser notification
+    const requestNotificationPermission = () => {
+      if ('Notification' in window) {
+        Notification.requestPermission().then((permission) => {
+          if (permission === 'granted') {
+            console.log('Notification permission granted!');
+            new Notification(t("New Message Arrived"), {
+              body: t("New Message Arrived"),
+            });
+          } else if (permission === 'denied') {
+            console.log('Notification permission denied.');
+          } else {
+            console.log('Notification permission dismissed by user.');
+          }
+        });
+      }
+    };
+
 
   useEffect(() => {
     async function loadData() {
@@ -74,6 +94,9 @@ export default function Header() {
             setTimeout(() => {
               setShowNotification(false)
             }, 3000)
+
+            requestNotificationPermission(); 
+
           }
         }
 
@@ -230,7 +253,7 @@ export default function Header() {
 
   return(
     <>
-       {!showNotification && <Link to="/messages"><div class="toast toast-bottom toast-start z-40">
+       {showNotification && <Link to="/messages"><div class="toast toast-bottom toast-start z-40">
        <div className="chat chat-start">
           <div className="chat-image avatar border-2 rounded-full border-primary">
             <div className="w-10 rounded-full bg-secondary">
