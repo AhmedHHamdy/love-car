@@ -61,7 +61,7 @@ export default function Header() {
           if (permission === 'granted') {
             console.log('Notification permission granted!');
             new Notification(t("My Love Car"), {
-              body: notificationsData && notificationsData[0].body,
+              body: notificationsData && notificationsData[0].body
             });
           } else if (permission === 'denied') {
             console.log('Notification permission denied.');
