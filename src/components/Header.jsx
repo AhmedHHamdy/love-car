@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Car from "../assets/mingcute_car-3-fill.png"
 import Dropdown from "./DropdownMenu";
+import { IoClose } from "react-icons/io5";
 
 export default function Header() {
   const { token, setToken } = useAuth()
@@ -47,6 +48,10 @@ export default function Header() {
     setToken()
     navigate("/", { replace: true })
   }
+
+  function handleCloseNotification(e) {
+    setShowNotification(previousValue => !previousValue)
+  }
   
 
     // Function to show browser notification
@@ -55,8 +60,8 @@ export default function Header() {
         Notification.requestPermission().then((permission) => {
           if (permission === 'granted') {
             console.log('Notification permission granted!');
-            new Notification(t("New Message Arrived"), {
-              body: t("New Message Arrived"),
+            new Notification(t("My Love Car"), {
+              body: notificationsData && notificationsData[0].body,
             });
           } else if (permission === 'denied') {
             console.log('Notification permission denied.');
@@ -82,9 +87,8 @@ export default function Header() {
         console.log(data)
 
         if (!isFirstRun.current) {
-          if (previousNotificationsData == null) {
-            setPreviousNotificationsData(data.notifications)
-          } else if (JSON.stringify(data.notifications) !== JSON.stringify(previousNotificationsData)) {
+          if (localStorage.getItem('lastNotificationID') !== null && data.notifications.length > 0 && localStorage.getItem('lastNotificationID') !== data.notifications[0].id) {
+            
             console.log('Data has changed!');
             
             setPreviousNotificationsData(data.notifications)
@@ -93,13 +97,16 @@ export default function Header() {
 
             setTimeout(() => {
               setShowNotification(false)
-            }, 3000)
+            }, 8000)
 
             requestNotificationPermission(); 
 
+            localStorage.setItem('lastNotificationID', data.notifications.length > 0 && data.notifications[0].id || 'noID')
+          } else {
+            // setPreviousNotificationsData(data.notifications)
+            localStorage.setItem('lastNotificationID', data.notifications.length > 0 && data.notifications[0].id || 'noID')
           }
         }
-
         setNotificationsData(data.notifications)
       } catch (err) {
 
@@ -261,7 +268,8 @@ export default function Header() {
             </div>
           </div>
           
-          <div className="chat-bubble bg-success max-w-full text-accent">{t("New Message Arrived")}</div>
+          <div className="chat-bubble bg-success max-w-full text-accent flex items-center justify-between gap-2">{t("New Message Arrived")}<br /> {notificationsData && notificationsData[0]?.body}<IoClose onClick={handleCloseNotification} className="text-2xl hover:bg-green-700 rounded-lg" /></div>
+          
         </div>
       </div></Link>}
       <div className="navbar bg-base-100 w-10/12 mx-auto px-0 py-4">
