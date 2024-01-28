@@ -260,15 +260,15 @@ export default function Header() {
 
   return(
     <>
-       {showNotification && <Link to="/messages"><div class="toast toast-bottom toast-start z-40">
-       <div className="chat chat-start">
+       {showNotification && <Link to="/messages"><div class="toast toast-end z-40">
+       <div className="chat chat-end">
           <div className="chat-image avatar border-2 rounded-full border-primary">
-            <div className="w-10 rounded-full bg-secondary">
+            <div className="w-12 rounded-full bg-secondary">
               <img alt="New Message bubble chat alert" src={Logo} />
             </div>
           </div>
           
-          <div className="chat-bubble bg-success max-w-full text-accent flex items-center justify-between gap-2">{t("New Message Arrived")}<br /> {notificationsData && notificationsData[0]?.body}<IoClose onClick={handleCloseNotification} className="text-2xl hover:bg-green-700 rounded-lg" /></div>
+          <div className="chat-bubble bg-success max-w-full text-accent flex items-center justify-between gap-2"><IoClose onClick={handleCloseNotification} className="text-2xl hover:bg-green-700 rounded-lg" />{t("New Message Arrived")}<br /> {notificationsData && notificationsData[0]?.body}</div>
           
         </div>
       </div></Link>}
