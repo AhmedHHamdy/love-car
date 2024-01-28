@@ -55,13 +55,13 @@ export default function Header() {
   
 
     // Function to show browser notification
-    const requestNotificationPermission = () => {
+    const requestNotificationPermission = (data) => {
       if ('Notification' in window) {
         Notification.requestPermission().then((permission) => {
           if (permission === 'granted') {
             console.log('Notification permission granted!');
             new Notification(t("My Love Car"), {
-              body: previousNotificationsData && previousNotificationsData[0].body
+              body: data && data[0].body
             });
           } else if (permission === 'denied') {
             console.log('Notification permission denied.');
@@ -99,7 +99,7 @@ export default function Header() {
               setShowNotification(false)
             }, 8000)
 
-            requestNotificationPermission(); 
+            requestNotificationPermission(data.notifications); 
 
             localStorage.setItem('lastNotificationID', data.notifications.length > 0 && data.notifications[0].id || 'noID')
           } else {
