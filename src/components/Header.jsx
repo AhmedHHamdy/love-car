@@ -97,7 +97,7 @@ export default function Header() {
 
             setTimeout(() => {
               setShowNotification(false)
-            }, 8000)
+            }, 300000)
 
             requestNotificationPermission(data.notifications); 
 
@@ -125,7 +125,7 @@ export default function Header() {
 
     const pollingInterval = setInterval(() => {
       loadData()
-    }, 5000)
+    }, 15000)
 
     return () => clearInterval(pollingInterval)
 
