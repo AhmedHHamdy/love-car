@@ -94,6 +94,8 @@ export default function Header() {
             setPreviousNotificationsData(data.notifications)
 
             setShowNotification(true)
+            
+            setNotificationsData(data.notifications)
 
             setTimeout(() => {
               setShowNotification(false)
