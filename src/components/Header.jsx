@@ -117,6 +117,7 @@ export default function Header() {
 
     if (isFirstRun.current) {
       isFirstRun.current = false
+      setPreviousNotificationsData([]);
       return
     }
 
