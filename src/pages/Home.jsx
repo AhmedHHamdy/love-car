@@ -497,25 +497,25 @@ export default function Home() {
         <section className="w-9/12 mx-auto py-24">
           <h2 className="text-center mb-16 text-4xl sm:text-5xl text-accent font-semibold">{t("How It Works")}</h2>
 
-          <div className="flex flex-col xl:flex-row justify-between items-center gap-10">
-            <div className="bg-secondary px-10 py-20 h-full w-full rounded-xl flex flex-col justify-center items-center gap-8 xl:h-[45rem]">
+          <div className="flex flex-col 2xl:flex-row justify-between items-center gap-10">
+            <div className="bg-secondary px-10 py-20 h-full w-full rounded-xl flex flex-col justify-center items-center gap-8 2xl:h-[35rem]">
               <img className="w-20 sm:w-50 mb-4" src={dataBaseIcon} alt="How it works icon" />
-              <p className="text-base text-center md:text-xl xl:h-[20rem] leading-loose md:leading-loose">{t("Provide us with your essential details by filling out the required fields. Include your name, mobile number, and email for seamless communication.")}</p>
+              <p className="text-base text-center md:text-xl 2xl:h-[20rem] leading-loose md:leading-loose">{t("Provide us with your essential details by filling out the required fields. Include your name, mobile number, and email for seamless communication.")}</p>
             </div>
 
-            <div className="bg-secondary px-10 py-20 h-full w-full rounded-xl flex flex-col justify-center items-center gap-8 xl:h-[45rem]">
+            <div className="bg-secondary px-10 py-20 h-full w-full rounded-xl flex flex-col justify-center items-center gap-8 2xl:h-[35rem]">
               <img className="w-20 sm:w-50 mb-4" src={carIcon} alt="How it works icon" />
-              <p className="text-base text-center md:text-xl xl:h-[20rem] leading-loose md:leading-loose">{t("Share your car's brand, manufacturing year, specifications, and attach photos using our user-friendly interface.")}</p>
+              <p className="text-base text-center md:text-xl 2xl:h-[20rem] leading-loose md:leading-loose">{t("Share your car's brand, manufacturing year, specifications, and attach photos using our user-friendly interface.")}</p>
             </div>
 
-            <div className="bg-secondary px-10 py-20 h-full w-full rounded-xl flex flex-col justify-center items-center gap-8 xl:h-[45rem]">
+            <div className="bg-secondary px-10 py-20 h-full w-full rounded-xl flex flex-col justify-center items-center gap-8 2xl:h-[35rem]">
               <img className="w-20 sm:w-50 mb-4" src={laptopIcon} alt="How it works icon" />
-              <p className="text-base text-center md:text-xl xl:h-[20rem] leading-loose md:leading-loose">{t("Rest assured that we eagerly receive and address your requests and inquiries at any time. Your satisfaction is our priority.")}</p>
+              <p className="text-base text-center md:text-xl 2xl:h-[20rem] leading-loose md:leading-loose">{t("Rest assured that we eagerly receive and address your requests and inquiries at any time. Your satisfaction is our priority.")}</p>
             </div>
 
-            <div className="bg-secondary px-10 py-20 h-full w-full rounded-xl flex flex-col justify-center items-center gap-8 xl:h-[45rem]">
+            <div className="bg-secondary px-10 py-20 h-full w-full rounded-xl flex flex-col justify-center items-center gap-8 2xl:h-[35rem]">
               <img className="w-20 sm:w-50 mb-4" src={timerIcon} alt="How it works icon" />
-              <p className="text-base text-center md:text-xl xl:h-[20rem] leading-loose md:leading-loose">{t("Anticipate a timely response within 3 days, ensuring that your queries and concerns are addressed promptly and efficiently.")}</p>
+              <p className="text-base text-center md:text-xl 2xl:h-[20rem] leading-loose md:leading-loose">{t("Anticipate a timely response within 3 days, ensuring that your queries and concerns are addressed promptly and efficiently.")}</p>
             </div>
           </div>
         </section>
