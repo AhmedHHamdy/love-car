@@ -98,7 +98,7 @@ export default function Messages() {
 
             <div className="sm:col-span-6">
               <h3 className="font-bold text-lg my-1">{t("Message")} :</h3>
-              <input type="text" readOnly value={order.body} className="input input-bordered w-full sm:max-w-none capitalize" />
+              <input type="text" readOnly value={order.message} className="input input-bordered w-full sm:max-w-none capitalize" />
             </div>
 
             <button className={`btn bg-primary text-accent w-full mt-2 col-span-6 self-end`} onClick={()=> openModel(order)}>{t("details")}</button>
@@ -166,7 +166,7 @@ export default function Messages() {
 
               <div className="sm:col-span-12">
                 <h3 className="font-bold text-lg my-1">{t("Message")} :</h3>
-                <input type="text" readOnly value={selectedOrder.body} className="input input-bordered w-full sm:max-w-none capitalize" />
+                <input type="text" readOnly value={selectedOrder.message} className="input input-bordered w-full sm:max-w-none capitalize" />
               </div>
 
 

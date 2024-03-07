@@ -16,9 +16,9 @@ const LanguageSelector = () => {
   }
 
   return (
-    <select className="select select-bordered w-[4rem] max-w-xs  min-h-0 h-[2rem] p-0 px-2" defaultValue={selectedLanguage} onChange={chooseLanguage}>
-      <option value="ar">AR</option>
-      <option value="en">EN</option>
+    <select className="select select-bordered w-full lg:w-[6rem] max-w-xs  min-h-0 mt-1 h-[2rem] p-0 px-2" defaultValue={selectedLanguage} onChange={chooseLanguage}>
+      <option className="text-white bg-base-300" value="ar">Arabic</option>
+      <option className="text-white bg-base-300" value="en">English</option>
     </select>
   )
 }

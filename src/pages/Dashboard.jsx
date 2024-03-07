@@ -174,6 +174,11 @@ export default function Dashboard() {
               <textarea readOnly value={selectedOrder.notes} className="textarea textarea-bordered w-full max-w-xs sm:max-w-none" />
             </div>
 
+            <div className="col-span-2">
+              <h3 className="font-bold text-lg my-1">{t("Message")} :</h3>
+              <textarea readOnly value={selectedOrder.message} className="textarea textarea-bordered w-full max-w-xs sm:max-w-none" />
+            </div>
+
             {selectedOrder.cancelledReason !== "" && <div className="col-span-2">
               <h3 className="font-bold text-lg my-1">{t("Reason for rejection")} :</h3>
               <textarea readOnly value={selectedOrder.cancelledReason} className="textarea textarea-bordered w-full max-w-xs sm:max-w-none" />

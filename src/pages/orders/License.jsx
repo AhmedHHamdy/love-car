@@ -107,7 +107,7 @@ export default function License() {
   return (
     <section className="bg-secondary p-10">
       <section className="w-9/12 mx-auto flex flex-col justify-center items-center">
-        <h1 className="text-center text-3xl">{t("Comprehensive Car Inspection")}</h1>
+        <h1 className="text-center text-3xl">{t("Car Inspection")}</h1>
 
         {success && <div role="alert" className="alert alert-success max-w-fit flex my-4">
           <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>

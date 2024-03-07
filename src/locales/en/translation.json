@@ -28,7 +28,7 @@
   "Years of Experience": "Years of Experience",
   "Total Clients": "Total Clients",
   "Spare Parts Sold": "Spare Parts Sold",
-  "Services WeProvide For You": "Services We Provide For You",
+  "Services We Provide For You": "Services We Provide For You",
   "We Offer A Comprehensive Range Of Mobile Mechanic Services To Keep Your Vehicle In Top Condition.": "We offer a comprehensive range of mobile mechanic services to keep your vehicle in top condition.",
   "Routine vehicle maintenance can help diagnose issues early and prevent costly repairs later.": "Routine vehicle maintenance can help diagnose issues early and prevent costly repairs later.",
   "Booking": "Booking",
@@ -156,6 +156,8 @@
   "Team": "Team",
   "About Team": "About Love Car Team",
   
-  "Comprehensive Car Inspection": "Comprehensive Car Inspection",
-  "New Message Arrived": "New Message Arrived"
+  "Car Inspection": "Car Inspection",
+  "New Message Arrived": "New Message Arrived",
+
+  "Page Not Found": "Page Not Found"
 }

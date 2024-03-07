@@ -317,14 +317,14 @@ export default function Home() {
           <section className="flex sm:flex-col lg:flex-row lg:items-center sm:items-center md:justify-between md:items-start md:gap-6">
             <h1 className="md:text-[2.4rem] text-center text-2xl sm:text-5xl lg:text-[3.3rem] capitalize leading-normal sm:leading-normal text-accent font-semibold sm:self-start">{t("Our Experienced Mechanic Engineers Ready to Help You")}</h1>
             <div className="sm:flex sm:flex-col w-8/12 sm:w-full sm:mt-4 md:mt-0 md:w-full xl:w-8/12 sm:justify-center sm:items-center lg:items-start sm:gap-4 hidden">
-              <p className="text-lg leading-loose sm:leading-loose text-neutral sm:text-center md:text-right">{t("Welcome to our premier car maintenance service! At the heart of our commitment to exceptional automotive care lies a dedicated team of skilled professionals ready to ensure your vehicle's peak performance.")}</p>
+              <p className="text-lg leading-loose sm:leading-loose text-neutral sm:text-center md:text-start">{t("Welcome to our premier car maintenance service! At the heart of our commitment to exceptional automotive care lies a dedicated team of skilled professionals ready to ensure your vehicle's peak performance.")}</p>
               <Link to="/contact-us" className="btn bg-primary text-xl rounded-full px-10 text-accent leading-none">{t("Contact Us")}</Link>
             </div>
           </section>
         </section>
 
         <section className="flex flex-col sm:flex-row justify-between items-center sm:items-stretch w-11/12 mx-auto sm:mx-0 sm:ms-auto mt-6 sm:mt-10 pb-14">
-          <section className="flex flex-col justify-around items-center sm:items-start gap-8 sm:ms-4">
+          <section className="flex flex-col justify-around items-center sm:items-start gap-8 sm:ms-4 md:me-6">
             <div className="text-center sm:text-start w-40 flex flex-col items-center sm:items-start">
               {/* <span className="text-primary text-5xl font-medium">20+</span> */}
               <span className="text-primary text-2xl sm:text-5xl flex font-medium">+
