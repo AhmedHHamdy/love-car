@@ -27,8 +27,8 @@ export default function Footer() {
             </nav> 
             <nav>
                 <header className="footer-title">{t("Legal")}</header> 
-                <Link className="link link-hover text-base">{t("Terms Of Use")}</Link>
-                <Link className="link link-hover text-base">{t("Privacy Policy")}</Link>
+                <Link to="/privacy-policy" className="link link-hover text-base">{t("Terms Of Use")}</Link>
+                <Link to="/privacy-policy" className="link link-hover text-base">{t("Privacy Policy")}</Link>
             </nav>
 
             <nav>

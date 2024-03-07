@@ -15,6 +15,7 @@ import License from "./pages/orders/License"
 import Messages from "./pages/Messages"
 import Team from "./pages/Team"
 import NotFound from "./pages/NotFound"
+import PrivacyPolicy from "./pages/PrivacyPolicy"
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="privacy-policy" element={<PrivacyPolicy />} />
 
           <Route element={<AuthRequired />}>
             <Route path="dashboard" element={<Dashboard />} />
