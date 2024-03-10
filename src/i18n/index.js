@@ -25,7 +25,7 @@ i18n
     lng: localStorage.getItem("lang"), // It acts as default language. When the site loads, content is shown in this language.  
     // lng: "ar", // It acts as default language. When the site loads, content is shown in this language.  
     debug: true,
-    fallbackLng: "ar", // use de if selected language is not available
+    fallbackLng: "en", // use de if selected language is not available
     interpolation: {
       escapeValue: false
     },
