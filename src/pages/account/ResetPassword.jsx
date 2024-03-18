@@ -115,7 +115,7 @@ export default function ResetPassword() {
   }
 
   return (
-    <section className="bg-secondary flex justify-center items-center h-screen 2xl:max-w-[1800px] 2xl:mx-auto">
+    <section className="bg-secondary flex justify-center items-center h-screen">
       {resetCodeFormContainer &&
         <section className="bg-base-100 flex flex-col justify-center items-start pt-4 pb-6 px-10 w-50 rounded-md">
           <h1 className="text-2xl my-2">{t("Reset Your Password")}</h1>

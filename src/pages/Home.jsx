@@ -311,8 +311,8 @@ export default function Home() {
 
  
   return(
-    <main className="overflow-x-hidden 2xl:max-w-[1800px] 2xl:mx-auto">
-      <div className="pb-14">
+    <main className="overflow-x-hidden ">
+      <div className="pb-14 2xl:max-w-[1800px] 2xl:mx-auto">
         <section className="w-10/12 mx-auto mt-6 sm:mt-10 h" data-aos="fade-up">
           <section className="flex sm:flex-col lg:flex-row lg:items-center sm:items-center md:justify-between md:items-start md:gap-6">
             <h1 className="md:text-[2.4rem] text-center text-2xl sm:text-5xl lg:text-[3.3rem] capitalize leading-normal sm:leading-normal text-accent font-semibold sm:self-start">{t("Our Experienced Mechanic Engineers Ready to Help You")}</h1>
@@ -493,7 +493,7 @@ export default function Home() {
       </section>
 
 
-      <section className="py-10" data-aos="fade-left">
+      <section className="py-10 2xl:max-w-[1800px] 2xl:mx-auto" data-aos="fade-left">
         <section className="w-9/12 mx-auto py-24">
           <h2 className="text-center mb-16 text-4xl sm:text-5xl text-accent font-semibold">{t("How It Works")}</h2>
 

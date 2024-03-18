@@ -178,7 +178,7 @@ export default function Profile() {
 
 
   return (
-      <section className="bg-secondary flex flex-col justify-center items-center h-screen 2xl:max-w-[1800px] 2xl:mx-auto">
+      <section className="bg-secondary flex flex-col justify-center items-center h-screen">
         {error &&   
         <div className="flex justify-center items-center bg-secondary">
           <h1 className="bg-red-900 text-accent text-center capitalize rounded-lg p-4 text-lg">{error}</h1>
@@ -188,7 +188,7 @@ export default function Profile() {
           <h1>{t("Edit Profile")}</h1>
         </div>
         
-        <form className="flex flex-col justify-center items-center gap-2" onSubmit={handleSubmit}>
+        <form className="flex flex-col justify-center items-center gap-2 2xl:max-w-[1800px] 2xl:mx-auto" onSubmit={handleSubmit}>
           <div className="avatar">
             <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               <img src={typeof formData.image == "string" ? formData.image : typeof formData.image !== "string" ? URL.createObjectURL(formData.image) : 'https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg'} alt="UserImage" />

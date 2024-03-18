@@ -67,15 +67,15 @@ export default function Login() {
 
 
   return (
-    <section className="bg-secondary md:pt-0 min-[320px]:pt-0 sm:pt-20 lg:pt-0 2xl:max-w-[1800px] 2xl:mx-auto">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <section className="bg-secondary md:pt-0 min-[320px]:pt-0 sm:pt-20 lg:pt-0">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 2xl:max-w-[1800px] 2xl:mx-auto">
         <div className="w-full bg-base-100 border-base-100 rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-accent md:text-2xl">
               {t("Sign in to your account")}
             </h1>
               <p className="text-base font-light m-0 text-accent">
-                {t("Don&#39;t have an account yet?")}{' '}
+                {t("Don't have an account yet?")}{' '}
                 <Link to="/signup" className="font-medium text-primary hover:underline">
                   {t("Sign up")}
                 </Link>

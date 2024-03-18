@@ -105,8 +105,8 @@ export default function License() {
   }
 
   return (
-    <section className="bg-secondary p-10 min-h-screen 2xl:max-w-[1800px] 2xl:mx-auto">
-      <section className="w-9/12 mx-auto flex flex-col justify-center items-center">
+    <section className="bg-secondary p-10 min-h-screen ">
+      <section className="w-9/12 mx-auto flex flex-col justify-center items-center 2xl:max-w-[1800px] 2xl:mx-auto">
         <h1 className="text-center text-3xl">{t("Car Inspection")}</h1>
 
         {success && <div role="alert" className="alert alert-success max-w-fit flex my-4">

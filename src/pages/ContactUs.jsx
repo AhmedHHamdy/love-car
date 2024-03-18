@@ -150,7 +150,7 @@ export default function ContactUs() {
 
 
   return(
-    <section className="bg-secondary min-h-screen flex flex-col 2xl:max-w-[1800px] 2xl:mx-auto">
+    <section className="bg-secondary min-h-screen flex flex-col">
       <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("/bg-1.jpg")'}}>
         <div className="hero-overlay bg-secondary bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">

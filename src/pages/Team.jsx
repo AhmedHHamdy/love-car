@@ -53,7 +53,7 @@ export default function Team() {
   }
 
   return(
-    <section className="bg-secondary min-h-screen 2xl:max-w-[1800px] 2xl:mx-auto">
+    <section className="bg-secondary min-h-screen">
       <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("/carBackground.jpg")', backgroundRepeat: "no-repeat"}}>
         <div className="hero-overlay bg-secondary bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
@@ -62,7 +62,7 @@ export default function Team() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 items-center w-10/12 mx-auto py-10 justify-items-center gap-y-10 bg-secondary mt-8">
+      <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 items-center w-10/12 mx-auto py-10 justify-items-center gap-y-10 bg-secondary mt-8 2xl:max-w-[1800px] 2xl:mx-auto">
             {formData.map((teamMember => {
                 return ( 
                     <div className="">

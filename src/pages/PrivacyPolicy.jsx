@@ -4,9 +4,9 @@ export default function PrivacyPolicy() {
   const { i18n } = useTranslation();
 
   return (
-    <section className="bg-secondary min-h-screen 2xl:max-w-[1800px] 2xl:mx-auto">
+    <section className="bg-secondary min-h-screen">
       {i18n.language == "ar" ? (
-        <article className="w-8/12 mx-auto p-6">
+        <article className="w-8/12 mx-auto p-6 2xl:max-w-[1800px] 2xl:mx-auto">
           <h1 className="text-center text-primary text-2xl font-bold mb-4">
             سياسة الخصوصية
           </h1>
@@ -121,7 +121,7 @@ export default function PrivacyPolicy() {
           </section>
         </article>
       ) : (
-        <article className="w-8/12 mx-auto p-6">
+        <article className="w-8/12 mx-auto p-6 2xl:max-w-[1800px] 2xl:mx-auto">
           <h1 className="text-center text-primary text-2xl font-bold mb-4">
             Privacy Policy
           </h1>
