@@ -7,7 +7,7 @@ export default function Footer() {
     const { t } = useTranslation()
 
     return (
-    <footer className="w-10/12 mx-auto ">
+    <footer className="w-10/12 mx-auto 2xl:max-w-[1800px] 2xl:mx-auto">
         <section className="footer p-10 bg-base-100 text-base-content">
             <aside>
                 <img className="max-w-full" src={Logo} alt="logo-icon" />

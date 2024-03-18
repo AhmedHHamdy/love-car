@@ -273,7 +273,7 @@ export default function Header() {
           
         </div>
       </div></Link>}
-      <div className="navbar bg-base-100 w-10/12 mx-auto px-0 py-4">
+      <div className="navbar bg-base-100 w-10/12 mx-auto px-0 py-4 2xl:max-w-[1800px] 2xl:mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn bg-base-100 hover:bg-base-100 border-none pl-0 lg:hidden">

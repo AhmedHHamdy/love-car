@@ -311,7 +311,7 @@ export default function Home() {
 
  
   return(
-    <main className="overflow-x-hidden">
+    <main className="overflow-x-hidden 2xl:max-w-[1800px] 2xl:mx-auto">
       <div className="pb-14">
         <section className="w-10/12 mx-auto mt-6 sm:mt-10 h" data-aos="fade-up">
           <section className="flex sm:flex-col lg:flex-row lg:items-center sm:items-center md:justify-between md:items-start md:gap-6">

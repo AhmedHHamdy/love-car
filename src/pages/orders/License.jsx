@@ -105,7 +105,7 @@ export default function License() {
   }
 
   return (
-    <section className="bg-secondary p-10">
+    <section className="bg-secondary p-10 min-h-screen 2xl:max-w-[1800px] 2xl:mx-auto">
       <section className="w-9/12 mx-auto flex flex-col justify-center items-center">
         <h1 className="text-center text-3xl">{t("Car Inspection")}</h1>
 

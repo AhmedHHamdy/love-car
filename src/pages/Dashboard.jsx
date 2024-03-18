@@ -68,7 +68,7 @@ export default function Dashboard() {
 
 
   return (
-    <section className="bg-secondary py-4">
+    <section className="bg-secondary py-4 min-h-screen 2xl:max-w-[1800px] 2xl:mx-auto">
       <h1 className="text-center font-bold text-2xl text-primary border-b-2 border-gray-900 py-4 pt-2">{t("Dashboard")}</h1>
       <div className="overflow-x-auto overflow-y-hidden w-10/12 xl:overflow-hidden mx-auto">
         <table className="table">

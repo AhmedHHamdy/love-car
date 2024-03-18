@@ -53,7 +53,7 @@ export default function Team() {
   }
 
   return(
-    <section className="bg-secondary">
+    <section className="bg-secondary min-h-screen 2xl:max-w-[1800px] 2xl:mx-auto">
       <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("/carBackground.jpg")', backgroundRepeat: "no-repeat"}}>
         <div className="hero-overlay bg-secondary bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
@@ -62,15 +62,15 @@ export default function Team() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col xl:grid xl:grid-cols-[repeat(2,minmax(25rem,1fr))] items-center w-10/12 mx-auto py-10 justify-items-center gap-y-10 bg-secondary mt-8">
+      <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 items-center w-10/12 mx-auto py-10 justify-items-center gap-y-10 bg-secondary mt-8">
             {formData.map((teamMember => {
                 return ( 
                     <div className="">
-                        <div key={teamMember.id} className="flex flex-col items-center md:flex-row gap-8 mb-4">
-                            <img src={teamMember.image} className="max-w-xs sm:max-w-sm h-50 w-40 rounded-lg" />
-                            <div className="flex flex-col justify-center items-center sm:items-start">
+                        <div key={teamMember.id} className="flex flex-col items-center justify-center gap-8 mb-4">
+                            <img src={teamMember.image} className="h-64 rounded-lg" />
+                            <div className="flex flex-col justify-center items-center ">
                                 <h1 className="py-6 text-4xl  font-semibold text-accent leading-normal">{teamMember.name}</h1>
-                                <p className=" text-base sm:text-2xl font-semibold text-accent leading-normal flex justify-start items-center gap-4"><IoCarSport className="text-primary"/> {teamMember.specialization}</p>
+                                <p className="text-base sm:text-lg font-semibold text-accent leading-normal flex justify-start items-center gap-4"><IoCarSport className="text-primary"/> {teamMember.specialization}</p>
                             </div>
                         </div>
                     </div>

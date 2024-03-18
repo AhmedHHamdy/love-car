@@ -178,7 +178,7 @@ export default function Profile() {
 
 
   return (
-      <section className="bg-secondary flex flex-col justify-center items-center h-screen">
+      <section className="bg-secondary flex flex-col justify-center items-center h-screen 2xl:max-w-[1800px] 2xl:mx-auto">
         {error &&   
         <div className="flex justify-center items-center bg-secondary">
           <h1 className="bg-red-900 text-accent text-center capitalize rounded-lg p-4 text-lg">{error}</h1>
