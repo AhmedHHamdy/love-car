@@ -23,13 +23,13 @@ export default function ResetPassword() {
 
   const { t } = useTranslation()
 
-  console.log(resetPasswordForm)
+  // console.log(resetPasswordForm)
 
   function handleSubmit(event) {
     event.preventDefault()
     axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/users/requestReset`, phoneForm)
     .then(res => {
-      console.log(res)
+      // console.log(res)
       if (res.status == 200) {
         setResetCodeForm({...resetCodeForm, phone: phoneForm.phone})
         setResetCodeFormContainer(false)
@@ -37,7 +37,7 @@ export default function ResetPassword() {
       }
     })
     .catch(err => {
-      console.log(err)
+      // console.log(err)
     })
   }
 
@@ -46,16 +46,16 @@ export default function ResetPassword() {
     event.preventDefault()
     axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/users/verifyOtp`, resetCodeForm)
     .then(res => {
-      console.log(res)
+      // console.log(res)
       if (res.status == "200") {
-        console.log(res)
+        // console.log(res)
         setResetPasswordForm({...resetPasswordForm, phone: resetCodeForm.phone, otp:resetCodeForm.otp})
         setResetPasswordFormContainer(false)
         setEnterResetCodeFormContainer(true)
       }
     })
     .catch(err => {
-      console.log(err)
+      // console.log(err)
     })
   }
 
@@ -80,7 +80,7 @@ export default function ResetPassword() {
 
   function handleResetPasswordSubmit(event) {
     event.preventDefault()
-    console.log(validMatch, validPassword)
+    // console.log(validMatch, validPassword)
   
     if (!validPassword) {
       setErrMsg('Password must meet these criteria: At least 1 lowercase letter, 1 uppercase letter, 1 digit and be 8-24 characters long.')
@@ -98,9 +98,9 @@ export default function ResetPassword() {
     if (validMatch && validPassword) {
       axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/users/resetPassword`, resetPasswordForm)
       .then(res => {
-        console.log(res)
+        // console.log(res)
         if (res.status == "200") {
-          console.log(res)
+          // console.log(res)
           setResetPasswordForm({...resetPasswordForm, phone: resetCodeForm.phone, otp:resetCodeForm.otp})
           setResetPasswordFormContainer(false)
           setEnterResetCodeFormContainer(true)
@@ -109,7 +109,7 @@ export default function ResetPassword() {
         }
       })
       .catch(err => {
-        console.log(err)
+        // console.log(err)
       })
     }
   }

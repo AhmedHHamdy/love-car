@@ -24,7 +24,7 @@ export default function ContactUs() {
 
 
   const [formData, setFormData] = useState(null)
-  console.log(formData)
+  // console.log(formData)
 
   const [messageFormData, setMessageFormData] = useState({
     name: "",
@@ -46,7 +46,7 @@ export default function ContactUs() {
     e.preventDefault()
     axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/sendMessage`, messageFormData)
         .then(res => {
-        console.log(res)
+        // console.log(res)
         
         setMessageSuccess(true)
         setTimeout(() => {
@@ -61,7 +61,7 @@ export default function ContactUs() {
         })
         })
         .catch(err => {
-        console.log(err)
+        // console.log(err)
         setMessageError(err.message)
         setTimeout(() => {
           setMessageError(null)
@@ -84,12 +84,12 @@ export default function ContactUs() {
           })
           .then(res => {
             setLoadingStatus(false)
-            console.log(res)
+            // console.log(res)
             setFormData(res.data.data.contactus)
           })
           .catch(err => {
             setLoadingStatus(false)
-            console.log(err); // Log any errors that occur
+            // console.log(err); // Log any errors that occur
             setError(err.message)
           })
   }, [])

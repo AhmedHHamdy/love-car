@@ -11,7 +11,7 @@ export default function Login() {
         device_token: "myDeviceToken"
     })
 
-    console.log(formData)
+    // console.log(formData)
 
     const { setToken, token } = useAuth()
 
@@ -20,7 +20,7 @@ export default function Login() {
     const { t } = useTranslation()
 
     if (token) {
-        console.log(token)
+        // console.log(token)
         return <Navigate to="/" />
     }
 
@@ -41,7 +41,7 @@ export default function Login() {
       try {
         const response = await axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/users/login`, formData)
         const data = response.data.data
-        console.log(response)
+        // console.log(response)
         
         setToken(data.token)
     
@@ -54,12 +54,12 @@ export default function Login() {
             setErrMsg(t("The email or password is incorrect."))
             setTimeout(() => setErrMsg(''), 3000); // Clear the error message after 3000 milliseconds (3 seconds)
           } else if (err.response.data.message == "validation errors") {
-            console.log(err.response.data.errors)
+            // console.log(err.response.data.errors)
             let error = err.response.data.errors[0]?.email ? t("No account found.") : t("The password must be 8 characters or more.")
             setErrMsg(error)
             setTimeout(() => setErrMsg(''), 3000); // Clear the error message after 3000 milliseconds (3 seconds)
           } 
-          console.log(err)
+          // console.log(err)
       }
     }
     
@@ -85,35 +85,41 @@ export default function Login() {
             </p>}
             <form className="space-y-4 md:space-y-6 " onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="email" className="block mb-2 text-sm font-medium text-accent">
+                {/* <label htmlFor="email" className="block mb-2 text-sm font-medium text-accent">
                   {t("Email")}
-                </label>
+                </label> */}
+                <label className="input bg-secondary input-bordered flex items-center gap-2 col-span-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" /><path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" /></svg>
                 <input
                   type="email"
                   name="email"
                   id="email"
-                  onChange={handleChange}
-                  value={formData.username}
-                  className="bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                  placeholder="name@company.com"
+                  className="grow w-20 autofill:shadow-[inset_0_0_0px_1000px_#0D0D0D] bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
+                  placeholder={t("Email")}
                   required
+                  onChange={handleChange}
+                  value={formData.email}
                 />
+              </label>
               </div>
 
               <div>
-                <label htmlFor="password" className="block mb-2 text-sm font-medium text-accent">
+                {/* <label htmlFor="password" className="block mb-2 text-sm font-medium text-accent">
                   {t("Password")}
+                </label> */}
+                <label className="input bg-secondary input-bordered flex items-center gap-2 col-span-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z" clipRule="evenodd" /></svg>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="••••••••"
+                    className="grow w-20 bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
+                    required
+                    onChange={handleChange}
+                    value={formData.password}
+                  />
                 </label>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="••••••••"
-                  onChange={handleChange}
-                  value={formData.password}
-                  required
-                  className="bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                />
               </div>
 
               <button className="w-full text-white bg-primary focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">

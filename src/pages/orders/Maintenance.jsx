@@ -18,7 +18,7 @@ export default function Maintenance() {
   const [selectedRepairTypeOptions, setSelectedRepairTypeOptions] = useState([]);
 
 
-  console.log(selectedOilOptions, selectedFrameOptions, selectedConsumerPartOptions, selectedBrakeOptions, selectedRepairTypeOptions)
+  // console.log(selectedOilOptions, selectedFrameOptions, selectedConsumerPartOptions, selectedBrakeOptions, selectedRepairTypeOptions)
 
   const [formData, setFormData] = useState({
     type: "maintenance",
@@ -73,8 +73,8 @@ export default function Maintenance() {
 
   const { t } = useTranslation()
 
-  console.log(formData)
-  console.log(maintenanceOptionsData)
+  // console.log(formData)
+  // console.log(maintenanceOptionsData)
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/carOrders`, {
@@ -84,12 +84,12 @@ export default function Maintenance() {
           })
           .then(res => {
             setLoadingStatus(false)
-            console.log(res)
+            // console.log(res)
             setMaintenanceOptionsData(res.data.data)
           })
           .catch(err => {
             setLoadingStatus(false)
-            console.log(err); // Log any errors that occur
+            // console.log(err); // Log any errors that occur
             setLoadingError(err.message)
           })
   }, [])
@@ -123,7 +123,7 @@ export default function Maintenance() {
     } 
 
     for (const pair of formServicesData.entries()) {
-      console.log(`${pair[0]}, ${pair[1]}`);
+      // console.log(`${pair[0]}, ${pair[1]}`);
     }
 
     setRequestMadeStatus(false)
@@ -131,8 +131,8 @@ export default function Maintenance() {
     try {
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/carOrders`, formServicesData)
       const data = await response.data.data
-      console.log(response)
-      console.log(data)
+      // console.log(response)
+      // console.log(data)
       setSuccess(true)
       setRequestMadeStatus(true)
       setTimeout(() => {
@@ -156,7 +156,7 @@ export default function Maintenance() {
       setSelectedBrakesOptions([])
       setSelectedRepairTypeOptions([])
     } catch (err) {
-      console.log(err)
+      // console.log(err)
       setError(err.message)
       setTimeout(() => {
         setError(null)

@@ -27,7 +27,7 @@ export default function Profile() {
     image: null
   })
 
-  console.log(formData)
+  // console.log(formData)
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/users/show`, {
@@ -41,7 +41,7 @@ export default function Profile() {
           })
           .catch(err => {
             setLoadingStatus(false)
-            console.log(err); // Log any errors that occur
+            // console.log(err); // Log any errors that occur
             setError(err.message)
           })
   }, [])
@@ -54,7 +54,7 @@ export default function Profile() {
     confirm_Password: ''
   })
 
-  console.log(formPassword)
+  // console.log(formPassword)
 
   function handleChangePassword(even){
     const {name, value} = event.target
@@ -68,7 +68,7 @@ export default function Profile() {
     if (name === "password") {
       const isPasswordValid = PWD_REGEX.test(value);
       setValidPassword(isPasswordValid);
-      console.log(validPassword)
+      // console.log(validPassword)
     }
   }
 
@@ -77,17 +77,17 @@ export default function Profile() {
     if (formPassword.password == formPassword.confirm_Password && validPassword) {
       axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/users/changePassword`, formPassword)
           .then(res => {
-            console.log(res)
+            // console.log(res)
             setFormPassword({
               old_password: '',
               password: '',
               confirm_Password: ''
             })
-            console.log("Password Changed")
+            // console.log("Password Changed")
             document.getElementById('my_modal_5').close()
           })
           .catch(err => {
-            console.log(err)
+            // console.log(err)
             if (err.response.data.message == "كلمة المرور القديمة غير صحيحة") {
               setErrorPasswordForm(t("The old password is incorrect."))
               setTimeout(() => setErrorPasswordForm(null), 4000); // Clear the error message after 3000 milliseconds (3 seconds)
@@ -149,11 +149,11 @@ export default function Profile() {
       })
       .then(res => {
         setLoadingButtonStatus(false)
-        console.log(res);
+        // console.log(res);
         window.location.reload()
       })
       .catch(err => {
-        console.log(err);
+        // console.log(err);
         setLoadingButtonStatus(false)
         setError(err.response.data.message)
       });

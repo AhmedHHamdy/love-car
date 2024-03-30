@@ -34,7 +34,7 @@ export default function Header() {
     image: null
   })
 
-  console.log(formData)
+  // console.log(formData)
 
   useEffect(() => {
     document.documentElement.dir = i18n.dir()
@@ -83,13 +83,13 @@ export default function Header() {
         })
 
         const data = await response.data.data
-        console.log(response)
-        console.log(data)
+        // console.log(response)
+        // console.log(data)
 
         if (!isFirstRun.current) {
           if (localStorage.getItem('lastNotificationID') !== null && data.notifications.length > 0 && localStorage.getItem('lastNotificationID') !== data.notifications[0].id) {
             
-            console.log('Data has changed!');
+            // console.log('Data has changed!');
             
             setPreviousNotificationsData(data.notifications)
 
@@ -110,7 +110,7 @@ export default function Header() {
         setNotificationsData(data.notifications)
       } catch (err) {
 
-        console.log(err)
+        // console.log(err)
       
       }
     }
@@ -146,7 +146,7 @@ export default function Header() {
       })
       .catch(err => {
         setLoadingStatus(false)
-        console.log(err); // Log any errors that occur
+        // console.log(err); // Log any errors that occur
         setError(err.message)
       })
     } else {

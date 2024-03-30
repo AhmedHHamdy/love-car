@@ -15,7 +15,7 @@ export default function Messages() {
 
   const { token } = useAuth()
 
-  console.log(selectedOrder)
+  // console.log(selectedOrder)
 
 
   const openModel = (order) => {
@@ -38,12 +38,12 @@ export default function Messages() {
         })
         const data = await response.data.data
         setLoadingStatus(false)
-        console.log(response)
-        console.log(data)
+        // console.log(response)
+        // console.log(data)
         setOrdersData(data.notifications)
       } catch (err) {
         setLoadingStatus(false)
-        console.log(err)
+        // console.log(err)
         setError(err.message)
       }
     }

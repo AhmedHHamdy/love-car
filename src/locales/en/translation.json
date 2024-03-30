@@ -53,7 +53,7 @@
   "Sign in": "Sign in",
   "Forgot your password?": "Forgot your password?",
 
-  "Have an account yet?": "Have an account yet?",
+  "Have an account?": "Have an account?",
   "Name": "Name",
   "Phone": "Phone",
   "Create an account": "Create an account",
@@ -159,5 +159,20 @@
   "Car Inspection": "Car Inspection",
   "New Message Arrived": "New Message Arrived",
 
-  "Page Not Found": "Page Not Found"
+  "Page Not Found": "Page Not Found",
+
+  "Select Region": "Select Region",
+  "Riyadh": "Riyadh",
+  "Makkah": "Makkah",
+  "Madinah": "Madinah",
+  "Eastern Province": "Eastern Province",
+  "Asir": "Asir",
+  "Tabuk": "Tabuk",
+  "Hail": "Hail",
+  "Northern Borders": "Northern Borders",
+  "Al Jawf": "Al Jawf",
+  "Najran": "Najran",
+  "Al Bahah": "Al Bahah",
+  "Al Qurayyat": "Al Qurayyat",
+  "Jizan": "Jizan"
 }

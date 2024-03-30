@@ -14,7 +14,7 @@ export default function Dashboard() {
 
   const { token } = useAuth()
 
-  console.log(selectedOrder)
+  // console.log(selectedOrder)
 
 
   const openModel = (order) => {
@@ -37,12 +37,12 @@ export default function Dashboard() {
         })
         const data = await response.data.data
         setLoadingStatus(false)
-        console.log(response)
-        console.log(data)
+        // console.log(response)
+        // console.log(data)
         setOrdersData(data.carOrders)
       } catch (err) {
         setLoadingStatus(false)
-        console.log(err)
+        // console.log(err)
         setError(err.message)
       }
     }
@@ -209,7 +209,7 @@ export default function Dashboard() {
                 <h3 className="font-bold text-lg my-1">{t("Consumer Parts")} :</h3>
                 <ul className="menu bg-base-200 w-full rounded-xl p-4">
                   {selectedOrder.items.consumerParts.map((item, i) => {
-                    console.log(item)
+                    // console.log(item)
                     return (
                       <li key={i}>{i+1} - {item}</li>
                     )
@@ -221,7 +221,7 @@ export default function Dashboard() {
                 <h3 className="font-bold text-lg my-1">{t("Brakes")} :</h3>
                 <ul className="menu bg-base-200 w-56 rounded-xl p-4">
                   {selectedOrder.items.brakes.map((item, i) => {
-                    console.log(item)
+                    // console.log(item)
                     return (
                       <li key={i}>{i+1} - {item}</li>
                     )
@@ -233,7 +233,7 @@ export default function Dashboard() {
                 <h3 className="font-bold text-lg my-1">{t("Oils")} :</h3>
                 <ul className="menu bg-base-200 w-56 rounded-xl p-4">
                   {selectedOrder.items.oils.map((item, i) => {
-                    console.log(item)
+                    // console.log(item)
                     return (
                       <li key={i}>{i+1} - {item}</li>
                     )
@@ -245,7 +245,7 @@ export default function Dashboard() {
                 <h3 className="font-bold text-lg my-1">{t("Frames")} :</h3>
                 <ul className="menu bg-base-200 w-56 rounded-xl p-4">
                   {selectedOrder.items.frames.map((item, i) => {
-                    console.log(item)
+                    // console.log(item)
                     return (
                       <li key={i}>{i+1} - {item}</li>
                     )
@@ -257,7 +257,7 @@ export default function Dashboard() {
                 <h3 className="font-bold text-lg my-1">{t("Repair Types")} :</h3>
                 <ul className="menu bg-base-200 w-56 rounded-xl p-4">
                   {selectedOrder.items.repairTypes.map((item, i) => {
-                    console.log(item)
+                    // console.log(item)
                     return (
                       <li key={i}>{i+1} - {item}</li>
                     )

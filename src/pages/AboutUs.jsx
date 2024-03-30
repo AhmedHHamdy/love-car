@@ -11,7 +11,7 @@ export default function AboutUs() {
   const { token } = useAuth()
 
   const [formData, setFormData] = useState(null)
-  console.log(formData)
+  // console.log(formData)
 
   const [loadingStatus, setLoadingStatus] = useState(true)
   const [error, setError] = useState(null)
@@ -24,12 +24,12 @@ export default function AboutUs() {
           })
           .then(res => {
             setLoadingStatus(false)
-            console.log(res)
+            // console.log(res)
             setFormData({...res.data.data})
           })
           .catch(err => {
             setLoadingStatus(false)
-            console.log(err); // Log any errors that occur
+            // console.log(err); // Log any errors that occur
             setError(err.message)
           })
   }, [])

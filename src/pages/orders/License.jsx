@@ -24,7 +24,7 @@ export default function License() {
 
   const { t } = useTranslation()
 
-  console.log(formData)
+  // console.log(formData)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -62,14 +62,14 @@ export default function License() {
     }
 
     for (const pair of formServicesData.entries()) {
-      console.log(`${pair[0]}, ${pair[1]}`);
+      // console.log(`${pair[0]}, ${pair[1]}`);
     }
 
     try {
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/carOrders`, formServicesData)
       const data = await response.data.data
-      console.log(response)
-      console.log(data)
+      // console.log(response)
+      // console.log(data)
       setSuccess(true)
       setTimeout(() => {
         setSuccess(false)
@@ -85,7 +85,7 @@ export default function License() {
         region: "",
       })
     } catch (err) {
-      console.log(err)
+      // console.log(err)
       setError(err.message)
       setTimeout(() => {
         setError(null)

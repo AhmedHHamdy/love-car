@@ -45,7 +45,7 @@
 
 
   "Sign in to your account": "تسجيل الدخول إلى حسابك",
-  "Don&#39;t have an account yet?": "ليس لديك حساب بعد؟",
+  "Don't have an account yet?": "ليس لديك حساب بعد؟",
   "Sign up": "إنشاء حساب",
   "Email": "البريد الإلكتروني",
   "Password": "كلمة المرور",
@@ -53,7 +53,7 @@
   "Forgot your password?": "هل نسيت كلمة المرور؟",
 
   "SignUp": "إنشاء حساب",
-  "Have an account yet?": "هل لديك حساب بالفعل؟",
+  "Have an account?": "هل لديك حساب بالفعل؟",
   "Name": "الاسم",
   "Phone": "الهاتف",
   "Create an account": "إنشاء حساب",
@@ -159,6 +159,20 @@
   "Car Inspection": "الفحص الشامل للسيارة",
   "New Message Arrived": "وصلتك رسالة جديدة !",
 
-  "Page Not Found": "الصفحة غير موجودة"
+  "Page Not Found": "الصفحة غير موجودة",
 
+  "Select Region": "اختار منطقة",
+  "Riyadh": "الرياض",
+  "Makkah": "مكة المكرمة",
+  "Madinah": "المدينة المنورة",
+  "Eastern Province": "المنطقة الشرقية",
+  "Asir": "عسير",
+  "Tabuk": "تبوك",
+  "Hail": "حائل",
+  "Northern Borders": "الحدود الشمالية",
+  "Al Jawf": "الجوف",
+  "Najran": "نجران",
+  "Al Bahah": "الباحة",
+  "Al Qurayyat": "القريات",
+  "Jizan": "جازان"
 }
