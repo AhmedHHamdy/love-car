@@ -13,6 +13,11 @@ export default function Signup() {
 
     const { t } = useTranslation()
 
+    const [regions, setRegions] = useState([])
+    const [cities, setCities] = useState([])
+
+    console.log(regions)
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -24,14 +29,35 @@ export default function Signup() {
         device_token: "myDeviceToken"
     })
 
-    // console.log(formData)
+    console.log(formData)
 
     const navigate = useNavigate()
 
     if (token) {
         // console.log(token)
-        return <Navigate to="/products" />
+        return <Navigate to="/" />
     }
+
+
+    useEffect(() => {
+      axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/get-regions`)
+      .then(res => {
+        setRegions(res.data.data.regions)
+      })
+      .catch(err => {
+        setErrMsg(err.message)
+      })
+    }, [])
+
+    useEffect(() => {
+      axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/get-cities`)
+      .then(res => {
+        setCities(res.data.data.cities)
+      })
+      .catch(err => {
+        setErrMsg(err.message)
+      })
+    }, [])
 
     const [validPassword, setValidPassword] = useState(false);
     
@@ -61,11 +87,11 @@ export default function Signup() {
           }
     
           const response = await axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/users/register`, formData)
-          // console.log(response)
+          console.log(response)
 
           const data = response.data.data
 
-          // console.log(response)
+          console.log(response)
 
           setFormData({
             name: '',
@@ -83,14 +109,14 @@ export default function Signup() {
           }
     
         } catch (err) {
-          // console.log(err)
+          console.log(err)
           let errors = err.response.data.errors
-          // console.log(errors)
+          console.log(errors)
           for (let err of errors) {
-            // console.log(err)
-            // console.log(Object.keys(err)[0])
+            console.log(err)
+            console.log(Object.keys(err)[0])
             if (Object.keys(err)[0] == "email") {
-              // console.log("yay")
+              console.log("yay")
               setErrMsg(t("The Email you entered is already in use."))
               setTimeout(() => setErrMsg(''), 3000); // Clear the error message after 3000 milliseconds (3 seconds)
               break
@@ -237,7 +263,7 @@ export default function Signup() {
                   />
                 </label>
                 
-                <label className="input bg-secondary input-bordered flex items-center gap-2">
+                {/* <label className="input bg-secondary input-bordered flex items-center gap-2">
                   <svg className="w-5 h-5 opacity-70"  stroke-width="1.5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" ><path d="M7 9.01L7.01 8.99889" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11 9.01L11.01 8.99889" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7 13.01L7.01 12.9989" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11 13.01L11.01 12.9989" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7 17.01L7.01 16.9989" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11 17.01L11.01 16.9989" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 21H3.6C3.26863 21 3 20.7314 3 20.4V5.6C3 5.26863 3.26863 5 3.6 5H9V3.6C9 3.26863 9.26863 3 9.6 3H14.4C14.7314 3 15 3.26863 15 3.6V9M15 21H20.4C20.7314 21 21 20.7314 21 20.4V9.6C21 9.26863 20.7314 9 20.4 9H15M15 21V17M15 9V13M15 13H17M15 13V17M15 17H17" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                   <input
                     type="text"
@@ -249,7 +275,25 @@ export default function Signup() {
                     onChange={handleChange}
                     value={formData.city}
                   />
-                </label>
+                </label> */}
+
+                <select
+                  className="select bg-secondary select-bordered w-full max-w-xs"
+                  name="city"
+                  id="city"
+                  onChange={handleChange}
+                  value={formData.city}
+                  required
+                >
+                  <option value="" disabled selected>
+                    {t("Select City")}
+                  </option>
+                  {cities.map((option, i) => {
+                    return (
+                      <option value={option.id}>{option.name}</option>
+                    )
+                  })}
+                </select>
 
                 <select
                   className="select bg-secondary select-bordered w-full max-w-xs"
@@ -262,19 +306,11 @@ export default function Signup() {
                   <option value="" disabled selected>
                     {t("Select Region")}
                   </option>
-                  <option value="Riyadh">{t("Riyadh")}</option>
-                  <option value="Makkah">{t("Makkah")}</option>
-                  <option value="Madinah">{t("Madinah")}</option>
-                  <option value="Eastern Province">{t("Eastern Province")}</option>
-                  <option value="Asir">{t("Asir")}</option>
-                  <option value="Tabuk">{t("Tabuk")}</option>
-                  <option value="Hail">{t("Hail")}</option>
-                  <option value="Northern Borders">{t("Northern Borders")}</option>
-                  <option value="Al Jawf">{t("Al Jawf")}</option>
-                  <option value="Najran">{t("Najran")}</option>
-                  <option value="Al Bahah">{t("Al Bahah")}</option>
-                  <option value="Al Qurayyat">{t("Al Qurayyat")}</option>
-                  <option value="Jizan">{t("Jizan")}</option>
+                  {regions.map((option, i) => {
+                    return (
+                      <option value={option.id}>{option.name}</option>
+                    )
+                  })}
                 </select>
 
 

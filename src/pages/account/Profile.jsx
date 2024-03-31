@@ -19,15 +19,41 @@ export default function Profile() {
 
   const { t } = useTranslation()
 
+  const [regions, setRegions] = useState([])
+  const [cities, setCities] = useState([])
+
   const [formData, setFormData] = useState({
     id: '',
     name: '',
     email: '',
     phone: '',
+    city: '',
+    region: '',
+    address: '',
     image: null
   })
 
-  // console.log(formData)
+  console.log(formData)
+
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/get-regions`)
+    .then(res => {
+      setRegions(res.data.data.regions)
+    })
+    .catch(err => {
+      setErrMsg(err.message)
+    })
+  }, [])
+
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/get-cities`)
+    .then(res => {
+      setCities(res.data.data.cities)
+    })
+    .catch(err => {
+      setErrMsg(err.message)
+    })
+  }, [])
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/users/show`, {
@@ -46,7 +72,7 @@ export default function Profile() {
           })
   }, [])
 
-  // console.log(formData)
+  console.log(formData)
 
   const [formPassword, setFormPassword] = useState({
     old_password: '',
@@ -123,12 +149,17 @@ export default function Profile() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    let inputNames = ["name", "email", "phone"]
+    let inputNames = ["name", "email", "phone", "city_id", "region_id", "address"]
     const EditProfileForm = new FormData(); // Create a new FormData object
   
     // Append the fields from pileFormData
     for (const key of inputNames) {
-      EditProfileForm.append(key, formData[key]);
+      if (key == "city_id" || key == "region_id") {
+        console.log(key.split("_")[0])
+        EditProfileForm.append(key, formData[key.split("_")[0]]);
+      } else  {
+        EditProfileForm.append(key, formData[key]);
+      }
     }
   
     // Append the file data
@@ -149,11 +180,11 @@ export default function Profile() {
       })
       .then(res => {
         setLoadingButtonStatus(false)
-        // console.log(res);
+        console.log(res);
         window.location.reload()
       })
       .catch(err => {
-        // console.log(err);
+        console.log(err);
         setLoadingButtonStatus(false)
         setError(err.response.data.message)
       });
@@ -178,7 +209,7 @@ export default function Profile() {
 
 
   return (
-      <section className="bg-secondary flex flex-col justify-center items-center h-screen">
+      <section className="bg-secondary flex flex-col justify-center items-center min-h-screen">
         {error &&   
         <div className="flex justify-center items-center bg-secondary">
           <h1 className="bg-red-900 text-accent text-center capitalize rounded-lg p-4 text-lg">{error}</h1>
@@ -189,33 +220,84 @@ export default function Profile() {
         </div>
         
         <form className="flex flex-col justify-center items-center gap-2 2xl:max-w-[1800px] 2xl:mx-auto" onSubmit={handleSubmit}>
-          <div className="avatar">
+          <div className="avatar mb-4">
             <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               <img src={typeof formData.image == "string" ? formData.image : typeof formData.image !== "string" ? URL.createObjectURL(formData.image) : 'https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg'} alt="UserImage" />
             </div>
           </div>
  
-          <div className="w-[90%]">
-            <label className="label-text text-base" htmlFor="name">{t("Name")}</label>
-            <input className="input input-bordered w-full" type="text" name="name" id="name" onChange={handleChange} value={formData.name} />
-          </div>
+          <div className="grid grid-cols-2 gap-4 px-6">
+            <div className="col-span-1">
+              <label className="label-text text-base" htmlFor="name">{t("Name")}</label>
+              <input className="input input-bordered w-full mt-2" type="text" name="name" id="name" onChange={handleChange} value={formData.name} />
+            </div>
 
-          <div className="w-[90%]">
-            <label className="label-text text-base inline-block mb-2" htmlFor="email">{t("Email")}</label>
-            <input className="input input-bordered w-full" type="email" name="email" id="email" onChange={handleChange} value={formData.email} />
-          </div>
+            <div className="col-span-1">
+              <label className="label-text text-base inline-block mb-2" htmlFor="email">{t("Email")}</label>
+              <input className="input input-bordered w-full" type="email" name="email" id="email" onChange={handleChange} value={formData.email} />
+            </div>
 
-          <div className="w-[90%]">
-            <label className="label-text text-base inline-block mb-2" htmlFor="phone">{t("Phone")}</label>
-            <input className="input input-bordered w-full" type="text" name="phone" id="phone" onChange={handleChange} value={formData.phone} />
-          </div>
+  
 
-          <div className="w-[90%]">
+            <div className="col-span-1">
+              <label className="label-text text-base inline-block mb-2" htmlFor="city">{t("City")}</label>
+              <select
+              className="select select-bordered w-full"
+              name="city"
+              id="city"
+              onChange={handleChange}
+              value={formData.city}
+              required
+            >
+              <option value="" disabled>
+                {t("Select City")}
+              </option>
+              {cities.map((option, i) => {
+                return (
+                  <option value={option.id}>{option.name}</option>
+                )
+              })}
+              </select>          
+            </div>
+
+            <div className="col-span-1">
+              <label className="label-text text-base inline-block mb-2" htmlFor="region">{t("Region")}</label>
+              <select
+                className="select select-bordered w-full"
+                name="region"
+                id="region"
+                onChange={handleChange}
+                value={formData.region}
+                required
+              >
+                <option value="" disabled>
+                  {t("Select Region")}
+                </option>
+                {regions.map((option, i) => {
+                  return (
+                    <option value={option.id}>{option.name}</option>
+                  )
+                })}
+                </select>          
+            </div>
+
+            <div className="col-span-1">
+              <label className="label-text text-base inline-block mb-2" htmlFor="address">{t("Address")}</label>
+              <input className="input input-bordered w-full" type="text" name="address" id="address" onChange={handleChange} value={formData.address} />
+            </div>
+
+            <div className="col-span-1">
+              <label className="label-text text-base inline-block mb-2" htmlFor="phone">{t("Phone")}</label>
+              <input className="input input-bordered w-full" type="text" name="phone" id="phone" onChange={handleChange} value={formData.phone} />
+            </div>
+
+            <div className="col-span-2">
             <label className="label-text text-base inline-block mb-2" htmlFor="image">{t("Image")}</label>
             <input className="file-input file-input-bordered file-input-primary w-full " type="file" name="image" id="image" onChange={handleFileChange}  />
           </div>
 
-          <button className="btn btn-primary text-accent text-base mt-4 w-[90%]" disabled={loadingButtonStatus}>{t("Save Profile")}</button>
+            <button className="btn btn-primary text-accent text-base mt-4 justify-items-center col-span-2" disabled={loadingButtonStatus}>{t("Save Profile")}</button>
+          </div>
         </form>
 
         <button className="btn btn-base-100 text-accent text-base mt-4 w-neutral hover:bg-primary" onClick={()=>document.getElementById('my_modal_5').showModal()}>{t("Change Password")}</button>
