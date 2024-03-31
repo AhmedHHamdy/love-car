@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 
 // Create a new context
@@ -9,6 +9,12 @@ export const LocationProvider = ({ children }) => {
   const [regions, setRegions] = useState([]);
   const [cities, setCities] = useState([]);
   const [errMsg, setErrMsg] = useState('');
+
+  const contextValue = useMemo(() => ({
+    regions,
+    cities,
+    errMsg
+  }), [regions, cities, errMsg]);
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/get-regions`)
@@ -31,7 +37,7 @@ export const LocationProvider = ({ children }) => {
   }, []);
 
   return (
-    <LocationContext.Provider value={{ regions, cities, errMsg }}>
+    <LocationContext.Provider value={contextValue}>
       {children}
     </LocationContext.Provider>
   );

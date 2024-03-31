@@ -22,7 +22,7 @@ export default function Signup() {
 
     const [showPassword, setShowPassword] = useState(false);
 
-    console.log(regions)
+    // console.log(regions)
 
     const [formData, setFormData] = useState({
         name: '',
@@ -35,7 +35,7 @@ export default function Signup() {
         device_token: "myDeviceToken"
     })
 
-    console.log(formData)
+    // console.log(formData)
 
     const navigate = useNavigate()
 
@@ -269,7 +269,7 @@ export default function Signup() {
                 </label>
 
                 <label className="input bg-secondary input-bordered flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>                  <input
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" ><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>                  <input
                     type="text"
                     name="phone"
                     id="phone"
@@ -308,7 +308,7 @@ export default function Signup() {
                   </option>
                   {regions.map((option, i) => {
                     return (
-                      <option value={option.id}>{option.name}</option>
+                      <option key={i} value={option.id}>{option.name}</option>
                     )
                   })}
                 </select>
@@ -326,13 +326,13 @@ export default function Signup() {
                   </option>
                   {cities.map((option, i) => {
                     return (
-                      <option value={option.id}>{option.name}</option>
+                      <option key={i} value={option.id}>{option.name}</option>
                     )
                   })}
                 </select>
 
                 <label className="input bg-secondary input-bordered flex items-center gap-2 col-span-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h4"/><path d="M2 10h4"/><path d="M2 14h4"/><path d="M2 18h4"/><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M15 2v20"/><path d="M15 7h5"/><path d="M15 12h5"/><path d="M15 17h5"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 6h4"/><path d="M2 10h4"/><path d="M2 14h4"/><path d="M2 18h4"/><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M15 2v20"/><path d="M15 7h5"/><path d="M15 12h5"/><path d="M15 17h5"/></svg>
                   <input
                     type="text"
                     name="address"
