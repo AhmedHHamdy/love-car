@@ -23,8 +23,8 @@ export default function Signup() {
         email: '',
         phone: '',
         password: '',
-        city: '',
-        region: '',
+        city_id: '',
+        region_id: '',
         address: '',
         device_token: "myDeviceToken"
     })
@@ -98,8 +98,8 @@ export default function Signup() {
             email: '',
             phone: '',
             password: '',
-            city: '',
-            region: '',
+            city_id: '',
+            region_id: '',
             address: '',
             device_token: "myDeviceToken"
         })
@@ -279,10 +279,10 @@ export default function Signup() {
 
                 <select
                   className="select bg-secondary select-bordered w-full max-w-xs"
-                  name="city"
+                  name="city_id"
                   id="city"
                   onChange={handleChange}
-                  value={formData.city}
+                  value={formData.city_id}
                   required
                 >
                   <option value="" disabled selected>
@@ -297,10 +297,10 @@ export default function Signup() {
 
                 <select
                   className="select bg-secondary select-bordered w-full max-w-xs"
-                  name="region"
+                  name="region_id"
                   id="region"
                   onChange={handleChange}
-                  value={formData.region}
+                  value={formData.region_id}
                   required
                 >
                   <option value="" disabled selected>
