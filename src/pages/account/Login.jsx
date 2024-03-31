@@ -3,6 +3,7 @@ import { useState } from "react"
 import { useAuth } from "../../context/AuthProvider"
 import axios from "axios"
 import { useTranslation } from "react-i18next"
+import { BiShow, BiHide } from "react-icons/bi";
 
 export default function Login() {
     const [formData, setFormData] = useState({
@@ -17,7 +18,9 @@ export default function Login() {
 
     const [errMsg, setErrMsg] = useState('')
 
-    const { t } = useTranslation()
+    const [showPassword, setShowPassword] = useState(false);
+
+    const { t, i18n } = useTranslation()
 
     if (token) {
         // console.log(token)
@@ -64,6 +67,17 @@ export default function Login() {
     }
     
 
+    function handleShowPassword() {
+      const passwordInput = document.getElementById("password") 
+      if (passwordInput) {
+        if (passwordInput.type === "text") {
+          passwordInput.type = "password";
+        } else {
+          passwordInput.type = "text";
+        }
+        setShowPassword((previousValue) => !previousValue);
+      }
+    }
 
 
   return (
@@ -107,7 +121,7 @@ export default function Login() {
                 {/* <label htmlFor="password" className="block mb-2 text-sm font-medium text-accent">
                   {t("Password")}
                 </label> */}
-                <label className="input bg-secondary input-bordered flex items-center gap-2 col-span-2">
+                <label className="input bg-secondary input-bordered flex items-center relative gap-2 col-span-2">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z" clipRule="evenodd" /></svg>
                   <input
                     type="password"
@@ -119,6 +133,18 @@ export default function Login() {
                     onChange={handleChange}
                     value={formData.password}
                   />
+
+                  {showPassword ? (
+                    <BiShow
+                      className={`absolute bg-secondary top-2 ${i18n.language == "en" ? "right-4 ml-2" : "left-4 mr-2"} text-gray-500 mt-1 text-2xl cursor-pointer`}
+                      onClick={handleShowPassword}
+                    />
+                  ) : (
+                    <BiHide
+                      className={`absolute bg-secondary top-2 ${i18n.language == "en" ? "right-4 ml-2" : "left-4 mr-2"} text-gray-500 mt-1 bg-secondary text-2xl cursor-pointer`}
+                      onClick={handleShowPassword}
+                    />
+                  )}
                 </label>
               </div>
 

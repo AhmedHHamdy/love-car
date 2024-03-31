@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 import { AiFillCloseCircle } from "react-icons/ai"
 import { useAuth } from "../../context/AuthProvider";
 import { useTranslation } from "react-i18next";
+import LocationContext from "../../context/CitiesAndRegions";
 
 export default function Profile() {
+
+  const { regions, cities, errMsg } = useContext(LocationContext);
+
+  console.log(regions, cities)
 
   const { token } = useAuth()
 
@@ -19,8 +24,8 @@ export default function Profile() {
 
   const { t } = useTranslation()
 
-  const [regions, setRegions] = useState([])
-  const [cities, setCities] = useState([])
+  // const [regions, setRegions] = useState([])
+  // const [cities, setCities] = useState([])
 
   const [formData, setFormData] = useState({
     id: '',
@@ -37,25 +42,25 @@ export default function Profile() {
 
   console.log(formData)
 
-  useEffect(() => {
-    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/get-regions`)
-    .then(res => {
-      setRegions(res.data.data.regions)
-    })
-    .catch(err => {
-      setErrMsg(err.message)
-    })
-  }, [])
+  // useEffect(() => {
+  //   axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/get-regions`)
+  //   .then(res => {
+  //     setRegions(res.data.data.regions)
+  //   })
+  //   .catch(err => {
+  //     setErrMsg(err.message)
+  //   })
+  // }, [])
 
-  useEffect(() => {
-    axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/get-cities`)
-    .then(res => {
-      setCities(res.data.data.cities)
-    })
-    .catch(err => {
-      setErrMsg(err.message)
-    })
-  }, [])
+  // useEffect(() => {
+  //   axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/get-cities`)
+  //   .then(res => {
+  //     setCities(res.data.data.cities)
+  //   })
+  //   .catch(err => {
+  //     setErrMsg(err.message)
+  //   })
+  // }, [])
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/users/show`, {
@@ -239,7 +244,26 @@ export default function Profile() {
               <input className="input input-bordered w-full" type="email" name="email" id="email" onChange={handleChange} value={formData.email} />
             </div>
 
-  
+            <div className="col-span-1">
+              <label className="label-text text-base inline-block mb-2" htmlFor="region">{t("Region")}</label>
+              <select
+                className="select select-bordered w-full"
+                name="regionId"
+                id="region"
+                onChange={handleChange}
+                value={formData.regionId}
+                required
+              >
+                <option value="" disabled>
+                  {t("Select Region")}
+                </option>
+                {regions.map((option, i) => {
+                  return (
+                    <option key={i} value={option.id}>{option.name}</option>
+                  )
+                })}
+                </select>          
+            </div>
 
             <div className="col-span-1">
               <label className="label-text text-base inline-block mb-2" htmlFor="city">{t("City")}</label>
@@ -256,32 +280,12 @@ export default function Profile() {
               </option>
               {cities.map((option, i) => {
                 return (
-                  <option value={option.id}>{option.name}</option>
+                  <option key={i} value={option.id}>{option.name}</option>
                 )
               })}
               </select>          
             </div>
 
-            <div className="col-span-1">
-              <label className="label-text text-base inline-block mb-2" htmlFor="region">{t("Region")}</label>
-              <select
-                className="select select-bordered w-full"
-                name="regionId"
-                id="region"
-                onChange={handleChange}
-                value={formData.regionId}
-                required
-              >
-                <option value="" disabled>
-                  {t("Select Region")}
-                </option>
-                {regions.map((option, i) => {
-                  return (
-                    <option value={option.id}>{option.name}</option>
-                  )
-                })}
-                </select>          
-            </div>
 
             <div className="col-span-1">
               <label className="label-text text-base inline-block mb-2" htmlFor="address">{t("Address")}</label>
