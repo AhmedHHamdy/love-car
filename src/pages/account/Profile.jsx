@@ -28,7 +28,9 @@ export default function Profile() {
     email: '',
     phone: '',
     city: '',
+    cityId: '',
     region: '',
+    regionId: '',
     address: '',
     image: null
   })
@@ -155,8 +157,8 @@ export default function Profile() {
     // Append the fields from pileFormData
     for (const key of inputNames) {
       if (key == "city_id" || key == "region_id") {
-        console.log(key.split("_")[0])
-        EditProfileForm.append(key, formData[key.split("_")[0]]);
+        // console.log(key.split("_")[0]+key.split("_")[1].split('')[0].toUpperCase()+key.split("_")[1].split('')[1])
+        EditProfileForm.append(key, formData[key.split("_")[0]+key.split("_")[1].split('')[0].toUpperCase()+key.split("_")[1].split('')[1]]);
       } else  {
         EditProfileForm.append(key, formData[key]);
       }
@@ -243,10 +245,10 @@ export default function Profile() {
               <label className="label-text text-base inline-block mb-2" htmlFor="city">{t("City")}</label>
               <select
               className="select select-bordered w-full"
-              name="city"
+              name="cityId"
               id="city"
               onChange={handleChange}
-              value={formData.city}
+              value={formData.cityId}
               required
             >
               <option value="" disabled>
@@ -264,10 +266,10 @@ export default function Profile() {
               <label className="label-text text-base inline-block mb-2" htmlFor="region">{t("Region")}</label>
               <select
                 className="select select-bordered w-full"
-                name="region"
+                name="regionId"
                 id="region"
                 onChange={handleChange}
-                value={formData.region}
+                value={formData.regionId}
                 required
               >
                 <option value="" disabled>
