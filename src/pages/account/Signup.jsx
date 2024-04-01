@@ -21,6 +21,7 @@ export default function Signup() {
     // const [cities, setCities] = useState([])
 
     const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     // console.log(regions)
 
@@ -29,6 +30,7 @@ export default function Signup() {
         email: '',
         phone: '',
         password: '',
+        confirm_password: '',
         city_id: '',
         region_id: '',
         address: '',
@@ -89,21 +91,31 @@ export default function Signup() {
     
           if (!validPassword) {
             setErrMsg(t('Password must contain at least one lowercase letter, one uppercase letter, one digit, and be between 8 and 24 characters in length.'))
+            setTimeout(() => setErrMsg(''), 5000); // Clear the error message after 3000 milliseconds (3 seconds)
             return
           }
+          
+          if (formData.password !== formData.confirm_password) {
+            setErrMsg(t('Password does not match.'))
+            setTimeout(() => setErrMsg(''), 5000); // Clear the error message after 3000 milliseconds (3 seconds)
+            return
+          }
+
+          // console.log(formData)
     
           const response = await axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/users/register`, formData)
-          console.log(response)
+          // console.log(response)
 
           const data = response.data.data
 
-          console.log(response)
+          // console.log(response)
 
           setFormData({
             name: '',
             email: '',
             phone: '',
             password: '',
+            confirm_password: "",
             city_id: '',
             region_id: '',
             address: '',
@@ -124,15 +136,15 @@ export default function Signup() {
             if (Object.keys(err)[0] == "email") {
               console.log("yay")
               setErrMsg(t("The Email you entered is already in use."))
-              setTimeout(() => setErrMsg(''), 3000); // Clear the error message after 3000 milliseconds (3 seconds)
+              setTimeout(() => setErrMsg(''), 4000); // Clear the error message after 3000 milliseconds (3 seconds)
               break
             } else if (Object.keys(err)[0] == "phone") {
               setErrMsg(t("The Phone number you entered is already in use."))
-              setTimeout(() => setErrMsg(''), 3000); // Clear the error message after 3000 milliseconds (3 seconds)
+              setTimeout(() => setErrMsg(''), 4000); // Clear the error message after 3000 milliseconds (3 seconds)
               break
             } else if (Object.keys(err)[0] == "password") {
               setErrMsg(t("The Password must be 8 characters or more."))
-              setTimeout(() => setErrMsg(''), 3000); // Clear the error message after 3000 milliseconds (3 seconds)
+              setTimeout(() => setErrMsg(''), 4000); // Clear the error message after 3000 milliseconds (3 seconds)
               break
             }
  
@@ -149,6 +161,19 @@ export default function Signup() {
           passwordInput.type = "text";
         }
         setShowPassword((previousValue) => !previousValue);
+      }
+    }
+
+    
+    function handleShowConfirmPassword() {
+      const passwordInput = document.getElementById("confirm_password") 
+      if (passwordInput) {
+        if (passwordInput.type === "text") {
+          passwordInput.type = "password";
+        } else {
+          passwordInput.type = "text";
+        }
+        setShowConfirmPassword((previousValue) => !previousValue);
       }
     }
 
@@ -364,7 +389,7 @@ export default function Signup() {
                     type="password"
                     name="password"
                     id="password"
-                    placeholder="••••••••"
+                    placeholder={t("Password")}
                     className="grow w-20 bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
                     required
                     onChange={handleChange}
@@ -379,6 +404,31 @@ export default function Signup() {
                     <BiHide
                       className={`absolute bg-secondary top-2 ${i18n.language == "en" ? "right-4 ml-2" : "left-4 mr-2"} text-gray-500 mt-1 bg-secondary text-2xl cursor-pointer`}
                       onClick={handleShowPassword}
+                    />
+                  )}
+                </label>
+
+                <label className="input bg-secondary relative input-bordered flex items-center gap-2 col-span-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z" clipRule="evenodd" /></svg>
+                  <input
+                    type="password"
+                    name="confirm_password"
+                    id="confirm_password"
+                    placeholder={t("Confirm Password")}
+                    className="grow w-20 bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
+                    required
+                    onChange={handleChange}
+                    value={formData.confirm_password}
+                  />
+                  {showConfirmPassword ? (
+                    <BiShow
+                      className={`absolute bg-secondary top-2 ${i18n.language == "en" ? "right-4 ml-2" : "left-4 mr-2"} text-gray-500 mt-1 text-2xl cursor-pointer`}
+                      onClick={handleShowConfirmPassword}
+                    />
+                  ) : (
+                    <BiHide
+                      className={`absolute bg-secondary top-2 ${i18n.language == "en" ? "right-4 ml-2" : "left-4 mr-2"} text-gray-500 mt-1 bg-secondary text-2xl cursor-pointer`}
+                      onClick={handleShowConfirmPassword}
                     />
                   )}
                 </label>
