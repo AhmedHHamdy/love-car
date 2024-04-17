@@ -10,7 +10,7 @@ export default function Profile() {
 
   const { regions, cities, errMsg } = useContext(LocationContext);
 
-  console.log(regions, cities)
+  // console.log(regions, cities)
 
   const { token } = useAuth()
 
@@ -40,7 +40,7 @@ export default function Profile() {
     image: null
   })
 
-  console.log(formData)
+  // console.log(formData)
 
   // useEffect(() => {
   //   axios.get(`${import.meta.env.VITE_BACKEND_API_URL}/get-regions`)

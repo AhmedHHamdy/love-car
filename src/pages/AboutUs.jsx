@@ -71,7 +71,7 @@ export default function AboutUs() {
             {i18n.language == "en" && <p className="py-6 text-3xl sm:text-5xl font-semibold text-accent leading-loose sm:leading-relaxed text-center xl:text-start">{formData.description_en}</p>}
 
             <ul className="h-full flex flex-col items-center md:grid md:grid-cols-12 md:justify-center md:items-center md:auto-rows-min gap-x-10">
-              {formData.data.map(d => {
+              {formData.data.map((d, i) => {
                 return (
                   <li key={d.id} className="flex sm:mx-auto items-start w-60 sm:w-[17rem] text-sm md:col-span-6 justify-start  gap-4 text-accent sm:text-base mt-4"><IoCarSport className="text-primary align-top" style={{ width: '24px', height: '24px', flex: 'none' }}/> {i18n.language == "ar" ? d.text_ar : d.text_en}</li>
                 )
