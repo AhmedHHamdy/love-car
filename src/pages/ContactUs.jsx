@@ -1,18 +1,21 @@
 import { IoCarSport } from "react-icons/io5"
 import { FaMapLocationDot } from "react-icons/fa6";
-import { FaBuilding } from "react-icons/fa";
+import { FaBuilding, FaWhatsapp } from "react-icons/fa";
 import { MdMarkEmailUnread } from "react-icons/md";
 import { MdOutlineNumbers } from "react-icons/md";
 import { IoPhonePortrait } from "react-icons/io5";
 import { MdAttachEmail } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../context/AuthProvider";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import LinksContext from "../context/storeLinks";
 
 export default function ContactUs() {
 
   const { token } = useAuth()
+
+  const { storeLinks } = useContext(LinksContext);
 
   const [loadingStatus, setLoadingStatus] = useState(true)
   const [error, setError] = useState(null)
@@ -20,7 +23,7 @@ export default function ContactUs() {
   const [messageSuccess, setMessageSuccess] = useState(false)
   const [messageError, setMessageError] = useState(null)
 
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
 
   const [formData, setFormData] = useState(null)
@@ -222,7 +225,9 @@ export default function ContactUs() {
       </div>
 
 
-
+      <section className={`bg-green-500 fixed h-20 w-20 bottom-10 ${i18n.language == "en" ? "right-10" : "left-10"}  cursor-pointer rounded-full flex items-center justify-center drop-shadow-2xl`}>
+        <a href={storeLinks?.socialMedia?.whatsapp} className="" target="_blank"><FaWhatsapp className="text-white text-6xl sm:text-6xl" /></a>
+      </section>
     </section>
   )
 }

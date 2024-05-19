@@ -5,10 +5,14 @@ import { AiFillCloseCircle } from "react-icons/ai"
 import { useAuth } from "../../context/AuthProvider";
 import { useTranslation } from "react-i18next";
 import LocationContext from "../../context/CitiesAndRegions";
+import LinksContext from "../../context/storeLinks";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function Profile() {
 
   const { regions, cities, errMsg } = useContext(LocationContext);
+
+  const { storeLinks } = useContext(LinksContext);
 
   // console.log(regions, cities)
 
@@ -22,7 +26,7 @@ export default function Profile() {
   const [errorPasswordForm, setErrorPasswordForm] = useState(null)
   const [loadingButtonStatus, setLoadingButtonStatus] = useState(false)
 
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   // const [regions, setRegions] = useState([])
   // const [cities, setCities] = useState([])
@@ -326,6 +330,10 @@ export default function Profile() {
               </form>
             </div>
         </dialog>
+
+        <section className={`bg-green-500 fixed h-20 w-20 bottom-10 ${i18n.language == "en" ? "right-10" : "left-10"}  cursor-pointer rounded-full flex items-center justify-center drop-shadow-2xl`}>
+          <a href={storeLinks?.socialMedia?.whatsapp} className="" target="_blank"><FaWhatsapp className="text-white text-6xl sm:text-6xl" /></a>
+        </section>
       </section>
   )
 }

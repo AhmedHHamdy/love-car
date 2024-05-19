@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MultiSelectDropdown from "../../components/MultiSelectDropdown";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
@@ -7,6 +7,8 @@ import { useAuth } from "../../context/AuthProvider";
 import Select from "react-dropdown-select";
 import { components } from "react-select";
 import { default as ReactSelect } from "react-select";
+import LinksContext from "../../context/storeLinks";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function Maintenance() {
   const location = useLocation()
@@ -71,7 +73,9 @@ export default function Maintenance() {
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState(null)
 
-  const { t } = useTranslation()
+  const { storeLinks } = useContext(LinksContext);
+
+  const { t, i18n } = useTranslation()
 
   // console.log(formData)
   // console.log(maintenanceOptionsData)
@@ -537,6 +541,10 @@ export default function Maintenance() {
 
           <button className="btn btn-primary text-accent mt-4 w-full max-w-full col-span-12">{t("Send")}</button>
         </form>
+      </section>
+
+      <section className={`bg-green-500 fixed h-20 w-20 bottom-10 ${i18n.language == "en" ? "right-10" : "left-10"}  cursor-pointer rounded-full flex items-center justify-center drop-shadow-2xl`}>
+         <a href={storeLinks?.socialMedia?.whatsapp} className="" target="_blank"><FaWhatsapp className="text-white text-6xl sm:text-6xl" /></a>
       </section>
     </section>
   );

@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import MultiSelectDropdown from "../../components/MultiSelectDropdown";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import LinksContext from "../../context/storeLinks";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function Renewal() {
   const location = useLocation()
@@ -19,7 +21,9 @@ export default function Renewal() {
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState(null)
 
-  const { t } = useTranslation()
+  const { storeLinks } = useContext(LinksContext);
+
+  const { t, i18n } = useTranslation()
 
   // console.log(formData)
 
@@ -188,6 +192,10 @@ export default function Renewal() {
           
           <button className="btn btn-primary text-accent mt-6 w-full max-w-full col-span-12">{t("Send")}</button>
         </form>
+      </section>
+
+      <section className={`bg-green-500 fixed h-20 w-20 bottom-10 ${i18n.language == "en" ? "right-10" : "left-10"}  cursor-pointer rounded-full flex items-center justify-center drop-shadow-2xl`}>
+         <a href={storeLinks?.socialMedia?.whatsapp} className="" target="_blank"><FaWhatsapp className="text-white text-6xl sm:text-6xl" /></a>
       </section>
     </section>
   );

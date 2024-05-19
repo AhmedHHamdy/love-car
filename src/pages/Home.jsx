@@ -539,6 +539,12 @@ export default function Home() {
           <span className="text-center text-primary text-base sm:text-2xl md:text-3xl">{t("8:00 AM - 9:00 PM")}</span>
         </section>
       </section>
+
+      <section className={`bg-green-500 fixed h-20 w-20 bottom-10 ${i18n.language == "en" ? "right-10" : "left-10"}  cursor-pointer rounded-full flex items-center justify-center drop-shadow-2xl`}>
+        <a href={formLinksData?.socialMedia?.whatsapp} className="" target="_blank"><FaWhatsapp className="text-white text-6xl sm:text-6xl" /></a>
+      </section>
     </main>
+
+    
   )
 }

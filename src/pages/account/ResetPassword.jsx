@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { FaWhatsapp } from "react-icons/fa";
+import LinksContext from "../../context/storeLinks";
 
 
 export default function ResetPassword() {
@@ -21,7 +23,9 @@ export default function ResetPassword() {
 
   const navigate = useNavigate()
 
-  const { t } = useTranslation()
+  const { storeLinks } = useContext(LinksContext);
+
+  const { t, i18n } = useTranslation()
 
   // console.log(resetPasswordForm)
 
@@ -158,6 +162,10 @@ export default function ResetPassword() {
           </form>
         </section>
       }
+
+      <section className={`bg-green-500 fixed h-20 w-20 bottom-10 ${i18n.language == "en" ? "right-10" : "left-10"}  cursor-pointer rounded-full flex items-center justify-center drop-shadow-2xl`}>
+        <a href={storeLinks?.socialMedia?.whatsapp} className="" target="_blank"><FaWhatsapp className="text-white text-6xl sm:text-6xl" /></a>
+      </section>
     </section>
   )
 }

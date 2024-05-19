@@ -1,9 +1,11 @@
 import { Link, useNavigate, Navigate } from "react-router-dom"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useAuth } from "../../context/AuthProvider"
 import axios from "axios"
 import { useTranslation } from "react-i18next"
 import { BiShow, BiHide } from "react-icons/bi";
+import { FaWhatsapp } from "react-icons/fa"
+import LinksContext from "../../context/storeLinks"
 
 export default function Login() {
     const [formData, setFormData] = useState({
@@ -13,6 +15,8 @@ export default function Login() {
     })
 
     // console.log(formData)
+
+    const { storeLinks } = useContext(LinksContext);
 
     const { setToken, token } = useAuth()
 
@@ -158,6 +162,10 @@ export default function Login() {
           </div>
         </div>
       </div>
+
+      <section className={`bg-green-500 fixed h-20 w-20 bottom-10 ${i18n.language == "en" ? "right-10" : "left-10"}  cursor-pointer rounded-full flex items-center justify-center drop-shadow-2xl`}>
+        <a href={storeLinks?.socialMedia?.whatsapp} className="" target="_blank"><FaWhatsapp className="text-white text-6xl sm:text-6xl" /></a>
+      </section>
     </section>
   );
 
