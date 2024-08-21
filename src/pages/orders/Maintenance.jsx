@@ -271,7 +271,7 @@ export default function Maintenance() {
 
 
   return (
-    <section className="bg-secondary p-10 min-h-screen">
+    <section className="bg-secondary p-10 min-h-screen font-semibold">
       <section className="w-9/12 mx-auto flex flex-col justify-center items-center 2xl:max-w-[1800px] 2xl:mx-auto">
         <h1 className="text-center text-3xl">{t("Maintenance")}</h1>
 
@@ -543,8 +543,8 @@ export default function Maintenance() {
         </form>
       </section>
 
-      <section className={`bg-green-500 fixed h-20 w-20 bottom-10 ${i18n.language == "en" ? "right-10" : "left-10"}  cursor-pointer rounded-full flex items-center justify-center drop-shadow-2xl`}>
-         <a href={storeLinks?.socialMedia?.whatsapp} className="" target="_blank"><FaWhatsapp className="text-white text-6xl sm:text-6xl" /></a>
+      <section className={`bg-green-500 fixed h-16 w-16 bottom-10 ${i18n.language == "en" ? "right-10" : "left-10"}  cursor-pointer rounded-full flex items-center justify-center drop-shadow-2xl`}>
+         <a href={storeLinks?.socialMedia?.whatsapp} className="" target="_blank"><FaWhatsapp className="text-white text-5xl sm:text-5xl" /></a>
       </section>
     </section>
   );

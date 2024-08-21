@@ -42,7 +42,7 @@ export default function Messages() {
         })
         const data = await response.data.data
         setLoadingStatus(false)
-        // console.log(response)
+        console.log(response)
         // console.log(data)
         setOrdersData(data.notifications)
       } catch (err) {
@@ -73,15 +73,15 @@ export default function Messages() {
 
 
   return (
-    <section className="bg-secondary py-4 min-h-screen">
+    <section className="bg-secondary dark:bg-base-300 py-4 min-h-screen">
       <h1 className="text-center font-bold text-2xl text-primary border-b-2 border-gray-900 py-4 pt-2">{t("Messages")}</h1>
-      <div className="w-10/12 mx-auto 2xl:max-w-[1800px] 2xl:mx-auto">
+      <div className="w-10/12 mx-auto 2xl:max-w-[1800px] 2xl:mx-auto font-semibold">
 
         
       {ordersData.map((order, item) => {
         return (
           <div key={order.order_number} className="flex justify-center" >
-            {order && (<div className="modal-box flex-col  sm:max-w-full flex sm:grid sm:grid-cols-12  gap-4">
+            {order && (<div className="modal-box flex-col  sm:max-w-full flex sm:grid sm:grid-cols-12 gap-4">
             {/* <h2 className="font-bold text-lg my-0">ID: #{selectedOrder.id}</h2> */}
 
             <div className="sm:col-start-1 sm:col-span-4">
@@ -105,6 +105,7 @@ export default function Messages() {
               <input type="text" readOnly value={order.message} className="input input-bordered w-full sm:max-w-none capitalize" />
             </div>
 
+ 
             <button className={`btn bg-primary text-accent w-full mt-2 col-span-6 self-end`} onClick={()=> openModel(order)}>{t("details")}</button>
  
 
@@ -173,7 +174,10 @@ export default function Messages() {
                 <input type="text" readOnly value={selectedOrder.message} className="input input-bordered w-full sm:max-w-none capitalize" />
               </div>
 
-
+              <div className="sm:col-span-12">
+                <h3 className="font-bold text-lg my-1">{t("Action")} :</h3>
+                <input type="text" readOnly value={selectedOrder.action} className="input input-bordered w-full sm:max-w-none capitalize" />
+              </div>
 
               {selectedOrder.cancelledReason !== "" && <div className="col-span-12">
                 <h3 className="font-bold text-lg my-1">{t("Reason for rejection")} :</h3>

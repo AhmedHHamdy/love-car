@@ -72,10 +72,10 @@ export default function Dashboard() {
 
 
   return (
-    <section className="bg-secondary py-4 min-h-screen">
+    <section className="bg-secondary dark:bg-base-300 py-4 min-h-screen">
       <h1 className="text-center font-bold text-2xl text-primary border-b-2 border-gray-900 py-4 pt-2">{t("Dashboard")}</h1>
       <div className="overflow-x-auto overflow-y-hidden w-10/12 xl:overflow-hidden mx-auto 2xl:max-w-[1800px] 2xl:mx-auto">
-        <table className="table">
+        <table className="table font-semibold">
           {/* head */}
           <thead>
             <tr className="uppercase">
@@ -120,7 +120,7 @@ export default function Dashboard() {
                 
                 <td>{order.year}</td>
                 
-                <td> <span className={order.status == "تم قبول الطلب" ? "bg-green-800 text-accent rounded-full p-3 cursor-pointer block w-28 text-center" : order.status == "قيد الانتظار" ? "bg-base-100 text-accent rounded-full p-3 cursor-pointer block w-28 text-center" :  "bg-red-800 text-accent rounded-full p-3 cursor-pointer block w-28 text-center"}>{order.status}</span></td>
+                <td> <span className={order.status == "تم قبول الطلب" ? "bg-green-800 text-accent rounded-full p-3 cursor-pointer block w-28 text-center" : order.status == "قيد الانتظار" ? "bg-secondary rounded-full p-3 cursor-pointer block w-28 text-center" :  "bg-red-800 text-accent rounded-full p-3 cursor-pointer block w-28 text-center"}>{order.status}</span></td>
 
                 {/* <td>{order.cancelledReason}</td> */}
            
@@ -280,8 +280,8 @@ export default function Dashboard() {
         </dialog>
       </div>
 
-      <section className={`bg-green-500 fixed h-20 w-20 bottom-10 ${i18n.language == "en" ? "right-10" : "left-10"}  cursor-pointer rounded-full flex items-center justify-center drop-shadow-2xl`}>
-         <a href={storeLinks?.socialMedia?.whatsapp} className="" target="_blank"><FaWhatsapp className="text-white text-6xl sm:text-6xl" /></a>
+      <section className={`bg-green-500 fixed h-16 w-16 bottom-10 ${i18n.language == "en" ? "right-10" : "left-10"}  cursor-pointer rounded-full flex items-center justify-center drop-shadow-2xl`}>
+         <a href={storeLinks?.socialMedia?.whatsapp} className="" target="_blank"><FaWhatsapp className="text-white text-5xl sm:text-5xl" /></a>
       </section>
     </section>
   );

@@ -1,13 +1,33 @@
 import { Link } from "react-router-dom"
 import Logo from "../assets/logo.png"
 import { useTranslation } from "react-i18next"
+import { useEffect, useState } from "react";
 
 export default function Footer() {
 
     const { t } = useTranslation()
 
+    const [theme, setTheme] = useState(
+        localStorage.getItem("theme") ? localStorage.getItem("theme") : "dark"
+      );
+
+    const handleToggle = (e) => {
+        if (e.target.checked) {
+          setTheme("dark");
+        } else {
+          setTheme("light");
+        }
+      };
+      
+      useEffect(() => {
+        localStorage.setItem("theme", theme);
+        const localTheme = localStorage.getItem("theme");
+        // add custom data-theme attribute to html tag required to update theme using DaisyUI
+        document.querySelector("html").setAttribute("data-theme", localTheme);
+      }, [theme]);
+
     return (
-    <footer className="w-10/12 mx-auto 2xl:max-w-[1800px] 2xl:mx-auto">
+    <footer className="w-10/12 mx-auto 2xl:max-w-[1800px] 2xl:mx-auto font-semibold">
         <section className="footer p-10 bg-base-100 text-base-content">
             <aside>
                 <img className="max-w-full" src={Logo} alt="logo-icon" />
@@ -81,6 +101,38 @@ export default function Footer() {
                         <path d="M135.787 18.1097C135.527 19.1333 134.361 19.901 133.195 19.7731C131.77 19.7731 130.474 18.6215 130.474 17.2141C130.474 17.0861 130.474 16.9581 130.474 16.8302C130.215 15.4227 131.252 14.0153 132.806 13.8873C132.936 13.8873 133.066 13.8873 133.195 13.8873C134.88 13.8873 135.787 15.0389 135.787 16.8302V17.2141H131.64C131.511 18.1097 132.159 18.7495 133.066 18.8774H133.195C133.713 19.0054 134.361 18.6215 134.62 18.2377L135.787 18.1097ZM131.64 16.1904H134.62C134.62 15.4227 134.102 14.783 133.325 14.655H133.195C132.418 14.783 131.64 15.4227 131.64 16.1904Z" fill="black"/>
                         </svg>
                     </Link>
+                </div>
+
+                <div>
+                  <label className="label cursor-pointer gap-4 hover:bg-base-100">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="5" />
+                      <path
+                        d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+                    </svg>
+                    <input type="checkbox" className="toggle toggle-primary" checked={theme == "light" ? false : true} onChange={handleToggle} />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round">
+                      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                  </label>
                 </div>
             </nav>
         </section>

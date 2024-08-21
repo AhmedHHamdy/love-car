@@ -177,5 +177,9 @@
   "Al Qurayyat": "القريات",
   "Jizan": "جازان",
 
-  "Password does not match.": "كلمة المرور غير متطابقة."
+  "Password does not match.": "كلمة المرور غير متطابقة.",
+
+  "Action": "اجراء",
+    "Light": "فاتح",
+    "Dark": "داكن"
 }

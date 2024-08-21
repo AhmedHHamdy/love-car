@@ -213,17 +213,17 @@ export default function Profile() {
   // if (error) {
   //   return (
   //     <div className="flex justify-center items-center w-screen h-screen bg-secondary">
-  //       <h1 className="bg-red-900 text-accent text-center uppercase rounded-lg p-4 text-lg">{error} <br/> Please refresh</h1>
+  //       <h1 className="bg-primary text-accent text-center uppercase rounded-lg p-4 text-lg">{error} <br/> Please refresh</h1>
   //     </div>
   //   )
   // }
 
 
   return (
-      <section className="bg-secondary flex flex-col justify-center items-center min-h-screen">
+      <section className="bg-secondary dark:bg-base-300 flex flex-col justify-center items-center min-h-screen font-semibold">
         {error &&   
         <div className="flex justify-center items-center bg-secondary">
-          <h1 className="bg-red-900 text-accent text-center capitalize rounded-lg p-4 text-lg">{error}</h1>
+          <h1 className="bg-primary text-center capitalize rounded-lg p-4 text-lg text-white">{error}</h1>
         </div>}
 
         <div className="text-2xl my-6">
@@ -315,7 +315,7 @@ export default function Profile() {
         <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
             <div className="modal-box">
               <h3 className="font-bold text-2xl mb-2">{t("Change Password")}</h3>
-              {errorPasswordForm && <h1 className="bg-red-900 text-accent text-center capitalize rounded-lg p-4 my-1 text-lg">{errorPasswordForm}</h1>}
+              {errorPasswordForm && <h1 className="bg-primary text-white text-center capitalize rounded-lg p-4 my-1 text-lg">{errorPasswordForm}</h1>}
               <form onSubmit={handlePasswordFormSubmit} className="flex flex-col gap-2" method="dialog">
                 <label className="label-text text-base inline-block mb-0" htmlFor="old_password">{t("Old Password")}</label>
                 <input className="input input-bordered w-full" type="password" name="old_password" id="old_password" onChange={handleChangePassword} required value={formPassword.old_password} />

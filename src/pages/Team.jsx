@@ -51,13 +51,13 @@ export default function Team() {
   if (error) {
     return (
       <div className="flex justify-center items-center w-screen h-screen bg-secondary">
-        <h1 className="bg-red-900 text-accent text-center uppercase rounded-lg p-4 text-lg">{error} <br/> Please refresh</h1>
+        <h1 className="bg-red-900 text-center uppercase rounded-lg p-4 text-lg">{error} <br/> Please refresh</h1>
       </div>
     )
   }
 
   return(
-    <section className="bg-secondary min-h-screen">
+    <section className="bg-secondary dark:bg-base-300 min-h-screen font-semibold">
       <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("/carBackground.jpg")', backgroundRepeat: "no-repeat"}}>
         <div className="hero-overlay bg-secondary bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
@@ -66,15 +66,15 @@ export default function Team() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 items-center w-10/12 mx-auto py-10 justify-items-center gap-y-10 bg-secondary mt-8 2xl:max-w-[1800px] 2xl:mx-auto">
+      <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 items-center w-10/12 mx-auto py-10 justify-items-center gap-y-10 bg-secondary dark:bg-base-300 mt-8 2xl:max-w-[1800px] 2xl:mx-auto">
             {formData.map((teamMember => {
                 return ( 
                     <div className="">
                         <div key={teamMember.id} className="flex flex-col items-center justify-center gap-8 mb-4">
                             <img src={teamMember.image} className="h-64 rounded-lg" />
                             <div className="flex flex-col justify-center items-center ">
-                                <h1 className="py-6 text-4xl  font-semibold text-accent leading-normal">{teamMember.name}</h1>
-                                <p className="text-base sm:text-lg font-semibold text-accent leading-normal flex justify-start items-center gap-4"><IoCarSport className="text-primary"/> {teamMember.specialization}</p>
+                                <h1 className="py-6 text-4xl  font-semibold leading-normal">{teamMember.name}</h1>
+                                <p className="text-base sm:text-lg font-semibold leading-normal flex justify-start items-center gap-4"><IoCarSport className="text-primary"/> {teamMember.specialization}</p>
                             </div>
                         </div>
                     </div>

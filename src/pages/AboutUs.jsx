@@ -49,13 +49,13 @@ export default function AboutUs() {
   if (error) {
     return (
       <div className="flex justify-center items-center w-screen h-screen bg-secondary">
-        <h1 className="bg-red-900 text-accent text-center uppercase rounded-lg p-4 text-lg">{error} <br/> Please refresh</h1>
+        <h1 className="bg-red-900  text-center uppercase rounded-lg p-4 text-lg">{error} <br/> Please refresh</h1>
       </div>
     )
   }
 
   return(
-    <section className="bg-secondary min-h-screen">
+    <section className="bg-secondary dark:bg-base-300 min-h-screen font-semibold">
       <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("/bg-2.jpg")'}}>
         <div className="hero-overlay bg-secondary bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
@@ -65,35 +65,35 @@ export default function AboutUs() {
         </div>
       </div>
 
-      <div className="hero bg-secondary my-8  ">
+      <div className="hero bg-secondary dark:bg-base-300 my-8  ">
         <div className="hero-content gap-10 xl:gap-20 flex-col xl:flex-row md:items-center xl:items-start">
           <img src={formData.image1} className="max-w-full sm:max-w-xl rounded-lg" />
 
           <div className="flex flex-col justify-space-between items-center sm:items-center md:items-center xl:items-start">
-            <span className="text-sm bg-primary p-3 rounded-full rounded-tl-none text-accent">{t("We are pleased to collaborate with you")}</span>
-            {i18n.language == "ar" && <p className="py-6 text-3xl sm:text-5xl font-semibold text-accent leading-loose sm:leading-relaxed text-center xl:text-start">{formData.description_ar}</p>}
-            {i18n.language == "en" && <p className="py-6 text-3xl sm:text-5xl font-semibold text-accent leading-loose sm:leading-relaxed text-center xl:text-start">{formData.description_en}</p>}
+            <span className="text-sm bg-primary dark:text-secondary p-3 rounded-full rounded-tl-none ">{t("We are pleased to collaborate with you")}</span>
+            {i18n.language == "ar" && <p className="py-6 text-3xl sm:text-5xl font-semibold  leading-loose sm:leading-relaxed text-center xl:text-start">{formData.description_ar}</p>}
+            {i18n.language == "en" && <p className="py-6 text-3xl sm:text-5xl font-semibold  leading-loose sm:leading-relaxed text-center xl:text-start">{formData.description_en}</p>}
 
             <ul className="h-full flex flex-col items-center md:grid md:grid-cols-12 md:justify-center md:items-center md:auto-rows-min gap-x-10">
               {formData.data.map((d, i) => {
                 return (
-                  <li key={d.id} className="flex sm:mx-auto items-start w-60 sm:w-[17rem] text-sm md:col-span-6 justify-start  gap-4 text-accent sm:text-base mt-4"><IoCarSport className="text-primary align-top" style={{ width: '24px', height: '24px', flex: 'none' }}/> {i18n.language == "ar" ? d.text_ar : d.text_en}</li>
+                  <li key={d.id} className="flex sm:mx-auto items-start w-60 sm:w-[17rem] text-sm md:col-span-6 justify-start  gap-4  sm:text-base mt-4"><IoCarSport className="text-primary align-top" style={{ width: '24px', height: '24px', flex: 'none' }}/> {i18n.language == "ar" ? d.text_ar : d.text_en}</li>
                 )
               })}
-              {/* <li className="flex justify-start items-center gap-4 text-accent text-base mt-4"><IoCarSport className="text-primary" /> {formData.description[1]}</li>
-              <li className="flex justify-start items-center gap-4 text-accent text-base mt-4"><IoCarSport className="text-primary" /> {formData.description[2]}</li>
-              <li className="flex justify-start items-center gap-4 text-accent text-base mt-4"><IoCarSport className="text-primary" /> {formData.description[3]}</li> */}
+              {/* <li className="flex justify-start items-center gap-4  text-base mt-4"><IoCarSport className="text-primary" /> {formData.description[1]}</li>
+              <li className="flex justify-start items-center gap-4  text-base mt-4"><IoCarSport className="text-primary" /> {formData.description[2]}</li>
+              <li className="flex justify-start items-center gap-4  text-base mt-4"><IoCarSport className="text-primary" /> {formData.description[3]}</li> */}
             </ul>    
           </div>
         </div>
       </div>
 
-      <div className="hero bg-secondary ">
+      <div className="hero bg-secondary dark:bg-base-300">
         <div className="hero-content gap-10 xl:gap-40 flex-col xl:flex-row-reverse">
           <img src={formData.image2} className="max-w-full sm:max-w-xl rounded-lg xl:mb-6" />
           <div className="text-center 2xl:text-start">
-            <h1 className="text-3xl text-accent">{t("We are delighted to fulfill your requests.")}</h1>
-            <p className="py-6 text-accent text-sm sm:text-base mx-auto 2xl:mx-0 w-60 sm:w-full">{t("We welcome orders for renewing, maintaining, and inspecting all types of vehicles. We are happy to serve you.")}</p>
+            <h1 className="text-3xl ">{t("We are delighted to fulfill your requests.")}</h1>
+            <p className="py-6  text-sm sm:text-base mx-auto 2xl:mx-0 w-60 sm:w-full">{t("We welcome orders for renewing, maintaining, and inspecting all types of vehicles. We are happy to serve you.")}</p>
           </div>
         </div>
       </div>

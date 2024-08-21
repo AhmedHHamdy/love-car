@@ -85,25 +85,25 @@ export default function Login() {
 
 
   return (
-    <section className="bg-secondary md:pt-0 min-[320px]:pt-0 sm:pt-20 lg:pt-0">
+    <section className="bg-secondary dark:bg-base-300 md:pt-0 min-[320px]:pt-0 sm:pt-20 lg:pt-0 font-semibold">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 2xl:max-w-[1800px] 2xl:mx-auto">
         <div className="w-full bg-base-100 border-base-100 rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-accent md:text-2xl">
+            <h1 className="text-xl font-bold leading-tight tracking-tight  md:text-2xl">
               {t("Sign in to your account")}
             </h1>
-              <p className="text-base font-light m-0 text-accent">
+              <p className="text-base font-light m-0 ">
                 {t("Don't have an account yet?")}{' '}
                 <Link to="/signup" className="font-medium text-primary hover:underline">
                   {t("Sign up")}
                 </Link>
               </p>
-            {errMsg && <p className="text-accent p-3 rounded-lg bg-red-900" aria-live="assertive">
+            {errMsg && <p className=" p-3 rounded-lg bg-primary text-white" aria-live="assertive">
                   {errMsg}
             </p>}
             <form className="space-y-4 md:space-y-6 " onSubmit={handleSubmit}>
               <div>
-                {/* <label htmlFor="email" className="block mb-2 text-sm font-medium text-accent">
+                {/* <label htmlFor="email" className="block mb-2 text-sm font-medium ">
                   {t("Email")}
                 </label> */}
                 <label className="input bg-secondary input-bordered flex items-center gap-2 col-span-2">
@@ -112,7 +112,7 @@ export default function Login() {
                   type="email"
                   name="email"
                   id="email"
-                  className="grow w-20 autofill:shadow-[inset_0_0_0px_1000px_#0D0D0D] bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
+                  className="grow w-20 autofill:shadow-[inset_0_0_0px_1000px_#0D0D0D] bg-secondary border border-secondary  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
                   placeholder={t("Email")}
                   required
                   onChange={handleChange}
@@ -122,7 +122,7 @@ export default function Login() {
               </div>
 
               <div>
-                {/* <label htmlFor="password" className="block mb-2 text-sm font-medium text-accent">
+                {/* <label htmlFor="password" className="block mb-2 text-sm font-medium ">
                   {t("Password")}
                 </label> */}
                 <label className="input bg-secondary input-bordered flex items-center relative gap-2 col-span-2">
@@ -132,7 +132,7 @@ export default function Login() {
                     name="password"
                     id="password"
                     placeholder="••••••••"
-                    className="grow w-20 bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
+                    className="grow w-20 bg-secondary border border-secondary  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
                     required
                     onChange={handleChange}
                     value={formData.password}
@@ -155,7 +155,7 @@ export default function Login() {
               <button className="w-full text-white bg-primary focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                 {t("Sign in")}
               </button>
-              <p className="text-base font-normal text-accent underline">
+              <p className="text-base font-normal  underline">
                 <Link to="/resetpassword">{t("Forgot your password?")}</Link>
               </p>
             </form>

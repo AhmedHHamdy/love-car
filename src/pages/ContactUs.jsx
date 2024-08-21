@@ -153,7 +153,7 @@ export default function ContactUs() {
 
 
   return(
-    <section className="bg-secondary min-h-screen flex flex-col">
+    <section className="bg-secondary dark:bg-base-300 min-h-screen flex flex-col font-semibold">
       <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("/bg-1.jpg")'}}>
         <div className="hero-overlay bg-secondary bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
@@ -163,11 +163,11 @@ export default function ContactUs() {
         </div>
       </div>
 
-      <div className="hero bg-secondary mt-8 ">
+      <div className="hero bg-secondary dark:bg-base-300 mt-8 ">
         <div className="hero-content flex-col md:flex-col xl:flex-row  pb-10 md:0 gap-8 flex-wrap">
           <div className="flex flex-col justify-space-between items-start md:self-start">
 
-            <p className="py-6 text-4xl sm:text-5xl font-semibold text-accent">{t("Do you have any inquiries?")}</p>
+            <p className="py-6 text-4xl sm:text-5xl font-semibold">{t("Do you have any inquiries?")}</p>
             <span className="text-primary text-xl flex justify-center items-center gap-4"><FaMapLocationDot /> {t("Address")}</span>
             <h3 className="text-xl mt-2 border-b-[0.02rem] border-gray-700  w-full md:w-full pb-6 leading-loose">
               {formData.address} <br />

@@ -177,5 +177,9 @@
   "Al Qurayyat": "Al Qurayyat",
   "Jizan": "Jizan",
 
-  "Password does not match.": "Password does not match."
+  "Password does not match.": "Password does not match.",
+
+  "Action": "Action",
+  "Light": "Light",
+  "Dark": "Dark"
 }

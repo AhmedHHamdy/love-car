@@ -185,14 +185,14 @@ export default function Signup() {
 
 
     return (
-      <section className="bg-secondary md:pt-0 min-[320px]:pt-0 sm:pt-20 lg:pt-0 ">
+      <section className="bg-secondary dark:bg-base-300 md:pt-0 min-[320px]:pt-0 sm:pt-20 lg:pt-0 font-semibold">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <div className="w-full bg-base-100 border-base-100 rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">
             <div className="p-6 space-y-2 md:space-y-6 sm:p-8">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-accent md:text-2xl">
+              <h1 className="text-xl font-bold leading-tight tracking-tight  md:text-2xl">
               {t("Sign up")}
               </h1>
-              <p className="self-center text-base font-light text-accent">
+              <p className="self-center text-base font-light ">
                 {t("Have an account?")}{" "}
                   <Link
                     to="/login"
@@ -201,14 +201,14 @@ export default function Signup() {
                     {t("Login")}
                   </Link>
               </p>
-              {errMsg && <p className="text-accent p-3 rounded-lg bg-red-900"  aria-live="assertive">
+              {errMsg && <p className=" p-3 rounded-lg bg-primary text-white"  aria-live="assertive">
                 {errMsg}
               </p>}
     
               {/* <form className="flex flex-col space-y-3" onSubmit={handleSubmit}>
                 <label
                   htmlFor="name"
-                  className="text-sm font-medium text-accent"
+                  className="text-sm font-medium "
                 >
                   {t("Name")}
                 </label>
@@ -216,7 +216,7 @@ export default function Signup() {
                   type="text"
                   name="name"
                   id="name"
-                  className="bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
+                  className="bg-secondary border border-secondary  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
                   placeholder="Name"
                   required
                   onChange={handleChange}
@@ -225,7 +225,7 @@ export default function Signup() {
     
                 <label
                   htmlFor="email"
-                  className="text-sm font-medium text-accent"
+                  className="text-sm font-medium "
                 >
                   {t("Email")}
                 </label>
@@ -233,7 +233,7 @@ export default function Signup() {
                   type="email"
                   name="email"
                   id="email"
-                  className="bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
+                  className="bg-secondary border border-secondary  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
                   placeholder="name@company.com"
                   required
                   onChange={handleChange}
@@ -242,7 +242,7 @@ export default function Signup() {
     
                 <label
                   htmlFor="phone"
-                  className="text-sm font-medium text-accent"
+                  className="text-sm font-medium "
                 >
                   {t("Phone")}
                 </label>
@@ -250,7 +250,7 @@ export default function Signup() {
                   type="text"
                   name="phone"
                   id="phone"
-                  className="bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
+                  className="bg-secondary border border-secondary  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
                   placeholder="01055555555"
                   required
                   onChange={handleChange}
@@ -259,7 +259,7 @@ export default function Signup() {
     
                 <label
                   htmlFor="password"
-                  className="text-sm font-medium text-accent"
+                  className="text-sm font-medium "
                 >
                   {t("Password")}
                 </label>
@@ -268,7 +268,7 @@ export default function Signup() {
                   name="password"
                   id="password"
                   placeholder="••••••••"
-                  className="bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
+                  className="bg-secondary border border-secondary  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
                   required
                   onChange={handleChange}
                   value={formData.password}
@@ -291,7 +291,7 @@ export default function Signup() {
                     name="name"
                     id="name"
                     className="grow autofill:shadow-[inset_0_0_0px_1000px_#0D0D0D]
-                    w-20 bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
+                    w-20 bg-secondary border border-secondary  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
                     placeholder={t("Name")}
                     required
                     onChange={handleChange}
@@ -304,7 +304,7 @@ export default function Signup() {
                     type="text"
                     name="phone"
                     id="phone"
-                    className="grow autofill:shadow-[inset_0_0_0px_1000px_#0D0D0D] w-20 bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
+                    className="grow autofill:shadow-[inset_0_0_0px_1000px_#0D0D0D] w-20 bg-secondary border border-secondary  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
                     placeholder="000 000 0000"
                     required
                     onChange={handleChange}
@@ -318,7 +318,7 @@ export default function Signup() {
                     type="text"
                     name="city"
                     id="city"
-                    className="grow w-20 autofill:shadow-[inset_0_0_0px_1000px_#0D0D0D] bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
+                    className="grow w-20 autofill:shadow-[inset_0_0_0px_1000px_#0D0D0D] bg-secondary border border-secondary  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
                     placeholder={t("City")}
                     required
                     onChange={handleChange}
@@ -368,7 +368,7 @@ export default function Signup() {
                     type="text"
                     name="address"
                     id="address"
-                    className="grow w-20 autofill:shadow-[inset_0_0_0px_1000px_#0D0D0D] bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
+                    className="grow w-20 autofill:shadow-[inset_0_0_0px_1000px_#0D0D0D] bg-secondary border border-secondary  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
                     placeholder={t("Address")}
                     onChange={handleChange}
                     value={formData.address}
@@ -381,7 +381,7 @@ export default function Signup() {
                     type="email"
                     name="email"
                     id="email"
-                    className="grow w-20 autofill:shadow-[inset_0_0_0px_1000px_#0D0D0D] bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
+                    className="grow w-20 autofill:shadow-[inset_0_0_0px_1000px_#0D0D0D] bg-secondary border border-secondary  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
                     placeholder={t("Email")}
                     required
                     onChange={handleChange}
@@ -396,7 +396,7 @@ export default function Signup() {
                     name="password"
                     id="password"
                     placeholder={t("Password")}
-                    className="grow w-20 bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
+                    className="grow w-20 bg-secondary border border-secondary  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
                     required
                     onChange={handleChange}
                     value={formData.password}
@@ -421,7 +421,7 @@ export default function Signup() {
                     name="confirm_password"
                     id="confirm_password"
                     placeholder={t("Confirm Password")}
-                    className="grow w-20 bg-secondary border border-secondary text-accent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
+                    className="grow w-20 bg-secondary border border-secondary  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2"
                     required
                     onChange={handleChange}
                     value={formData.confirm_password}
