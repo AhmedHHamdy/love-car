@@ -540,8 +540,8 @@ export default function Home() {
         </section>
       </section>
 
-      <section className={`bg-green-500 fixed h-16 w-16 bottom-10 ${i18n.language == "en" ? "right-10" : "left-10"}  cursor-pointer rounded-full flex items-center justify-center drop-shadow-2xl`}>
-        <a href={formLinksData?.socialMedia?.whatsapp} className="" target="_blank"><FaWhatsapp className="text-white text-5xl sm:text-5xl" /></a>
+      <section className={`bg-green-500 fixed h-12 w-12 bottom-10 ${i18n.language == "en" ? "right-10" : "left-10"}  cursor-pointer rounded-full flex items-center justify-center drop-shadow-2xl`}>
+        <a href={formLinksData?.socialMedia?.whatsapp} className="" target="_blank"><FaWhatsapp className="text-white text-3xl sm:text-4xl" /></a>
       </section>
     </main>
 

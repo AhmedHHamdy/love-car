@@ -2,29 +2,30 @@ import { Link } from "react-router-dom"
 import Logo from "../assets/logo.png"
 import { useTranslation } from "react-i18next"
 import { useEffect, useState } from "react";
+import ThemeToggler from "./ThemeToggler";
 
 export default function Footer() {
 
     const { t } = useTranslation()
 
-    const [theme, setTheme] = useState(
-        localStorage.getItem("theme") ? localStorage.getItem("theme") : "dark"
-      );
+    // const [theme, setTheme] = useState(
+    //     localStorage.getItem("theme") ? localStorage.getItem("theme") : "dark"
+    //   );
 
-    const handleToggle = (e) => {
-        if (e.target.checked) {
-          setTheme("dark");
-        } else {
-          setTheme("light");
-        }
-      };
+    // const handleToggle = (e) => {
+    //     if (e.target.checked) {
+    //       setTheme("dark");
+    //     } else {
+    //       setTheme("light");
+    //     }
+    //   };
       
-      useEffect(() => {
-        localStorage.setItem("theme", theme);
-        const localTheme = localStorage.getItem("theme");
-        // add custom data-theme attribute to html tag required to update theme using DaisyUI
-        document.querySelector("html").setAttribute("data-theme", localTheme);
-      }, [theme]);
+    //   useEffect(() => {
+    //     localStorage.setItem("theme", theme);
+    //     const localTheme = localStorage.getItem("theme");
+    //     // add custom data-theme attribute to html tag required to update theme using DaisyUI
+    //     document.querySelector("html").setAttribute("data-theme", localTheme);
+    //   }, [theme]);
 
     return (
     <footer className="w-10/12 mx-auto 2xl:max-w-[1800px] 2xl:mx-auto font-semibold">
@@ -54,7 +55,7 @@ export default function Footer() {
             <nav>
                 <header className="footer-title">{t("Download")}</header>
                 <div className="flex flex-col sm:flex-row gap-2">
-                    <Link>
+                    <Link to={"https://play.google.com/store/apps/details?id=com.mees.lovecar&hl=en"} target="_blank" referrerPolicy="no-referrer">
                         <svg className="w-40" width="170" height="50" viewBox="0 0 170 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_32_15813)">
                         <path d="M163.273 49.7677H6.74549C3.30188 49.7677 0.484375 46.976 0.484375 43.564V6.34196C0.484375 2.92994 3.30188 0.138283 6.74549 0.138283H163.273C166.717 0.138283 169.535 2.92994 169.535 6.34196V43.564C169.535 46.976 166.717 49.7677 163.273 49.7677Z" fill="#100F0D"/>
@@ -104,35 +105,7 @@ export default function Footer() {
                 </div>
 
                 <div>
-                  <label className="label cursor-pointer gap-4 hover:bg-base-100">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="5" />
-                      <path
-                        d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
-                    </svg>
-                    <input type="checkbox" className="toggle toggle-primary" checked={theme == "light" ? false : true} onChange={handleToggle} />
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round">
-                      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                  </label>
+                  <ThemeToggler />
                 </div>
             </nav>
         </section>

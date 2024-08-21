@@ -10,6 +10,7 @@ import axios from "axios";
 import Car from "../assets/mingcute_car-3-fill.png";
 import Dropdown from "./DropdownMenu";
 import { IoClose } from "react-icons/io5";
+import ThemeToggler from "./ThemeToggler";
 
 export default function Header() {
   const { token, setToken } = useAuth();
@@ -27,9 +28,9 @@ export default function Header() {
   const [showNotification, setShowNotification] = useState(false);
   const isFirstRun = useRef(true);
 
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "dark"
-  );
+  // const [theme, setTheme] = useState(
+  //   localStorage.getItem("theme") ? localStorage.getItem("theme") : "dark"
+  // );
 
   const [formData, setFormData] = useState({
     id: "",
@@ -58,20 +59,20 @@ export default function Header() {
     setShowNotification((previousValue) => !previousValue);
   }
 
-  const handleToggle = (e) => {
-    if (e.target.checked) {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  };
+  // const handleToggle = (e) => {
+  //   if (e.target.checked) {
+  //     setTheme("dark");
+  //   } else {
+  //     setTheme("light");
+  //   }
+  // };
   
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-    const localTheme = localStorage.getItem("theme");
-    // add custom data-theme attribute to html tag required to update theme using DaisyUI
-    document.querySelector("html").setAttribute("data-theme", localTheme);
-  }, [theme]);
+  // useEffect(() => {
+  //   localStorage.setItem("theme", theme);
+  //   const localTheme = localStorage.getItem("theme");
+  //   // add custom data-theme attribute to html tag required to update theme using DaisyUI
+  //   document.querySelector("html").setAttribute("data-theme", localTheme);
+  // }, [theme]);
 
   // Function to show browser notification
   const requestNotificationPermission = (data) => {
@@ -578,35 +579,7 @@ export default function Header() {
                 <LanguageSelector />
               </li>
               <li className="dark:hover:bg-base-300"> 
-                <label className="label cursor-pointer mt-4 gap-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="5" />
-                    <path
-                      d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
-                  </svg>
-                  <input type="checkbox" className="toggle toggle-primary" checked={theme == "light" ? false : true} onChange={handleToggle} />
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                  </svg>
-                </label>
+                <ThemeToggler />
             </li>
             </ul>
           </div>
@@ -704,35 +677,7 @@ export default function Header() {
               <LanguageSelector />
             </li>
               <li className="hidden 2xl:inline 2xl:ms-10"> 
-                <label className="label cursor-pointer gap-4 hover:bg-base-100">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="5" />
-                    <path
-                      d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
-                  </svg>
-                  <input type="checkbox" className="toggle toggle-primary" checked={theme == "light" ? false : true} onChange={handleToggle} />
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                  </svg>
-                </label>
+                  <ThemeToggler />
               </li>
           </ul>
         </div>
