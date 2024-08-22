@@ -578,9 +578,7 @@ export default function Header() {
               <li className="ms-2">
                 <LanguageSelector />
               </li>
-              <li className="dark:hover:bg-base-300 mt-2"> 
                 <ThemeToggler />
-            </li>
             </ul>
           </div>
           <Link className="text-xl hidden sm:inline" to="/">
