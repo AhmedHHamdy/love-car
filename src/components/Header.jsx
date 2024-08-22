@@ -501,14 +501,14 @@ export default function Header() {
                 ></path>
               </svg>
             </div>
-            <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-secondary rounded-box w-56">
-              <li className="hover:bg-primary dark:hover:bg-base-300 rounded-lg">
+            <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow dark:bg-secondary bg-base-300 rounded-box w-56">
+              <li className="dark:hover:bg-primary hover:bg-base-300 rounded-lg">
                 <Link to="/">{t("Home")}</Link>
               </li>
               <li className="">
                 <Link>{t("Services")}</Link>
                 <ul className="p-2 rounded-lg z-30">
-                  <li className="hover:bg-primary dark:hover:bg-base-300 rounded-lg">
+                  <li className="dark:hover:bg-primary hover:bg-base-300 rounded-lg">
                     <Link
                       onClick={() => handleClick()}
                       state={{ type: "maintenance" }}
@@ -517,7 +517,7 @@ export default function Header() {
                       {t("Maintenance")}
                     </Link>
                   </li>
-                  <li className="hover:bg-primary dark:hover:bg-base-300 rounded-lg">
+                  <li className="dark:hover:bg-primary hover:bg-base-300 rounded-lg">
                     <Link
                       onClick={() => handleClick()}
                       state={{ type: "renewal" }}
@@ -526,7 +526,7 @@ export default function Header() {
                       {t("Renewal")}
                     </Link>
                   </li>
-                  <li className="hover:bg-primary dark:hover:bg-base-300 rounded-lg">
+                  <li className="dark:hover:bg-primary hover:bg-base-300 rounded-lg">
                     <Link
                       onClick={() => handleClick()}
                       state={{ type: "license" }}
@@ -537,7 +537,7 @@ export default function Header() {
                   </li>
                 </ul>
               </li>
-              <li className="hover:bg-primary dark:hover:bg-base-300 rounded-lg">
+              <li className="dark:hover:bg-primary hover:bg-base-300 rounded-lg">
                 <a
                   href={
                     localStorage.getItem("storeLink") ||
@@ -548,37 +548,37 @@ export default function Header() {
                   {t("Shop")}
                 </a>
               </li>
-              <li className="hover:bg-primary dark:hover:bg-base-300 rounded-lg">
+              <li className="dark:hover:bg-primary hover:bg-base-300 rounded-lg">
                 <Link onClick={() => handleClick()} to="/about-us">
                   {t("About Us")}
                 </Link>
               </li>
-              <li className="hover:bg-primary dark:hover:bg-base-300 rounded-lg">
+              <li className="dark:hover:bg-primary hover:bg-base-300 rounded-lg">
                 <Link onClick={() => handleClick()} to="/contact-us">
                   {t("Contact Us")}
                 </Link>
               </li>
               {token && (
-                <li className="hover:bg-primary dark:hover:bg-base-300 rounded-lg">
+                <li className="dark:hover:bg-primary hover:bg-base-300 rounded-lg">
                   <Link onClick={() => handleClick()} to="/dashboard">
                     {t("Dashboard")}
                   </Link>
                 </li>
               )}
               {token && (
-                <li className="hover:bg-primary dark:hover:bg-base-300 rounded-lg">
+                <li className="dark:hover:bg-primary hover:bg-base-300 rounded-lg">
                   <Link onClick={() => handleClick()} to="/messages">
                     {t("Messages")}
                   </Link>
                 </li>
               )}
-              <li className="hover:bg-primary dark:hover:bg-base-300 rounded-lg">
+              <li className="dark:hover:bg-primary hover:bg-base-300 rounded-lg">
                 <Link to="/team">{t("Team")}</Link>
               </li>
               <li className="ms-2">
                 <LanguageSelector />
               </li>
-              <li className="dark:hover:bg-base-300"> 
+              <li className="dark:hover:bg-base-300 mt-2"> 
                 <ThemeToggler />
             </li>
             </ul>
@@ -612,9 +612,9 @@ export default function Header() {
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content z-30 menu p-2 shadow bg-primary dark:bg-base-300 rounded-box w-52"
+                className="dropdown-content z-30 menu p-2 shadow dark:bg-primary bg-base-300 rounded-box w-52"
               >
-                <li className="hover:bg-secondary rounded-xl">
+                <li className="dark:hover:bg-secondary hover:bg-base-100 rounded-xl">
                   <Link
                     onClick={() => handleClick()}
                     state={{ type: "maintenance" }}
@@ -708,12 +708,12 @@ export default function Header() {
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 mt-2 shadow bg-primary dark:bg-base-300 rounded-box w-40 sm:w-48"
+                className="dropdown-content z-[1] menu p-2 mt-2 shadow dark:bg-primary bg-base-300 rounded-box w-40 sm:w-48"
               >
                 <li>
                   <Link
                     onClick={() => handleClick()}
-                    className="text-base sm:text-xl hover:bg-base-100"
+                    className="text-base sm:text-xl dark:hover:bg-primary hover:bg-base-100"
                     to="/profile"
                   >
                     {t("Profile")}
@@ -721,7 +721,7 @@ export default function Header() {
                 </li>
                 <li>
                   <button
-                    className="text-base sm:text-xl hover:bg-base-100"
+                    className="text-base sm:text-xl dark:hover:bg-primary hover:bg-base-100"
                     onClick={handleLogout}
                   >
                     {t("Logout")}

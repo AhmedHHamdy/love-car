@@ -271,7 +271,7 @@ export default function Maintenance() {
 
 
   return (
-    <section className="bg-secondary p-10 min-h-screen font-semibold">
+    <section className="dark:bg-secondary bg-base-300 p-10 min-h-screen font-semibold">
       <section className="w-9/12 mx-auto flex flex-col justify-center items-center 2xl:max-w-[1800px] 2xl:mx-auto">
         <h1 className="text-center text-3xl">{t("Maintenance")}</h1>
 

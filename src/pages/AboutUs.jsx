@@ -55,7 +55,7 @@ export default function AboutUs() {
   }
 
   return(
-    <section className="bg-secondary dark:bg-base-300 min-h-screen font-semibold">
+    <section className="dark:bg-secondary bg-base-300 min-h-screen font-semibold">
       <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("/bg-2.jpg")'}}>
         <div className="hero-overlay bg-secondary bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">

@@ -153,7 +153,7 @@ export default function ContactUs() {
 
 
   return(
-    <section className="bg-secondary dark:bg-base-300 min-h-screen flex flex-col font-semibold">
+    <section className="dark:bg-secondary bg-base-300 min-h-screen flex flex-col font-semibold">
       <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("/bg-1.jpg")'}}>
         <div className="hero-overlay bg-secondary bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
@@ -163,7 +163,7 @@ export default function ContactUs() {
         </div>
       </div>
 
-      <div className="hero bg-secondary dark:bg-base-300 mt-8 ">
+      <div className="hero dark:bg-secondary bg-base-300 mt-8 ">
         <div className="hero-content flex-col md:flex-col xl:flex-row  pb-10 md:0 gap-8 flex-wrap">
           <div className="flex flex-col justify-space-between items-start md:self-start">
 

@@ -85,7 +85,7 @@ export default function Login() {
 
 
   return (
-    <section className="bg-secondary dark:bg-base-300 md:pt-0 min-[320px]:pt-0 sm:pt-20 lg:pt-0 font-semibold">
+    <section className="dark:bg-secondary bg-base-300 md:pt-0 min-[320px]:pt-0 sm:pt-20 lg:pt-0 font-semibold">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 2xl:max-w-[1800px] 2xl:mx-auto">
         <div className="w-full bg-base-100 border-base-100 rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">

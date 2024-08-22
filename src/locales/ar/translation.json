@@ -180,6 +180,8 @@
   "Password does not match.": "كلمة المرور غير متطابقة.",
 
   "Action": "اجراء",
-    "Light": "فاتح",
-    "Dark": "داكن"
+  "Light": "فاتح",
+  "Dark": "داكن",
+
+  "Car service, maintenance & repair.": "خدمة وصيانة وإصلاح السيارات"
 }

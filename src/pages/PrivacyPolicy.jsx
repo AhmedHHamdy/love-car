@@ -10,7 +10,7 @@ export default function PrivacyPolicy() {
   const { i18n } = useTranslation();
 
   return (
-    <section className="bg-secondary min-h-screen">
+    <section className="dark:bg-secondary bg-base-300 min-h-screen">
       {i18n.language == "ar" ? (
         <article className="w-8/12 mx-auto p-6 2xl:max-w-[1800px] 2xl:mx-auto">
           <h1 className="text-center text-primary text-2xl font-bold mb-4">
