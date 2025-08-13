@@ -181,13 +181,13 @@ export default function ResetPassword() {
   return (
     <section className="dark:bg-secondary bg-base-300 flex justify-center items-center h-screen">
       {resetCodeFormContainer &&
-        <section className="bg-base-100 flex flex-col justify-center items-start pt-4 pb-6 px-10 w-50 rounded-md">
+        <section className="bg-base-100 flex flex-col justify-center items-start pt-4 pb-6 px-10 w-96 rounded-md">
           <h1 className="text-2xl my-2">{t("Reset Your Password")}</h1>
           {errMsg && 
             <p className={`text-white p-3 rounded-lg w-[320px] ${errMsg == "Password Changed" ? "bg-green-900" : "bg-primary"}`} aria-live="assertive">
                 {errMsg}
             </p>}
-          <form className="flex flex-col justify-center items-start gap-2 mt-3" onSubmit={handleSubmit}>
+          <form className="flex flex-col justify-center items-start gap-2 mt-3 w-full" onSubmit={handleSubmit}>
             <label className="label-text text-xl" htmlFor="email">{t("Email")}</label>
             <input className="input input-bordered w-full max-w-xs" type="email" name="email" id="email" placeholder="John@gmail.com" required value={emailForm.email} onChange={(event) => setEmailForm({...emailForm, email: event.target.value})} autoComplete="off"/>
             <button className="btn btn-primary text-accent mt-2 w-full" disabled={isLoading}>
@@ -205,13 +205,13 @@ export default function ResetPassword() {
       }
 
       {resetPasswordFormContainer && 
-        <section className="bg-base-100 flex flex-col justify-center items-start pt-4 pb-6 px-10 w-50 rounded-md">
+        <section className="bg-base-100 flex flex-col justify-center items-start pt-4 pb-6 px-10 w-96 rounded-md">
           <h1 className="text-2xl my-2">{t("Enter Code")}</h1>
           {errMsg && 
             <p className={`text-white p-3 rounded-lg w-[320px] ${errMsg == "Password Changed" ? "bg-green-900" : "bg-primary"}`} aria-live="assertive">
                 {errMsg}
             </p>}
-          <form className="flex flex-col justify-center items-start gap-2 mt-3" onSubmit={handleResetCodeSubmit}>
+          <form className="flex flex-col justify-center items-start gap-2 mt-3 w-full" onSubmit={handleResetCodeSubmit}>
             <label htmlFor="email">{t("Email")}</label>
             <input className="input input-bordered w-full max-w-xs" type="email" name="email" id="email" placeholder="John@gmail.com" required value={resetCodeForm.email} onChange={(event) => setResetCodeForm({...resetCodeForm, email: event.target.value})} autoComplete="off"/>
 
@@ -232,13 +232,13 @@ export default function ResetPassword() {
       }
 
       {enterResetCodeFormContainer && 
-        <section className="bg-base-100 flex flex-col justify-center items-start pt-4 pb-6 px-10 w-50 rounded-md">
+        <section className="bg-base-100 flex flex-col justify-center items-start pt-4 pb-6 px-10 w-96 rounded-md">
           <h1 className="text-2xl my-2">{t("Reset Your Password")}</h1>
           {errMsg && 
             <p className={`text-white p-3 rounded-lg w-[320px] ${errMsg == "Password Changed" ? "bg-green-900" : "bg-primary"}`} aria-live="assertive">
                 {errMsg}
             </p>}
-          <form className="flex flex-col justify-center items-start gap-2 mt-3" onSubmit={handleResetPasswordSubmit}>
+          <form className="flex flex-col justify-center items-start gap-2 mt-3 w-full" onSubmit={handleResetPasswordSubmit}>
             <label htmlFor="password">{t("New Password")}</label>
             <div className="relative w-full max-w-xs">
               <input className="input input-bordered w-full" type="password" name="password" id="password" autoComplete="off" placeholder="Enter new password" value={resetPasswordForm.password} onChange={handlePasswordChange} required />
