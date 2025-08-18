@@ -20,6 +20,7 @@
     "react-animated-numbers": "^1.1.1",
     "react-dom": "^19.1.1",
     "react-dropdown-select": "^4.11.0",
+    "react-helmet-async": "^2.0.5",
     "react-i18next": "^13.5.0",
     "react-icons": "^4.11.0",
     "react-router-dom": "^6.20.0",

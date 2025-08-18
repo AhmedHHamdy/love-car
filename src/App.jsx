@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { HelmetProvider } from "react-helmet-async"
 import Layout from "./components/Layout"
 import Home from "./pages/Home"
 import AboutUs from "./pages/AboutUs"
@@ -21,33 +22,35 @@ import PrivacyPolicy from "./pages/PrivacyPolicy"
 function App() {
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/about-us" element={<AboutUs />} /> 
-          <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/resetpassword" element={<ResetPassword />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="privacy-policy" element={<PrivacyPolicy />} />
+    <HelmetProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="/about-us" element={<AboutUs />} /> 
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/resetpassword" element={<ResetPassword />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="privacy-policy" element={<PrivacyPolicy />} />
 
-          <Route element={<AuthRequired />}>
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="maintenance" element={<Maintenance />} />
-            <Route path="renewal" element={<Renewal />} />
-            <Route path="license" element={<License />} />
-            <Route path="messages" element={<Messages />} />
+            <Route element={<AuthRequired />}>
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="maintenance" element={<Maintenance />} />
+              <Route path="renewal" element={<Renewal />} />
+              <Route path="license" element={<License />} />
+              <Route path="messages" element={<Messages />} />
+            </Route>
           </Route>
-        </Route>
 
-        
+          
 
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   )
 }
 

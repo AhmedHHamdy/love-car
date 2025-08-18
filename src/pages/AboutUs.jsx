@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async"
 import { useTranslation } from "react-i18next";
 import { IoCarSport } from "react-icons/io5";
 import axios from "axios";
@@ -55,7 +56,16 @@ export default function AboutUs() {
   }
 
   return(
-    <section className="dark:bg-secondary bg-base-300 min-h-screen font-semibold">
+    <>
+      <Helmet>
+        <title>{t("About Us")} - سياره حبي</title>
+        <meta name="description" content={t("About Love Car - We are pleased to collaborate with you. Learn about our car maintenance and inspection services.")} />
+        <meta name="keywords" content="about us, car maintenance, vehicle inspection, automotive services" />
+        <meta property="og:title" content={`${t("About Us")} - Car Love`} />
+        <meta property="og:description" content={t("About Love Car - We are pleased to collaborate with you. Learn about our car maintenance and inspection services.")} />
+        <meta property="og:type" content="website" />
+      </Helmet>
+      <section className="dark:bg-secondary bg-base-300 min-h-screen font-semibold">
       <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("/bg-2.jpg")'}}>
         <div className="hero-overlay bg-secondary bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
@@ -102,5 +112,6 @@ export default function AboutUs() {
         <a href={storeLinks?.socialMedia?.whatsapp} className="" target="_blank"><FaWhatsapp className="text-white text-4xl sm:text-4xl" /></a>
       </section>
     </section>
+    </>
   )
 }

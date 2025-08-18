@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async"
 import { Link, useNavigate, Navigate } from "react-router-dom"
 import { useContext, useState } from "react"
 import { useAuth } from "../../context/AuthProvider"
@@ -77,7 +78,16 @@ export default function Login() {
 
 
   return (
-    <section className="dark:bg-secondary bg-base-300 md:pt-0 min-[320px]:pt-0 sm:pt-20 lg:pt-0 font-semibold">
+    <>
+      <Helmet>
+        <title>{t("Sign in")} - سياره حبي</title>
+        <meta name="description" content={t("Sign in to your Car Love account to access car maintenance and inspection services.")} />
+        <meta name="keywords" content="login, sign in, car maintenance, vehicle services" />
+        <meta property="og:title" content={`${t("Sign in")} - Car Love`} />
+        <meta property="og:description" content={t("Sign in to your Car Love account to access car maintenance and inspection services.")} />
+        <meta property="og:type" content="website" />
+      </Helmet>
+      <section className="dark:bg-secondary bg-base-300 md:pt-0 min-[320px]:pt-0 sm:pt-20 lg:pt-0 font-semibold">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 2xl:max-w-[1800px] 2xl:mx-auto">
         <div className="w-full bg-base-100 border-base-100 rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -159,6 +169,7 @@ export default function Login() {
         <a href={storeLinks?.socialMedia?.whatsapp} className="" target="_blank"><FaWhatsapp className="text-white text-4xl sm:text-4xl" /></a>
       </section>
     </section>
+    </>
   );
 
 }

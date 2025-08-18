@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async"
 import BackgroundCarImage from "../assets/carBackground.jpg"
 import dataBaseIcon from "../assets/clarity_data-cluster-line.png"
 import carIcon from "../assets/mingcute_car-3-fill.png"
@@ -134,7 +135,16 @@ export default function Home() {
 
  
   return(
-    <main className="overflow-x-hidden ">
+    <>
+      <Helmet>
+        <title>{t("Home")} - سياره حبي</title>
+        <meta name="description" content={t("Our Experienced Mechanic Engineers Ready to Help You. Welcome to our premier car maintenance service!")} />
+        <meta name="keywords" content="car maintenance, mechanic, automotive service, car repair" />
+        <meta property="og:title" content={`${t("Home")} - Car Love`} />
+        <meta property="og:description" content={t("Our Experienced Mechanic Engineers Ready to Help You. Welcome to our premier car maintenance service!")} />
+        <meta property="og:type" content="website" />
+      </Helmet>
+      <main className="overflow-x-hidden ">
       <div className="pb-10 2xl:max-w-[1800px] 2xl:mx-auto">
         <section className="w-10/12 mx-auto mt-2 sm:mt-10 h" data-aos="fade-up">
           <section className="flex sm:flex-col lg:flex-row lg:items-center sm:items-center md:justify-between md:items-start md:gap-6">
@@ -362,7 +372,6 @@ export default function Home() {
         <a href={formLinksData?.socialMedia?.whatsapp} className="" target="_blank"><FaWhatsapp className="text-white text-3xl sm:text-4xl" /></a>
       </section>
     </main>
-
-    
+    </>
   )
 }
