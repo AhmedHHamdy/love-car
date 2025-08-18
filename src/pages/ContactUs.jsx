@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async"
+import { Helmet } from "@dr.pogodin/react-helmet" 
 import { IoCarSport } from "react-icons/io5"
 import { FaMapLocationDot } from "react-icons/fa6";
 import { FaBuilding, FaWhatsapp } from "react-icons/fa";
@@ -155,7 +155,7 @@ export default function ContactUs() {
 
   return(
     <>
-      <Helmet>
+      <Helmet prioritizeSeoTags>
         <title>{t("Contact Us")} - سياره حبي</title>
         <meta name="description" content={t("Contact Car Love for car maintenance, inspection, and renewal services. Get in touch with our experienced mechanics.")} />
         <meta name="keywords" content="contact us, car maintenance, vehicle inspection, automotive services, mechanic contact" />

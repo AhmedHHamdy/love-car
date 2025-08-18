@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async"
+import { Helmet } from "@dr.pogodin/react-helmet" 
 import { Link, useNavigate, Navigate } from "react-router-dom"
 import { useContext, useEffect, useRef, useState } from "react"
 import axios from "axios"
@@ -171,7 +171,7 @@ export default function Signup() {
 
     return (
       <>
-        <Helmet>
+        <Helmet prioritizeSeoTags>
           <title>{t("Sign up")} - سياره حبي</title>
           <meta name="description" content={t("Create a new Car Love account to access car maintenance and inspection services.")} />
           <meta name="keywords" content="sign up, register, car maintenance, vehicle services, create account" />

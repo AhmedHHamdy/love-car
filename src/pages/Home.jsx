@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async"
+import { Helmet } from "@dr.pogodin/react-helmet" 
 import BackgroundCarImage from "../assets/carBackground.jpg"
 import dataBaseIcon from "../assets/clarity_data-cluster-line.png"
 import carIcon from "../assets/mingcute_car-3-fill.png"
@@ -136,7 +136,7 @@ export default function Home() {
  
   return(
     <>
-      <Helmet>
+      <Helmet prioritizeSeoTags>
         <title>{t("Home")} - سياره حبي</title>
         <meta name="description" content={t("Our Experienced Mechanic Engineers Ready to Help You. Welcome to our premier car maintenance service!")} />
         <meta name="keywords" content="car maintenance, mechanic, automotive service, car repair" />

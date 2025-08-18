@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Optional: Reference to sitemap
+Sitemap: https://mylovecar1886.com//sitemap.xml
+
+# Optional: Crawl delay (in seconds)
+Crawl-delay: 1

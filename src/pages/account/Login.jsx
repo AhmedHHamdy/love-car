@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async"
+import { Helmet } from "@dr.pogodin/react-helmet" 
 import { Link, useNavigate, Navigate } from "react-router-dom"
 import { useContext, useState } from "react"
 import { useAuth } from "../../context/AuthProvider"
@@ -79,7 +79,7 @@ export default function Login() {
 
   return (
     <>
-      <Helmet>
+      <Helmet prioritizeSeoTags>
         <title>{t("Sign in")} - سياره حبي</title>
         <meta name="description" content={t("Sign in to your Car Love account to access car maintenance and inspection services.")} />
         <meta name="keywords" content="login, sign in, car maintenance, vehicle services" />

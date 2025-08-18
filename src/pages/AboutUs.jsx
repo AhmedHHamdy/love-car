@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async"
+import { Helmet } from "@dr.pogodin/react-helmet" 
 import { useTranslation } from "react-i18next";
 import { IoCarSport } from "react-icons/io5";
 import axios from "axios";
@@ -57,7 +57,7 @@ export default function AboutUs() {
 
   return(
     <>
-      <Helmet>
+      <Helmet prioritizeSeoTags>
         <title>{t("About Us")} - سياره حبي</title>
         <meta name="description" content={t("About Love Car - We are pleased to collaborate with you. Learn about our car maintenance and inspection services.")} />
         <meta name="keywords" content="about us, car maintenance, vehicle inspection, automotive services" />
