@@ -25,7 +25,7 @@ import Pic1 from "../assets/pic-1.jpg"
 import Pic2 from "../assets/pic-2.jpg"
 import Pic3 from "../assets/pic-3.jpg"
 import { Helmet } from "@dr.pogodin/react-helmet"
-
+ 
 AOS.init();
 
 export default function Home() {
@@ -324,7 +324,7 @@ export default function Home() {
         <meta property="og:description" content={t("Our Experienced Mechanic Engineers Ready to Help You. Welcome to our premier car maintenance service!")} />
         <meta property="og:type" content="website" />
       </Helmet>
-      
+
       <main className="overflow-x-hidden ">
           <div className="pb-10 2xl:max-w-[1800px] 2xl:mx-auto">
             <section className="w-10/12 mx-auto mt-2 sm:mt-10 h" data-aos="fade-up">
