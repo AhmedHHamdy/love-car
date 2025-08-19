@@ -58,6 +58,14 @@ export default function Team() {
 
   return(
     <section className="dark:bg-secondary bg-base-300 min-h-screen font-semibold">
+      <Helmet prioritizeSeoTags>
+        <title>{t("About Team")} - {t("My Love Car")}</title>
+        <meta name="description" content={t("Meet our expert car team. Learn about our specialists and their experience in car maintenance and inspection.")} />
+        <meta name="keywords" content="team, car specialists, mechanics, automotive experts, car maintenance" />
+        <meta property="og:title" content={`${t("About Team")} - ${t("My Love Car")}`} />
+        <meta property="og:description" content={t("Meet our expert car team. Learn about our specialists and their experience in car maintenance and inspection.")} />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <div className="hero min-h-[20rem]" style={{backgroundImage: 'url("/carBackground.jpg")', backgroundRepeat: "no-repeat"}}>
         <div className="hero-overlay bg-secondary bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">

@@ -58,11 +58,11 @@ export default function AboutUs() {
   return(
     <>
       <Helmet prioritizeSeoTags>
-        <title>{t("About Us")} - سياره حبي</title>
-        <meta name="description" content={t("About Love Car - We are pleased to collaborate with you. Learn about our car maintenance and inspection services.")} />
-        <meta name="keywords" content="about us, car maintenance, vehicle inspection, automotive services" />
-        <meta property="og:title" content={`${t("About Us")} - Car Love`} />
-        <meta property="og:description" content={t("About Love Car - We are pleased to collaborate with you. Learn about our car maintenance and inspection services.")} />
+        <title>{t("About Us")} - {t("My Love Car")}</title>
+        <meta name="description" content={t("Learn more about My Love Car, our mission, values, and commitment to quality car services.")} />
+        <meta name="keywords" content="car maintenance, inspection, renewal, automotive services" />
+        <meta property="og:title" content={`${t("About Us")} - ${t("My Love Car")}`} />
+        <meta property="og:description" content={t("Learn more about My Love Car, our mission, values, and commitment to quality car services.")} />
         <meta property="og:type" content="website" />
       </Helmet>
       <section className="dark:bg-secondary bg-base-300 min-h-screen font-semibold">

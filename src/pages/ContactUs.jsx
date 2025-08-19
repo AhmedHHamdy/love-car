@@ -156,11 +156,11 @@ export default function ContactUs() {
   return(
     <>
       <Helmet prioritizeSeoTags>
-        <title>{t("Contact Us")} - سياره حبي</title>
-        <meta name="description" content={t("Contact Car Love for car maintenance, inspection, and renewal services. Get in touch with our experienced mechanics.")} />
+        <title>{t("Contact Us")} - ${t("My Love Car")}</title>
+        <meta name="description" content={t("Contact My Love Car for car maintenance, inspection, and renewal services. Get in touch with our experienced mechanics.")} />
         <meta name="keywords" content="contact us, car maintenance, vehicle inspection, automotive services, mechanic contact" />
-        <meta property="og:title" content={`${t("Contact Us")} - Car Love`} />
-        <meta property="og:description" content={t("Contact Car Love for car maintenance, inspection, and renewal services. Get in touch with our experienced mechanics.")} />
+        <meta property="og:title" content={`${t("Contact Us")} - ${t("My Love Car")}`} />
+        <meta property="og:description" content={t("Contact My Love Car for car maintenance, inspection, and renewal services. Get in touch with our experienced mechanics.")} />
         <meta property="og:type" content="website" />
       </Helmet>
       <section className="dark:bg-secondary bg-base-300 min-h-screen flex flex-col font-semibold">
